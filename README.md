@@ -1,6 +1,8 @@
+### Installation ###
+install dependencies before opening the project
 
 ```
-#!cli
+#!bash
 
 bower install
 ```
