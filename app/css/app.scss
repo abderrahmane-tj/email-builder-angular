@@ -1,0 +1,72 @@
+@import "ink";
+*{
+  margin:0;
+  padding:0;
+}
+.app-wrapper{
+  display: flex;
+}
+.page{
+  position: relative;
+  flex: 1;
+}
+.page-inner{
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.inspector{
+  flex: 1;
+  max-width: 30%;
+  min-width: 300px;
+  padding: 15px;
+  background: #eeeeee;
+
+}
+.property{
+  margin-bottom: 10px;
+
+  .small-input {
+    width: 30px;
+  }
+}
+
+.level-matches.highlight:hover{
+  //background: #D6E5F2 !important;
+  //border-color: #B0CCE3 !important;
+}
+.level-matches.highlight:active{
+  //cursor: pointer;
+  //background: #C5DAEC !important;
+  //border-color: #96BAD9 !important;
+}
+.level-matches.highlight::before{
+  position: absolute !important;
+  border: 3px solid #2eb2e4;
+  opacity: 1;
+  content: '';
+  display: block;
+  height: auto;
+  width: auto;
+  z-index: 0;
+}
+.highlight--inside::before{
+  top: 5px;
+  bottom: 5px;
+  right: 5px;
+  left: 5px;
+}
+.level-matches.highlight.highlight--exactly::before{
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.level-matches.highlight.highlight--outside::before{
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.element,.page,.section,.wrap-ink-container{
+  position: relative;
+}

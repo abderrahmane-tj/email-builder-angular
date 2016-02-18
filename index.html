@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<link rel="stylesheet" href="app/css/app.css">
+</head>
+<body>
+
+<div ng-app="emailApp" ng-controller="MainController">
+  <div class="app-wrapper">
+    <page></page>
+    <inspector current-element="currentElement"></inspector>
+  </div>
+  <hr>
+  <h6>debug</h6>
+  <p>{{currentElement.style}}</p>
+  <!--<p>{{makeStyle(currentElement.style)}}</p>-->
+</div>
+
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<script src="app/js/layout.js"></script>
+<script src="app/js/main.js"></script>
+<script src="app/js/services.js"></script>
+<script src="app/js/directives/inspector.directive.js"></script>
+<!--<script src="app/js/directives/property.directive.js"></script>-->
+<script src="app/js/directives/highlight-on-hover.directive.js"></script>
+<script src="app/js/directives/page.directive.js"></script>
+<script src="app/js/directives/properties/border-property.directive.js"></script>
+<script src="app/js/directives/properties/margin-property.directive.js"></script>
+<script src="app/js/directives/properties/padding-property.directive.js"></script>
+<script src="app/js/directives/properties/background-property.directive.js"></script>
+
+</body>
+</html>
