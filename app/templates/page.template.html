@@ -1,34 +1,49 @@
-<div id="page-123ashd" class="page highlight--inside" highlight-on-hover ng-style="page.style"
+<div id="page-123ashd" class="page highlight--inside"
+    ng-style="page.style"
     ng-class="{'level-matches': pageVM.hoveredLevel === 0}"
     ng-click="pageVM.onElementClick(page, $event)">
   <div class="page-inner email-builder-body">
     <!-- email body -->
-    <table class="body"><tr> <td class="center" align="center" valign="top">
-      <!-- section -->
-      <div class="wrap-ink-container highlight--exactly" highlight-on-hover
-          ng-repeat="section in page.sections"
-          ng-class="{'level-matches': pageVM.hoveredLevel === 1}"
-          ng-click="pageVM.onElementClick(section, $event)"
-          >
-        <table class="container section highlight--exactly">
-          <tr><td> <table class="row" ng-style="section.style"> <tr>
-          <!-- cell -->
-          <td class="wrapper"
-              ng-repeat="element in section.elements" ng-class="{'last':$last}">
-            <table class="six columns"> <tr>
-              <td class="element highlight--exactly"
-                  highlight-on-hover ng-style="element.style"
-                  ng-class="{'level-matches': pageVM.hoveredLevel === 2}"
-                  ng-click="pageVM.onElementClick(element, $event)">
-                <div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda corporis cumque dolor explicabo ipsum iste laudantium magnam mollitia nesciunt possimus reiciendis tenetur, velit? Reprehenderit suscipit tempore vitae. Ducimus, nisi?</p></div>
-              </td>
-              <td class="expander"></td>
-            </tr> </table> </td>
-          <!-- /cell -->
-        </tr> </table> </td> </tr> </table>
-      </div>
-      <!-- /section -->
+    <table class="body"><tr> <td class="center" align="center" valign="top"><center>
+      <div class="sections-wrapper"
+          dragula="'sections-bag'"
+          dragula-model='page.sections'
+      >
+        <div class="wrap-ink-container highlight--exactly"
+            ng-repeat="section in page.sections"
+            ng-class="{'level-matches': pageVM.hoveredLevel === 1}"
+            ng-click="pageVM.onElementClick(section, $event)"
+        >
+          <!-- inside section -->
+          <table class="container section highlight--exactly">
+            <tr><td> <table class="row" ng-style="section.style"> <tr>
+              <!-- cell -->
+              <td class="wrapper"
+                  ng-repeat="column in section.columns"
+                  ng-class="{'last':$last}">
+                <table class="six columns"> <tr>
+                  <td class="column highlight--exactly"
+                      ng-style="column.style"
+                      ng-class="{'level-matches': pageVM.hoveredLevel === 2}"
+                      ng-click="pageVM.onElementClick(column, $event)"
+                      dragula="'elements-bag'"
+                      dragula-model='column.elements'
+                      dragula-scope="$parent.$parent"
+                  >
+                    <div
+                        ng-repeat="element in column.elements"
+                    >
+                      <p>{{element.content}}</p>
+                    </div>
+                  </td>
+                  <td class="expander"></td>
+                </tr> </table> </td>
+              <!-- /cell -->
+            </tr> </table> </td> </tr> </table>
+          <!-- /inside section -->
+        </div>
 
+      </div>
     </center> </td> </tr> </table><!-- /email body -->
 
     <p>{{pageVM.hoveredLevel}}</p>

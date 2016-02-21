@@ -1,3 +1,4 @@
+@import "../../bower_components/angular-dragula/dist/dragula.min.css";
 @import "ink";
 *{
   margin:0;
@@ -67,6 +68,15 @@
   right: 0;
   left: 0;
 }
-.element,.page,.section,.wrap-ink-container{
+.gu-mirror,.column,.page,.section,.wrap-ink-container{
   position: relative;
 }
+//.gu-unselectable{
+//  background-color: red;
+//}
+//.gu-transit{
+//  background-color: purple;
+//}
+//.gu-mirror{
+//  background-color: gold;
+//}

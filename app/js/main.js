@@ -1,7 +1,7 @@
-var emailApp = angular.module('emailApp',['emailApp.services','LocalStorageModule']);
-emailApp.controller('MainController',  ['$scope','localStorageService','$templateCache', MainController]);
+var emailApp = angular.module('emailApp', ['emailApp.services','LocalStorageModule',angularDragula(angular)]);
+emailApp.controller('MainController', ['$scope','localStorageService','$templateCache', 'dragulaService', MainController]);
 
-function MainController($scope,localStorageService,$templateCache){
+function MainController($scope,localStorageService,$templateCache,dragulaService){
     $templateCache.removeAll();
     var lastSaved = 0;
     $scope.defaultPage = {
@@ -12,61 +12,91 @@ function MainController($scope,localStorageService,$templateCache){
         sections:[
             {
                 style:{},
-                elements:[
+                columns:[
                     {
-                        id: '123nasd',
-                        type: 'p',
-                        inner: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                         style:{
-                        }
-                    },{
-                        id: 'x2edh8',
-                        type: 'p',
-                        inner: 'Accusantium at consectetur dignissimos eum id illum laboriosam.',
+                        },
+                        elements:[
+                            {
+                                style:{},
+                                type: 'p',
+                                content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+                            }
+                        ]
+                    },
+                    {
                         style:{
-                        }
+                        },
+                        elements:[
+                            {
+                                style:{},
+                                type: 'p',
+                                content: 'Accusantium at consectetur dignissimos eum id illum laboriosam.'
+                            }
+                        ]
                     }
                 ]
 
-            },{
+            },
+            {
                 style:{},
-                elements:[
+                columns:[
                     {
-                        id: '123nasd',
-                        type: 'p',
-                        inner: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                         style:{
-                        }
-                    },{
-                        id: 'x2edh8',
-                        type: 'p',
-                        inner: 'Accusantium at consectetur dignissimos eum id illum laboriosam.',
+                        },
+                        elements:[
+                            {
+                                style:{},
+                                type: 'p',
+                                content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+                            }
+                        ]
+                    },
+                    {
                         style:{
-                        }
+                        },
+                        elements:[
+                            {
+                                style:{},
+                                type: 'p',
+                                content: 'Accusantium at consectetur dignissimos eum id illum laboriosam.'
+                            }
+                        ]
                     }
                 ]
 
-            },{
+            },
+            {
                 style:{},
-                elements:[
+                columns:[
                     {
-                        id: '123nasd',
-                        type: 'p',
-                        inner: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                         style:{
-                        }
-                    },{
-                        id: 'x2edh8',
-                        type: 'p',
-                        inner: 'Accusantium at consectetur dignissimos eum id illum laboriosam.',
+                        },
+                        elements:[
+                            {
+                                style:{},
+                                type: 'p',
+                                content: 'nostrum optio quidem soluta vel voluptates.'
+                            }
+                        ]
+                    },
+                    {
                         style:{
-                        }
+                        },
+                        elements:[
+                            {
+                                style:{},
+                                type: 'p',
+                                content: 'Accusantium at consectetur dignissimos eum id illum laboriosam.'
+                            }
+                        ]
                     }
                 ]
 
             }
         ]
     };
+
     $scope.page = localStorageService.get('page');
     if($scope.page === null){
         $scope.page = $scope.defaultPage;
@@ -76,14 +106,14 @@ function MainController($scope,localStorageService,$templateCache){
     $scope.unbind = localStorageService.bind($scope, 'page');
     $scope.currentElement = $scope.page;
 
-    function savePage(value){
-        var now = Date.now();
-        if (now - lastSaved < 1000){
-            setTimeout(function(){savePage($scope.page);}, now - lastSaved + 100);
-            return;
-        }
-        lastSaved = now;
-        localStorageService.set('page',value);
-    }
+    dragulaService.options($scope, 'sections-bag', {
+        moves: function(el, source, handle, sibling){
+            // preventing sections from moving when drag was
+            // initiated on child element
+            return $(handle).hasClass('wrap-ink-container');
+        },
+        mirrorContainer: document.querySelectorAll('.email-builder-body')[0]
+    });
+
 }
 

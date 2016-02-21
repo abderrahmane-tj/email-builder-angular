@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<link rel="stylesheet" href="ink.css">
+<style>
+  *{
+    padding:0;
+    margin:0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .email{
+    padding: 30px;
+    width: 600px;
+    float: left;
+  }
+  .section{
+    clear: both;
+    overflow: hidden;
+    width: 80%;
+    margin: auto;
+  }
+  .element{
+    /*float: left;*/
+  }
+  .element.half{
+    width: 50%;
+  }
+  .element.quarter{
+    width: 25%;
+  }
+  .element.third{
+    width: 33.3333333%;
+  }
+  .palette{
+    float: left;
+    width: 100px;
+  }
+</style>
+<style></style>
+</head>
+<body ng-app="emailApp" ng-controller="MainController">
+<div class="wrapper">
+  <div class="email" ng-style="page.style">
+    <table>
+      <tr
+          class="section"
+          ng-repeat="section in page.sections"
+          ng-style="section.style"
+      >
+        <td class="element" ng-repeat="element in section.elements"
+            ng-style="element.style"
+        >
+          <h3>{{$parent.$index}}</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi culpa deleniti dignissimos dolor eligendi harum impedit in maxime nihil pariatur, qui quo quos ratione recusandae sint, totam vel voluptate.</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="palette">
+
+  </div>
+</div>
+
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-dragula/dist/angular-dragula.js"></script>
+<script>
+  var emailApp = angular.module('emailApp',[]);
+  emailApp.controller('MainController',  ['$scope', MainController]);
+  function MainController($scope){
+    console.log(angularDragula);
+    $scope.page = {
+     "id": "page-123ashd",
+      "type": "page",
+      "style": {
+        "background-color": "#464646"
+      },
+      "sections": [
+        {
+          "style": {
+            "background-color": "ivory"
+          },
+          "elements": [
+            {
+              "id": "21j1k2h",
+              "type": "p",
+              "inner": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur assumenda aut doloremque eos est facilis fuga illum impedit ipsum minima molestias neque nobis quos saepe similique sit, tempore vel.",
+              "style": {
+                "background-color": "pink"
+              }
+            },
+            {
+              "id": "asd234h",
+              "type": "p",
+              "inner": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci animi architecto cumque, dignissimos distinctio dolorem ea eaque earum facilis maiores, modi odio perspiciatis provident similique tenetur velit veritatis voluptate?",
+              "style": {}
+            }
+          ]
+        },
+        {
+          "style": {
+            "background-color": "beige",
+            "margin-top": ""
+          },
+          "elements": [
+            {
+              "id": "dd9jrd",
+              "type": "p",
+              "inner": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio fugiat modi omnis sequi soluta. Amet, cumque, ea fuga fugit ipsum iure mollitia numquam perferendis porro recusandae repellat totam velit, vero!",
+              "style": {}
+            },
+            {
+              "id": "1kkd0rl",
+              "type": "p",
+              "inner": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aliquid asperiores consequatur corporis debitis deserunt, distinctio eligendi excepturi iure nostrum officiis pariatur quae quasi saepe sit tenetur vitae voluptatum?",
+              "style": {}
+            }
+          ]
+        },
+        {
+          "style": {
+            "background-color": "tan",
+            "margin-top": ""
+          },
+          "elements": [
+            {
+              "id": "0ccx29jfd",
+              "type": "p",
+              "inner": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+              "style": {}
+            },
+            {
+              "id": "193iu4nm",
+              "type": "p",
+              "inner": "Accusantium at consectetur dignissimos eum id illum laboriosam.",
+              "style": {
+                "background-color": "lime"
+              }
+            }
+          ]
+        }
+      ]
+     };
+    $scope.selected = null;
+  }
+</script>
+</body>
+</html>

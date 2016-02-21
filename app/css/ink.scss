@@ -10,13 +10,14 @@
   -ms-text-size-adjust:100%;
   margin:0;
   padding:0;
+}
+/* todo: find a way to avoind puttin .gu-mirror here, because it adds more wright to this css file*/
+.email-builder-body,.gu-mirror{
+
 
   #outlook a {
     padding:0;
   }
-
-
-
 
     /* .ExternalClass applies to Outlook.com (the artist formerly known as Hotmail)  */
 

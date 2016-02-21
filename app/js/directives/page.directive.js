@@ -16,7 +16,7 @@ emailApp.directive('page',function(){
             };
             vm.onElementClick = function (element, $event) {
                 $event.stopPropagation();
-                console.log(element);
+                //console.log(element);
 
                 //var clickedElement;
                 //if(id === $scope.page.id){
