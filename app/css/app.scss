@@ -40,37 +40,37 @@
   //background: #C5DAEC !important;
   //border-color: #96BAD9 !important;
 }
-.level-matches.highlight::before{
-  position: absolute !important;
-  border: 3px solid #2eb2e4;
-  opacity: 1;
-  content: '';
-  display: block;
-  height: auto;
-  width: auto;
-  z-index: 0;
-}
-.highlight--inside::before{
-  top: 5px;
-  bottom: 5px;
-  right: 5px;
-  left: 5px;
-}
-.level-matches.highlight.highlight--exactly::before{
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
-.level-matches.highlight.highlight--outside::before{
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
-.gu-mirror,.column,.page,.section,.wrap-ink-container{
-  position: relative;
-}
+//.level-matches.highlight::before{
+//  position: absolute !important;
+//  border: 3px solid #2eb2e4;
+//  opacity: 1;
+//  content: '';
+//  display: block;
+//  height: auto;
+//  width: auto;
+//  z-index: 0;
+//}
+//.highlight--inside::before{
+//  top: 5px;
+//  bottom: 5px;
+//  right: 5px;
+//  left: 5px;
+//}
+//.level-matches.highlight.highlight--exactly::before{
+//  top: 0;
+//  bottom: 0;
+//  right: 0;
+//  left: 0;
+//}
+//.level-matches.highlight.highlight--outside::before{
+//  top: 0;
+//  bottom: 0;
+//  right: 0;
+//  left: 0;
+//}
+//.gu-mirror,.column,.page,.section,.wrap-ink-container{
+//  position: relative;
+//}
 //.gu-unselectable{
 //  background-color: red;
 //}
@@ -80,3 +80,38 @@
 //.gu-mirror{
 //  background-color: gold;
 //}
+
+$highlightShadow: 0 0 0 3px #2eb2e4;
+
+.page{
+  &.on-page{
+    &.highlight--page{ box-shadow: $highlightShadow inset; }
+  }
+  &.on-page.on-section{
+    &.highlight--page{ box-shadow: none; }
+    .highlight--section{ box-shadow: $highlightShadow inset; }
+  }
+  &.on-page.on-section.on-column{
+    &.highlight--page{ box-shadow: none; }
+    .highlight--section{ box-shadow: none; }
+    .highlight--column{ box-shadow: $highlightShadow inset; }
+  }
+  &.on-page.on-section.on-column.on-element{
+    &.highlight--page{ box-shadow: none; }
+    .highlight--section{ box-shadow: none; }
+    .highlight--column{ box-shadow: none;  }
+    .highlight--element{ box-shadow: $highlightShadow inset;  }
+  }
+}
+.highlight--inside{
+
+}
+.highlight.highlight--exactly{
+  //box-shadow: $highlightShadow inset;
+}
+.highlight.highlight--outside{
+
+}
+.gu-mirror,.column,.page,.section,.wrap-ink-container{
+  position: relative;
+}

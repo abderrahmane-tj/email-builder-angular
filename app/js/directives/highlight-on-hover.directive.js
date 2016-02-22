@@ -4,14 +4,19 @@ emailApp.directive('highlightOnHover',function(){
         restrict: "A",
         require:"^page",
         link:function($scope,element,attrs,pageCtrl){
+            var options = $scope.$eval(attrs.highlightOnHover);
+
+            //element.addClass('highlight--'+options.name);
+            element.addClass('highlight--'+options.type);
+            var $page = $('.page');
             element.on('mouseenter', function() {
-                pageCtrl.plusHoverLevel();
-                element.addClass('highlight');
+                $page.addClass('on-'+options.name);
+                element.addClass('highlight--'+options.name);
                 $scope.$apply();
             });
             element.on('mouseleave', function() {
-                pageCtrl.minusHoverLevel();
-                element.removeClass('highlight');
+                $page.removeClass('on-'+options.name);
+                element.removeClass('highlight--'+options.name);
                 $scope.$apply();
             });
         },

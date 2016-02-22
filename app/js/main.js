@@ -5,94 +5,105 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
     $templateCache.removeAll();
     var lastSaved = 0;
     $scope.defaultPage = {
-        id:'page-123ashd',
-        type:'page',
-        style:{
+        "id": "page-123ashd",
+        "type": "page",
+        "style": {
+            "background-color": "#aeaeae"
         },
-        sections:[
+        "sections": [
             {
-                style:{},
-                columns:[
+                type: 'section',
+                "style": {
+                    "background-color": "khaki"
+                },
+                "columns": [
                     {
-                        style:{
-                        },
-                        elements:[
-                            {
-                                style:{},
-                                type: 'p',
-                                content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-                            }
-                        ]
+                        type: 'column',
+                        "style": {},
+                        "elements": []
                     },
                     {
-                        style:{
+                        type: 'column',
+                        "style": {
                         },
-                        elements:[
-                            {
-                                style:{},
-                                type: 'p',
-                                content: 'Accusantium at consectetur dignissimos eum id illum laboriosam.'
-                            }
-                        ]
+                        "elements": []
                     }
                 ]
-
             },
             {
-                style:{},
-                columns:[
+                type: 'section',
+                "style": {
+                    "background-color": "darkorange"
+                },
+                "columns": [
                     {
-                        style:{
-                        },
-                        elements:[
+                        type: 'column',
+                        "style": {},
+                        "elements": [
                             {
-                                style:{},
-                                type: 'p',
-                                content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+                                "style": {},
+                                "type": "p",
+                                "content": "Accusantium at consectetur dignissimos eum id illum laboriosam."
+                            },
+                            {
+                                "style": {},
+                                "type": "p",
+                                "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                             }
                         ]
                     },
                     {
-                        style:{
-                        },
-                        elements:[
+                        type: 'column',
+                        "style": {},
+                        "elements": [
                             {
-                                style:{},
-                                type: 'p',
-                                content: 'Accusantium at consectetur dignissimos eum id illum laboriosam.'
+                                "style": {},
+                                "type": "p",
+                                "content": "Accusantium at consectetur dignissimos eum id illum laboriosam."
                             }
                         ]
                     }
                 ]
-
             },
             {
-                style:{},
-                columns:[
+                type: 'section',
+                "style": {
+                    "background-color": "beige"
+                },
+                "columns": [
                     {
-                        style:{
+                        type: 'column',
+                        "style": {
+                            "padding-top": "20px",
+                            "padding-bottom": "20px",
+                            "padding-left": "10px",
+                            "padding-right": "20px"
                         },
-                        elements:[
+                        "elements": [
                             {
-                                style:{},
-                                type: 'p',
-                                content: 'nostrum optio quidem soluta vel voluptates.'
+                                "style": {},
+                                "type": "p",
+                                "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+                            },
+                            {
+                                "style": {},
+                                "type": "p",
+                                "content": "Accusantium at consectetur dignissimos eum id illum laboriosam."
                             }
                         ]
                     },
                     {
-                        style:{
-                        },
-                        elements:[
+                        type: 'column',
+                        "style": {},
+                        "elements": [
                             {
-                                style:{},
-                                type: 'p',
-                                content: 'Accusantium at consectetur dignissimos eum id illum laboriosam.'
+                                "style": {},
+                                "type": "p",
+                                "content": "nostrum optio quidem soluta vel voluptates."
                             }
                         ]
                     }
                 ]
-
             }
         ]
     };

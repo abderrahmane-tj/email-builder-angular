@@ -1,6 +1,13 @@
 <p class="property background">
   <strong>Background</strong><br>
 
-  <label>color <input type="text" ng-model="style['background-color']"></label>
+  <label>
+    color
+    <span ng-switch on="element.type">
+      <input ng-switch-when="column" type="text" ng-model="element.wrapper.style['background-color']">
+      <input ng-switch-default type="text" ng-model="element.style['background-color']">
+    </span>
+
+  </label>
 
 </p>

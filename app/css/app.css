@@ -693,33 +693,26 @@
   .property .small-input {
     width: 30px; }
 
-.level-matches.highlight::before {
-  position: absolute !important;
-  border: 3px solid #2eb2e4;
-  opacity: 1;
-  content: '';
-  display: block;
-  height: auto;
-  width: auto;
-  z-index: 0; }
-
-.highlight--inside::before {
-  top: 5px;
-  bottom: 5px;
-  right: 5px;
-  left: 5px; }
-
-.level-matches.highlight.highlight--exactly::before {
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0; }
-
-.level-matches.highlight.highlight--outside::before {
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0; }
+.page.on-page.highlight--page {
+  box-shadow: 0 0 0 3px #2eb2e4 inset; }
+.page.on-page.on-section.highlight--page {
+  box-shadow: none; }
+.page.on-page.on-section .highlight--section {
+  box-shadow: 0 0 0 3px #2eb2e4 inset; }
+.page.on-page.on-section.on-column.highlight--page {
+  box-shadow: none; }
+.page.on-page.on-section.on-column .highlight--section {
+  box-shadow: none; }
+.page.on-page.on-section.on-column .highlight--column {
+  box-shadow: 0 0 0 3px #2eb2e4 inset; }
+.page.on-page.on-section.on-column.on-element.highlight--page {
+  box-shadow: none; }
+.page.on-page.on-section.on-column.on-element .highlight--section {
+  box-shadow: none; }
+.page.on-page.on-section.on-column.on-element .highlight--column {
+  box-shadow: none; }
+.page.on-page.on-section.on-column.on-element .highlight--element {
+  box-shadow: 0 0 0 3px #2eb2e4 inset; }
 
 .gu-mirror, .column, .page, .section, .wrap-ink-container {
   position: relative; }

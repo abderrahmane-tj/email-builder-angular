@@ -3,7 +3,7 @@ emailApp.directive('backgroundProperty',function(){
     return {
         restrict: "E",
         scope:{
-            style:'=elementStyle'
+            element:'='
         },
         templateUrl: 'app/templates/properties/background-property.template.html'
     }

@@ -7,8 +7,6 @@ emailApp.directive('inspector',function(){
             element: '=currentElement'
         },
         link:function($scope,element,attrs){
-            // TODO: figure out how to make this permanent
-            //$scope.style = $scope.element.style;
         },
         controller:function($scope){
 
