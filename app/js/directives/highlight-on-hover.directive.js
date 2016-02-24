@@ -9,16 +9,27 @@ emailApp.directive('highlightOnHover',function(){
             //element.addClass('highlight--'+options.name);
             element.addClass('highlight--'+options.type);
             var $page = $('.page');
+
             element.on('mouseenter', function() {
-                $page.addClass('on-'+options.name);
-                element.addClass('highlight--'+options.name);
-                $scope.$apply();
+                if($('.gu-unselectable').length){
+                    removeClasses(options.name);
+                    return;
+                }
+                addClasses(options.name)
             });
             element.on('mouseleave', function() {
-                $page.removeClass('on-'+options.name);
-                element.removeClass('highlight--'+options.name);
-                $scope.$apply();
+                removeClasses(options.name);
             });
+            function addClasses(name){
+                $page.addClass('on-'+name);
+                element.addClass('highlight--'+name);
+                $scope.$apply();
+            }
+            function removeClasses(name){
+                $page.removeClass('on-'+name);
+                element.removeClass('highlight--'+name);
+                $scope.$apply();
+            }
         },
         controller:function($scope){
 

@@ -24,8 +24,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                     },
                     {
                         type: 'column',
-                        "style": {
-                        },
+                        "style": {},
                         "elements": []
                     }
                 ]
@@ -43,12 +42,12 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                             {
                                 "style": {},
                                 "type": "p",
-                                "content": "Accusantium at consectetur dignissimos eum id illum laboriosam."
+                                "content": "Earum nam officia placeat quas sapiente tenetur totam."
                             },
                             {
                                 "style": {},
                                 "type": "p",
-                                "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+                                "content": "A autem, debitis distinctio dolor illo modi sequi vel voluptatem voluptates! Explicabo, provident tempore."
                             }
                         ]
                     },
@@ -59,7 +58,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                             {
                                 "style": {},
                                 "type": "p",
-                                "content": "Accusantium at consectetur dignissimos eum id illum laboriosam."
+                                "content": "Facere ipsa neque nulla quibusdam? Dolorem illo ipsum laudantium quasi qui?"
                             }
                         ]
                     }
@@ -83,12 +82,12 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                             {
                                 "style": {},
                                 "type": "p",
-                                "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+                                "content": "Eos, fugiat!"
                             },
                             {
                                 "style": {},
                                 "type": "p",
-                                "content": "Accusantium at consectetur dignissimos eum id illum laboriosam."
+                                "content": "Quod, tenetur!"
                             }
                         ]
                     },
@@ -117,13 +116,23 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
     $scope.unbind = localStorageService.bind($scope, 'page');
     $scope.currentElement = $scope.page;
 
-    dragulaService.options($scope, 'sections-bag', {
+    dragulaService.options($scope.$parent, 'sections-bag', {
         moves: function(el, source, handle, sibling){
             // preventing sections from moving when drag was
             // initiated on child element
             return $(handle).hasClass('wrap-ink-container');
         },
         mirrorContainer: document.querySelectorAll('.email-builder-body')[0]
+    });
+
+    dragulaService.options($scope.$parent,'elements-bag',{
+        copy: function (el, source) {
+
+            return $(source).hasClass('new-elements');
+        },
+        accepts: function(el, target, source, sibling){
+            return !$(target).hasClass('new-elements');
+        }
     });
 
 }

@@ -3,4 +3,13 @@
   <border-property element-style="element.style"></border-property>
   <margin-property element-style="element.style"></margin-property>
   <padding-property element-style="element.style"></padding-property>
+  <div class="new-elements"
+      dragula="'elements-bag'"
+      dragula-scope="$parent.$parent"
+      dragula-model='templates'
+  >
+    <div ng-repeat="template in templates">
+      <p>P</p>
+    </div>
+  </div>
 </div>

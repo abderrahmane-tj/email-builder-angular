@@ -1,5 +1,5 @@
 var emailApp = angular.module('emailApp');
-emailApp.directive('inspector',function(){
+emailApp.directive('inspector',['dragulaService',function(dragulaService){
     return {
         restrict: "E",
         replace: true,
@@ -9,8 +9,14 @@ emailApp.directive('inspector',function(){
         link:function($scope,element,attrs){
         },
         controller:function($scope){
-
+            $scope.templates = [
+                {
+                    "style": {},
+                    "type": "p",
+                    "content": "Accusantium at consectetur dignissimos eum id illum laboriosam."
+                }
+            ];
         },
         templateUrl: 'app/templates/inspector.template.html'
     }
-});
+}]);

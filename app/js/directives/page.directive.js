@@ -7,13 +7,6 @@ emailApp.directive('page',function(){
         bindToController: true,
         controller: function($scope){
             var vm = this;
-            vm.hoveredLevel = -1;
-            vm.plusHoverLevel = function () {
-                vm.hoveredLevel += 1;
-            };
-            vm.minusHoverLevel = function () {
-                vm.hoveredLevel -= 1;
-            };
             vm.onElementClick = function (element, $event) {
                 $event.stopPropagation();
                 //console.log(element);
