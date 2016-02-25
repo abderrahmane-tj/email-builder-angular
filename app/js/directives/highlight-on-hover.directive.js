@@ -5,16 +5,16 @@ emailApp.directive('highlightOnHover',function(){
         require:"^page",
         link:function($scope,element,attrs,pageCtrl){
             var options = $scope.$eval(attrs.highlightOnHover);
-
-            //element.addClass('highlight--'+options.name);
             element.addClass('highlight--'+options.type);
             var $page = $('.page');
-
+            var knownNames = ['page','section','column','element'];
             element.on('mouseenter', function() {
                 if($('.gu-unselectable').length){
-                    removeClasses(options.name);
                     return;
                 }
+                $page
+                    .find('.highlight--'+name)
+                    .removeClass('highlight--'+name)
                 addClasses(options.name)
             });
             element.on('mouseleave', function() {

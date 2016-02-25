@@ -124,7 +124,6 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
         },
         mirrorContainer: document.querySelectorAll('.email-builder-body')[0]
     });
-
     dragulaService.options($scope.$parent,'elements-bag',{
         copy: function (el, source) {
 
