@@ -29,3 +29,10 @@ emailServices.factory('dataservice', function () {
 
     }
 });
+emailServices.filter('englishNumber', function() {
+    return function(number) {
+        var englishNumber = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
+        englishNumber[number]
+        return englishNumber[number];
+    }
+});

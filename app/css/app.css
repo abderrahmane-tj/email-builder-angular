@@ -576,7 +576,6 @@
 
 @media only screen and (max-width: 600px) {
   .email-builder-body table[class="body"] img {
-    max-width: auto !important;
     max-height: auto !important; }
   .email-builder-body table[class="body"] center {
     min-width: 0 !important; }
@@ -673,6 +672,9 @@
 .app-wrapper {
   display: flex; }
 
+.element-wrapper {
+  overflow: hidden; }
+
 .page {
   position: relative;
   flex: 1; }
@@ -681,6 +683,18 @@
   padding-top: 50px;
   padding-bottom: 50px; }
 
+.empty-column {
+  background-color: lightgray;
+  position: relative; }
+  .empty-column::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    content: "*"; }
+
+.atj-passing {
+  background-color: gold; }
+
 .inspector {
   flex: 1;
   max-width: 30%;
@@ -688,10 +702,22 @@
   padding: 15px;
   background: #eeeeee; }
 
+.template-handle {
+  background-color: lightgray;
+  padding: 10px;
+  display: inline-block; }
+
+.template-wrapper {
+  display: inline-block;
+  margin-left: 10px; }
+
 .property {
   margin-bottom: 10px; }
   .property .small-input {
     width: 30px; }
+
+.gu-transit {
+  opacity: 1; }
 
 .page.on-page.highlight--page {
   box-shadow: 0 0 0 3px #2eb2e4 inset; }
@@ -712,7 +738,48 @@
 .page.on-page.on-section.on-column.on-element .highlight--column {
   box-shadow: none; }
 .page.on-page.on-section.on-column.on-element .highlight--element {
-  box-shadow: 0 0 0 3px #2eb2e4 inset; }
+  box-shadow: 0 0 0 3px #2eb2e4; }
 
-.gu-mirror, .column, .page, .section, .wrap-ink-container {
-  position: relative; }
+.img-hidden {
+  display: none !important; }
+
+.wrap-ink-container {
+  margin: 10px; }
+
+.golden {
+  background-color: gold; }
+
+/*
+.ng-scope{
+  margin: 10px;
+  padding: 10px;
+  background-color: pink;
+  .ng-scope{
+    background-color: orange;
+
+    .ng-scope{
+      background-color: red;
+      .ng-scope{
+        background-color: blue;
+        .ng-scope{
+          background-color: green;
+          .ng-scope{
+            background-color: gold;
+            .ng-scope{
+              background-color: white;
+              .ng-scope{
+                background-color: gray;
+                .ng-scope{
+                  background-color: darkgray;
+                  .ng-scope{
+                    background-color: deeppink;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}*/

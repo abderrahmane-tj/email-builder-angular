@@ -1,15 +1,28 @@
 <div class="inspector">
-  <background-property element="element"></background-property>
-  <border-property element-style="element.style"></border-property>
-  <margin-property element-style="element.style"></margin-property>
-  <padding-property element-style="element.style"></padding-property>
+  <background-property element="inspctVM.element"></background-property>
+  <border-property element-style="inspctVM.element.style"></border-property>
+  <margin-property element-style="inspctVM.element.style"></margin-property>
+  <padding-property element-style="inspctVM.element.style"></padding-property>
+
+  <h5>Elements</h5>
   <div class="new-elements"
       dragula="'elements-bag'"
-      dragula-scope="$parent.$parent"
-      dragula-model='templates'
+      dragula-scope="$parent"
+      dragula-model='inspctVM.templates'
   >
-    <div ng-repeat="template in templates">
-      <p>P</p>
+    <div class="template-wrapper" ng-repeat="template in inspctVM.templates">
+      <span class="template-handle">{{template.type}}</span>
+    </div>
+  </div>
+
+  <br>
+  <div class="new-section"
+      dragula="'sections-bag'"
+      dragula-scope="$parent"
+      dragula-model='inspctVM.sectionTemplate'
+  >
+    <div class="template-wrapper" ng-repeat="template in inspctVM.sectionTemplate">
+      <span class="template-handle section-template-handle">section</span>
     </div>
   </div>
 </div>

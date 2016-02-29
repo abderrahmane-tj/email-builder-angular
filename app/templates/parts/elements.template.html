@@ -1,0 +1,13 @@
+<div
+    highlight-on-hover="{name:'element', type:'exactly'}"
+    ng-repeat="element in column.elements"
+    ng-click="pageVM.onElementClick(element, $event)"
+    ng-style="element.style"
+    class="element-wrapper"
+>
+
+  <p ng-if="element.type=='p'">{{section.columns.length}} - {{element.content}}</p>
+
+  <img ng-if="element.type=='img'" class="img-hidden" prep-image-size="{{column['grid-width']}}" ng-src="{{element.src}}"  />
+
+</div>

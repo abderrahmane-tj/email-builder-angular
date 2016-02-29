@@ -9,16 +9,6 @@ emailApp.directive('page',function(){
             var vm = this;
             vm.onElementClick = function (element, $event) {
                 $event.stopPropagation();
-                //console.log(element);
-
-                //var clickedElement;
-                //if(id === $scope.page.id){
-                //    //clickedElement = $scope.page;
-                //}else{
-                //    //clickedElement = $scope.page.elements.find(function (element) {
-                //    //    return element.id === id;
-                //    //});
-                //}
                 $scope.currentElement = element;
             };
         },

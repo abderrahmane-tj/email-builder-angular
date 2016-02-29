@@ -1,10 +1,10 @@
 var emailApp = angular.module('emailApp', ['emailApp.services','LocalStorageModule',angularDragula(angular)]);
-emailApp.controller('MainController', ['$scope','localStorageService','$templateCache', 'dragulaService', MainController]);
+emailApp.controller('MainController', ['$scope','localStorageService','$templateCache', 'dragulaService','$timeout','$log', MainController]);
 
-function MainController($scope,localStorageService,$templateCache,dragulaService){
+function MainController($scope,localStorageService,$templateCache,dragulaService,$timeout,$log){
     $templateCache.removeAll();
     var lastSaved = 0;
-    $scope.defaultPage = {
+    var defaultPage = {
         "id": "page-123ashd",
         "type": "page",
         "style": {
@@ -12,31 +12,46 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
         },
         "sections": [
             {
-                type: 'section',
+                "type": "section",
                 "style": {
                     "background-color": "khaki"
                 },
                 "columns": [
                     {
-                        type: 'column',
+                        "type": "column",
+                        "grid-width": "six",
                         "style": {},
-                        "elements": []
+                        "elements": [
+                            {
+                                "style": {},
+                                "type": "p",
+                                "content": "Eos, fugiat!"
+                            }
+                        ]
                     },
                     {
-                        type: 'column',
+                        "type": "column",
+                        "grid-width": "six",
                         "style": {},
-                        "elements": []
+                        "elements": [
+                            {
+                                "style": {},
+                                "type": "p",
+                                "content": "Quod, tenetur!"
+                            }
+                        ]
                     }
                 ]
             },
             {
-                type: 'section',
+                "type": "section",
                 "style": {
                     "background-color": "darkorange"
                 },
                 "columns": [
                     {
-                        type: 'column',
+                        "type": "column",
+                        "grid-width": "six",
                         "style": {},
                         "elements": [
                             {
@@ -52,7 +67,8 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                         ]
                     },
                     {
-                        type: 'column',
+                        "type": "column",
+                        "grid-width": "six",
                         "style": {},
                         "elements": [
                             {
@@ -65,34 +81,20 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                 ]
             },
             {
-                type: 'section',
+                "type": "section",
                 "style": {
                     "background-color": "beige"
                 },
                 "columns": [
                     {
-                        type: 'column',
-                        "style": {
-                            "padding-top": "20px",
-                            "padding-bottom": "20px",
-                            "padding-left": "10px",
-                            "padding-right": "20px"
-                        },
-                        "elements": [
-                            {
-                                "style": {},
-                                "type": "p",
-                                "content": "Eos, fugiat!"
-                            },
-                            {
-                                "style": {},
-                                "type": "p",
-                                "content": "Quod, tenetur!"
-                            }
-                        ]
+                        "type": "column",
+                        "grid-width": "six",
+                        "style": {},
+                        "elements": []
                     },
                     {
-                        type: 'column',
+                        "type": "column",
+                        "grid-width": "six",
                         "style": {},
                         "elements": [
                             {
@@ -107,32 +109,42 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
         ]
     };
 
-    $scope.page = localStorageService.get('page');
-    if($scope.page === null){
-        $scope.page = $scope.defaultPage;
-        localStorageService.set('page', $scope.defaultPage);
-    }
+    var page = localStorageService.get('page');
 
-    $scope.unbind = localStorageService.bind($scope, 'page');
+    if(page === null){
+        localStorageService.set('page', defaultPage);
+        page = defaultPage;
+    }
+    var unbind = localStorageService.bind($scope, 'page');
+
+    $scope.page = page;
     $scope.currentElement = $scope.page;
 
-    dragulaService.options($scope.$parent, 'sections-bag', {
-        moves: function(el, source, handle, sibling){
-            // preventing sections from moving when drag was
-            // initiated on child element
-            return $(handle).hasClass('wrap-ink-container');
-        },
-        mirrorContainer: document.querySelectorAll('.email-builder-body')[0]
-    });
-    dragulaService.options($scope.$parent,'elements-bag',{
+    dragulaService.options($scope, 'sections-bag', {
         copy: function (el, source) {
-
+            return $(source).hasClass('new-section');
+        },
+        accepts: function (el, source) {
+            return !$(source).hasClass('new-section');
+        },
+        moves: function(el, source, handle, sibling){
+            return $(handle).is('.wrap-ink-container,.section-template-handle');
+        },
+        mirrorContainer: $('.email-builder-body')[0]
+    });
+    dragulaService.options($scope, 'elements-bag',{
+        copy: function (el, source) {
             return $(source).hasClass('new-elements');
         },
         accepts: function(el, target, source, sibling){
             return !$(target).hasClass('new-elements');
-        }
+        },
+        mirrorContainer: $('.email-builder-body')[0]
     });
+    $scope.$on('elements-bag.drop', function (event,el,b,c,d) {
+        $(el).addClass('golden');
+    });
+
 
 }
 

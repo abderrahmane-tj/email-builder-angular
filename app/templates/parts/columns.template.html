@@ -1,25 +1,20 @@
-<td class="wrapper" highlight-on-hover="{name:'column', type:'exactly'}"
+<td class="wrapper column-wrapper" highlight-on-hover="{name:'column', type:'exactly'}"
     ng-repeat="column in section.columns"
     ng-click="pageVM.onElementClick(column, $event)"
     ng-style="column.wrapper.style"
+    ng-class="{'empty-column': !column.elements.length}"
 >
   <!-- cell's inside -->
-  <table class="six columns"> <tr>
+  <table class="{{column['grid-width']}} columns"> <tr>
     <td class="column"
         ng-style="column.style" dragula="'elements-bag'"
         dragula-model='column.elements'
-        dragula-scope="$parent.$parent.$parent"
+        dragula-scope="mainVM.$scope"
+        ng-include="'app/templates/parts/elements.template.html'"
     >
-      <div
-          highlight-on-hover="{name:'element', type:'exactly'}"
-          ng-repeat="element in column.elements"
-          ng-click="pageVM.onElementClick(element, $event)"
-          ng-style="element.style"
-      >
-        <p>{{element.content}}</p>
-      </div>
     </td>
     <td class="expander"></td>
   </tr> </table>
   <!-- /cell's inside -->
+  <!-- todo: place placeholder here -->
 </td>

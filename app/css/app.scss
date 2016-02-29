@@ -7,6 +7,9 @@
 .app-wrapper{
   display: flex;
 }
+.element-wrapper{
+  overflow: hidden;
+}
 .page{
   position: relative;
   flex: 1;
@@ -15,13 +18,36 @@
   padding-top: 50px;
   padding-bottom: 50px;
 }
+.empty-column{
+  background-color: lightgray;
+  position: relative;
+  &::before{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    content: "*";
+  }
+
+}
+.atj-passing{
+  background-color: gold;
+}
+
 .inspector{
   flex: 1;
   max-width: 30%;
   min-width: 300px;
   padding: 15px;
   background: #eeeeee;
-
+}
+.template-handle{
+  background-color: lightgray;
+  padding: 10px;
+  display: inline-block;
+}
+.template-wrapper{
+  display: inline-block;
+  margin-left: 10px;
 }
 .property{
   margin-bottom: 10px;
@@ -31,55 +57,18 @@
   }
 }
 
-.level-matches.highlight:hover{
-  //background: #D6E5F2 !important;
-  //border-color: #B0CCE3 !important;
-}
-.level-matches.highlight:active{
-  //cursor: pointer;
-  //background: #C5DAEC !important;
-  //border-color: #96BAD9 !important;
-}
-//.level-matches.highlight::before{
-//  position: absolute !important;
-//  border: 3px solid #2eb2e4;
-//  opacity: 1;
-//  content: '';
-//  display: block;
-//  height: auto;
-//  width: auto;
-//  z-index: 0;
-//}
-//.highlight--inside::before{
-//  top: 5px;
-//  bottom: 5px;
-//  right: 5px;
-//  left: 5px;
-//}
-//.level-matches.highlight.highlight--exactly::before{
-//  top: 0;
-//  bottom: 0;
-//  right: 0;
-//  left: 0;
-//}
-//.level-matches.highlight.highlight--outside::before{
-//  top: 0;
-//  bottom: 0;
-//  right: 0;
-//  left: 0;
-//}
 //.gu-mirror,.column,.page,.section,.wrap-ink-container{
 //  position: relative;
 //}
 //.gu-unselectable{
 //  background-color: red;
 //}
-//.gu-transit{
-//  background-color: purple;
-//}
-//.gu-mirror{
-//  background-color: gold;
-//}
+.gu-transit{
+  opacity: 1;
+}
+.gu-mirror{
+  //opacity:.5;
+}
 
 $highlightShadow: 0 0 0 3px #2eb2e4;
 
@@ -100,7 +89,7 @@ $highlightShadow: 0 0 0 3px #2eb2e4;
     &.highlight--page{ box-shadow: none; }
     .highlight--section{ box-shadow: none; }
     .highlight--column{ box-shadow: none;  }
-    .highlight--element{ box-shadow: $highlightShadow inset;  }
+    .highlight--element{ box-shadow: $highlightShadow;  }
   }
 }
 .highlight--inside{
@@ -112,6 +101,48 @@ $highlightShadow: 0 0 0 3px #2eb2e4;
 .highlight.highlight--outside{
 
 }
-.gu-mirror,.column,.page,.section,.wrap-ink-container{
-  position: relative;
+
+.img-hidden{
+  display: none !important;
 }
+
+.wrap-ink-container{
+  margin: 10px;
+}
+.golden{
+  background-color: gold;
+}
+/*
+.ng-scope{
+  margin: 10px;
+  padding: 10px;
+  background-color: pink;
+  .ng-scope{
+    background-color: orange;
+
+    .ng-scope{
+      background-color: red;
+      .ng-scope{
+        background-color: blue;
+        .ng-scope{
+          background-color: green;
+          .ng-scope{
+            background-color: gold;
+            .ng-scope{
+              background-color: white;
+              .ng-scope{
+                background-color: gray;
+                .ng-scope{
+                  background-color: darkgray;
+                  .ng-scope{
+                    background-color: deeppink;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}*/
