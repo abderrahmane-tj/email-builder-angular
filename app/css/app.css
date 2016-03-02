@@ -672,7 +672,7 @@
 .app-wrapper {
   display: flex; }
 
-.element-wrapper {
+.element {
   overflow: hidden; }
 
 .page {
@@ -741,7 +741,7 @@
   box-shadow: 0 0 0 3px #2eb2e4; }
 
 .img-hidden {
-  display: none !important; }
+  visibility: hidden !important; }
 
 .wrap-ink-container {
   margin: 10px; }

@@ -1,5 +1,5 @@
 var emailApp = angular.module('emailApp');
-emailApp.directive('inspector',['dragulaService',function(dragulaService){
+emailApp.directive('inspector',[function(){
     return {
         restrict: "E",
         replace: true,
@@ -21,7 +21,7 @@ emailApp.directive('inspector',['dragulaService',function(dragulaService){
                 {
                     "style": {},
                     "type": "img",
-                    "src": "http://localhost/email-builder/app/img/nexus.jpg"
+                    "src": "http://localhost/email-builder/app/img/default.jpg"
                 }
             ];
             vm.sectionTemplate = [

@@ -7,7 +7,7 @@
 .app-wrapper{
   display: flex;
 }
-.element-wrapper{
+.element{
   overflow: hidden;
 }
 .page{
@@ -103,7 +103,8 @@ $highlightShadow: 0 0 0 3px #2eb2e4;
 }
 
 .img-hidden{
-  display: none !important;
+  visibility: hidden !important;
+  //position: absolute;
 }
 
 .wrap-ink-container{

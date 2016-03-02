@@ -2,7 +2,7 @@ var emailApp = angular.module('emailApp');
 emailApp.directive('highlightOnHover',function(){
     return {
         restrict: "A",
-        require:"^page",
+        //require:"^page",
         link:function($scope,element,attrs,pageCtrl){
             var options = $scope.$eval(attrs.highlightOnHover);
             element.addClass('highlight--'+options.type);
@@ -14,8 +14,9 @@ emailApp.directive('highlightOnHover',function(){
                 }
                 $page
                     .find('.highlight--'+name)
-                    .removeClass('highlight--'+name)
-                addClasses(options.name)
+                    .removeClass('highlight--'+name);
+                $scope.$apply();
+                addClasses(options.name);
             });
             element.on('mouseleave', function() {
                 removeClasses(options.name);
