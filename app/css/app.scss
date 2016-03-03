@@ -11,8 +11,8 @@
   overflow: hidden;
 }
 .page{
-  position: relative;
   flex: 1;
+  position: relative;
 }
 .page-inner{
   padding-top: 50px;
@@ -72,38 +72,26 @@ $widths:(one: 30, two: 80, three: 130, four: 180, five: 230, six: 280, seven: 33
 .gu-mirror{
   //opacity:.5;
 }
-
+//
 $highlightShadow: 0 0 0 3px #3ae4e3;
+$currentShadow: 0 0 0 3px #e12de4;
+:not(.gu-unselectable){ // if we are dragging, none if this should apply
+  .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element){
+    box-shadow: $highlightShadow inset;
+  }
+  .on-section:not(.on-column):not(.on-element) .highlight--section,
+  .on-column:not(.on-element) .highlight--column,
+  .on-element .highlight--element {
+    box-shadow: $highlightShadow;
+  }
+}
+.page.current-element{
+  box-shadow: $currentShadow inset;
+}
+.current-element{
+  box-shadow: $currentShadow;
+}
 
-.page{
-  &.on-page{
-    &.highlight--page{ box-shadow: $highlightShadow inset; }
-  }
-  &.on-page.on-section{
-    &.highlight--page{ box-shadow: none; }
-    .highlight--section{ box-shadow: $highlightShadow inset; }
-  }
-  &.on-page.on-section.on-column{
-    &.highlight--page{ box-shadow: none; }
-    .highlight--section{ box-shadow: none; }
-    .highlight--column{ box-shadow: $highlightShadow inset; }
-  }
-  &.on-page.on-section.on-column.on-element{
-    &.highlight--page{ box-shadow: none; }
-    .highlight--section{ box-shadow: none; }
-    .highlight--column{ box-shadow: none;  }
-    .highlight--element{ box-shadow: $highlightShadow;  }
-  }
-}
-.highlight--inside{
-
-}
-.highlight.highlight--exactly{
-  //box-shadow: $highlightShadow inset;
-}
-.highlight.highlight--outside{
-
-}
 
 .img-hidden{
   visibility: hidden !important;

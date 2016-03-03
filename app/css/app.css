@@ -676,8 +676,8 @@
   overflow: hidden; }
 
 .page {
-  position: relative;
-  flex: 1; }
+  flex: 1;
+  position: relative; }
 
 .page-inner {
   padding-top: 50px;
@@ -752,26 +752,18 @@
 .gu-transit {
   opacity: 1; }
 
-.page.on-page.highlight--page {
+:not(.gu-unselectable) .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element) {
   box-shadow: 0 0 0 3px #3ae4e3 inset; }
-.page.on-page.on-section.highlight--page {
-  box-shadow: none; }
-.page.on-page.on-section .highlight--section {
-  box-shadow: 0 0 0 3px #3ae4e3 inset; }
-.page.on-page.on-section.on-column.highlight--page {
-  box-shadow: none; }
-.page.on-page.on-section.on-column .highlight--section {
-  box-shadow: none; }
-.page.on-page.on-section.on-column .highlight--column {
-  box-shadow: 0 0 0 3px #3ae4e3 inset; }
-.page.on-page.on-section.on-column.on-element.highlight--page {
-  box-shadow: none; }
-.page.on-page.on-section.on-column.on-element .highlight--section {
-  box-shadow: none; }
-.page.on-page.on-section.on-column.on-element .highlight--column {
-  box-shadow: none; }
-.page.on-page.on-section.on-column.on-element .highlight--element {
+:not(.gu-unselectable) .on-section:not(.on-column):not(.on-element) .highlight--section,
+:not(.gu-unselectable) .on-column:not(.on-element) .highlight--column,
+:not(.gu-unselectable) .on-element .highlight--element {
   box-shadow: 0 0 0 3px #3ae4e3; }
+
+.page.current-element {
+  box-shadow: 0 0 0 3px #e12de4 inset; }
+
+.current-element {
+  box-shadow: 0 0 0 3px #e12de4; }
 
 .img-hidden {
   visibility: hidden !important; }

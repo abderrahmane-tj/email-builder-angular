@@ -8,19 +8,30 @@ emailApp.directive('highlight',function(){
             var options = $scope.$eval(attrs.highlight);
             element.addClass('highlight--'+options.type);
             var $page = $('.page');
+            var $hook = $('#hook');
             var knownNames = ['page','section','column','element'];
-            element.on('mouseenter', function() {
-                if($('.gu-unselectable').length){
-                    return;
+            var levelClasses = knownNames
+                .map(function(item){ return 'on-'+item; })
+                .join(' ');
+            element.on('click', function (event) {
+                event.stopPropagation();
+                if($scope[options.name] === $scope.currentElement){
+                    element.removeClass('current-element');
+                    $scope.pageVM.assignElement(null);
+                }else{
+                    $scope.pageVM.assignElement($scope[options.name]);
+                    $('.current-element').removeClass('current-element');
+                    element.addClass('current-element');
                 }
-                $page
-                    .find('.highlight--'+name)
-                    .removeClass('highlight--'+name);
-                $scope.$apply();
-                addClasses(options.name);
+
+            });
+            element.on('mouseenter', function(event) {
+                $page.addClass('on-'+options.name);
+                element.addClass('highlight--'+options.name);
             });
             element.on('mouseleave', function() {
-                removeClasses(options.name);
+                $page.removeClass('on-'+options.name);
+                element.removeClass('highlight--'+options.name);
             });
             function addClasses(name){
                 $page.addClass('on-'+name);

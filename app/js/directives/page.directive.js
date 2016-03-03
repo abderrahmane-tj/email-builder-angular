@@ -7,10 +7,9 @@ emailApp.directive('page',function(){
         bindToController: true,
         controller: function($scope){
             var vm = this;
-            vm.onElementClick = function (element, $event) {
-                $event.stopPropagation();
-                console.log($scope.currentElement === element);
+            vm.assignElement = function (element) {
                 $scope.currentElement = element;
+                $scope.$apply();
             };
         },
         templateUrl: 'app/templates/page.template.html'

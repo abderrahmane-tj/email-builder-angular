@@ -114,9 +114,9 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
         mirrorContainer: $('.email-builder-body')[0]
     });
     $scope.$on('elements-bag.drop', function (event,el,target,source,sibling) {
-        if(!source.is(target)){
-            el.addClass('img-hidden');
-        }
+        //if(!source.is(target)){
+        //    el.addClass('img-hidden');
+        //}
     });
 
 
