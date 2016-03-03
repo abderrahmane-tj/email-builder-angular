@@ -1,4 +1,4 @@
 <div class="element" page-element highlight="{name:'element', type:'exactly'}"
     ng-repeat="element in column.elements"
-    ng-style="element.style"
+    ng-style="element.style" ng-class="{'current-element':currentElement===element}"
 ></div>
