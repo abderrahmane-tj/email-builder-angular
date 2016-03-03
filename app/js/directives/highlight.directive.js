@@ -1,10 +1,11 @@
 var emailApp = angular.module('emailApp');
-emailApp.directive('highlightOnHover',function(){
+emailApp.directive('highlight',function(){
     return {
         restrict: "A",
         //require:"^page",
+        scope:true,
         link:function($scope,element,attrs,pageCtrl){
-            var options = $scope.$eval(attrs.highlightOnHover);
+            var options = $scope.$eval(attrs.highlight);
             element.addClass('highlight--'+options.type);
             var $page = $('.page');
             var knownNames = ['page','section','column','element'];
@@ -33,7 +34,6 @@ emailApp.directive('highlightOnHover',function(){
             }
         },
         controller:function($scope){
-
         }
     }
 });

@@ -27,10 +27,13 @@
     left: 50%;
     content: "*";
   }
-
 }
-.atj-passing{
-  background-color: gold;
+
+$widths:(one: 30, two: 80, three: 130, four: 180, five: 230, six: 280, seven: 330, eight: 380, nine: 430, ten: 480, eleven: 530, twelve: 580);
+@each $word, $width in $widths {
+  .#{$word} img {
+    max-width: #{$width}px;
+  }
 }
 
 .inspector{
@@ -70,7 +73,7 @@
   //opacity:.5;
 }
 
-$highlightShadow: 0 0 0 3px #2eb2e4;
+$highlightShadow: 0 0 0 3px #3ae4e3;
 
 .page{
   &.on-page{
@@ -110,40 +113,3 @@ $highlightShadow: 0 0 0 3px #2eb2e4;
 .wrap-ink-container{
   margin: 10px;
 }
-.golden{
-  background-color: gold;
-}
-/*
-.ng-scope{
-  margin: 10px;
-  padding: 10px;
-  background-color: pink;
-  .ng-scope{
-    background-color: orange;
-
-    .ng-scope{
-      background-color: red;
-      .ng-scope{
-        background-color: blue;
-        .ng-scope{
-          background-color: green;
-          .ng-scope{
-            background-color: gold;
-            .ng-scope{
-              background-color: white;
-              .ng-scope{
-                background-color: gray;
-                .ng-scope{
-                  background-color: darkgray;
-                  .ng-scope{
-                    background-color: deeppink;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}*/

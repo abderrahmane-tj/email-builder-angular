@@ -7,106 +7,78 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
     var defaultPage = {
         "id": "page-123ashd",
         "type": "page",
-        "style": {
-            "background-color": "#aeaeae"
-        },
-        "sections": [
-            {
-                "type": "section",
-                "style": {
-                    "background-color": "khaki"
-                },
-                "columns": [
-                    {
-                        "type": "column",
-                        "grid-width": "six",
-                        "style": {},
-                        "elements": [
-                            {
-                                "style": {},
-                                "type": "p",
-                                "content": "Eos, fugiat!"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "column",
-                        "grid-width": "six",
-                        "style": {},
-                        "elements": [
-                            {
-                                "style": {},
-                                "type": "p",
-                                "content": "Quod, tenetur!"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "section",
-                "style": {
-                    "background-color": "darkorange"
-                },
-                "columns": [
-                    {
-                        "type": "column",
-                        "grid-width": "six",
-                        "style": {},
-                        "elements": [
-                            {
-                                "style": {},
-                                "type": "p",
-                                "content": "Earum nam officia placeat quas sapiente tenetur totam."
-                            },
-                            {
-                                "style": {},
-                                "type": "p",
-                                "content": "A autem, debitis distinctio dolor illo modi sequi vel voluptatem voluptates! Explicabo, provident tempore."
-                            }
-                        ]
-                    },
-                    {
-                        "type": "column",
-                        "grid-width": "six",
-                        "style": {},
-                        "elements": [
-                            {
-                                "style": {},
-                                "type": "p",
-                                "content": "Facere ipsa neque nulla quibusdam? Dolorem illo ipsum laudantium quasi qui?"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "section",
-                "style": {
-                    "background-color": "beige"
-                },
-                "columns": [
-                    {
-                        "type": "column",
-                        "grid-width": "six",
-                        "style": {},
-                        "elements": []
-                    },
-                    {
-                        "type": "column",
-                        "grid-width": "six",
-                        "style": {},
-                        "elements": [
-                            {
-                                "style": {},
-                                "type": "p",
-                                "content": "nostrum optio quidem soluta vel voluptates."
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
+        "style": {"background-color": "#aeaeae"},
+        "sections": [{
+            "type": "section",
+            "style": {"background-color": "khaki"},
+            "columns": [{
+                "type": "column",
+                "grid-width": "six",
+                "style": {},
+                "elements": [{
+                    "style": {},
+                    "type": "p",
+                    "content": "Eos, fugiat!"
+                }]
+            }, {
+                "type": "column",
+                "grid-width": "six",
+                "style": {},
+                "elements": [{
+                    "style": {},
+                    "type": "p",
+                    "content": "Quod, tenetur!"
+                }]
+            }]
+        }, {
+            "type": "section",
+            "style": {"background-color": "darkorange"},
+            "columns": [{
+                "type": "column",
+                "grid-width": "six",
+                "style": {},
+                "elements": [{
+                    "style": {},
+                    "type": "p",
+                    "content": "Earum nam officia placeat quas sapiente tenetur totam."
+                }, {
+                    "style": {},
+                    "type": "p",
+                    "content": "A autem, debitis distinctio dolor illo modi sequi vel voluptatem voluptates! Explicabo, provident tempore."
+                }]
+            }, {
+                "type": "column",
+                "grid-width": "six",
+                "style": {},
+                "elements": [{
+                    "style": {},
+                    "type": "p",
+                    "content": "Facere ipsa neque nulla quibusdam? Dolorem illo ipsum laudantium quasi qui?"
+                }]
+            }]
+        }, {
+            "type": "section",
+            "style": {"background-color": "beige"},
+            "columns": [{
+                "type": "column",
+                "grid-width": "four",
+                "style": {},
+                "elements": [{
+                    "style": {},
+                    "type": "img",
+                    "src": "http://localhost/email-builder/app/img/default.jpg"
+                }]
+            }, {
+                "type": "column",
+                "grid-width": "eight",
+                "style": {},
+                "elements": [{
+                    "style": {},
+                    "type": "p",
+                    "content": "nostrum optio quidem soluta vel voluptates."
+                }]
+            }]
+        }]
     };
 
     var page = localStorageService.get('page');
@@ -118,7 +90,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
     var unbind = localStorageService.bind($scope, 'page');
 
     $scope.page = page;
-    $scope.currentElement = $scope.page;
+    $scope.currentElement = null;
 
     dragulaService.options($scope, 'sections-bag', {
         copy: function (el, source) {

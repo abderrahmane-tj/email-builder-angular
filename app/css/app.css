@@ -692,8 +692,41 @@
     left: 50%;
     content: "*"; }
 
-.atj-passing {
-  background-color: gold; }
+.one img {
+  max-width: 30px; }
+
+.two img {
+  max-width: 80px; }
+
+.three img {
+  max-width: 130px; }
+
+.four img {
+  max-width: 180px; }
+
+.five img {
+  max-width: 230px; }
+
+.six img {
+  max-width: 280px; }
+
+.seven img {
+  max-width: 330px; }
+
+.eight img {
+  max-width: 380px; }
+
+.nine img {
+  max-width: 430px; }
+
+.ten img {
+  max-width: 480px; }
+
+.eleven img {
+  max-width: 530px; }
+
+.twelve img {
+  max-width: 580px; }
 
 .inspector {
   flex: 1;
@@ -720,17 +753,17 @@
   opacity: 1; }
 
 .page.on-page.highlight--page {
-  box-shadow: 0 0 0 3px #2eb2e4 inset; }
+  box-shadow: 0 0 0 3px #3ae4e3 inset; }
 .page.on-page.on-section.highlight--page {
   box-shadow: none; }
 .page.on-page.on-section .highlight--section {
-  box-shadow: 0 0 0 3px #2eb2e4 inset; }
+  box-shadow: 0 0 0 3px #3ae4e3 inset; }
 .page.on-page.on-section.on-column.highlight--page {
   box-shadow: none; }
 .page.on-page.on-section.on-column .highlight--section {
   box-shadow: none; }
 .page.on-page.on-section.on-column .highlight--column {
-  box-shadow: 0 0 0 3px #2eb2e4 inset; }
+  box-shadow: 0 0 0 3px #3ae4e3 inset; }
 .page.on-page.on-section.on-column.on-element.highlight--page {
   box-shadow: none; }
 .page.on-page.on-section.on-column.on-element .highlight--section {
@@ -738,48 +771,10 @@
 .page.on-page.on-section.on-column.on-element .highlight--column {
   box-shadow: none; }
 .page.on-page.on-section.on-column.on-element .highlight--element {
-  box-shadow: 0 0 0 3px #2eb2e4; }
+  box-shadow: 0 0 0 3px #3ae4e3; }
 
 .img-hidden {
   visibility: hidden !important; }
 
 .wrap-ink-container {
   margin: 10px; }
-
-.golden {
-  background-color: gold; }
-
-/*
-.ng-scope{
-  margin: 10px;
-  padding: 10px;
-  background-color: pink;
-  .ng-scope{
-    background-color: orange;
-
-    .ng-scope{
-      background-color: red;
-      .ng-scope{
-        background-color: blue;
-        .ng-scope{
-          background-color: green;
-          .ng-scope{
-            background-color: gold;
-            .ng-scope{
-              background-color: white;
-              .ng-scope{
-                background-color: gray;
-                .ng-scope{
-                  background-color: darkgray;
-                  .ng-scope{
-                    background-color: deeppink;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}*/

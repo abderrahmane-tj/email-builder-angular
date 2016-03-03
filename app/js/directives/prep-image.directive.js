@@ -1,5 +1,5 @@
 var emailApp = angular.module('emailApp');
-emailApp.directive('prepImage',[function(){
+emailApp.directive('prepImage',['$timeout',function($timeout){
     return {
         restrict: "A",
         scope:true,
@@ -8,7 +8,6 @@ emailApp.directive('prepImage',[function(){
             var columns = { one: 30, two: 80, three: 130, four: 180, five: 230, six: 280, seven: 330, eight: 380, nine: 430, ten: 480, eleven: 530, twelve: 580};
             $scope.$watch('element.src', updateImage);
             function updateImage(newVal) {
-                console.log("value just changed %s",newVal);
                 if(!newVal.trim()){
                     console.log(!!newVal.trim());
                     console.log('empty');
@@ -16,8 +15,9 @@ emailApp.directive('prepImage',[function(){
                     return;
                 }
                 attrs.$set('src', attrs.loadingSrc);
-                applySize(newSize({width:192,height:120}));
+                //applySize(newSize({width:192,height:120}));
 
+                console.log('fetch %s',newVal);
                 var vImg = angular.element(new Image);
                 vImg.bind('load',load);
                 vImg.bind('error',error);
@@ -27,19 +27,18 @@ emailApp.directive('prepImage',[function(){
                 //cleanElement();
 
                 attrs.$set('src', attrs.brokenSrc);
-                console.log('image could not be loaded');
-                applySize(newSize({width:125,height:150}));
+                //applySize(newSize({width:125,height:150}));
 
                 //$scope.$apply();
             }
             function load(){
+                console.log('finished loading');
                 var vImage = this;
                 attrs.$set('src',$scope.element.src);
-                console.log('image loaded');
                 var size = newSize({width:vImage.width, height: vImage.height});
                 $scope.element.height = size.height;
                 $scope.element.width = size.width;
-                applySize(size);
+                //applySize(size);
             }
             function newSize(vImage){
                 vImage = vImage || {width: null, height: null};
