@@ -6,32 +6,41 @@ emailApp.directive('highlight',function(){
         scope:true,
         link:function($scope,element,attrs,pageCtrl){
             var options = $scope.$eval(attrs.highlight);
-            element.addClass('highlight--'+options.type);
+            var highlighted = element;
+
+            // In case we hover an element, whish in most cases is an inline layout
+            // html element, we want to highlight its container, a div of class
+            // .element. as of this comment it is its direct parent
+            if($scope.element){
+                highlighted = element.closest('.element');
+            }
+
+            highlighted.addClass('highlight--'+options.type);
+
             var $page = $('.page');
-            var $hook = $('#hook');
             var knownNames = ['page','section','column','element'];
             var levelClasses = knownNames
                 .map(function(item){ return 'on-'+item; })
                 .join(' ');
-            element.on('click', function (event) {
+            element.bind('click', function (event) {
                 event.stopPropagation();
+
                 if($scope[options.name] === $scope.currentElement){
-                    element.removeClass('current-element');
+                    highlighted.removeClass('current-element');
                     $scope.pageVM.assignElement(null);
                 }else{
                     $scope.pageVM.assignElement($scope[options.name]);
                     $('.current-element').removeClass('current-element');
-                    element.addClass('current-element');
+                    highlighted.addClass('current-element');
                 }
-
             });
-            element.on('mouseenter', function(event) {
+            element.bind('mouseenter', function(event) {
                 $page.addClass('on-'+options.name);
-                element.addClass('highlight--'+options.name);
+                highlighted.addClass('highlight--'+options.name);
             });
-            element.on('mouseleave', function() {
+            element.bind('mouseleave', function() {
                 $page.removeClass('on-'+options.name);
-                element.removeClass('highlight--'+options.name);
+                highlighted.removeClass('highlight--'+options.name);
             });
             function addClasses(name){
                 $page.addClass('on-'+name);

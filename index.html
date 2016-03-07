@@ -13,24 +13,30 @@
     <inspector current-element="currentElement"></inspector>
   </div>
   <hr>
+  <button ng-click="resetData();">clear data</button>
   <h6>debug</h6>
-  <p>{{currentElement}}</p>
+  <pre>{{currentElement|json}}</pre>
   <!--<p>{{makeStyle(currentElement.style)}}</p>-->
 </div>
 
+<script src="bower_components/ckeditor/ckeditor.js"></script>
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
 <script src="bower_components/angular-dragula/dist/angular-dragula.js"></script>
-<script src="app/js/layout.js"></script>
+
 <script src="app/js/main.js"></script>
 <script src="app/js/services.js"></script>
+
+<script src="app/js/directives/page.directive.js"></script>
 <script src="app/js/directives/inspector.directive.js"></script>
-<!--<script src="app/js/directives/property.directive.js"></script>-->
+
 <script src="app/js/directives/highlight.directive.js"></script>
 <script src="app/js/directives/prep-image.directive.js"></script>
-<script src="app/js/directives/page.directive.js"></script>
 <script src="app/js/directives/page-element.directive.js"></script>
+<script src="app/js/directives/paragraphe-editable.directive.js"></script>
+
 <script src="app/js/directives/properties/border-property.directive.js"></script>
 <script src="app/js/directives/properties/margin-property.directive.js"></script>
 <script src="app/js/directives/properties/padding-property.directive.js"></script>

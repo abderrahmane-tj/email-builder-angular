@@ -9,15 +9,12 @@ emailApp.directive('prepImage',['$timeout',function($timeout){
             $scope.$watch('element.src', updateImage);
             function updateImage(newVal) {
                 if(!newVal.trim()){
-                    console.log(!!newVal.trim());
-                    console.log('empty');
                     element.attr('src', attrs.brokenSrc);
                     return;
                 }
                 attrs.$set('src', attrs.loadingSrc);
                 //applySize(newSize({width:192,height:120}));
 
-                console.log('fetch %s',newVal);
                 var vImg = angular.element(new Image);
                 vImg.bind('load',load);
                 vImg.bind('error',error);
@@ -32,7 +29,6 @@ emailApp.directive('prepImage',['$timeout',function($timeout){
                 //$scope.$apply();
             }
             function load(){
-                console.log('finished loading');
                 var vImage = this;
                 attrs.$set('src',$scope.element.src);
                 var size = newSize({width:vImage.width, height: vImage.height});

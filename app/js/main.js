@@ -1,5 +1,18 @@
-var emailApp = angular.module('emailApp', ['emailApp.services','LocalStorageModule',angularDragula(angular)]);
-emailApp.controller('MainController', ['$scope','localStorageService','$templateCache', 'dragulaService','$timeout','$log', MainController]);
+var emailApp = angular.module('emailApp', [
+    'emailApp.services',
+    'LocalStorageModule',
+    'ngSanitize',
+    angularDragula(angular)
+]);
+emailApp.controller('MainController', [
+    '$scope',
+    'localStorageService',
+    '$templateCache',
+    'dragulaService',
+    '$timeout',
+    '$log',
+    MainController
+]);
 
 function MainController($scope,localStorageService,$templateCache,dragulaService,$timeout,$log){
     $templateCache.removeAll();
@@ -40,7 +53,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                 "elements": [{
                     "style": {},
                     "type": "p",
-                    "content": "Earum nam officia placeat quas sapiente tenetur totam."
+                    "content": "Earum nam officia <strong>placeat quas sapiente</strong> tenetur totam."
                 }, {
                     "style": {},
                     "type": "p",
@@ -111,6 +124,9 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
         accepts: function(el, target, source, sibling){
             return !$(target).hasClass('new-elements');
         },
+        moves: function (el, source, handle, sibling) {
+            return !$(el).find('[contenteditable]').length;
+        },
         mirrorContainer: $('.email-builder-body')[0]
     });
     $scope.$on('elements-bag.drop', function (event,el,target,source,sibling) {
@@ -119,6 +135,16 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
         //}
     });
 
+
+    $scope.resetData = function () {
+        unbind();
+        localStorageService.clearAll();
+        $timeout(function () {
+            window.location.reload(false);
+        });
+    };
+
+    $scope.htmlToBe = "<strong>Chuck</strong>";
 
 }
 
