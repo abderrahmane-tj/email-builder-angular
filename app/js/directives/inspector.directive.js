@@ -21,7 +21,7 @@ emailApp.directive('inspector',[function(){
                 {
                     "style": {},
                     "type": "img",
-                    "src": "http://localhost/email-builder/app/img/default.jpg"
+                    "src": "app/img/default.jpg"
                 }
             ];
             vm.sectionTemplate = [
