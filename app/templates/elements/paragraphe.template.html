@@ -1,5 +1,6 @@
-<p
+<div
+    class="paragraphe-element"
     paragraphe-editable
     ng-model="element.content"
-    ng-bind-html="element.content"
-></p>
+    ng-bind-html="trustAsHtml(element.content)"
+></div>

@@ -1,9 +1,6 @@
 @import "../../bower_components/angular-dragula/dist/dragula.min.css";
 @import "ink";
-*{
-  margin:0;
-  padding:0;
-}
+@import "../../bower_components/meyer-reset/stylesheets/meyer-reset";
 .app-wrapper{
   display: flex;
 }
@@ -100,4 +97,8 @@ $currentShadow: 0 0 0 3px #e12de4;
 
 .wrap-ink-container{
   margin: 10px;
+}
+
+.paragraphe-element{
+  min-height: 20px;
 }

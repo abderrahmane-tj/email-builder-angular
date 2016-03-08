@@ -19,6 +19,7 @@
     "angular-local-storage": "^0.2.3",
     "angular-dragula": "^1.2.4",
     "ckeditor": "^4.5.7",
-    "angular-sanitize": "^1.5.0"
+    "angular-sanitize": "^1.5.0",
+    "meyer-reset": "*"
   }
 }

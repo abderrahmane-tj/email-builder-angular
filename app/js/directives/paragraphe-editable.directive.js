@@ -6,6 +6,9 @@ emailApp.directive('paragrapheEditable',['$sce', function($sce){
         scope: true,
         link: link,
         controller: function($scope){
+            $scope.trustAsHtml = function(string) {
+                return $sce.trustAsHtml(string);
+            };
             $scope.elementData = {};
         }
     };
@@ -21,9 +24,23 @@ emailApp.directive('paragrapheEditable',['$sce', function($sce){
     function createEditor($scope, element, attrs, ngModel){
         //element.removeAttr('ng-bind-html');
         attrs.$set('contenteditable','true');
-        element.get(0).focus();
+        //element.get(0).focus();
+        var config = {
+            extraPlugins: 'colorbutton,colordialog,font,justify,liststyle,indentblock',
+            floatSpaceDockedOffsetY: 10,
+            startupFocus: true,
+            toolbar: [
+                { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
+                { name: 'links', items: [ 'Link', 'Unlink']},
+                '/',
+                { name: 'paragraph', items: [
+                    'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent',
+                    '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] }
+            ],
+            removePlugins:'magicline'
+        };
 
-        var cke = CKEDITOR.inline(element.get(0));
+        var cke = CKEDITOR.inline(element.get(0),config);
         //cke.on('pasteState', function() {
         //    $scope.$apply(function() {
         //        ngModel.$setViewValue(cke.getData());
@@ -33,7 +50,6 @@ emailApp.directive('paragrapheEditable',['$sce', function($sce){
         //element.on('change blur keyup', function() {
         // TODO: make this sync continuesly not just on blur
         element.on('blur', function() {
-            console.log('CKE -> model');
             ngModel.$setViewValue(cke.getData());
         });
 
@@ -51,7 +67,7 @@ emailApp.directive('paragrapheEditable',['$sce', function($sce){
         if(targetIsElement || targetIsCKE){
             return;
         }
-        console.log('destroy');
+
         if(paragraphe.is(':focus')){
             paragraphe.trigger('blur');
         }

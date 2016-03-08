@@ -16,7 +16,7 @@ emailApp.directive('inspector',[function(){
                 {
                     "style": {},
                     "type": "p",
-                    "content": "Accusantium at consectetur dignissimos eum id illum laboriosam."
+                    "content": "Edit me :-)"
                 },
                 {
                     "style": {},
