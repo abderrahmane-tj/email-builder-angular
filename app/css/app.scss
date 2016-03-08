@@ -10,6 +10,24 @@
 .page{
   flex: 1;
   position: relative;
+  ul {
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+  ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+  }
+  ul ul, ol ul {
+    list-style-type: circle;
+    list-style-position: inside;
+    margin-left: 15px;
+  }
+  ol ol, ul ol {
+    list-style-type: lower-latin;
+    list-style-position: inside;
+    margin-left: 15px;
+  }
 }
 .page-inner{
   padding-top: 50px;
@@ -102,3 +120,4 @@ $currentShadow: 0 0 0 3px #e12de4;
 .paragraphe-element{
   min-height: 20px;
 }
+

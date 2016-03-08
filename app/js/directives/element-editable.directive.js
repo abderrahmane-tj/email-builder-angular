@@ -1,5 +1,5 @@
 var emailApp = angular.module('emailApp');
-emailApp.directive('paragrapheEditable',['$sce', function($sce){
+emailApp.directive('elementEditable',['$sce', function($sce){
     return {
         restrict: "A",
         require: 'ngModel',
