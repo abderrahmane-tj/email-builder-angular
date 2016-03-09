@@ -20,6 +20,7 @@
     "angular-dragula": "^1.2.4",
     "ckeditor": "^4.5.7",
     "angular-sanitize": "^1.5.0",
-    "meyer-reset": "*"
+    "meyer-reset": "*",
+    "tinymce": "tinymce-dist#^4.3.7"
   }
 }

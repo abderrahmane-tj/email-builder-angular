@@ -1,5 +1,5 @@
 var emailApp = angular.module('emailApp');
-emailApp.directive('elementEditable',['$sce', function($sce){
+emailApp.directive('elementEditable',['$sce','$compile', function($sce,$compile){
     return {
         restrict: "A",
         require: 'ngModel',
@@ -15,62 +15,65 @@ emailApp.directive('elementEditable',['$sce', function($sce){
     function link($scope, element, attrs, ngModel){
         element.bind('click', function (event) {
             console.log('clicked on element');
-            if(element.is('[contenteditable=true]')){
+            if(element.is('.editing')){
                 console.log('is editable, get out');
                 event.stopImmediatePropagation();
                 return;
             }
+            element.addClass('editing');
+            console.log('hide');
+            element.hide();
             console.log('start editing');
             createEditor($scope, element, attrs, ngModel);
         });
     }
     function createEditor($scope, element, attrs, ngModel){
-        attrs.$set('contenteditable','true');
-        element.get(0).focus();
-        var config = {
-            extraPlugins: 'colorbutton,colordialog,font,justify,liststyle,indentblock',
-            floatSpaceDockedOffsetY: 10,
-            toolbar: [
-                { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
-                { name: 'links', items: [ 'Link', 'Unlink']},
-                '/',
-                { name: 'paragraph', items: [
-                    'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent',
-                    '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] }
-            ],
-            removePlugins:'magicline'
-        };
-        var cke = CKEDITOR.inline(element.get(0),config);
 
-        // TODO: make this sync continuesly not just on blur
-        //element.on('change blur keyup', function() {
-        element.on('blur', function() {
-            console.log('blurred, saving');
-            ngModel.$setViewValue(cke.getData());
+        var randID = 'editable-'+(Math.random()*987654321|0);
+        var editable = element.after(
+            '<div id="'+randID+'">'+$scope.element.content+'</div>'
+        ).next();
+        editable.on('click', function (event) {
+           event.stopPropagation();
         });
 
-        $('html,[highlight]').one('click', function (event) {
-            console.log('clicked outside, destroying');
-            var target = $(event.target);
-            var targetIsElement = target.closest('[element-editable]')
-                    .is(element);
-            var targetIsCKE = target.parents('.cke').length;
-            if(targetIsElement || targetIsCKE){
-                console.log('either clicked on element or CKE UI. nothing to do');
+        tinymce.init({
+            selector:'#'+randID,
+            setup: function(editor) {
+                editor.on("init", function() {
+                    $scope.$apply(function () {
+                        $scope.editor = editor;
+                    });
+                    //editor.setContent($scope.element.content);
+                    editor.focus();
+                });
+                editor.on('change keyup blur click', function (e) {
+                    ngModel.$setViewValue(editor.getContent());
+                });
+            },
+            inline: true,
+            plugins : 'advlist preview',
+            skin: 'lightgray',
+            theme : 'modern',
+            menubar: false
+        });
+        $('html,[highlight]').bind('click', closeEditor);
+
+        function closeEditor(event) {
+            var isEditorUI = $(event.target).closest('.mce-tinymce').length;
+            if(isEditorUI){
+                console.log('Clicked on editor UI. nothing to do');
                 return;
             }
 
-            removeContentEditable(element, cke);
-        });
-    }
-    function removeContentEditable(paragraphe, cke) {
+            $('html,[highlight]').off('click', closeEditor);
+            console.log('show');
+            element.show().removeClass('editing');
+            editable.remove();
+            console.log('clicked outside, destroying');
 
-        if(paragraphe.is(':focus')){
-            paragraphe.trigger('blur');
+            $scope.editor.remove();
         }
-
-        cke.destroy();
-        paragraphe.removeAttr('contenteditable');
-        $('html,[highlight]').off('click', removeContentEditable);
     }
+
 }]);
