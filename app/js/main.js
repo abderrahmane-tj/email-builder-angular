@@ -30,7 +30,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                 "style": {},
                 "elements": [{
                     "style": {},
-                    "type": "p",
+                    "type": "text",
                     "content": "Eos, fugiat!"
                 }]
             }, {
@@ -39,7 +39,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                 "style": {},
                 "elements": [{
                     "style": {},
-                    "type": "p",
+                    "type": "text",
                     "content": "Quod, tenetur!"
                 }]
             }]
@@ -52,11 +52,11 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                 "style": {},
                 "elements": [{
                     "style": {},
-                    "type": "p",
+                    "type": "text",
                     "content": "Earum nam officia <strong>placeat quas sapiente</strong> tenetur totam."
                 }, {
                     "style": {},
-                    "type": "p",
+                    "type": "text",
                     "content": "A autem, debitis distinctio dolor illo modi sequi vel voluptatem voluptates! Explicabo, provident tempore."
                 }]
             }, {
@@ -65,7 +65,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                 "style": {},
                 "elements": [{
                     "style": {},
-                    "type": "p",
+                    "type": "text",
                     "content": "Facere ipsa neque nulla quibusdam? Dolorem illo ipsum laudantium quasi qui?"
                 }]
             }]
@@ -87,7 +87,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                 "style": {},
                 "elements": [{
                     "style": {},
-                    "type": "p",
+                    "type": "text",
                     "content": "nostrum optio quidem soluta vel voluptates."
                 }]
             }]

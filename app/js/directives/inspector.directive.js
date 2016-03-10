@@ -15,8 +15,8 @@ emailApp.directive('inspector',[function(){
             vm.templates = [
                 {
                     "style": {},
-                    "type": "p",
-                    "content": "Edit me :-)"
+                    "type": "text",
+                    "content": "<p>Edit me :-)</p>"
                 },
                 {
                     "style": {},

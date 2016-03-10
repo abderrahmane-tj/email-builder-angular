@@ -23,7 +23,7 @@ emailApp.directive('pageElement',['$templateRequest','$compile',function($templa
     }
     function elementTemplate(type){
         var dict = {
-            'p':'app/templates/elements/paragraphe.template.html',
+            'text':'app/templates/elements/text.template.html',
             'img':'app/templates/elements/image.template.html'
         };
         return dict[type];
