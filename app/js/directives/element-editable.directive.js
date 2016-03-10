@@ -57,7 +57,7 @@ emailApp.directive('elementEditable',['$sce','$compile', function($sce,$compile)
             theme : 'modern',
             menubar: false
         });
-        $('html,[highlight]').bind('click', closeEditor);
+        $('[highlight]').bind('click', closeEditor);
 
         function closeEditor(event) {
             var isEditorUI = $(event.target).closest('.mce-tinymce').length;
@@ -66,7 +66,7 @@ emailApp.directive('elementEditable',['$sce','$compile', function($sce,$compile)
                 return;
             }
 
-            $('html,[highlight]').off('click', closeEditor);
+            $('[highlight]').off('click', closeEditor);
             console.log('show');
             element.show().removeClass('editing');
             editable.remove();
