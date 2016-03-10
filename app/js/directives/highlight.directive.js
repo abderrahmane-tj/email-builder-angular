@@ -11,8 +11,12 @@ emailApp.directive('highlight',function(){
             // In case we hover an element, whish in most cases is an inline layout
             // html element, we want to highlight its container, a div of class
             // .element. as of this comment it is its direct parent
-            if($scope.element){
+            if(options.name === 'element'){
                 highlighted = element.closest('.element');
+            }
+            if(options.name === 'section'){
+                highlighted = element.find('.row:first');
+
             }
 
             highlighted.addClass('highlight--'+options.type);

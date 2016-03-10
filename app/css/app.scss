@@ -88,8 +88,8 @@ $widths:(one: 30, two: 80, three: 130, four: 180, five: 230, six: 280, seven: 33
   //opacity:.5;
 }
 //
-$highlightShadow: 0 0 0 3px #3ae4e3;
-$currentShadow: 0 0 0 3px #e12de4;
+$highlightShadow: 0 0 0 4px #3ae4e3;
+$currentShadow: 0 0 0 4px #e12de4;
 :not(.gu-unselectable){ // if we are dragging, none if this should apply
   .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element){
     box-shadow: $highlightShadow inset;
@@ -114,7 +114,7 @@ $currentShadow: 0 0 0 3px #e12de4;
 }
 
 .wrap-ink-container{
-  margin: 10px;
+  //margin: 10px;
 }
 
 .paragraphe-element{

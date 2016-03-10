@@ -794,23 +794,20 @@ table {
   opacity: 1; }
 
 :not(.gu-unselectable) .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element) {
-  box-shadow: 0 0 0 3px #3ae4e3 inset; }
+  box-shadow: 0 0 0 4px #3ae4e3 inset; }
 :not(.gu-unselectable) .on-section:not(.on-column):not(.on-element) .highlight--section,
 :not(.gu-unselectable) .on-column:not(.on-element) .highlight--column,
 :not(.gu-unselectable) .on-element .highlight--element {
-  box-shadow: 0 0 0 3px #3ae4e3; }
+  box-shadow: 0 0 0 4px #3ae4e3; }
 
 .page.current-element {
-  box-shadow: 0 0 0 3px #e12de4 inset; }
+  box-shadow: 0 0 0 4px #e12de4 inset; }
 
 .current-element {
-  box-shadow: 0 0 0 3px #e12de4; }
+  box-shadow: 0 0 0 4px #e12de4; }
 
 .img-hidden {
   visibility: hidden !important; }
-
-.wrap-ink-container {
-  margin: 10px; }
 
 .paragraphe-element {
   min-height: 20px; }
