@@ -20,78 +20,114 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
     var defaultPage = {
         "id": "page-123ashd",
         "type": "page",
-        "style": {"background-color": "#aeaeae"},
-        "sections": [{
-            "type": "section",
-            "style": {"background-color": "khaki"},
-            "columns": [{
-                "type": "column",
-                "grid-width": "six",
-                "style": {},
-                "elements": [{
-                    "style": {},
-                    "type": "text",
-                    "content": "Eos, fugiat!"
-                }]
-            }, {
-                "type": "column",
-                "grid-width": "six",
-                "style": {},
-                "elements": [{
-                    "style": {},
-                    "type": "text",
-                    "content": "Quod, tenetur!"
-                }]
-            }]
-        }, {
-            "type": "section",
-            "style": {"background-color": "darkorange"},
-            "columns": [{
-                "type": "column",
-                "grid-width": "six",
-                "style": {},
-                "elements": [{
-                    "style": {},
-                    "type": "text",
-                    "content": "Earum nam officia <strong>placeat quas sapiente</strong> tenetur totam."
-                }, {
-                    "style": {},
-                    "type": "text",
-                    "content": "A autem, debitis distinctio dolor illo modi sequi vel voluptatem voluptates! Explicabo, provident tempore."
-                }]
-            }, {
-                "type": "column",
-                "grid-width": "six",
-                "style": {},
-                "elements": [{
-                    "style": {},
-                    "type": "text",
-                    "content": "Facere ipsa neque nulla quibusdam? Dolorem illo ipsum laudantium quasi qui?"
-                }]
-            }]
-        }, {
-            "type": "section",
-            "style": {"background-color": "beige"},
-            "columns": [{
-                "type": "column",
-                "grid-width": "four",
-                "style": {},
-                "elements": [{
-                    "style": {},
-                    "type": "img",
-                    "src": "app/img/default.jpg"
-                }]
-            }, {
-                "type": "column",
-                "grid-width": "eight",
-                "style": {},
-                "elements": [{
-                    "style": {},
-                    "type": "text",
-                    "content": "nostrum optio quidem soluta vel voluptates."
-                }]
-            }]
-        }]
+        "style": {
+            "background-color": "#aeaeae"
+        },
+        "sections": [
+            {
+                "type": "section",
+                "style": {
+                    "background-color": "beige"
+                },
+                "columns": [
+                    {
+                        "type": "column",
+                        "grid-width": "four",
+                        "style": {},
+                        "elements": [
+                            {
+                                "style": {},
+                                "type": "text",
+                                "content": "<ol>\n<li>Buy milk</li>\n<li>Do shores</li>\n<li>Play Heroes of the Storm</li>\n<li>Eat</li>\n<li>Pray</li>\n<li>Love</li>\n</ol>"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "column",
+                        "grid-width": "eight",
+                        "style": {},
+                        "elements": [
+                            {
+                                "style": {},
+                                "type": "text",
+                                "content": "<h2>The time is now</h2>"
+                            },
+                            {
+                                "style": {},
+                                "type": "img",
+                                "src": "app/img/default.jpg",
+                                "height": 253.33333333333331,
+                                "width": 380
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "section",
+                "style": {
+                    "background-color": "whitesmoke"
+                },
+                "columns": [
+                    {
+                        "type": "column",
+                        "grid-width": "six",
+                        "style": {},
+                        "elements": [
+                            {
+                                "style": {},
+                                "type": "text",
+                                "content": "Eos, fugiat!"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "column",
+                        "grid-width": "six",
+                        "style": {},
+                        "elements": [
+                            {
+                                "style": {},
+                                "type": "text",
+                                "content": "Quod, tenetur!"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "section",
+                "style": {
+                    "background-color": "white"
+                },
+                "columns": [
+                    {
+                        "type": "column",
+                        "grid-width": "six",
+                        "style": {},
+                        "elements": [
+                            {
+                                "style": {},
+                                "type": "text",
+                                "content": "Earum nam officia <strong>placeat quas sapiente</strong> tenetur totam."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "column",
+                        "grid-width": "six",
+                        "style": {},
+                        "elements": [
+                            {
+                                "style": {},
+                                "type": "text",
+                                "content": "A autem, debitis distinctio dolor illo modi sequi vel voluptatem voluptates! Explicabo, provident tempore."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     };
 
     var page = localStorageService.get('page');

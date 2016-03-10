@@ -811,3 +811,7 @@ table {
 
 .paragraphe-element {
   min-height: 20px; }
+
+.inspector--heading-3 {
+  margin-top: 20px;
+  font-size: 20px; }
