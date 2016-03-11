@@ -6,6 +6,7 @@ emailApp.directive('highlight',function(){
         scope:true,
         link:function($scope,element,attrs,pageCtrl){
             var options = $scope.$eval(attrs.highlight);
+            options.toggleClick = options.toggleClick || true;
             var highlighted = element;
 
             // In case we hover an element, whish in most cases is an inline layout
@@ -26,18 +27,20 @@ emailApp.directive('highlight',function(){
             var levelClasses = knownNames
                 .map(function(item){ return 'on-'+item; })
                 .join(' ');
-            element.bind('click', function (event) {
-                event.stopPropagation();
+            if(options.toggleClick){
+                element.bind('click', function (event) {
+                    event.stopPropagation();
 
-                if($scope[options.name] === $scope.currentElement){
-                    highlighted.removeClass('current-element');
-                    $scope.pageVM.assignElement(null);
-                }else{
-                    $scope.pageVM.assignElement($scope[options.name]);
-                    $('.current-element').removeClass('current-element');
-                    highlighted.addClass('current-element');
-                }
-            });
+                    if($scope[options.name] === $scope.currentElement){
+                        highlighted.removeClass('current-element');
+                        $scope.pageVM.assignElement(null);
+                    }else{
+                        $scope.pageVM.assignElement($scope[options.name]);
+                        $('.current-element').removeClass('current-element');
+                        highlighted.addClass('current-element');
+                    }
+                });
+            }
             element.bind('mouseenter', function(event) {
                 $page.addClass('on-'+options.name);
                 highlighted.addClass('highlight--'+options.name);

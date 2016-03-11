@@ -33,9 +33,13 @@ emailApp.directive('elementEditable',['$sce','$compile', function($sce,$compile)
         var editable = element.after(
             '<div id="'+randID+'">'+$scope.element.content+'</div>'
         ).next();
+        editable.attr('highlight',"{name:'element', type:'exactly', toggleCurrent: 'false'}");
         editable.on('click', function (event) {
-           event.stopPropagation();
+           event.stopImmediatePropagation();
         });
+
+        $compile(editable)($scope);
+
 
         tinymce.init({
             selector:'#'+randID,
