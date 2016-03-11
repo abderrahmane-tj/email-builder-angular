@@ -77,7 +77,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                             {
                                 "style": {},
                                 "type": "text",
-                                "content": "Eos, fugiat!"
+                                "content": "<p>Eos, fugiat!</p>"
                             }
                         ]
                     },
@@ -89,7 +89,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                             {
                                 "style": {},
                                 "type": "text",
-                                "content": "Quod, tenetur!"
+                                "content": "<p>Quod, tenetur!</p>"
                             }
                         ]
                     }
@@ -109,7 +109,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                             {
                                 "style": {},
                                 "type": "text",
-                                "content": "Earum nam officia <strong>placeat quas sapiente</strong> tenetur totam."
+                                "content": "<p>Earum nam officia <strong>placeat quas sapiente</strong> tenetur totam.</p>"
                             }
                         ]
                     },
@@ -121,7 +121,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                             {
                                 "style": {},
                                 "type": "text",
-                                "content": "A autem, debitis distinctio dolor illo modi sequi vel voluptatem voluptates! Explicabo, provident tempore."
+                                "content": "<p>A autem, debitis distinctio dolor illo modi sequi vel voluptatem voluptates! Explicabo, provident tempore.</p>"
                             }
                         ]
                     }
