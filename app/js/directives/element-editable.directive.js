@@ -56,7 +56,14 @@ emailApp.directive('elementEditable',['$sce','$compile', function($sce,$compile)
                 });
             },
             inline: true,
-            plugins : 'advlist preview',
+            plugins : 'textcolor colorpicker',
+            toolbar: [
+                'bold italic underline strikethrough' +
+                ' | alignleft aligncenter alignright alignjustify' +
+                ' | bullist numlist outdent indent',
+
+                'forecolor backcolor | formatselect | fontselect fontsizeselect'
+            ],
             skin: 'lightgray',
             theme : 'modern',
             menubar: false

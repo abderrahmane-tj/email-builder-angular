@@ -665,36 +665,44 @@
     display: block !important;
     width: auto !important;
     overflow: visible !important; } }
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+html, body {
   margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;
   vertical-align: baseline; }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+.resetable div, .resetable span, .resetable applet, .resetable object, .resetable iframe, .resetable h1, .resetable h2, .resetable h3, .resetable h4, .resetable h5, .resetable h6, .resetable p, .resetable blockquote,
+.resetable pre, .resetable a, .resetable abbr, .resetable acronym, .resetable address, .resetable big, .resetable cite, .resetable code, .resetable del, .resetable dfn, .resetable em, .resetable img, .resetable ins,
+.resetable kbd, .resetable q, .resetable s, .resetable samp, .resetable small, .resetable strike, .resetable strong, .resetable sub, .resetable sup, .resetable tt, .resetable var, .resetable b, .resetable u, .resetable i, .resetable center,
+.resetable dl, .resetable dt, .resetable dd, .resetable ol, .resetable ul, .resetable li, .resetable fieldset, .resetable form, .resetable label, .resetable legend, .resetable table, .resetable caption, .resetable tbody,
+.resetable tfoot, .resetable thead, .resetable tr, .resetable th, .resetable td, .resetable article, .resetable aside, .resetable canvas, .resetable details, .resetable embed, .resetable figure,
+.resetable figcaption, .resetable footer, .resetable header, .resetable hgroup, .resetable menu, .resetable nav, .resetable output, .resetable ruby, .resetable section, .resetable summary,
+.resetable time, .resetable mark, .resetable audio, .resetable video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline; }
+.resetable article, .resetable aside, .resetable details, .resetable figcaption, .resetable figure, .resetable footer, .resetable header, .resetable hgroup, .resetable menu,
+.resetable nav, .resetable section {
   display: block; }
+.resetable ol, .resetable ul {
+  list-style: none; }
+.resetable blockquote, .resetable q {
+  quotes: none; }
+.resetable blockquote:before, .resetable blockquote:after {
+  content: "";
+  content: none; }
+.resetable q:before, .resetable q:after {
+  content: "";
+  content: none; }
+.resetable table {
+  border-collapse: collapse;
+  border-spacing: 0; }
 
 body {
   line-height: 1; }
-
-ol, ul {
-  list-style: none; }
-
-blockquote, q {
-  quotes: none; }
-
-blockquote:before, blockquote:after {
-  content: "";
-  content: none; }
-
-q:before, q:after {
-  content: "";
-  content: none; }
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0; }
 
 .app-wrapper {
   display: flex; }
@@ -705,20 +713,6 @@ table {
 .page {
   flex: 1;
   position: relative; }
-  .page ul {
-    list-style-type: disc;
-    list-style-position: inside; }
-  .page ol {
-    list-style-type: decimal;
-    list-style-position: inside; }
-  .page ul ul, .page ol ul {
-    list-style-type: circle;
-    list-style-position: inside;
-    margin-left: 15px; }
-  .page ol ol, .page ul ol {
-    list-style-type: lower-latin;
-    list-style-position: inside;
-    margin-left: 15px; }
 
 .page-inner {
   padding-top: 50px;
