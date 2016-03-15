@@ -14,16 +14,12 @@ emailApp.directive('elementEditable',['$sce','$compile', function($sce,$compile)
     };
     function link($scope, element, attrs, ngModel){
         element.bind('click', function (event) {
-            console.log('clicked on element');
             if(element.is('.editing')){
-                console.log('is editable, get out');
                 event.stopImmediatePropagation();
                 return;
             }
             element.addClass('editing');
-            console.log('hide');
             element.hide();
-            console.log('start editing');
             createEditor($scope, element, attrs, ngModel);
         });
     }
@@ -54,13 +50,20 @@ emailApp.directive('elementEditable',['$sce','$compile', function($sce,$compile)
                 editor.on('change keyup blur click', function (e) {
                     ngModel.$setViewValue(editor.getContent());
                 });
+                editor.addButton('deleteElement', {
+                    icon: 'delete-element',
+                    onclick: function () {
+                        console.log('clicked');
+                    }
+                });
             },
             inline: true,
             plugins : 'textcolor colorpicker',
             toolbar: [
-                'bold italic underline strikethrough' +
+                'bold italic underline strikethrough removeformat' +
                 ' | alignleft aligncenter alignright alignjustify' +
-                ' | bullist numlist outdent indent',
+                ' | bullist numlist outdent indent' +
+                ' | deleteElement',
 
                 'forecolor backcolor | formatselect | fontselect fontsizeselect'
             ],
@@ -73,17 +76,16 @@ emailApp.directive('elementEditable',['$sce','$compile', function($sce,$compile)
         function closeEditor(event) {
             var isEditorUI = $(event.target).closest('.mce-tinymce').length;
             if(isEditorUI){
-                console.log('Clicked on editor UI. nothing to do');
                 return;
             }
 
             $('[highlight]').off('click', closeEditor);
-            console.log('show');
             element.show().removeClass('editing');
             editable.remove();
-            console.log('clicked outside, destroying');
 
             $scope.editor.remove();
+            delete $scope.editor;
+            $scope.$apply();
         }
     }
 
