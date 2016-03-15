@@ -10,6 +10,7 @@ emailApp.directive('pageElement',['$templateRequest','$compile',function($templa
         if(!$scope.element){
             return;
         }
+        element.addClass('element-'+$scope.element.type);
         $templateRequest(elementTemplate($scope.element.type)).then(function (html) {
             var template = angular.element(html);
             template.attr('highlight',"{name:'element', type:'exactly'}");
