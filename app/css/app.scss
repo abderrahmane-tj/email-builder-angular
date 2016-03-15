@@ -1,34 +1,17 @@
-@import "../../bower_components/angular-dragula/dist/dragula.min.css";
-@import "ink";
+// ink related
 @import "reset";
+
 .app-wrapper{
   display: flex;
 }
-.element{
-  overflow: hidden;
+.element:after{
+  content: '';
+  display:block;
+  clear: both;
 }
 .page{
   flex: 1;
   position: relative;
-  //ul {
-  //  list-style-type: disc;
-  //  list-style-position: inside;
-  //}
-  //ol {
-  //  list-style-type: decimal;
-  //  list-style-position: inside;
-  //}
-  //ul ul, ol ul {
-  //  list-style-type: circle;
-  //  list-style-position: inside;
-  //  margin-left: 15px;
-  //}
-  //ol ol, ul ol {
-  //  list-style-type: lower-latin;
-  //  list-style-position: inside;
-  //  margin-left: 15px;
-  //}
-
 }
 .page-inner{
   padding-top: 50px;
@@ -45,6 +28,8 @@
   }
 }
 
+
+// max-width for images inside columns
 $widths:(one: 30, two: 80, three: 130, four: 180, five: 230, six: 280, seven: 330, eight: 380, nine: 430, ten: 480, eleven: 530, twelve: 580);
 @each $word, $width in $widths {
   .#{$word} img {
@@ -52,60 +37,53 @@ $widths:(one: 30, two: 80, three: 130, four: 180, five: 230, six: 280, seven: 33
   }
 }
 
-.inspector{
-  flex: 1;
-  max-width: 30%;
-  min-width: 300px;
-  padding: 15px;
-  background: #eeeeee;
-}
-.template-handle{
-  background-color: lightgray;
-  padding: 10px;
-  display: inline-block;
-}
-.template-wrapper{
-  display: inline-block;
-  margin-left: 10px;
-}
-.property{
-  margin-bottom: 10px;
 
-  .small-input {
-    width: 30px;
-  }
-}
-
-//.gu-mirror,.column,.page,.section,.wrap-ink-container{
-//  position: relative;
-//}
-//.gu-unselectable{
-//  background-color: red;
-//}
 .gu-transit{
   opacity: 1;
 }
 .gu-mirror{
   //opacity:.5;
 }
-//
+
+// highlighting system
 $highlightShadow: 0 0 0 4px #3ae4e3;
 $currentShadow: 0 0 0 4px #e12de4;
 :not(.gu-unselectable){ // if we are dragging, none if this should apply
   .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element){
     box-shadow: $highlightShadow inset;
+    z-index: 10;
   }
-  .on-section:not(.on-column):not(.on-element) .highlight--section,
-  .on-column:not(.on-element) .highlight--column,
-  .on-element .highlight--element {
+  .on-section:not(.on-column):not(.on-element) .highlight--section{
+    position: relative;
     box-shadow: $highlightShadow;
+    z-index: 10;
+  }
+  .on-column:not(.on-element) .highlight--column{
+    position: relative;
+    box-shadow: $highlightShadow;
+    z-index: 10;
+  }
+  .on-element .highlight--element {
+    position: relative;
+    box-shadow: $highlightShadow inset;
+    &.element-img{
+      box-shadow: $highlightShadow;
+    }
+    z-index: 10;
   }
 }
 .page.current-element{
+  position: relative;
   box-shadow: $currentShadow inset;
+  z-index: 5;
 }
 .current-element{
-  box-shadow: $currentShadow;
+  position: relative;
+  box-shadow: $currentShadow inset;
+  &.element-img{
+    box-shadow: $currentShadow;
+  }
+  z-index: 5;
 }
 
 
@@ -122,8 +100,41 @@ $currentShadow: 0 0 0 4px #e12de4;
   min-height: 20px;
 }
 
+
+@import "editor";
+
+
+.inspector{
+  @include reset-margin-padding-etc;
+  flex: 1;
+  max-width: 30%;
+  min-width: 300px;
+  padding: 15px;
+  background: #eeeeee;
+}
 .inspector--heading-3{
   margin-top: 20px;
   font-size: 20px;
 }
-
+.template-handle{
+  background-color: lightgray;
+  margin-top: 10px;
+  padding: 10px;
+  display: inline-block;
+}
+.template-wrapper{
+  display: inline-block;
+  margin-left: 10px;
+}
+.property{
+  margin-bottom: 10px;
+  margin-top: 10px;
+  .small-input {
+    width: 30px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .app-wrapper{
+    display: block;
+  }
+}
