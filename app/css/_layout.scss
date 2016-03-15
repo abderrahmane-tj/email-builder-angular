@@ -1,0 +1,21 @@
+.app-wrapper{
+  display: flex;
+}
+
+.gu-transit{
+  opacity: 1;
+}
+.gu-mirror{
+  //opacity:.5;
+}
+
+.img-hidden{
+  visibility: hidden !important;
+  //position: absolute;
+}
+
+@media only screen and (max-width: 600px) {
+  .app-wrapper{
+    display: block;
+  }
+}

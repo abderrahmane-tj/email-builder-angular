@@ -1,0 +1,33 @@
+.inspector{
+  @include reset-margin-padding-etc;
+  flex: 1;
+  max-width: 30%;
+  min-width: 300px;
+  padding: 15px;
+  background: #eeeeee;
+}
+.inspector--heading-3{
+  margin-top: 20px;
+  font-size: 20px;
+}
+.template-handle{
+  background-color: lightgray;
+  margin-top: 10px;
+  padding: 10px;
+  display: inline-block;
+}
+
+.template-wrapper{
+  display: inline-block;
+  margin-left: 10px;
+  &.gu-transit{
+    margin-left: 0;
+  }
+}
+.property{
+  margin-bottom: 10px;
+  margin-top: 10px;
+  .small-input {
+    width: 30px;
+  }
+}
