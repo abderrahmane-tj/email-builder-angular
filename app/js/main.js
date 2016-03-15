@@ -38,7 +38,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                             {
                                 "style": {},
                                 "type": "text",
-                                "content": "<ol>\n<li>Buy milk</li>\n<li>Do shores</li>\n<li>Play Heroes of the Storm</li>\n<li>Eat</li>\n<li>Pray</li>\n<li>Love</li>\n</ol>"
+                                "content": "<ol>\n<li>Buy milk</li>\n<li>Do shores</li>\n<li>Eat</li>\n<ol>\n<li>Pray</li>\n<li>Hi</li>\n</ol>\n<li>Love</li>\n<li>Play Heroes of the Storm</li>\n</ol>"
                             }
                         ]
                     },
@@ -71,7 +71,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                 "columns": [
                     {
                         "type": "column",
-                        "grid-width": "six",
+                        "grid-width": "four",
                         "style": {},
                         "elements": [
                             {
@@ -83,13 +83,25 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                     },
                     {
                         "type": "column",
-                        "grid-width": "six",
+                        "grid-width": "four",
                         "style": {},
                         "elements": [
                             {
                                 "style": {},
                                 "type": "text",
                                 "content": "<p>Quod, tenetur!</p>"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "column",
+                        "grid-width": "four",
+                        "style": {},
+                        "elements": [
+                            {
+                                "style": {},
+                                "type": "text",
+                                "content": "<p>Maxime minus</p>"
                             }
                         ]
                     }
