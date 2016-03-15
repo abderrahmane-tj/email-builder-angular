@@ -24,10 +24,14 @@ emailApp.directive('elementEditable',['$sce','$compile', function($sce,$compile)
         });
     }
     function createEditor($scope, element, attrs, ngModel){
-
+        var options = {};
+        if(attrs.elementEditable){
+            options = $scope.$eval(attrs.elementEditable);
+        }
+        options['wrapper-tag'] = options['wrapper-tag'] || 'div';
         var randID = 'editable-'+(Math.random()*987654321|0);
         var editable = element.after(
-            '<div id="'+randID+'">'+$scope.element.content+'</div>'
+            '<'+options['wrapper-tag']+' id="'+randID+'">'+$scope.element.content+'<'+options['wrapper-tag']+'/>'
         ).next();
         editable.attr('highlight',"{name:'element', type:'exactly', toggleCurrent: 'false'}");
         editable.on('click', function (event) {
