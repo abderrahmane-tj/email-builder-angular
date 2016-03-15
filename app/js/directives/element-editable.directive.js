@@ -53,7 +53,13 @@ emailApp.directive('elementEditable',['$sce','$compile', function($sce,$compile)
                 editor.addButton('deleteElement', {
                     icon: 'delete-element',
                     onclick: function () {
-                        console.log('clicked');
+                        var filteredElements = $scope.column.elements.filter(function (item) {
+                            return item !== $scope.element;
+                        });
+                        $scope.$apply(function () {
+                            $scope.column.elements = filteredElements;
+                            closeEditor();
+                        });
                     }
                 });
             },
@@ -71,21 +77,25 @@ emailApp.directive('elementEditable',['$sce','$compile', function($sce,$compile)
             theme : 'modern',
             menubar: false
         });
-        $('[highlight]').bind('click', closeEditor);
+        $('[highlight]').bind('click', handleClickElsewhere);
 
-        function closeEditor(event) {
+        function handleClickElsewhere(event){
             var isEditorUI = $(event.target).closest('.mce-tinymce').length;
             if(isEditorUI){
                 return;
             }
 
-            $('[highlight]').off('click', closeEditor);
+            $('[highlight]').off('click', handleClickElsewhere);
+
+            $scope.$apply(function () {
+                closeEditor();
+            });
+        }
+        function closeEditor() {
             element.show().removeClass('editing');
             editable.remove();
-
             $scope.editor.remove();
             delete $scope.editor;
-            $scope.$apply();
         }
     }
 
