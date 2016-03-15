@@ -25,7 +25,8 @@ emailApp.directive('pageElement',['$templateRequest','$compile',function($templa
     function elementTemplate(type){
         var dict = {
             'text':'app/templates/elements/text.template.html',
-            'img':'app/templates/elements/image.template.html'
+            'img':'app/templates/elements/image.template.html',
+            'heading1':'app/templates/elements/heading1.template.html'
         };
         return dict[type];
     }

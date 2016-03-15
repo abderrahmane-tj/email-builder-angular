@@ -22,6 +22,11 @@ emailApp.directive('inspector',[function(){
                     "style": {},
                     "type": "img",
                     "src": "app/img/default.jpg"
+                },
+                {
+                    "style": {},
+                    "type": "heading1",
+                    "content": "Hello World"
                 }
             ];
             vm.sectionTemplate = [
