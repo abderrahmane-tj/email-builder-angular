@@ -1,7 +1,7 @@
 <td class="wrapper column-wrapper" highlight="{name:'column', type:'exactly'}"
     ng-repeat="column in section.columns"
     ng-style="column.wrapper.style"
-    ng-class="{'empty-column': !column.elements.length}"
+    ng-class="{'empty-column': !column.elements.length, 'last': $index === section.columns.length-1}"
 >
   <!-- cell's inside -->
   <table class="{{column['grid-width']}} columns"> <tr>
