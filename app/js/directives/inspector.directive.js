@@ -25,24 +25,31 @@ emailApp.directive('inspector',[function(){
                 }
             ];
             vm.sectionTemplate = [
-                {
-                    "style": {
-                        "background-color": "white"
-                    },
-                    "type": "section",
+                { "template-name": '[100%]',"style": {}, "type": "section", columns: [{ "type": "column", "grid-width": "twelve", "style": {}, "elements": []}]},
+                { "template-name": '[ 50% | 50% ]',
+                    "style": {}, "type": "section",
                     columns: [
-                        {
-                            "type": "column",
-                            "grid-width": "six",
-                            "style": {},
-                            "elements": []
-                        },
-                        {
-                            "type": "column",
-                            "grid-width": "six",
-                            "style": {},
-                            "elements": []
-                        }
+                        { "type": "column", "grid-width": "six", "style": {}, "elements": []},
+                        { "type": "column", "grid-width": "six", "style": {}, "elements": []}
+                    ]
+                },{ "template-name": '[ 33% | 33% | 33% ]',
+                    "style": {}, "type": "section",
+                    columns: [
+                        { "type": "column", "grid-width": "four", "style": {}, "elements": []},
+                        { "type": "column", "grid-width": "four", "style": {}, "elements": []},
+                        { "type": "column", "grid-width": "four", "style": {}, "elements": []}
+                    ]
+                },{ "template-name": '[ 33% | 60% ]',
+                    "style": {}, "type": "section",
+                    columns: [
+                        { "type": "column", "grid-width": "four", "style": {}, "elements": []},
+                        { "type": "column", "grid-width": "eight", "style": {}, "elements": []}
+                    ]
+                },{ "template-name": '[ 60% | 30% ]',
+                    "style": {}, "type": "section",
+                    columns: [
+                        { "type": "column", "grid-width": "eight", "style": {}, "elements": []},
+                        { "type": "column", "grid-width": "four", "style": {}, "elements": []}
                     ]
                 }
             ];
