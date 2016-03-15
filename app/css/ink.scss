@@ -13,13 +13,19 @@
 }
 /* todo: find a way to avoind puttin .gu-mirror here, because it adds more wright to this css file*/
 .email-builder-body,.gu-mirror{
-
+  color: #222222;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  padding:0;
+  margin: 0;
+  text-align: left;
+  line-height: 1.3;
 
   #outlook a {
     padding:0;
   }
 
-    /* .ExternalClass applies to Outlook.com (the artist formerly known as Hotmail)  */
+  /* .ExternalClass applies to Outlook.com (the artist formerly known as Hotmail)  */
 
   .ExternalClass {
     width:100%;
@@ -122,6 +128,15 @@
   table.columns,
   table.column {
     margin: 0 auto;
+  }
+
+  // atj
+  table.columns{
+    table-layout: fixed;
+    //overflow: hidden;
+  }
+  table.container{
+    table-layout: fixed;
   }
 
   table.columns td,
@@ -324,12 +339,11 @@
 
   .show-for-small *,
   .hide-for-desktop * {
-      mso-hide:all;
+    mso-hide:all;
   }
 
   /* Typography */
-
-  body, table.body, h1, h2, h3, h4, h5, h6, p, td {
+  table.body, h1, h2, h3, h4, h5, h6, p, td, ul, ol {
     color: #222222;
     font-family: Helvetica, Arial, sans-serif;
     font-weight: normal;
@@ -349,11 +363,15 @@
   h4 {font-size: 28px;}
   h5 {font-size: 24px;}
   h6 {font-size: 20px;}
-  body, table.body, p, td {font-size: 14px;line-height:19px;}
+  table.body, p, td, ul, ol {font-size: 14px;line-height:19px;}
 
   p.lead, p.lede, p.leed {
     font-size: 18px;
     line-height:21px;
+  }
+
+  ul, ol {
+    padding-left: 40px;
   }
 
   p {
