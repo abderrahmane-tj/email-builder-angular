@@ -43,6 +43,7 @@ emailApp.directive('highlight',function(){
             }
             element.bind('mouseenter', function(event) {
                 $page.addClass('on-'+options.name);
+                $('.highlight--'+options.name).removeClass('highlight--'+options.name);
                 highlighted.addClass('highlight--'+options.name);
             });
             element.bind('mouseleave', function() {
