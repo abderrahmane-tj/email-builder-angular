@@ -159,6 +159,9 @@ body {
 .paragraphe-element {
   min-height: 20px; }
 
+.element-control {
+  color: white; }
+
 i.mce-i-delete-element:before {
   content: "\f1f8";
   font-family: FontAwesome;

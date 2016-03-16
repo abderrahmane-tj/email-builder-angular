@@ -84,7 +84,12 @@ emailApp.directive('prepImage',['$timeout',function($timeout){
             }
         },
         controller:function($scope){
-
+            $scope.button1 = function () {
+                console.log('button 1');
+            };
+            $scope.button2 = function () {
+                console.log('button 2');
+            };
         }
     }
 }]);

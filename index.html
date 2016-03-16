@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Title</title>
+<link rel="stylesheet" href="bower_components/tooltipster/css/tooltipster.css">
 <link rel="stylesheet" href="bower_components/angular-dragula/dist/dragula.min.css">
 <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="app/css/ink.css">
@@ -19,16 +20,15 @@
   <button ng-click="resetData();">clear data</button>
   <h6>debug</h6>
   <pre>{{currentElement|json}}</pre>
-  <!--<p>{{makeStyle(currentElement.style)}}</p>-->
 </div>
 
-<script src="bower_components/ckeditor/ckeditor.js"></script>
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/tinymce/tinymce.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
 <script src="bower_components/angular-dragula/dist/angular-dragula.js"></script>
+<script src="bower_components/tooltipster/js/jquery.tooltipster.min.js"></script>
 
 <script src="app/js/main.js"></script>
 <script src="app/js/services.js"></script>
@@ -40,6 +40,8 @@
 <script src="app/js/directives/prep-image.directive.js"></script>
 <script src="app/js/directives/page-element.directive.js"></script>
 <script src="app/js/directives/element-editable.directive.js"></script>
+<script src="app/js/directives/image-controls.directive.js"></script>
+<script src="app/js/directives/section-controls.directive.js"></script>
 
 <script src="app/js/directives/properties/border-property.directive.js"></script>
 <script src="app/js/directives/properties/margin-property.directive.js"></script>

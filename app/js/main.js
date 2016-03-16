@@ -141,13 +141,13 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
             }
         ]
     };
-
     var page = localStorageService.get('page');
 
     if(page === null){
         localStorageService.set('page', defaultPage);
         page = defaultPage;
     }
+
     var unbind = localStorageService.bind($scope, 'page');
 
     $scope.page = page;
@@ -165,6 +165,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
         },
         mirrorContainer: $('.email-builder-body')[0]
     });
+
     dragulaService.options($scope, 'elements-bag',{
         copy: function (el, source) {
             return $(source).hasClass('new-elements');
@@ -177,12 +178,12 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
         },
         mirrorContainer: $('.email-builder-body')[0]
     });
+
     $scope.$on('elements-bag.drop', function (event,el,target,source,sibling) {
         //if(!source.is(target)){
         //    el.addClass('img-hidden');
         //}
     });
-
 
     $scope.resetData = function () {
         unbind();
@@ -191,8 +192,6 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
             window.location.reload(false);
         });
     };
-
-    $scope.htmlToBe = "<strong>Chuck</strong>";
 
 }
 
