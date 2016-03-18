@@ -1,27 +1,27 @@
 var emailApp = angular.module('emailApp');
-emailApp.directive('imageControls',['$compile',function($compile){
+emailApp.directive('imageControls',['$compile','$templateRequest',function($compile,$templateRequest){
     return {
         restrict: "A",
+        require: "elementControls",
         scope:true,
-        link:function($scope, element, attrs){
-            element.bind('click', function (event) {
-                var controls = $('<a href="#" ng-click="removeElement($event)" class="element-control" style="color: red;"><i class="fa fa-trash"></i></a>');
-                $compile(controls)($scope);
-                element.tooltipster({
-                    content: controls,
-                    interactive: true
-                }).tooltipster('show');
-            });
-        },
-        controller:function($scope){
-            $scope.removeElement = function ($event) {
-                $event.preventDefault();
-                var array = $scope.column.elements.filter(function (item) {
-                    return $scope.element !== item
-                });
+        link:link,
+        controller: controller
+    };
 
-                $scope.column.elements = array;
-            }
+    function controller($scope){
+        $scope.removeElement = function ($event) {
+            $event.preventDefault();
+            $scope.column.elements = $scope.column.elements.filter(function (item) {
+                return $scope.element !== item
+            });
         }
+    }
+
+    function link($scope, element, attrs, elementControls){
+        $templateRequest('app/templates/controls/image.template.html')
+            .then(function(html) {
+                var template = angular.element(html);
+                elementControls.make(template, $scope);
+            });
     }
 }]);

@@ -1,27 +1,27 @@
 var emailApp = angular.module('emailApp');
-emailApp.directive('sectionControls',['$compile',function($compile){
+emailApp.directive('sectionControls',['$compile','$templateRequest',function($compile,$templateRequest){
     return {
         restrict: "A",
         scope:true,
-        link:function($scope, element, attrs){
-            element.bind('click', function (event) {
-                var controls = $('<a href="#" ng-click="removeElement($event)" class="element-control" style="color: red;"><i class="fa fa-trash"></i></a>');
-                $compile(controls)($scope);
-                element.tooltipster({
-                    content: controls,
-                    interactive: true
-                }).tooltipster('show');
+        require:"elementControls",
+        link:link,
+        controller: controller
+    };
+
+    function controller($scope){
+        $scope.removeElement = function ($event) {
+            $event.preventDefault();
+            $scope.page.sections = $scope.page.sections.filter(function (item) {
+                return $scope.section !== item
             });
-        },
-        controller:function($scope){
-            $scope.removeElement = function ($event) {
-                $event.preventDefault();
-                var array = $scope.page.sections.filter(function (item) {
-                    return $scope.section !== item
-                });
-                
-                $scope.page.sections = array;
-            }
         }
+    }
+
+    function link($scope, element, attrs, elementControls){
+        $templateRequest('app/templates/controls/section.template.html')
+            .then(function(html) {
+                var template = angular.element(html);
+                elementControls.make(template, $scope);
+            });
     }
 }]);

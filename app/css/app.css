@@ -162,6 +162,9 @@ body {
 .element-control {
   color: white; }
 
+.sections-wrapper {
+  min-height: 20px; }
+
 i.mce-i-delete-element:before {
   content: "\f1f8";
   font-family: FontAwesome;
