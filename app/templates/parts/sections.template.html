@@ -3,8 +3,9 @@
     dragula-model='page.sections'
     dragula-scope="mainVM.$scope"
 >
-  <div class="wrap-ink-container" highlight="{name:'section', type:'exactly'}"
+  <div class="wrap-ink-container section-element" highlight="{name:'section', type:'exactly'}"
       ng-repeat="section in page.sections" element-controls section-controls
+      data-block-type="section"
   >
     <!-- inside section -->
     <table class="container section">
