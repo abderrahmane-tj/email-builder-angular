@@ -31,9 +31,10 @@ emailApp.directive('elementEditable',['$sce','$compile', function($sce,$compile)
         options['wrapper-tag'] = options['wrapper-tag'] || 'div';
         var randID = 'editable-'+(Math.random()*987654321|0);
         var editable = element.after(
-            '<'+options['wrapper-tag']+' id="'+randID+'">'+$scope.element.content+'<'+options['wrapper-tag']+'/>'
+            '<'+options['wrapper-tag']+' id="'+randID+'">'+$scope.element.content+'</'+options['wrapper-tag']+'>'
         ).next();
         editable.attr('highlight',"{name:'element', type:'exactly', toggleCurrent: 'false'}");
+        editable.addClass('editing text-wrapper');
         editable.on('click', function (event) {
            event.stopImmediatePropagation();
         });
