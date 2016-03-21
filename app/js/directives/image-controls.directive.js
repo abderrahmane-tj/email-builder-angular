@@ -18,10 +18,6 @@ emailApp.directive('imageControls',['$compile','$templateRequest',function($comp
     }
 
     function link($scope, element, attrs, elementControls){
-        $templateRequest('app/templates/controls/image.template.html')
-            .then(function(html) {
-                var template = angular.element(html);
-                elementControls.make(template, $scope);
-            });
+        elementControls.make('image', $scope);
     }
 }]);

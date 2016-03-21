@@ -18,10 +18,6 @@ emailApp.directive('sectionControls',['$compile','$templateRequest',function($co
     }
 
     function link($scope, element, attrs, elementControls){
-        $templateRequest('app/templates/controls/section.template.html')
-            .then(function(html) {
-                var template = angular.element(html);
-                elementControls.make(template, $scope);
-            });
+        elementControls.make('section', $scope);
     }
 }]);
