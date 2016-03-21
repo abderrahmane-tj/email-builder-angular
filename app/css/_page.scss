@@ -53,7 +53,7 @@ $currentShadow: 0 0 0 4px #e12de4;
   .on-element .highlight--element {
     position: relative;
     box-shadow: $highlightShadow inset;
-    &.element-img{
+    &.img-element{
       box-shadow: $highlightShadow;
     }
     z-index: 10;
@@ -67,7 +67,7 @@ $currentShadow: 0 0 0 4px #e12de4;
 .current-element{
   position: relative;
   box-shadow: $currentShadow inset;
-  &.element-img{
+  &.img-element{
     box-shadow: $currentShadow;
   }
   z-index: 5;
@@ -77,7 +77,7 @@ $currentShadow: 0 0 0 4px #e12de4;
   //margin: 10px;
 }
 
-.paragraphe-element{
+.text-wrapper{
   min-height: 20px;
 }
 

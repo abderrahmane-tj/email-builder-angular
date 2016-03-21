@@ -56,6 +56,9 @@ html, body {
 body {
   line-height: 1; }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important; }
+
 .app-wrapper {
   display: flex; }
 
@@ -141,7 +144,7 @@ body {
   position: relative;
   box-shadow: 0 0 0 4px #3ae4e3 inset;
   z-index: 10; }
-  :not(.gu-unselectable) .on-element .highlight--element.element-img {
+  :not(.gu-unselectable) .on-element .highlight--element.img-element {
     box-shadow: 0 0 0 4px #3ae4e3; }
 
 .page.current-element {
@@ -153,10 +156,10 @@ body {
   position: relative;
   box-shadow: 0 0 0 4px #e12de4 inset;
   z-index: 5; }
-  .current-element.element-img {
+  .current-element.img-element {
     box-shadow: 0 0 0 4px #e12de4; }
 
-.paragraphe-element {
+.text-wrapper {
   min-height: 20px; }
 
 .element-control {
