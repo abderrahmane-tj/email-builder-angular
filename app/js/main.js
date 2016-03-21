@@ -179,11 +179,35 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
         mirrorContainer: $('.email-builder-body')[0]
     });
 
+    $scope.$on('elements-bag.drag', function (event,el,target,source,sibling) {});
     $scope.$on('elements-bag.drop', function (event,el,target,source,sibling) {
-        //if(!source.is(target)){
-        //    el.addClass('img-hidden');
-        //}
+        handleTooltip();
+
+        function handleTooltip(){
+            // if we are dragging a template from the inspector. GTFO
+            if(source.hasClass("new-elements")){
+                return;
+            }
+
+            var dragged = $(el);
+            var $element = $(dragged.children().get(0));
+            if($element.hasClass('tooltipstered')){
+                $element.tooltipster('reposition');
+            }
+
+            // if we are dragging within the same container. no relinking occurs
+            // so no need to handle this
+            if(source.is(target)){
+                return;
+            }
+
+            var scope = dragged.scope();
+            $scope.$apply(function () {
+                scope.element.refreshElement = true;
+            });
+        }
     });
+
 
     $scope.resetData = function () {
         unbind();
