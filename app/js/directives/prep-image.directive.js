@@ -16,6 +16,7 @@ emailApp.directive('prepImage',['$timeout',function($timeout){
                 return;
             }
             attrs.$set('src', attrs.loadingSrc);
+            $scope.imgStatus = 'loading';
             //applySize(newSize({width:192,height:120}));
 
             var vImg = angular.element(new Image);
@@ -27,6 +28,7 @@ emailApp.directive('prepImage',['$timeout',function($timeout){
             //cleanElement();
 
             attrs.$set('src', attrs.brokenSrc);
+            $scope.imgStatus = 'error';
             //applySize(newSize({width:125,height:150}));
 
             //$scope.$apply();
@@ -34,6 +36,7 @@ emailApp.directive('prepImage',['$timeout',function($timeout){
         function load(){
             var vImage = this;
             attrs.$set('src',$scope.element.src);
+            $scope.imgStatus = 'loaded';
             var size = newSize({width:vImage.width, height: vImage.height});
             $scope.element.height = size.height;
             $scope.element.width = size.width;
