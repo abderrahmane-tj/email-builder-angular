@@ -182,7 +182,6 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
     $scope.$on('elements-bag.drag', function (event,el,target,source,sibling) {});
     $scope.$on('elements-bag.drop', function (event,el,target,source,sibling) {
         handleTooltip();
-        // todo: when you drag some element, and there is already an element with a tooltip present, reposition that one, cuz we might take the tooltip's place
         function handleTooltip(){
             // if we are dragging a template from the inspector. GTFO
             if(source.hasClass("new-elements")){
@@ -204,6 +203,13 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                 $scope.$apply(function () {
                     scope.element.refreshElement = true;
                 });
+            }else{
+                var $tooltipster = $('.page .tooltipstered');
+                if($tooltipster.length){
+                    console.log('repositioned');
+                    $tooltipster.tooltipster('reposition');
+
+                }
             }
         }
     });
