@@ -10,11 +10,13 @@ emailApp.directive('pageElement',['$templateRequest','$compile',function($templa
         if(!$scope.element){
             return;
         }
-        element.addClass('element-'+$scope.element.type);
+        element.addClass($scope.element.type+'-element');
         $templateRequest(elementTemplate($scope.element.type)).then(function (html) {
             var template = angular.element(html);
             template.attr('highlight',"{name:'element', type:'exactly'}");
             template.attr('ng-style',"element.style");
+            template.attr('data-block-type','element');
+            template.attr('data-element-type',$scope.element.type);
             element.append(template);
             $compile(template)($scope);
         });
