@@ -1,5 +1,5 @@
 var emailApp = angular.module('emailApp');
-emailApp.directive('prepImage',['$timeout',function($timeout){
+emailApp.directive('imageHandler',['$timeout',function($timeout){
     return {
         restrict: "A",
         scope:true,
@@ -44,9 +44,9 @@ emailApp.directive('prepImage',['$timeout',function($timeout){
         }
         function newSize(vImage){
             vImage = vImage || {width: null, height: null};
-            var max_width = columns[attrs.prepImage];
+            var max_width = columns[attrs.imageHandler];
             if(!max_width){
-                console.log('prepImage must be english number between one and twelve!');
+                console.log('imageHandler must be english number between one and twelve!');
                 return;
             }
             var originalWidth = vImage.width || element.width();
