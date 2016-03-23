@@ -142,6 +142,8 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
         ]
     };
     var page = localStorageService.get('page');
+    $scope.resetData = resetData;
+    $scope.currentElement = null;
 
     if(page === null){
         localStorageService.set('page', defaultPage);
@@ -151,7 +153,6 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
     var unbind = localStorageService.bind($scope, 'page');
 
     $scope.page = page;
-    $scope.currentElement = null;
 
     dragulaService.options($scope, 'sections-bag', {
         copy: function (el, source) {
@@ -165,7 +166,6 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
         },
         mirrorContainer: $('.email-builder-body')[0]
     });
-
     dragulaService.options($scope, 'elements-bag',{
         copy: function (el, source) {
             return $(source).hasClass('new-elements');
@@ -178,50 +178,63 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
         },
         mirrorContainer: $('.email-builder-body')[0]
     });
-
-    $scope.$on('elements-bag.drag', function (event,el,target,source,sibling) {});
-    $scope.$on('elements-bag.drop', function (event,el,target,source,sibling) {
-        handleTooltip();
-        function handleTooltip(){
-            // if we are dragging a template from the inspector. GTFO
-            if(source.hasClass("new-elements")){
-                return;
-            }
-
-            var dragged = $(el);
-            var $element = $(dragged.children().get(0));
-            if($element.hasClass('tooltipstered')){
-                $element.tooltipster('reposition');
-
-                // if we are dragging within the same container. no relinking occurs
-                // so no need to handle this
-                if(source.is(target)){
-                    return;
-                }
-
-                var scope = dragged.scope();
-                $scope.$apply(function () {
-                    scope.element.refreshElement = true;
-                });
-            }else{
-                var $tooltipster = $('.page .tooltipstered');
-                if($tooltipster.length){
-                    console.log('repositioned');
-                    $tooltipster.tooltipster('reposition');
-
-                }
-            }
-        }
+    $scope.$on('elements-bag.drag', function (dragulaEvent,el,target,source,sibling) {});
+    $scope.$on('elements-bag.drop', function (dragulaEvent,el,target,source,sibling) {
+        $timeout(function () {
+            handleTooltip(dragulaEvent,el,target,source,sibling);
+        });
+    });
+    $scope.$on('sections-bag.drop', function (dragulaEvent,el,target,source,sibling) {
+        $timeout(function () {
+            handleTooltip(dragulaEvent,el,target,source,sibling);
+        });
     });
 
 
-    $scope.resetData = function () {
+    function handleTooltip(dragulaEvent,el,target,source,sibling){
+        repositionTooltipstered();
+
+        // if we are dragging within the same container.
+        // no relinking occurs so no need to handle this
+        if(source.is(target)){
+            return;
+        }
+
+        var dragged = $(el);
+        var $element = $(dragged.children().get(0))
+        console.log(el,dragged.scope());
+
+        // if we are dragging a template from the inspector.
+        if(source.hasClass("new-elements")){
+            return;
+        }
+
+        // if we moved an element that is tooltipstered, we need to refresh it
+        // when link triggers
+        if($element.hasClass('tooltipstered')){
+            console.log('dragged element is tooltipstered');
+            //repositionTooltipstered($element);
+            var scope = dragged.scope();
+            $scope.$apply(function () {
+                scope.element.refreshElement = true;
+            });
+        }
+
+        function repositionTooltipstered(){
+            var $tooltipster = $('.page .tooltipstered');
+            if($tooltipster.length){
+                $tooltipster.tooltipster('reposition');
+            }
+        }
+    }
+
+    function resetData() {
         unbind();
         localStorageService.clearAll();
         $timeout(function () {
             window.location.reload(false);
         });
-    };
+    }
 
 }
 
