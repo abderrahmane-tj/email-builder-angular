@@ -3,15 +3,17 @@ emailApp.directive('pageElement',['$templateRequest','$compile',function($templa
     return {
         restrict: "A",
         scope: true,
-        link: link,
-        controller: controller
+        link: link
     };
     function link($scope, element, attrs){
         if(!$scope.element){
             return;
         }
         element.addClass($scope.element.type+'-element');
-        $templateRequest(elementTemplate($scope.element.type)).then(function (html) {
+        $templateRequest(elementTemplate($scope.element.type))
+            .then(buildPageElement);
+
+        function buildPageElement(html) {
             var template = angular.element(html);
             template.attr('highlight',"{name:'element', type:'exactly'}");
             template.attr('ng-style',"element.style");
@@ -19,10 +21,8 @@ emailApp.directive('pageElement',['$templateRequest','$compile',function($templa
             template.attr('data-element-type',$scope.element.type);
             element.append(template);
             $compile(template)($scope);
-        });
-    }
-    function controller($scope){
-        $scope.elementData = {};
+            //console.log($scope.element);
+        }
     }
     function elementTemplate(type){
         var dict = {

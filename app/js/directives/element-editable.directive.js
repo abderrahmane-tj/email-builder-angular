@@ -9,7 +9,7 @@ emailApp.directive('elementEditable',['$sce','$compile', function($sce,$compile)
             $scope.trustAsHtml = function(string) {
                 return $sce.trustAsHtml(string);
             };
-            $scope.elementData = {};
+            //$scope.elementData = {};
         }
     };
     function link($scope, element, attrs, ngModel){

@@ -26,16 +26,7 @@ emailApp.directive('elementControls',
         var elementType = element.data('element-type');
         var blockType = element.data('block-type');
         var controllableData = $scope[blockType];
-        if(controllableData.refreshElement){
-            if(elementType === 'img'){
-                element.on('load', function () {
-                    if($scope.imgStatus == 'loaded' || $scope.imgStatus == 'error'){
-                        createTooltip(element,$scope);
-                    }
-                });
-            }
-            delete controllableData.refreshElement;
-        }
+        handleTooltip();
         element.bind('click', function (event) {
             var tooltipstered = $(this).is('.tooltipstered');
             if(tooltipstered){
@@ -48,6 +39,8 @@ emailApp.directive('elementControls',
                 createTooltip(element,$scope);
             }
         });
+
+        ////////////////////////////
         function handleClickOnHighlight(event){
             event.stopPropagation();
             $('[highlight]').off('click', handleClickOnHighlight);
@@ -56,6 +49,23 @@ emailApp.directive('elementControls',
                 return;
             }
             destroyTooltip(element);
+        }
+        function handleTooltip(){
+            if(controllableData.refreshElement){
+                if(elementType === 'img') {
+                    afterImgLoad(function () {
+                        createTooltip(element,$scope);
+                    });
+                }
+                delete controllableData.refreshElement;
+            }
+        }
+        function afterImgLoad(fn){
+            element.on('load', function () {
+                if($scope.imgStatus == 'loaded' || $scope.imgStatus == 'error'){
+                    fn();
+                }
+            });
         }
     }
     function destroyTooltip(element){
