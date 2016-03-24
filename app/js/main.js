@@ -22,119 +22,75 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
         "id": "page-123ashd",
         "type": "page",
         "style": {
-            "background-color": "#aeaeae"
+            "background-color": ""
         },
         "sections": [
             {
+                "template-name": "[100%]",
+                "style": {},
                 "type": "section",
-                "style": {
-                    "background-color": "beige"
-                },
                 "columns": [
                     {
                         "type": "column",
-                        "grid-width": "four",
+                        "grid-width": "twelve",
                         "style": {},
                         "elements": [
                             {
                                 "style": {},
                                 "type": "text",
-                                "content": "<ol>\n<li>Buy milk</li>\n<li>Do shores</li>\n<li>Eat</li>\n<ol>\n<li>Pray</li>\n<li>Hi</li>\n</ol>\n<li>Love</li>\n<li>Play Heroes of the Storm</li>\n</ol>"
+                                "content": "<h1 style=\"text-align: center;\">Hello Joseph</h1>"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "template-name": "[ 50% | 50% ]",
+                "style": {},
+                "type": "section",
+                "columns": [
+                    {
+                        "type": "column",
+                        "grid-width": "six",
+                        "style": {},
+                        "elements": [
+                            {
+                                "style": {},
+                                "type": "text",
+                                "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ante nec velit molestie commodo. Vivamus quis suscipit dui. Etiam quis laoreet enim. Praesent ornare aliquam dolor ut scelerisque. Aliquam varius tincidunt eros vel ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec nec consectetur leo, vitae dictum leo. Cras semper nisi eget auctor blandit. Cras mattis risus et libero mollis, sit amet mollis ex placerat. Proin nibh velit, ornare sit amet elit nec, tempor cursus turpis.</p>"
                             }
                         ]
                     },
                     {
                         "type": "column",
-                        "grid-width": "eight",
+                        "grid-width": "six",
                         "style": {},
                         "elements": [
-                            {
-                                "style": {},
-                                "type": "text",
-                                "content": "<h2>The time is now</h2>"
-                            },
                             {
                                 "style": {},
                                 "type": "img",
                                 "src": "app/img/default.jpg",
-                                "height": 253.33333333333331,
-                                "width": 380
+                                "height": 186.66666666666666,
+                                "width": 280
                             }
                         ]
                     }
                 ]
             },
             {
+                "template-name": "[100%]",
+                "style": {},
                 "type": "section",
-                "style": {
-                    "background-color": "whitesmoke"
-                },
                 "columns": [
                     {
                         "type": "column",
-                        "grid-width": "four",
+                        "grid-width": "twelve",
                         "style": {},
                         "elements": [
                             {
                                 "style": {},
                                 "type": "text",
-                                "content": "<p>Eos, fugiat!</p>"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "column",
-                        "grid-width": "four",
-                        "style": {},
-                        "elements": [
-                            {
-                                "style": {},
-                                "type": "text",
-                                "content": "<p>Quod, tenetur!</p>"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "column",
-                        "grid-width": "four",
-                        "style": {},
-                        "elements": [
-                            {
-                                "style": {},
-                                "type": "text",
-                                "content": "<p>Maxime minus</p>"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "section",
-                "style": {
-                    "background-color": "white"
-                },
-                "columns": [
-                    {
-                        "type": "column",
-                        "grid-width": "six",
-                        "style": {},
-                        "elements": [
-                            {
-                                "style": {},
-                                "type": "text",
-                                "content": "<p>Earum nam officia <strong>placeat quas sapiente</strong> tenetur totam.</p>"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "column",
-                        "grid-width": "six",
-                        "style": {},
-                        "elements": [
-                            {
-                                "style": {},
-                                "type": "text",
-                                "content": "<p>A autem, debitis distinctio dolor illo modi sequi vel voluptatem voluptates! Explicabo, provident tempore.</p>"
+                                "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ante nec velit molestie commodo. Vivamus quis suscipit dui.</p>"
                             }
                         ]
                     }
