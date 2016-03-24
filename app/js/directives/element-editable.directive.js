@@ -1,5 +1,5 @@
 var emailApp = angular.module('emailApp');
-emailApp.directive('elementEditable',['$sce','$compile', function($sce,$compile){
+emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sce,$compile,$timeout){
     return {
         restrict: "A",
         require: 'ngModel',
@@ -34,6 +34,7 @@ emailApp.directive('elementEditable',['$sce','$compile', function($sce,$compile)
             '<'+options['wrapper-tag']+' id="'+randID+'">'+$scope.element.content+'</'+options['wrapper-tag']+'>'
         ).next();
         editable.attr('highlight',"{name:'element', type:'exactly', toggleCurrent: 'false'}");
+        editable.attr('ng-style',"element.style");
         editable.addClass('editing text-wrapper');
         editable.on('click', function (event) {
            event.stopImmediatePropagation();
@@ -82,7 +83,10 @@ emailApp.directive('elementEditable',['$sce','$compile', function($sce,$compile)
             theme : 'modern',
             menubar: false
         });
-        $('[highlight]').bind('click', handleClickElsewhere);
+
+        $timeout(function () {
+            $('[highlight]').bind('click', handleClickElsewhere);
+        });
 
         function handleClickElsewhere(event){
             var isEditorUI = $(event.target).closest('.mce-tinymce').length;
