@@ -11,10 +11,11 @@ emailApp.controller('MainController', [
     'dragulaService',
     '$timeout',
     '$log',
+    'repositionTooltip',
     MainController
 ]);
 
-function MainController($scope,localStorageService,$templateCache,dragulaService,$timeout,$log){
+function MainController($scope,localStorageService,$templateCache,dragulaService,$timeout,$log,repositionTooltip){
     $templateCache.removeAll();
     var lastSaved = 0;
     var defaultPage = {
@@ -178,56 +179,42 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
         },
         mirrorContainer: $('.email-builder-body')[0]
     });
-    $scope.$on('elements-bag.drag', function (dragulaEvent,el,target,source,sibling) {});
-    $scope.$on('elements-bag.drop', function (dragulaEvent,el,target,source,sibling) {
-        $timeout(function () {
-            handleTooltip(dragulaEvent,el,target,source,sibling);
-        });
-    });
-    $scope.$on('sections-bag.drop', function (dragulaEvent,el,target,source,sibling) {
-        $timeout(function () {
-            handleTooltip(dragulaEvent,el,target,source,sibling);
-        });
-    });
+    $scope.$on('elements-bag.drag', handleTooltipOnDrag);
+    $scope.$on('elements-bag.drop', handleTooltipOnDrop);
+    $scope.$on('sections-bag.drop', handleTooltipOnDrop);
 
-
-    function handleTooltip(dragulaEvent,el,target,source,sibling){
-        repositionTooltipstered();
-
-        // if we are dragging within the same container.
-        // no relinking occurs so no need to handle this
-        if(source.is(target)){
-            return;
-        }
+    ///////////////////
+    function handleTooltipOnDrag(dragulaEvent,el,source){
+        // if dragging a new template
+        //if($(source).hasClass('new-elements')){
+        //    return;
+        //}
+        //var dragged = $(el);
+        //var $element = $(dragged.children().get(0));
+        //console.log($element);
+        //$scope.$apply(function () {
+        //    $element.scope().element.tooltipstered = true;
+        //})
+    }
+    function handleTooltipOnDrop(dragulaEvent,el,target,source,sibling){
+        $timeout(repositionTooltip);
 
         var dragged = $(el);
-        var $element = $(dragged.children().get(0))
-        console.log(el,dragged.scope());
+        var $element = $(dragged.children().get(0));
+        var $source = $(source);
 
-        // if we are dragging a template from the inspector.
-        if(source.hasClass("new-elements")){
-            return;
-        }
+        var shouldRereateTooltip =
+            !$source.is(target) // linking occurs only when dropping outside of local bag
+            && !$source.is('.new-elements,.new-section') // we do not want to do this to new elements
+            && $element.is('.tooltipstered'); // only recrate tooltip, if existed before dragging
 
-        // if we moved an element that is tooltipstered, we need to refresh it
-        // when link triggers
-        if($element.hasClass('tooltipstered')){
-            console.log('dragged element is tooltipstered');
-            //repositionTooltipstered($element);
-            var scope = dragged.scope();
+        if(shouldRereateTooltip){
             $scope.$apply(function () {
-                scope.element.refreshElement = true;
+                $element.scope().element.tooltipstered = true;
             });
         }
 
-        function repositionTooltipstered(){
-            var $tooltipster = $('.page .tooltipstered');
-            if($tooltipster.length){
-                $tooltipster.tooltipster('reposition');
-            }
-        }
     }
-
     function resetData() {
         unbind();
         localStorageService.clearAll();

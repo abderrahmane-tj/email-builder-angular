@@ -41,7 +41,7 @@ emailApp.directive('elementEditable',['$sce','$compile', function($sce,$compile)
 
         $compile(editable)($scope);
 
-
+        //todo: fix element editable, side effect of removing preventDefault from highlight system
         tinymce.init({
             selector:'#'+randID,
             setup: function(editor) {
