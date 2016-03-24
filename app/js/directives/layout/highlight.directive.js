@@ -1,19 +1,18 @@
 var emailApp = angular.module('emailApp');
-emailApp.directive('highlight',['$compile',function($compile){
+emailApp.directive('highlight',['$compile','preventBubbling',function($compile,preventBubbling){
     return {
         restrict: "A",
         //require:"^page",
         scope:true,
-        link: link,
-        controller: controller
+        link: link
     };
     function link($scope,element,attrs,pageCtrl){
         var options = $scope.$eval(attrs.highlight);
         options.toggleClick = options.toggleClick || true;
         var highlighted = element;
 
-        // In case we hover an element, whish in most cases is an inline layout
-        // html element, we want to highlight its container, a div of class
+        // In case we hover an element, whish in most cases has an inline layout
+        // we want to highlight its container, a div of class
         // .element. as of this comment it is its direct parent
         if(options.name === 'element'){
             highlighted = element.closest('.element');
@@ -34,7 +33,12 @@ emailApp.directive('highlight',['$compile',function($compile){
             element.bind('click', onClick);
         }
         function onClick(event) {
-            event.stopPropagation();
+            if(preventBubbling(options.name)){
+                return;
+            }
+
+            console.log('click on highlight');
+
             $('.current-element')
                 .removeClass('current-element');
 
@@ -58,10 +62,5 @@ emailApp.directive('highlight',['$compile',function($compile){
             $page.removeClass('on-'+options.name);
             highlighted.removeClass('highlight--'+options.name);
         });
-    }
-    function controller($scope){
-        $scope.log = function(){
-
-        }
     }
 }]);
