@@ -70,6 +70,9 @@ $currentShadow: 0 0 0 4px #e12de4;
   &.img-element{
     box-shadow: $currentShadow;
   }
+  &.row{
+    box-shadow: $currentShadow;
+  }
   z-index: 5;
 }
 

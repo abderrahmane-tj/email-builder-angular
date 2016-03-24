@@ -62,6 +62,9 @@ body {
 .app-wrapper {
   display: flex; }
 
+.gu-unselectable .tooltipster-base {
+  display: none; }
+
 .gu-transit {
   opacity: 1; }
 
@@ -157,6 +160,8 @@ body {
   box-shadow: 0 0 0 4px #e12de4 inset;
   z-index: 5; }
   .current-element.img-element {
+    box-shadow: 0 0 0 4px #e12de4; }
+  .current-element.row {
     box-shadow: 0 0 0 4px #e12de4; }
 
 .text-wrapper {

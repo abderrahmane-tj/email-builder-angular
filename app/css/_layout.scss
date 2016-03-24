@@ -6,6 +6,9 @@
   display: flex;
 }
 
+.gu-unselectable .tooltipster-base{
+  display: none;
+}
 .gu-transit{
   opacity: 1;
 }
