@@ -199,6 +199,10 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
     function handleTooltipOnDrop(dragulaEvent,el,target,source,sibling){
         $timeout(repositionTooltip);
 
+        if(dragulaEvent.name === "sections-bag.drop"){
+            return;
+        }
+
         var dragged = $(el);
         var $element = $(dragged.children().get(0));
         var $source = $(source);
