@@ -32,7 +32,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                 "columns": [
                     {
                         "type": "column",
-                        "grid-width": "twelve",
+                        "grid-width": "12",
                         "style": {},
                         "elements": [
                             {
@@ -51,7 +51,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                 "columns": [
                     {
                         "type": "column",
-                        "grid-width": "six",
+                        "grid-width": "6",
                         "style": {},
                         "elements": [
                             {
@@ -63,7 +63,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                     },
                     {
                         "type": "column",
-                        "grid-width": "six",
+                        "grid-width": "6",
                         "style": {},
                         "elements": [
                             {
@@ -84,7 +84,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
                 "columns": [
                     {
                         "type": "column",
-                        "grid-width": "twelve",
+                        "grid-width": "12",
                         "style": {},
                         "elements": [
                             {

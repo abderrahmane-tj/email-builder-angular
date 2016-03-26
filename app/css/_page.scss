@@ -1,17 +1,20 @@
 
-.element:after{
-  content: '';
-  display:block;
-  clear: both;
-}
-.page{
+// page inners
+
+.page-wrapper{
   flex: 1;
   position: relative;
+  padding: 4px;
 }
 .page-inner{
   padding-top: 50px;
   padding-bottom: 50px;
 }
+
+.sections-wrapper{
+  min-height: 20px;
+}
+
 .empty-column{
   background-color: lightgray;
   position: relative;
@@ -21,8 +24,26 @@
     left: 50%;
     content: "*";
   }
+  .column-cell-wrapper {
+    height: 20px;
+  }
+  .column-cell {
+    width: 100%;
+  }
 }
 
+.element:after{
+  content: '';
+  display:block;
+  clear: both;
+}
+
+
+// specific element type
+
+.text-wrapper{
+  min-height: 20px;
+}
 
 // max-width for images inside columns
 $widths:(one: 30, two: 80, three: 130, four: 180, five: 230, six: 280, seven: 330, eight: 380, nine: 430, ten: 480, eleven: 530, twelve: 580);
@@ -37,7 +58,7 @@ $highlightShadow: 0 0 0 4px #3ae4e3;
 $currentShadow: 0 0 0 4px #e12de4;
 :not(.gu-unselectable){ // if we are dragging, none if this should apply
   .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element){
-    box-shadow: $highlightShadow inset;
+    box-shadow: $highlightShadow;
     z-index: 10;
   }
   .on-section:not(.on-column):not(.on-element) .highlight--section{
@@ -61,7 +82,7 @@ $currentShadow: 0 0 0 4px #e12de4;
 }
 .page.current-element{
   position: relative;
-  box-shadow: $currentShadow inset;
+  box-shadow: $currentShadow;
   z-index: 5;
 }
 .current-element{
@@ -76,18 +97,9 @@ $currentShadow: 0 0 0 4px #e12de4;
   z-index: 5;
 }
 
-.wrap-ink-container{
-  //margin: 10px;
-}
 
-.text-wrapper{
-  min-height: 20px;
-}
-
+// controls system
 .element-control{
   color: white;
 }
 
-.sections-wrapper{
-  min-height: 20px;
-}

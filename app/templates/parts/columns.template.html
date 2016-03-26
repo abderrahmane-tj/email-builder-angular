@@ -1,19 +1,22 @@
-<td class="wrapper column-wrapper" highlight="{name:'column', type:'exactly'}"
+<th class="small-12 large-{{column['grid-width']}} columns"
+    highlight="{name:'column', type:'exactly'}"
     ng-repeat="column in section.columns"
     ng-style="column.wrapper.style"
-    ng-class="{'empty-column': !column.elements.length, 'last': $index === section.columns.length-1}"
+    ng-class="{'empty-column': !column.elements.length,'first': $index === 0, 'last': $index === section.columns.length-1}"
     data-block-type="column"
 >
   <!-- cell's inside -->
-  <table class="{{column['grid-width']}} columns"> <tr>
-    <td class="column"
-        ng-style="column.style" dragula="'elements-bag'"
+  <table><tr class="column-cell-wrapper">
+    <td
+        class="column-cell"
+        ng-style="column.style"
+        dragula="'elements-bag'"
         dragula-model='column.elements'
         dragula-scope="mainVM.$scope"
         ng-include="'app/templates/parts/elements.template.html'"
     ></td>
     <td class="expander"></td>
-  </tr> </table>
+  </tr></table>
   <!-- /cell's inside -->
   <!-- todo: place placeholder here -->
-</td>
+</th>

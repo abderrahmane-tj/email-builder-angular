@@ -8,7 +8,7 @@ emailApp.directive('imageHandler',['$timeout',function($timeout){
     };
     function link($scope, element, attrs, elementControls){
         //element.addClass('img-hidden');
-        var columns = { one: 30, two: 80, three: 130, four: 180, five: 230, six: 280, seven: 330, eight: 380, nine: 430, ten: 480, eleven: 530, twelve: 580};
+        var columns = { 1: 30, 2: 80, 3: 130, 4: 180, 5: 230, 6: 280, 7: 330, 8: 380, 9: 430, 10: 480, 11: 530, 12: 580};
         $scope.$watch('element.src', updateImage);
         function updateImage(newVal) {
             if(!newVal.trim()){
