@@ -1513,6 +1513,9 @@ body.outlook p {
   padding-top: 16px;
   padding-bottom: 16px; }
 
+td.columns table, td.column table, th.columns table, th.column table {
+  table-layout: fixed; }
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important; }
 
@@ -1564,42 +1567,42 @@ body.outlook p {
 .text-wrapper {
   min-height: 20px; }
 
-.one img {
-  max-width: 30px; }
-
-.two img {
-  max-width: 80px; }
-
-.three img {
-  max-width: 130px; }
-
-.four img {
-  max-width: 180px; }
-
-.five img {
-  max-width: 230px; }
-
-.six img {
-  max-width: 280px; }
-
-.seven img {
-  max-width: 330px; }
-
-.eight img {
-  max-width: 380px; }
-
-.nine img {
-  max-width: 430px; }
-
-.ten img {
-  max-width: 480px; }
-
-.eleven img {
-  max-width: 530px; }
-
-.twelve img {
-  max-width: 580px; }
-
+@media only screen and (min-width: 596px) {
+  .large-1 img {
+    max-width: 30px; } }
+@media only screen and (min-width: 596px) {
+  .large-2 img {
+    max-width: 80px; } }
+@media only screen and (min-width: 596px) {
+  .large-3 img {
+    max-width: 130px; } }
+@media only screen and (min-width: 596px) {
+  .large-4 img {
+    max-width: 180px; } }
+@media only screen and (min-width: 596px) {
+  .large-5 img {
+    max-width: 230px; } }
+@media only screen and (min-width: 596px) {
+  .large-6 img {
+    max-width: 280px; } }
+@media only screen and (min-width: 596px) {
+  .large-7 img {
+    max-width: 330px; } }
+@media only screen and (min-width: 596px) {
+  .large-8 img {
+    max-width: 380px; } }
+@media only screen and (min-width: 596px) {
+  .large-9 img {
+    max-width: 430px; } }
+@media only screen and (min-width: 596px) {
+  .large-10 img {
+    max-width: 480px; } }
+@media only screen and (min-width: 596px) {
+  .large-11 img {
+    max-width: 530px; } }
+@media only screen and (min-width: 596px) {
+  .large-12 img {
+    max-width: 580px; } }
 :not(.gu-unselectable) .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element) {
   box-shadow: 0 0 0 4px #3ae4e3;
   z-index: 10; }
