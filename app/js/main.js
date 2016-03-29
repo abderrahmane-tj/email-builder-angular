@@ -141,19 +141,24 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
 
     ///////////////////
     function handleTooltipOnDrag(dragulaEvent,el,source){
-        // if dragging a new template
-        //if($(source).hasClass('new-elements')){
-        //    return;
-        //}
-        //var dragged = $(el);
-        //var $element = $(dragged.children().get(0));
-        //console.log($element);
-        //$scope.$apply(function () {
-        //    $element.scope().element.tooltipstered = true;
-        //})
+        var $sections = $('.section');
+        $('.column-cell',$sections).height(0);
+        $sections.each(function (i,section) {
+           var columns = $(this).find('.column-cell');
+            if(!columns.length || columns.length === 1){
+                return;
+            }
+            var heights = columns.map(function () {
+                return $(this).height();
+            }).get();
+
+            var maxHeight = Math.max.apply(this,heights);
+            columns.height(maxHeight);
+        });
     }
     function handleTooltipOnDrop(dragulaEvent,el,target,source,sibling){
         $timeout(repositionTooltip);
+        $('.column-cell').height(0);
 
         if(dragulaEvent.name === "sections-bag.drop"){
             return;
