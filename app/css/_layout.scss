@@ -1,19 +1,17 @@
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
+.toolbar {
+  height: 40px;
+  .status{
+    @include reset-margin-padding-etc;
+    color: green;
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    margin-left: 20px;
+  }
 }
 
 .app-wrapper{
   display: flex;
-}
-
-.gu-unselectable .tooltipster-base{
-  display: none;
-}
-.gu-transit{
-  opacity: 1;
-}
-.gu-mirror{
-  //opacity:.5;
 }
 
 .img-hidden{
@@ -25,4 +23,21 @@
   .app-wrapper{
     display: block;
   }
+}
+
+
+///////// vendor
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.gu-unselectable .tooltipster-base{
+  display: none;
+}
+.gu-transit{
+  opacity: 1;
+}
+.gu-mirror{
+  //opacity:.5;
 }

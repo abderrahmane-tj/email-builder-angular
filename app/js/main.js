@@ -122,7 +122,7 @@ function MainController(
     $interval(function () {
         $timeout.cancel(timeoutWatch);
         save();
-    }, 10000);
+    }, 30000);
     var unbind = $scope.$watch('mainVM.page', syncData, true);
     dragulaService.options($scope, 'sections-bag', sectionsBagConfig());
     dragulaService.options($scope, 'elements-bag', elementsBagConfig());

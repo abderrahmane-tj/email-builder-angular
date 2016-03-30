@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" type="text/css" href="app/css/_layout.scss"/>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width">
@@ -15,6 +14,9 @@
 <body>
 
 <div ng-cloak ng-app="emailApp" ng-controller="MainController as mainVM">
+  <div class="toolbar">
+    <p class="status" ng-if="mainVM.saving"><i class="fa fa-spinner fa-spin"></i> saving...</p>
+  </div>
   <div class="app-wrapper">
     <page></page>
     <inspector></inspector>

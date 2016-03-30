@@ -1516,17 +1516,23 @@ body.outlook p {
 td.columns table, td.column table, th.columns table, th.column table {
   table-layout: fixed; }
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important; }
+.toolbar {
+  height: 40px; }
+  .toolbar .status {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    color: green;
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    margin-left: 20px; }
 
 .app-wrapper {
   display: flex; }
-
-.gu-unselectable .tooltipster-base {
-  display: none; }
-
-.gu-transit {
-  opacity: 1; }
 
 .img-hidden {
   visibility: hidden !important; }
@@ -1534,6 +1540,15 @@ td.columns table, td.column table, th.columns table, th.column table {
 @media only screen and (max-width: 600px) {
   .app-wrapper {
     display: block; } }
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important; }
+
+.gu-unselectable .tooltipster-base {
+  display: none; }
+
+.gu-transit {
+  opacity: 1; }
+
 .page-wrapper {
   flex: 1;
   position: relative;
@@ -1621,7 +1636,7 @@ i.mce-i-delete-element:before {
   max-width: 30%;
   min-width: 300px;
   padding: 15px;
-  background: #eeeeee; }
+  background: #f3f3f3; }
 
 .inspector--heading-3 {
   margin-top: 20px;
