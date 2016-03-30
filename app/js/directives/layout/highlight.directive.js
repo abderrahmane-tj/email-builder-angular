@@ -24,6 +24,9 @@ emailApp.directive('highlight',['$compile','preventBubbling',function($compile,p
         highlighted.addClass('highlight--'+options.type);
 
         var elementData = $scope[options.name];
+        if(options.name === 'page'){
+            elementData = $scope.mainVM.page;
+        }
         var $page = $('.page');
         var knownNames = ['page','section','column','element'];
         var levelClasses = knownNames
@@ -44,7 +47,7 @@ emailApp.directive('highlight',['$compile','preventBubbling',function($compile,p
             // which corresponds to $scope.page. $scope.section, ...
             // the following condition checks if we are clicking on the currentElement
             // if so, we should uninspect it
-            if(elementData === $scope.currentElement){
+            if(elementData === $scope.mainVM.currentElement){
                 $scope.pageVM.assignElement(null);
             }else{
                 $scope.pageVM.assignElement(elementData);

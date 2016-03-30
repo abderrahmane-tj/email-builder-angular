@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" type="text/css" href="app/css/_layout.scss"/>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width">
@@ -16,12 +17,12 @@
 <div ng-cloak ng-app="emailApp" ng-controller="MainController as mainVM">
   <div class="app-wrapper">
     <page></page>
-    <inspector current-element="currentElement"></inspector>
+    <inspector></inspector>
   </div>
   <hr>
-  <button ng-click="resetData();">clear data</button>
+  <button ng-click="mainVM.resetData();">clear data</button>
   <h6>debug</h6>
-  <pre>{{currentElement|json}}</pre>
+  <pre>{{mainVM.currentElement|json}}</pre>
 </div>
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -31,6 +32,7 @@
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
 <script src="bower_components/angular-dragula/dist/angular-dragula.min.js"></script>
 <script src="bower_components/tooltipster/js/jquery.tooltipster.min.js"></script>
+<script src="bower_components/store-js/store.min.js"></script>
 
 <script src="app/js/main.js"></script>
 <script src="app/js/services.js"></script>

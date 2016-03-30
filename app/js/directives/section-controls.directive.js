@@ -11,7 +11,7 @@ emailApp.directive('sectionControls',['$compile','$templateRequest',function($co
     function controller($scope){
         $scope.removeElement = function ($event) {
             $event.preventDefault();
-            $scope.page.sections = $scope.page.sections.filter(function (item) {
+            $scope.mainVM.page.sections = $scope.mainVM.page.sections.filter(function (item) {
                 return $scope.section !== item
             });
         }

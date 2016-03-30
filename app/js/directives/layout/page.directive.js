@@ -4,11 +4,10 @@ emailApp.directive('page',function(){
         restrict: "E",
         replace: true,
         controllerAs: 'pageVM',
-        bindToController: true,
         controller: function($scope){
             var vm = this;
             vm.assignElement = function (element) {
-                $scope.currentElement = element;
+                $scope.mainVM.currentElement = element;
                 $scope.$apply();
             };
         },

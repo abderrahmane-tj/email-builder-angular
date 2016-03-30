@@ -1,23 +1,23 @@
 <div class="inspector resetable">
-  <div id="properties" ng-if="inspctVM.element">
+  <div id="properties" ng-if="mainVM.currentElement">
     <div id="layout-properties">
-      <background-property element="inspctVM.element"></background-property>
-      <border-property element-style="inspctVM.element.style"></border-property>
-      <margin-property element-style="inspctVM.element.style"></margin-property>
-      <padding-property element-style="inspctVM.element.style"></padding-property>
+      <background-property element="mainVM.currentElement"></background-property>
+      <border-property element-style="mainVM.currentElement.style"></border-property>
+      <margin-property element-style="mainVM.currentElement.style"></margin-property>
+      <padding-property element-style="mainVM.currentElement.style"></padding-property>
     </div>
-    <div ng-if="inspctVM.element.type==='img'" id="image-properties">
+    <div ng-if="mainVM.currentElement.type==='img'" id="image-properties">
       <h5>Image properties</h5>
       <p class="property image">
         <label>
-          Url <input type="text" ng-model="inspctVM.element.src">
+          Url <input type="text" ng-model="mainVM.currentElement.src">
         </label>
       </p>
     </div>
     <hr>
   </div>
 
-  <div id="add-elements">
+  <div id="add-elements" ng-if="mainVM.page.sections.length">
     <h3 class="inspector--heading-3">Add Elements</h3>
     <div class="new-elements"
         dragula="'elements-bag'"

@@ -10,14 +10,25 @@ emailApp.controller('MainController', [
     '$templateCache',
     'dragulaService',
     '$timeout',
+    '$interval',
     '$log',
     'repositionTooltip',
     MainController
 ]);
 
-function MainController($scope,localStorageService,$templateCache,dragulaService,$timeout,$log,repositionTooltip){
+function MainController(
+    $scope,
+    localStorageService,
+    $templateCache,
+    dragulaService,
+    $timeout,
+    $interval,
+    $log,
+    repositionTooltip
+){
+    var mainVM = this;
     $templateCache.removeAll();
-    var lastSaved = 0;
+    var timeoutWatch = null;
     var defaultPage = {
         "id": "page-123ashd",
         "type": "page",
@@ -98,48 +109,70 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
             }
         ]
     };
-    var page = localStorageService.get('page');
-    $scope.resetData = resetData;
-    $scope.currentElement = null;
+    var page = store.get('page');
+    mainVM.resetData = resetData;
+    mainVM.currentElement = null;
 
-    if(page === null){
-        localStorageService.set('page', defaultPage);
+    if(!page){
+        store.set('page', defaultPage);
         page = defaultPage;
     }
 
-    var unbind = localStorageService.bind($scope, 'page');
-
-    $scope.page = page;
-
-    dragulaService.options($scope, 'sections-bag', {
-        copy: function (el, source) {
-            return $(source).hasClass('new-section');
-        },
-        accepts: function (el, source) {
-            return !$(source).hasClass('new-section');
-        },
-        moves: function(el, source, handle, sibling){
-            return $(handle).is('.wrap-ink-container,.section-template-handle');
-        },
-        mirrorContainer: $('.email-builder-body')[0]
-    });
-    dragulaService.options($scope, 'elements-bag',{
-        copy: function (el, source) {
-            return $(source).hasClass('new-elements');
-        },
-        accepts: function(el, target, source, sibling){
-            return !$(target).hasClass('new-elements');
-        },
-        moves: function (el, source, handle, sibling) {
-            return !$(el).find('[contenteditable]').length;
-        },
-        mirrorContainer: $('.email-builder-body')[0]
-    });
+    mainVM.page = page;
+    $interval(function () {
+        $timeout.cancel(timeoutWatch);
+        save();
+    }, 10000);
+    var unbind = $scope.$watch('mainVM.page', syncData, true);
+    dragulaService.options($scope, 'sections-bag', sectionsBagConfig());
+    dragulaService.options($scope, 'elements-bag', elementsBagConfig());
     $scope.$on('elements-bag.drag', handleTooltipOnDrag);
+    $scope.$on('elements-bag.over', handleTooltipOnOver);
     $scope.$on('elements-bag.drop', handleTooltipOnDrop);
     $scope.$on('sections-bag.drop', handleTooltipOnDrop);
 
     ///////////////////
+    function save(){
+        store.set('page', mainVM.page);
+        mainVM.saving = true;
+        $timeout(function () {
+            mainVM.saving = false;
+        }, 2000);
+    }
+    function syncData() {
+        $timeout.cancel(timeoutWatch);
+        timeoutWatch = $timeout(function () {
+            save();
+        }, 2000);
+    }
+    function sectionsBagConfig(){
+        return {
+            copy: function (el, source) {
+                return $(source).hasClass('new-section');
+            },
+            accepts: function (el, source) {
+                return !$(source).hasClass('new-section');
+            },
+            moves: function(el, source, handle, sibling){
+                return $(handle).is('.wrap-ink-container,.section-template-handle');
+            },
+            mirrorContainer: $('.email-builder-body')[0]
+        };
+    }
+    function elementsBagConfig(){
+        return {
+            copy: function (el, source) {
+                return $(source).hasClass('new-elements');
+            },
+            accepts: function(el, target, source, sibling){
+                return !$(target).hasClass('new-elements');
+            },
+            moves: function (el, source, handle, sibling) {
+                return !$(el).find('[contenteditable]').length;
+            },
+            mirrorContainer: $('.email-builder-body')[0]
+        };
+    }
     function handleTooltipOnDrag(dragulaEvent,el,source){
         var $sections = $('.section');
         $('.column-cell',$sections).height(0);
@@ -155,6 +188,9 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
             var maxHeight = Math.max.apply(this,heights);
             columns.height(maxHeight);
         });
+    }
+    function handleTooltipOnOver(){
+        //console.log(arguments);
     }
     function handleTooltipOnDrop(dragulaEvent,el,target,source,sibling){
         $timeout(repositionTooltip);
@@ -182,7 +218,7 @@ function MainController($scope,localStorageService,$templateCache,dragulaService
     }
     function resetData() {
         unbind();
-        localStorageService.clearAll();
+        store.clear();
         $timeout(function () {
             window.location.reload(false);
         });
