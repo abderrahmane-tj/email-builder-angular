@@ -18,7 +18,7 @@ emailApp.directive('highlight',['$compile','preventBubbling',function($compile,p
             highlighted = element.closest('.element');
         }
         if(options.name === 'section'){
-            highlighted = element.find('.row:first');
+            //highlighted = element.find('.row:first');
         }
 
         highlighted.addClass('highlight--'+options.type);
