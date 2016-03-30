@@ -37,8 +37,6 @@ emailApp.directive('highlight',['$compile','preventBubbling',function($compile,p
                 return;
             }
 
-            console.log('click on highlight');
-
             $('.current-element')
                 .removeClass('current-element');
 
