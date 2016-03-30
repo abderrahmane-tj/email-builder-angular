@@ -57,7 +57,6 @@ emailApp.directive('elementControls',
             }
             var tooltipstered = $(this).is('.tooltipstered');
             if(tooltipstered){
-                console.log('clicked on tooltipstered');
                 //delete controllableData.tooltipstered;
                 destroyTooltip(element);
             }else{
@@ -74,7 +73,6 @@ emailApp.directive('elementControls',
         }
         function handleClickOnHighlight(event){
             //todo: check if we can OFF click on highlight, when relinking
-            console.log('click on highlight, from element controls');
             $('[highlight]').off('click', handleClickOnHighlight);
 
             if(element.is(this)){
@@ -85,11 +83,9 @@ emailApp.directive('elementControls',
         }
     }
     function destroyTooltip(element){
-        console.log('destroy tooltip');
         //event.stopPropagation();
         // if element that triggered this does not exist anymore
         if (!jQuery.contains(document, element[0])) {
-            console.log('element that triggered this does not exist anymore');
            return;
         }
         if(element.length && element.is('.tooltipstered')){
@@ -97,7 +93,6 @@ emailApp.directive('elementControls',
         }
     }
     function createTooltip(element, $scope){
-        console.log('create tooltip');
         element.tooltipster({
             content: $scope.controls,
             interactive: true,
