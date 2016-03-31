@@ -1,5 +1,11 @@
 var emailApp = angular.module('emailApp');
-emailApp.directive('highlight',['$compile','preventBubbling',function($compile,preventBubbling){
+emailApp.directive('highlight',[
+    '$compile',
+    'preventBubbling',
+    function(
+        $compile,
+        preventBubbling
+    ){
     return {
         restrict: "A",
         //require:"^page",
@@ -56,7 +62,8 @@ emailApp.directive('highlight',['$compile','preventBubbling',function($compile,p
         }
         element.bind('mouseenter', function(event) {
             $page.addClass('on-'+options.name);
-            $('.highlight--'+options.name).removeClass('highlight--'+options.name);
+            $('.highlight--'+options.name)
+                .removeClass('highlight--'+options.name);
             highlighted.addClass('highlight--'+options.name);
         });
         element.bind('mouseleave', function() {

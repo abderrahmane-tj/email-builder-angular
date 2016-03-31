@@ -1563,16 +1563,27 @@ td.columns table, td.column table, th.columns table, th.column table {
 
 .empty-column {
   background-color: lightgray;
-  position: relative; }
+  position: relative;
+  text-align: center;
+  padding: 0 !important; }
   .empty-column::before {
+    content: "Drag a new element here!";
     position: absolute;
-    top: 50%;
-    left: 50%;
-    content: "*"; }
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    line-height: 50px; }
+  .empty-column.large-4::before {
+    font-size: 14px; }
   .empty-column .column-cell-wrapper {
-    height: 20px; }
+    height: 50px; }
   .empty-column .column-cell {
-    width: 100%; }
+    width: 100%;
+    height: 0px;
+    z-index: 1;
+    position: relative; }
 
 .element:after {
   content: '';
@@ -1583,6 +1594,7 @@ td.columns table, td.column table, th.columns table, th.column table {
   min-height: 20px; }
 
 :not(.gu-unselectable) .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element) {
+  position: relative;
   box-shadow: 0 0 0 4px #3ae4e3;
   z-index: 10; }
 :not(.gu-unselectable) .on-section:not(.on-column):not(.on-element) .highlight--section {
@@ -1595,24 +1607,15 @@ td.columns table, td.column table, th.columns table, th.column table {
   z-index: 10; }
 :not(.gu-unselectable) .on-element .highlight--element {
   position: relative;
-  box-shadow: 0 0 0 4px #3ae4e3 inset;
+  box-shadow: 0 0 0 4px #3ae4e3;
   z-index: 10; }
   :not(.gu-unselectable) .on-element .highlight--element.img-element {
     box-shadow: 0 0 0 4px #3ae4e3; }
 
-.page.current-element {
-  position: relative;
-  box-shadow: 0 0 0 4px #e12de4;
-  z-index: 5; }
-
 .current-element {
   position: relative;
-  box-shadow: 0 0 0 4px #e12de4 inset;
-  z-index: 5; }
-  .current-element.img-element {
-    box-shadow: 0 0 0 4px #e12de4; }
-  .current-element.row {
-    box-shadow: 0 0 0 4px #e12de4; }
+  box-shadow: 0 0 0 4px #e12de4;
+  z-index: 10; }
 
 .element-control {
   color: white; }
@@ -1647,12 +1650,18 @@ i.mce-i-delete-element:before {
   margin-top: 10px;
   padding: 10px;
   display: inline-block; }
+  .gu-transit .template-handle {
+    background: #3ae4e3;
+    margin: 0;
+    display: block; }
 
 .template-wrapper {
   display: inline-block;
   margin-left: 10px; }
   .template-wrapper.gu-transit {
-    margin-left: 0; }
+    margin-left: 0;
+    display: block;
+    text-align: center; }
 
 .property {
   margin-bottom: 10px;

@@ -1,0 +1,43 @@
+$highlightShadow: 0 0 0 4px #3ae4e3;
+$currentShadow: 0 0 0 4px #e12de4;
+:not(.gu-unselectable){ // if we are dragging, none if this should apply
+  .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element){
+    position: relative;
+    box-shadow: $highlightShadow;
+    z-index: 10;
+  }
+  .on-section:not(.on-column):not(.on-element) .highlight--section{
+    position: relative;
+    box-shadow: $highlightShadow;
+    z-index: 10;
+  }
+  .on-column:not(.on-element) .highlight--column{
+    position: relative;
+    box-shadow: $highlightShadow;
+    z-index: 10;
+  }
+  .on-element .highlight--element {
+    position: relative;
+    box-shadow: $highlightShadow;
+    &.img-element{
+      box-shadow: $highlightShadow;
+    }
+    z-index: 10;
+  }
+}
+//.page.current-element{
+//  position: relative;
+//  box-shadow: $currentShadow;
+//  z-index: 10;
+//}
+.current-element{
+  position: relative;
+  box-shadow: $currentShadow;
+  //&.img-element{
+  //  box-shadow: $currentShadow;
+  //}
+  //&.row{
+  //  box-shadow: $currentShadow;
+  //}
+  z-index: 10;
+}

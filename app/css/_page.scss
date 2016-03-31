@@ -1,4 +1,3 @@
-
 // page inners
 
 .page-wrapper{
@@ -18,17 +17,29 @@
 .empty-column{
   background-color: lightgray;
   position: relative;
+  text-align: center;
+  padding: 0 !important;
   &::before{
+    content: "Drag a new element here!";
     position: absolute;
-    top: 50%;
-    left: 50%;
-    content: "*";
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    line-height: 50px;
+  }
+  &.large-4::before{
+      font-size: 14px;
   }
   .column-cell-wrapper {
-    height: 20px;
+    height: 50px;
   }
   .column-cell {
     width: 100%;
+    height: 0px;
+    z-index: 1;
+    position: relative;
   }
 }
 
@@ -54,54 +65,3 @@
 //    }
 //  }
 //}
-
-// highlighting system
-$highlightShadow: 0 0 0 4px #3ae4e3;
-$currentShadow: 0 0 0 4px #e12de4;
-:not(.gu-unselectable){ // if we are dragging, none if this should apply
-  .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element){
-    box-shadow: $highlightShadow;
-    z-index: 10;
-  }
-  .on-section:not(.on-column):not(.on-element) .highlight--section{
-    position: relative;
-    box-shadow: $highlightShadow;
-    z-index: 10;
-  }
-  .on-column:not(.on-element) .highlight--column{
-    position: relative;
-    box-shadow: $highlightShadow;
-    z-index: 10;
-  }
-  .on-element .highlight--element {
-    position: relative;
-    box-shadow: $highlightShadow inset;
-    &.img-element{
-      box-shadow: $highlightShadow;
-    }
-    z-index: 10;
-  }
-}
-.page.current-element{
-  position: relative;
-  box-shadow: $currentShadow;
-  z-index: 5;
-}
-.current-element{
-  position: relative;
-  box-shadow: $currentShadow inset;
-  &.img-element{
-    box-shadow: $currentShadow;
-  }
-  &.row{
-    box-shadow: $currentShadow;
-  }
-  z-index: 5;
-}
-
-
-// controls system
-.element-control{
-  color: white;
-}
-

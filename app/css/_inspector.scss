@@ -16,6 +16,11 @@
   margin-top: 10px;
   padding: 10px;
   display: inline-block;
+  .gu-transit &{
+    background: #3ae4e3;
+    margin: 0;
+    display: block;
+  }
 }
 
 .template-wrapper{
@@ -23,6 +28,8 @@
   margin-left: 10px;
   &.gu-transit{
     margin-left: 0;
+    display: block;
+    text-align: center;
   }
 }
 .property{

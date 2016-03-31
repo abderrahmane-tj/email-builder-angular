@@ -5,26 +5,13 @@ var emailApp = angular.module('emailApp', [
     angularDragula(angular)
 ]);
 emailApp.controller('MainController', [
-    '$scope',
-    'localStorageService',
-    '$templateCache',
-    'dragulaService',
-    '$timeout',
-    '$interval',
-    '$log',
+    '$scope', '$templateCache', 'dragulaService', '$timeout', '$interval',
     'repositionTooltip',
     MainController
 ]);
 
-function MainController(
-    $scope,
-    localStorageService,
-    $templateCache,
-    dragulaService,
-    $timeout,
-    $interval,
-    $log,
-    repositionTooltip
+function MainController($scope, $templateCache, dragulaService, $timeout,
+    $interval, repositionTooltip
 ){
     var mainVM = this;
     $templateCache.removeAll();
@@ -119,10 +106,11 @@ function MainController(
     }
 
     mainVM.page = page;
+    mainVM.dirty = true;
     $interval(function () {
         $timeout.cancel(timeoutWatch);
         save();
-    }, 30000);
+    }, 3000);
     var unbind = $scope.$watch('mainVM.page', syncData, true);
     dragulaService.options($scope, 'sections-bag', sectionsBagConfig());
     dragulaService.options($scope, 'elements-bag', elementsBagConfig());
@@ -133,7 +121,11 @@ function MainController(
 
     ///////////////////
     function save(){
+        if(!mainVM.dirty){
+            return;
+        }
         store.set('page', mainVM.page);
+        mainVM.dirty = false;
         mainVM.saving = true;
         $timeout(function () {
             mainVM.saving = false;
@@ -141,6 +133,7 @@ function MainController(
     }
     function syncData() {
         $timeout.cancel(timeoutWatch);
+        mainVM.dirty = true;
         timeoutWatch = $timeout(function () {
             save();
         }, 2000);
