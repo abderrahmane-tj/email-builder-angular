@@ -154,6 +154,7 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     }
     function elementsBagConfig(){
         return {
+            revertOnSpill: true,
             copy: function (el, source) {
                 return $(source).hasClass('new-elements');
             },
@@ -171,9 +172,9 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         $('.column-cell',$sections).height(0);
         $sections.each(function (i,section) {
            var columns = $(this).find('.column-cell');
-            if(!columns.length || columns.length === 1){
-                return;
-            }
+            //if(!columns.length || columns.length === 1){
+            //    return;
+            //}
             var heights = columns.map(function () {
                 return $(this).height();
             }).get();
