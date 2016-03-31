@@ -1601,10 +1601,32 @@ td.columns table, td.column table, th.columns table, th.column table {
   position: relative;
   box-shadow: 0 0 0 4px #3ae4e3;
   z-index: 10; }
+  :not(.gu-unselectable) .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element)::before {
+    content: "page";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    background: #3ae4e3;
+    color: #52677E;
+    padding: 4px 8px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px; }
 :not(.gu-unselectable) .on-section:not(.on-column):not(.on-element) .highlight--section {
   position: relative;
   box-shadow: 0 0 0 4px #3ae4e3;
   z-index: 10; }
+  :not(.gu-unselectable) .on-section:not(.on-column):not(.on-element) .highlight--section::before {
+    content: "section";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    background: #3ae4e3;
+    color: #52677E;
+    padding: 4px 8px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px; }
 :not(.gu-unselectable) .on-column:not(.on-element) .highlight--column {
   position: relative;
   box-shadow: 0 0 0 4px #3ae4e3;
