@@ -17,11 +17,11 @@
     <hr>
   </div>
 
-  <div id="add-elements" ng-if="mainVM.page.sections.length">
+  <div id="add-elements" ng-show="mainVM.page.sections.length">
     <h3 class="inspector--heading-3">Add Elements</h3>
     <div class="new-elements"
         dragula="'elements-bag'"
-        dragula-scope="$parent"
+        dragula-scope="mainVM.$scope"
         dragula-model='inspctVM.templates'
     >
       <div class="template-wrapper" ng-repeat="template in inspctVM.templates">
@@ -33,7 +33,7 @@
     <h3 class="inspector--heading-3">Add New Section</h3>
     <div class="new-section"
         dragula="'sections-bag'"
-        dragula-scope="$parent"
+        dragula-scope="mainVM.$scope"
         dragula-model='inspctVM.sectionTemplate'
     >
       <div class="template-wrapper" ng-repeat="template in inspctVM.sectionTemplate">
