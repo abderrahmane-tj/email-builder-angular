@@ -2,6 +2,7 @@
     dragula="'sections-bag'"
     dragula-model='mainVM.page.sections'
     dragula-scope="mainVM.$scope"
+    ng-class="{'empty-page': !mainVM.page.sections.length}"
 >
   <div class="wrap-ink-container section-element" highlight="{name:'section', type:'exactly'}"
       ng-repeat="section in mainVM.page.sections" element-controls section-controls

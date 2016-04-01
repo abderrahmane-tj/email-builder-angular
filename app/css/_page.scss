@@ -14,6 +14,21 @@
   min-height: 20px;
 }
 
+.empty-page{
+  height: 50px;
+  position: relative;
+  &::before {
+    content: "Drag a new section here";
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    line-height: 50px;
+  }
+}
+
 .wrap-ink-container{
   padding-right: 50px;
   padding-left: 50px;
@@ -24,7 +39,7 @@
   text-align: center;
   padding: 0 !important;
   &::before{
-    content: "Drag a new element here!";
+    content: "Drag a new element here";
     position: absolute;
     width: 100%;
     left: 0;

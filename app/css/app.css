@@ -1549,6 +1549,10 @@ td.columns table, td.column table, th.columns table, th.column table {
 .gu-transit {
   opacity: 1; }
 
+.debug {
+  height: 200px;
+  overflow-y: scroll; }
+
 .page-wrapper {
   flex: 1;
   position: relative;
@@ -1561,6 +1565,19 @@ td.columns table, td.column table, th.columns table, th.column table {
 .sections-wrapper {
   min-height: 20px; }
 
+.empty-page {
+  height: 50px;
+  position: relative; }
+  .empty-page::before {
+    content: "Drag a new section here";
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    line-height: 50px; }
+
 .wrap-ink-container {
   padding-right: 50px;
   padding-left: 50px; }
@@ -1571,7 +1588,7 @@ td.columns table, td.column table, th.columns table, th.column table {
   text-align: center;
   padding: 0 !important; }
   .empty-column::before {
-    content: "Drag a new element here!";
+    content: "Drag a new element here";
     position: absolute;
     width: 100%;
     left: 0;
@@ -1687,7 +1704,8 @@ i.mce-i-delete-element:before {
   .template-wrapper.gu-transit {
     margin-left: 0;
     display: block;
-    text-align: center; }
+    text-align: center;
+    position: relative; }
 
 .property {
   margin-bottom: 10px;
