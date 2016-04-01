@@ -6,7 +6,7 @@ $currentShadow: 0 0 0 $shadowWidth #e12de4;
 @mixin highlightBefore($content, $color, $secondaryColor, $width){
   content: $content;
   position: absolute;
-  top: -$width;
+  top: 100%;
   left: -$width;
   background: $color;
   color: $secondaryColor;
@@ -14,6 +14,8 @@ $currentShadow: 0 0 0 $shadowWidth #e12de4;
   height: 20px;
   line-height: 20px;
   font-size: 14px;
+  max-width: 100px;
+  z-index: 10;
 }
 :not(.gu-unselectable){ // if we are dragging, none if this should apply
   .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element){
@@ -36,9 +38,9 @@ $currentShadow: 0 0 0 $shadowWidth #e12de4;
     position: relative;
     box-shadow: $highlightShadow;
     z-index: 10;
-    //&::before{
-    //  @include highlightBefore('column', $highlightColor, $secondaryHighlightColor, $shadowWidth);
-    //}
+    &::before{
+      @include highlightBefore('column', $highlightColor, $secondaryHighlightColor, $shadowWidth);
+    }
   }
   .on-element .highlight--element {
     position: relative;
@@ -47,9 +49,9 @@ $currentShadow: 0 0 0 $shadowWidth #e12de4;
       box-shadow: $highlightShadow;
     }
     z-index: 10;
-    //&::before{
-    //  @include highlightBefore('element', $highlightColor, $secondaryHighlightColor, $shadowWidth);
-    //}
+    &::before{
+      @include highlightBefore('element', $highlightColor, $secondaryHighlightColor, $shadowWidth);
+    }
   }
 }
 //.page.current-element{
