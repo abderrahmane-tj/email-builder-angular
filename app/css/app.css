@@ -1513,7 +1513,7 @@ body.outlook p {
   padding-top: 16px;
   padding-bottom: 16px; }
 
-td.columns table, td.column table, th.columns table, th.column table {
+table.fixed-table {
   table-layout: fixed; }
 
 .toolbar {
