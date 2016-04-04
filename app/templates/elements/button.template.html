@@ -1,9 +1,21 @@
-<table class="button">
+<table class="button {{element.sizing}} {{element.coloring}}"
+    ng-class="{expanded: element.expanded}"
+>
   <tr>
     <td>
       <table>
         <tr>
-          <td><a href="{{element.url}}" button-handler>{{element.text}}</a></td>
+          <td>
+            <div ng-class="{'center-text':element.centered}">
+              <a
+                  href="{{element.url}}"
+                  button-handler
+                  element-editable="{'wrapper-tag':'a'}"
+                  ng-model="element.text"
+                  ng-bind-html="trustAsHtml(element.text)"
+              ></a>
+            </div>
+          </td>
         </tr>
       </table>
     </td>

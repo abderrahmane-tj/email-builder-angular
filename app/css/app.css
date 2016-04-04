@@ -1743,4 +1743,7 @@ i.mce-i-delete-element:before {
   .property .small-input {
     width: 30px; }
 
+.center-text {
+  text-align: center; }
+
 /*# sourceMappingURL=app.css.map */

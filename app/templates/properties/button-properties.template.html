@@ -1,0 +1,35 @@
+<div class="button-properties">
+  <h5>Button properties</h5>
+  <p class="property expanded">
+    <label>
+      Expanded <input type="checkbox" ng-model="element.expanded">
+    </label>
+  </p>
+  <p class="property centered" ng-if="element.expanded">
+    <label>
+      Centered <input type="checkbox" ng-model="element.centered">
+    </label>
+  </p>
+  <p class="property sizing">
+    <label>
+      Sizing
+      <select ng-model="element.sizing">
+        <option value="tiny">Tiny</option>
+        <option value="small">Small</option>
+        <option value="default" selected>Default</option>
+        <option value="large ">Large </option>
+      </select>
+    </label>
+  </p>
+  <p class="property coloring">
+    <label>
+      Coloring
+      <select ng-model="element.coloring">
+        <option value="warning" selected>Default</option>
+        <option value="secondary">Secondary</option>
+        <option value="success">Success</option>
+        <option value="alert ">Alert</option>
+      </select>
+    </label>
+  </p>
+</div>
