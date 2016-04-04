@@ -7,9 +7,10 @@ emailApp.directive('imageHandler',['$timeout',function($timeout){
         controller: controller
     };
     function link($scope, element, attrs, elementControls){
-        //element.addClass('img-hidden');
         var columns = { 1: 30, 2: 80, 3: 130, 4: 180, 5: 230, 6: 280, 7: 330, 8: 380, 9: 430, 10: 480, 11: 530, 12: 580};
         $scope.$watch('element.src', updateImage);
+        $scope.$watch('element.centered', watchCentered);
+        /////////////
         function updateImage(newVal) {
             if(!newVal.trim()){
                 element.attr('src', attrs.brokenSrc);
@@ -23,6 +24,13 @@ emailApp.directive('imageHandler',['$timeout',function($timeout){
             vImg.bind('load',load);
             vImg.bind('error',error);
             vImg.attr('src',newVal);
+        }
+        function watchCentered(val){
+            if(val === true){
+                attrs.$set('align','center');
+            }else{
+                element.removeAttr('align');
+            }
         }
         function error(){
             //cleanElement();

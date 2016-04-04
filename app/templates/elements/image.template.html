@@ -1,11 +1,10 @@
-<center>
+<div centerable="{{element.centered}}">
   <img
       element-controls image-controls
       image-handler="{{column['grid-width']}}"
       src=""
       broken-src="http://localhost/email-builder/app/img/broken.png"
       loading-src="http://localhost/email-builder/app/img/loading.png"
-      align="center"
-      class="float-center"
+      ng-class="{'float-center':element.centered}"
   >
-</center>
+</div>
