@@ -1,20 +1,13 @@
 <div class="inspector resetable">
   <div id="properties" ng-if="mainVM.currentElement">
-    <div id="layout-properties">
-      <background-property element="mainVM.currentElement"></background-property>
-      <border-property element-style="mainVM.currentElement.style"></border-property>
-      <margin-property element-style="mainVM.currentElement.style"></margin-property>
-      <padding-property element-style="mainVM.currentElement.style"></padding-property>
-    </div>
-    <div ng-if="mainVM.currentElement.type==='img'" id="image-properties">
-      <h5>Image properties</h5>
-      <p class="property image">
-        <label>
-          Url <input type="text" ng-model="mainVM.currentElement.src">
-        </label>
-      </p>
-    </div>
-    <hr>
+    <!--<div id="layout-properties">-->
+      <!--<background-property element="mainVM.currentElement"></background-property>-->
+      <!--<border-property element-style="mainVM.currentElement.style"></border-property>-->
+      <!--<margin-property element-style="mainVM.currentElement.style"></margin-property>-->
+      <!--<padding-property element-style="mainVM.currentElement.style"></padding-property>-->
+    <!--</div>-->
+    <image-properties ng-if="mainVM.currentElement.type==='img'" element="mainVM.currentElement"></image-properties>
+    <button-properties ng-if="mainVM.currentElement.type==='button'" element="mainVM.currentElement"></button-properties>
   </div>
 
   <div id="add-elements" ng-show="mainVM.page.sections.length">

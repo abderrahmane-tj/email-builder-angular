@@ -28,7 +28,11 @@ emailApp.directive('inspector',[function(){
                     "style": {},
                     "type": "button",
                     "text": "Button",
-                    "url": "#"
+                    "url": "#",
+                    "centered": false,
+                    "coloring": "warning",
+                    "sizing": "default",
+                    "expanded": false
                 }
             ];
             vm.sectionTemplate = [
