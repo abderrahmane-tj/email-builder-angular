@@ -38,7 +38,7 @@ emailApp.directive('pageElement',['$templateRequest','$compile','$timeout','repo
             var dict = {
                 'text':'app/templates/elements/text.template.html',
                 'img':'app/templates/elements/image.template.html',
-                'heading1':'app/templates/elements/heading1.template.html'
+                'button':'app/templates/elements/button.template.html'
             };
             return dict[type];
         }

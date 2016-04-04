@@ -26,8 +26,9 @@ emailApp.directive('inspector',[function(){
                 },
                 {
                     "style": {},
-                    "type": "heading1",
-                    "content": "Hello World"
+                    "type": "button",
+                    "text": "Button",
+                    "url": "#"
                 }
             ];
             vm.sectionTemplate = [
