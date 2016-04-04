@@ -3,14 +3,36 @@
   flex: 1;
   max-width: 30%;
   min-width: 300px;
-  padding: 15px;
+  padding: 0 15px;
   background: #f3f3f3;
+  .tabs{
+    @include reset-margin-padding-etc;
+    list-style: none;
+    overflow: hidden;
+    li{
+      float: left;
+      a{
+        text-transform: uppercase;
+        font-size: 12px;
+        display: inline-block;
+        padding: 10px;
+        background: lightgray;
+        box-shadow: darkgray 0 -1px 0 inset;
+        color: #0a0a0a;
+        &.active{
+          background: #f3f3f3;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+  h5{
+    margin-top: 20px;
+    font-size: 20px;
+  }
 }
 
-.inspector--heading-3{
-  margin-top: 20px;
-  font-size: 20px;
-}
+
 .template-handle{
   background-color: lightgray;
   margin-top: 10px;

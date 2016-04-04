@@ -56,6 +56,7 @@ emailApp.directive('highlight',[
             if(elementData === $scope.mainVM.currentElement){
                 $scope.pageVM.assignElement(null);
             }else{
+                $('#properties-anchor').trigger('click');
                 $scope.pageVM.assignElement(elementData);
                 highlighted.addClass('current-element');
             }

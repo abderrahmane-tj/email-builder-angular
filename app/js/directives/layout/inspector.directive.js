@@ -64,6 +64,27 @@ emailApp.directive('inspector',[function(){
                     ]
                 }
             ];
+            handleTabs();
+            ///////////
+            function handleTabs(){
+                var tabsContainer = $('.tabs');
+                var active = tabsContainer.find('.active');
+                var inspectorPanels = $('.inspector-panel');
+                activateTab(active);
+                var tabs = tabsContainer.find('a');
+                tabs.bind('click', onClick);
+
+                function onClick(event) {
+                    event.preventDefault();
+                    tabsContainer.find('.active').removeClass('active');
+                    activateTab($(this));
+                }
+                function activateTab(anchor){
+                    anchor.addClass('active');
+                    inspectorPanels.hide();
+                    $(anchor.attr('href')).show();
+                }
+            }
         },
         templateUrl: 'app/templates/inspector.template.html'
     }

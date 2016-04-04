@@ -1711,12 +1711,33 @@ i.mce-i-delete-element:before {
   flex: 1;
   max-width: 30%;
   min-width: 300px;
-  padding: 15px;
+  padding: 0 15px;
   background: #f3f3f3; }
-
-.inspector--heading-3 {
-  margin-top: 20px;
-  font-size: 20px; }
+  .inspector .tabs {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    list-style: none;
+    overflow: hidden; }
+    .inspector .tabs li {
+      float: left; }
+      .inspector .tabs li a {
+        text-transform: uppercase;
+        font-size: 12px;
+        display: inline-block;
+        padding: 10px;
+        background: lightgray;
+        box-shadow: darkgray 0 -1px 0 inset;
+        color: #0a0a0a; }
+        .inspector .tabs li a.active {
+          background: #f3f3f3;
+          box-shadow: none; }
+  .inspector h5 {
+    margin-top: 20px;
+    font-size: 20px; }
 
 .template-handle {
   background-color: lightgray;

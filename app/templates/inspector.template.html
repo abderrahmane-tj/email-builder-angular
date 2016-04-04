@@ -1,37 +1,52 @@
-<div class="inspector resetable">
-  <div id="properties" ng-if="mainVM.currentElement">
-    <!--<div id="layout-properties">-->
+<div class="inspector">
+  <div>
+    <ul class="tabs">
+      <li><a href="#structure" class="active">Structure</a></li>
+      <li><a href="#properties" id="properties-anchor">Properties</a></li>
+      <li><a href="#content">Content</a></li>
+    </ul>
+  </div>
+  <div id="structure" class="inspector-panel">
+    <div class="add-elements" ng-show="mainVM.page.sections.length">
+      <h5>Add Elements</h5>
+      <div class="new-elements"
+          dragula="'elements-bag'"
+          dragula-scope="mainVM.$scope"
+          dragula-model='inspctVM.templates'
+      >
+        <div class="template-wrapper" ng-repeat="template in inspctVM.templates">
+          <span class="template-handle">{{template.type}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="add-section">
+      <h5>Add New Section</h5>
+      <div class="new-section"
+          dragula="'sections-bag'"
+          dragula-scope="mainVM.$scope"
+          dragula-model='inspctVM.sectionTemplate'
+      >
+        <div class="template-wrapper" ng-repeat="template in inspctVM.sectionTemplate">
+          <span class="template-handle section-template-handle">{{template['template-name']}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="properties" class="inspector-panel">
+    <div ng-if="mainVM.currentElement">
+      <!--<div id="layout-properties">-->
       <!--<background-property element="mainVM.currentElement"></background-property>-->
       <!--<border-property element-style="mainVM.currentElement.style"></border-property>-->
       <!--<margin-property element-style="mainVM.currentElement.style"></margin-property>-->
       <!--<padding-property element-style="mainVM.currentElement.style"></padding-property>-->
-    <!--</div>-->
-    <image-properties ng-if="mainVM.currentElement.type==='img'" element="mainVM.currentElement"></image-properties>
-    <button-properties ng-if="mainVM.currentElement.type==='button'" element="mainVM.currentElement"></button-properties>
-  </div>
-
-  <div id="add-elements" ng-show="mainVM.page.sections.length">
-    <h3 class="inspector--heading-3">Add Elements</h3>
-    <div class="new-elements"
-        dragula="'elements-bag'"
-        dragula-scope="mainVM.$scope"
-        dragula-model='inspctVM.templates'
-    >
-      <div class="template-wrapper" ng-repeat="template in inspctVM.templates">
-        <span class="template-handle">{{template.type}}</span>
-      </div>
+      <!--</div>-->
+      <image-properties ng-if="mainVM.currentElement.type==='img'" element="mainVM.currentElement"></image-properties>
+      <button-properties ng-if="mainVM.currentElement.type==='button'" element="mainVM.currentElement"></button-properties>
     </div>
   </div>
-  <div id="add-section">
-    <h3 class="inspector--heading-3">Add New Section</h3>
-    <div class="new-section"
-        dragula="'sections-bag'"
-        dragula-scope="mainVM.$scope"
-        dragula-model='inspctVM.sectionTemplate'
-    >
-      <div class="template-wrapper" ng-repeat="template in inspctVM.sectionTemplate">
-        <span class="template-handle section-template-handle">{{template['template-name']}}</span>
-      </div>
-    </div>
+  <div id="content" class="inspector-panel">
+    <h5>import</h5>
+    <textarea name="" id="import-data" style="width: 100%;"></textarea>
+    <button ng-click="mainVM.importData();">Import DATA</button>
   </div>
 </div>

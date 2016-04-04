@@ -98,6 +98,7 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     };
     var page = store.get('page');
     mainVM.resetData = resetData;
+    mainVM.importData = importData;
     mainVM.currentElement = null;
     mainVM.localDev = ($window.location.hostname === 'localhost');
 
@@ -215,6 +216,15 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     function resetData() {
         unbind();
         store.clear();
+        $timeout(function () {
+            window.location.reload(false);
+        });
+    }
+    function importData(){
+        unbind();
+
+        store.set('page',JSON.parse($('#import-data').val()));
+
         $timeout(function () {
             window.location.reload(false);
         });
