@@ -6,12 +6,12 @@ var emailApp = angular.module('emailApp', [
 ]);
 emailApp.controller('MainController', [
     '$scope', '$templateCache', 'dragulaService', '$timeout', '$interval',
-    'repositionTooltip',
+    '$window', 'repositionTooltip',
     MainController
 ]);
 
 function MainController($scope, $templateCache, dragulaService, $timeout,
-    $interval, repositionTooltip
+    $interval, $window, repositionTooltip
 ){
     var mainVM = this;
     $templateCache.removeAll();
@@ -99,6 +99,8 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     var page = store.get('page');
     mainVM.resetData = resetData;
     mainVM.currentElement = null;
+    mainVM.localDev = ($window.location.hostname === 'localhost');
+
 
     if(!page){
         store.set('page', defaultPage);

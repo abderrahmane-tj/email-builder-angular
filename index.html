@@ -21,10 +21,12 @@
     <page></page>
     <inspector></inspector>
   </div>
-  <hr>
-  <button ng-click="mainVM.resetData();">clear data</button>
-  <h6>debug</h6>
-  <pre class="debug r">{{mainVM.currentElement|json}}</pre>
+  <div ng-if="mainVM.localDev">
+    <hr>
+    <button ng-click="mainVM.resetData();">clear data</button>
+    <h6>debug</h6>
+    <pre class="debug r">{{mainVM.currentElement|json}}</pre>
+  </div>
 </div>
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
