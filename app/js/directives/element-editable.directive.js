@@ -31,7 +31,7 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
         options['wrapper-tag'] = options['wrapper-tag'] || 'div';
         var randID = 'editable-'+(Math.random()*987654321|0);
         var editable = element.after(
-            '<'+options['wrapper-tag']+' id="'+randID+'">'+$scope.element.content+'</'+options['wrapper-tag']+'>'
+            '<'+options['wrapper-tag']+' id="'+randID+'">'+ngModel.$viewValue+'</'+options['wrapper-tag']+'>'
         ).next();
         editable.attr('highlight',"{name:'element', type:'exactly', toggleCurrent: 'false'}");
         editable.attr('ng-style',"element.style");
