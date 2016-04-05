@@ -1,5 +1,12 @@
+.app-body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .toolbar {
   height: 40px;
+  flex: none;
   .status{
     @include reset-margin-padding-etc;
     color: green;
@@ -9,8 +16,8 @@
     margin-left: 20px;
   }
 }
-
-.app-wrapper{
+.email-builder{
+  flex: 1;
   display: flex;
 }
 
@@ -20,7 +27,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .app-wrapper{
+  .app-body {
     display: block;
   }
 }
@@ -42,7 +49,7 @@
   //opacity:.5;
 }
 
-.debug{
+.debug pre{
   height: 200px;
   overflow-y: scroll;
 }

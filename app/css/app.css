@@ -1516,8 +1516,14 @@ body.outlook p {
 table.fixed-table {
   table-layout: fixed; }
 
+.app-body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; }
+
 .toolbar {
-  height: 40px; }
+  height: 40px;
+  flex: none; }
   .toolbar .status {
     margin: 0;
     padding: 0;
@@ -1531,14 +1537,15 @@ table.fixed-table {
     line-height: 40px;
     margin-left: 20px; }
 
-.app-wrapper {
+.email-builder {
+  flex: 1;
   display: flex; }
 
 .img-hidden {
   visibility: hidden !important; }
 
 @media only screen and (max-width: 600px) {
-  .app-wrapper {
+  .app-body {
     display: block; } }
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important; }
@@ -1549,14 +1556,15 @@ table.fixed-table {
 .gu-transit {
   opacity: 1; }
 
-.debug {
+.debug pre {
   height: 200px;
   overflow-y: scroll; }
 
-.page-wrapper {
+.page-flex {
   flex: 1;
   position: relative;
-  padding: 4px; }
+  padding: 4px;
+  overflow-y: scroll; }
 
 .page-inner {
   padding-top: 50px;
@@ -1712,7 +1720,8 @@ i.mce-i-delete-element:before {
   max-width: 30%;
   min-width: 300px;
   padding: 0 15px;
-  background: #f3f3f3; }
+  background: #f3f3f3;
+  overflow-y: scroll; }
   .inspector .tabs {
     margin: 0;
     padding: 0;

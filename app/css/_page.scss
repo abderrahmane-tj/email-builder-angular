@@ -1,9 +1,10 @@
 // page inners
 
-.page-wrapper{
+.page-flex {
   flex: 1;
   position: relative;
   padding: 4px;
+  overflow-y: scroll;
 }
 .page-inner{
   padding-top: 50px;

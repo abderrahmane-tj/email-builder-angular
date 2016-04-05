@@ -14,18 +14,14 @@
 <body>
 
 <div ng-cloak ng-app="emailApp" ng-controller="MainController as mainVM">
-  <div class="toolbar">
-    <p class="status" ng-if="mainVM.saving"><i class="fa fa-spinner fa-spin"></i> saving...</p>
-  </div>
-  <div class="app-wrapper">
-    <page></page>
-    <inspector></inspector>
-  </div>
-  <div ng-if="mainVM.localDev">
-    <hr>
-    <button ng-click="mainVM.resetData();">clear data</button>
-    <h6>debug</h6>
-    <pre class="debug r">{{mainVM.currentElement|json}}</pre>
+  <div class="app-body">
+    <div class="toolbar">
+      <p class="status" ng-if="mainVM.saving"><i class="fa fa-spinner fa-spin"></i> saving...</p>
+    </div>
+    <div class="email-builder">
+      <page></page>
+      <inspector></inspector>
+    </div>
   </div>
 </div>
 

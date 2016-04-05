@@ -5,6 +5,7 @@
   min-width: 300px;
   padding: 0 15px;
   background: #f3f3f3;
+  overflow-y: scroll;
   .tabs{
     @include reset-margin-padding-etc;
     list-style: none;

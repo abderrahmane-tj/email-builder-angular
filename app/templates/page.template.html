@@ -1,4 +1,4 @@
-<div class="page-wrapper">
+<div class="page-flex">
   <div class="page" highlight="{name:'page', type:'exactly'}"
       ng-style="mainVM.page.style"
       data-block-type="page"
@@ -14,5 +14,11 @@
         </tr>
       </table><!-- /email body -->
     </div>
+  </div>
+  <div class="debug" ng-if="mainVM.localDev">
+    <hr>
+    <button ng-click="mainVM.resetData();">clear data</button>
+    <h6>debug</h6>
+    <pre class="r">{{mainVM.currentElement|json}}</pre>
   </div>
 </div>
