@@ -7,8 +7,7 @@
   overflow-y: scroll;
 }
 .page-inner{
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding: 15px;
 }
 
 .sections-wrapper{
@@ -57,7 +56,7 @@
   }
   .column-cell {
     width: 100%;
-    height: 0px;
+    height: 0;
     z-index: 1;
     position: relative;
   }
