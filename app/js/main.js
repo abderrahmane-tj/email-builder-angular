@@ -14,8 +14,13 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     $interval, $window, repositionTooltip
 ){
     var mainVM = this;
-    $templateCache.removeAll();
-    var timeoutWatch = null;
+    mainVM.resetData = resetData;
+    mainVM.importData = importData;
+    mainVM.currentElement = null;
+    mainVM.localDev = ($window.location.hostname === 'localhost');
+    mainVM.dirty = true;
+    mainVM.page = null;
+
     var defaultPage = {
         "id": "page-123ashd",
         "type": "page",
@@ -96,33 +101,30 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
             }
         ]
     };
-    var page = store.get('page');
-    mainVM.resetData = resetData;
-    mainVM.importData = importData;
-    mainVM.currentElement = null;
-    mainVM.localDev = ($window.location.hostname === 'localhost');
+    var unbind = null; // variable used for watching mainVM.page
+    var timeoutWatch = null; // A Timeout used for syncing
 
-
-    if(!page){
-        store.set('page', defaultPage);
-        page = defaultPage;
-    }
-
-    mainVM.page = page;
-    mainVM.dirty = true;
-    $interval(function () {
-        $timeout.cancel(timeoutWatch);
-        save();
-    }, 3000);
-    var unbind = $scope.$watch('mainVM.page', syncData, true);
-    dragulaService.options($scope, 'sections-bag', sectionsBagConfig());
-    dragulaService.options($scope, 'elements-bag', elementsBagConfig());
-    $scope.$on('elements-bag.drag', handleTooltipOnDrag);
-    $scope.$on('elements-bag.over', handleTooltipOnOver);
-    $scope.$on('elements-bag.drop', handleTooltipOnDrop);
-    $scope.$on('sections-bag.drop', handleTooltipOnDrop);
+    handlePage();
+    handleDragAndDrop();
 
     ///////////////////
+    function handlePage(){
+        $templateCache.removeAll();
+        mainVM.page = initPage();
+        $interval(function () {
+            $timeout.cancel(timeoutWatch);
+            save();
+        }, 3000);
+        unbind = $scope.$watch('mainVM.page', syncData, true);
+    }
+    function initPage(){
+        var page = store.get('page');
+        if(!page){
+            store.set('page', defaultPage);
+            page = defaultPage;
+        }
+        return page;
+    }
     function save(){
         if(!mainVM.dirty){
             return;
@@ -140,6 +142,15 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         timeoutWatch = $timeout(function () {
             save();
         }, 2000);
+    }
+    function handleDragAndDrop(){
+        dragulaService.options($scope, 'sections-bag', sectionsBagConfig());
+        dragulaService.options($scope, 'elements-bag', elementsBagConfig());
+        $scope.$on('elements-bag.drag', handleTooltipOnDrag);
+        $scope.$on('elements-bag.over', handleTooltipOnOver);
+        $scope.$on('elements-bag.drop', handleTooltipOnDrop);
+        $scope.$on('sections-bag.drop', handleTooltipOnDrop);
+        handleAutoScroll();
     }
     function sectionsBagConfig(){
         return {
@@ -213,6 +224,27 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         }
 
     }
+    function handleAutoScroll(){
+        var elementsBag = null;
+        var sectionsBag = null;
+        $timeout(function () {
+            elementsBag = dragulaService.find($scope,"elements-bag");
+            sectionsBag = dragulaService.find($scope,"sections-bag");
+            var scroll = autoScroll([
+                document.querySelector('.autoscroll-me-please')
+            ],{
+                margin: 30,
+                pixels: 15,
+                scrollWhenOutside: true,
+                autoScroll: function(){
+                    return this.down && (
+                        elementsBag.drake.dragging
+                        || sectionsBag.drake.dragging
+                    );
+                }
+            });
+        });
+    }
     function resetData() {
         unbind();
         store.clear();
@@ -229,6 +261,5 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
             window.location.reload(false);
         });
     }
-
 }
 

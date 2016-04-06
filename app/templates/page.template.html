@@ -1,24 +1,26 @@
-<div class="page-flex">
-  <div class="page" highlight="{name:'page', type:'exactly'}"
-      ng-style="mainVM.page.style"
-      data-block-type="page"
-  >
-    <div class="page-inner email-builder-body">
-      <table class="body" data-made-with-foundation>
-        <tr>
-          <td class="center" align="center" valign="top">
-            <!-- email body -->
-            <center data-parsed ng-include="'app/templates/parts/sections.template.html'"></center>
-            <!-- /email body -->
-          </td>
-        </tr>
-      </table><!-- /email body -->
+<div class="page-flex autoscroll-me-please">
+  <div>
+    <div class="page" highlight="{name:'page', type:'exactly'}"
+        ng-style="mainVM.page.style"
+        data-block-type="page"
+    >
+      <div class="page-inner email-builder-body">
+        <table class="body" data-made-with-foundation>
+          <tr>
+            <td class="center" align="center" valign="top">
+              <!-- email body -->
+              <center data-parsed ng-include="'app/templates/parts/sections.template.html'"></center>
+              <!-- /email body -->
+            </td>
+          </tr>
+        </table><!-- /email body -->
+      </div>
     </div>
-  </div>
-  <div class="debug" ng-if="mainVM.localDev">
-    <hr>
-    <button ng-click="mainVM.resetData();">clear data</button>
-    <h6>debug</h6>
-    <pre class="r">{{mainVM.currentElement|json}}</pre>
+    <div class="debug" ng-if="mainVM.localDev">
+      <hr>
+      <button ng-click="mainVM.resetData();">clear data</button>
+      <h6>debug</h6>
+      <pre class="r">{{mainVM.currentElement|json}}</pre>
+    </div>
   </div>
 </div>
