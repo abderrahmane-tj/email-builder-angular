@@ -105,7 +105,6 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     var timeoutWatch = null; // A Timeout used for syncing
 
     handlePage();
-    handleDragAndDrop();
 
     ///////////////////
     function handlePage(){
@@ -116,6 +115,12 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
             save();
         }, 3000);
         unbind = $scope.$watch('mainVM.page', syncData, true);
+        // dragula does not seem to like $timeout
+        handleDragAndDrop();
+        $timeout(function () {
+            handleAutoScroll();
+            handlePageScroll();
+        });
     }
     function initPage(){
         var page = store.get('page');
@@ -146,11 +151,10 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     function handleDragAndDrop(){
         dragulaService.options($scope, 'sections-bag', sectionsBagConfig());
         dragulaService.options($scope, 'elements-bag', elementsBagConfig());
-        $scope.$on('elements-bag.drag', handleTooltipOnDrag);
-        $scope.$on('elements-bag.over', handleTooltipOnOver);
-        $scope.$on('elements-bag.drop', handleTooltipOnDrop);
-        $scope.$on('sections-bag.drop', handleTooltipOnDrop);
-        handleAutoScroll();
+        $scope.$on('elements-bag.drag', handleDrag);
+        $scope.$on('elements-bag.over', handleOver);
+        $scope.$on('elements-bag.drop', handleDrop);
+        $scope.$on('sections-bag.drop', handleDrop);
     }
     function sectionsBagConfig(){
         return {
@@ -167,9 +171,14 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         };
     }
     function elementsBagConfig(){
+        $timeout(function () {
+            var elementsBag = dragulaService.find($scope,"elements-bag");
+            console.log(elementsBag);
+        });
         return {
             revertOnSpill: true,
             copy: function (el, source) {
+                console.log($(source).hasClass('new-elements'));
                 return $(source).hasClass('new-elements');
             },
             accepts: function(el, target, source, sibling){
@@ -181,7 +190,7 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
             mirrorContainer: $('.email-builder-body')[0]
         };
     }
-    function handleTooltipOnDrag(dragulaEvent,el,source){
+    function handleDrag(dragulaEvent,el,source){
         var $sections = $('.section');
         $('.column-cell',$sections).height(0);
         $sections.each(function (i,section) {
@@ -197,10 +206,10 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
             columns.height(maxHeight);
         });
     }
-    function handleTooltipOnOver(){
+    function handleOver(){
         //console.log(arguments);
     }
-    function handleTooltipOnDrop(dragulaEvent,el,target,source,sibling){
+    function handleDrop(dragulaEvent,el,target,source,sibling){
         $timeout(repositionTooltip);
         $('.column-cell').height(0);
 
@@ -225,24 +234,36 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
 
     }
     function handleAutoScroll(){
-        var elementsBag = null;
-        var sectionsBag = null;
-        $timeout(function () {
-            elementsBag = dragulaService.find($scope,"elements-bag");
-            sectionsBag = dragulaService.find($scope,"sections-bag");
-            var scroll = autoScroll([
-                document.querySelector('.autoscroll-me-please')
-            ],{
-                margin: 30,
-                pixels: 15,
-                scrollWhenOutside: true,
-                autoScroll: function(){
-                    return this.down && (
+        var elementsBag = dragulaService.find($scope,"elements-bag");
+        var sectionsBag = dragulaService.find($scope,"sections-bag");
+        var scroll = autoScroll([
+            document.querySelector('.autoscroll-me-please')
+        ],{
+            margin: 30,
+            pixels: 15,
+            scrollWhenOutside: true,
+            autoScroll: function(){
+                return this.down && (
                         elementsBag.drake.dragging
                         || sectionsBag.drake.dragging
                     );
-                }
-            });
+            }
+        });
+
+    }
+    function handlePageScroll(){
+        var timeout = undefined;
+        $('.page-flex').bind('scroll',function(){
+            if(timeout){
+                $timeout.cancel(timeout);
+            }else{
+                $(document.body).addClass('no-tooltip');
+            }
+            timeout = $timeout(function () {
+                repositionTooltip();
+                $(document.body).removeClass('no-tooltip');
+                timeout = undefined;
+            },250);
         });
     }
     function resetData() {

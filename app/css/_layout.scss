@@ -39,7 +39,8 @@
   display: none !important;
 }
 
-.gu-unselectable .tooltipster-base{
+.gu-unselectable .tooltipster-base,
+.no-tooltip .tooltipster-base{
   display: none;
 }
 .gu-transit{

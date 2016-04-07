@@ -1550,7 +1550,8 @@ table.fixed-table {
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important; }
 
-.gu-unselectable .tooltipster-base {
+.gu-unselectable .tooltipster-base,
+.no-tooltip .tooltipster-base {
   display: none; }
 
 .gu-transit {
