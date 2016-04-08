@@ -22,7 +22,8 @@ emailApp.directive('inspector',[function(){
                 {
                     "style": {},
                     "type": "img",
-                    "src": "app/img/default.jpg"
+                    "src": "app/img/default.jpg",
+                    "alignment": "center"
                 },
                 {
                     "style": {},

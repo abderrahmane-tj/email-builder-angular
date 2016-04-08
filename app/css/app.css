@@ -1744,9 +1744,9 @@ i.mce-i-delete-element:before {
         .inspector .tabs li a.active {
           background: #f3f3f3;
           box-shadow: none; }
-  .inspector h5 {
-    margin-top: 20px;
-    font-size: 20px; }
+
+.add-section, .add-elements {
+  margin-top: 20px; }
 
 .template-handle {
   background-color: lightgray;

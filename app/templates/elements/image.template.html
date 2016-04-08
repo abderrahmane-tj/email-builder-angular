@@ -1,10 +1,8 @@
-<div centerable="{{element.centered}}">
-  <img
-      element-controls image-controls
-      image-handler="{{column['grid-width']}}"
-      src=""
-      broken-src="http://localhost/email-builder/app/img/broken.png"
-      loading-src="http://localhost/email-builder/app/img/loading.png"
-      ng-class="{'float-center':element.centered}"
-  >
-</div>
+<img
+    element-controls image-controls
+    image-handler="{{column['grid-width']}}"
+    src=""
+    broken-src="http://localhost/email-builder/app/img/broken.png"
+    loading-src="http://localhost/email-builder/app/img/loading.png"
+    ng-class="{ 'float-center': element.alignment == 'center', 'float-right': element.alignment == 'right', 'float-left': element.alignment == 'left' }"
+>

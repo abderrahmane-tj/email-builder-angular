@@ -1,13 +1,14 @@
 <div class="image-properties">
-  <h5>Image properties</h5>
-  <p class="property src">
+  <h4>Image properties</h4>
+  <div class="property src">
     <label>
       Url <input type="text" ng-model="element.src">
     </label>
-  </p>
-  <p class="property centered">
-    <label>
-      Centered <input type="checkbox" ng-model="element.centered">
-    </label>
-  </p>
+  </div>
+  <div class="property alignment">
+    <p>Alignment</p>
+    <label>Left <input type="radio" ng-model="element.alignment" name="alignment" value="left" checked></label>
+    <label>Center <input type="radio" ng-model="element.alignment" name="alignment" value="center"></label>
+    <label>Right <input type="radio" ng-model="element.alignment" name="alignment" value="right"></label>
+  </div>
 </div>

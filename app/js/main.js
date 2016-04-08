@@ -74,7 +74,8 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
                                 "type": "img",
                                 "src": "app/img/default.jpg",
                                 "height": 186.66666666666666,
-                                "width": 280
+                                "width": 280,
+                                "alignment": "center"
                             }
                         ]
                     }
