@@ -1,0 +1,24 @@
+<div class="add-elements" ng-show="mainVM.page.sections.length">
+  <h4>Add Elements</h4>
+  <div class="new-elements"
+      dragula="'elements-bag'"
+      dragula-scope="mainVM.$scope"
+      dragula-model='inspctVM.templates'
+  >
+    <div class="template-wrapper" ng-repeat="template in inspctVM.templates">
+      <span class="template-handle">{{template.type}}</span>
+    </div>
+  </div>
+</div>
+<div class="add-section">
+  <h4>Add New Section</h4>
+  <div class="new-section"
+      dragula="'sections-bag'"
+      dragula-scope="mainVM.$scope"
+      dragula-model='inspctVM.sectionTemplate'
+  >
+    <div class="template-wrapper" ng-repeat="template in inspctVM.sectionTemplate">
+      <span class="template-handle section-template-handle">{{template['template-name']}}</span>
+    </div>
+  </div>
+</div>

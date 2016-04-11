@@ -7,52 +7,12 @@
     </ul>
   </div>
   <div id="structure" class="inspector-panel">
-    <div class="add-elements" ng-show="mainVM.page.sections.length">
-      <h4>Add Elements</h4>
-      <div class="new-elements"
-          dragula="'elements-bag'"
-          dragula-scope="mainVM.$scope"
-          dragula-model='inspctVM.templates'
-      >
-        <div class="template-wrapper" ng-repeat="template in inspctVM.templates">
-          <span class="template-handle">{{template.type}}</span>
-        </div>
-      </div>
-    </div>
-    <div class="add-section">
-      <h4>Add New Section</h4>
-      <div class="new-section"
-          dragula="'sections-bag'"
-          dragula-scope="mainVM.$scope"
-          dragula-model='inspctVM.sectionTemplate'
-      >
-        <div class="template-wrapper" ng-repeat="template in inspctVM.sectionTemplate">
-          <span class="template-handle section-template-handle">{{template['template-name']}}</span>
-        </div>
-      </div>
-    </div>
+    <div ng-include="'app/templates/parts/structure.template.html'"></div>
   </div>
   <div id="properties" class="inspector-panel">
-    <div ng-if="mainVM.currentElement">
-      <!--<div id="layout-properties">-->
-      <!--<background-property element="mainVM.currentElement"></background-property>-->
-      <!--<border-property element-style="mainVM.currentElement.style"></border-property>-->
-      <!--<margin-property element-style="mainVM.currentElement.style"></margin-property>-->
-      <!--<padding-property element-style="mainVM.currentElement.style"></padding-property>-->
-      <!--</div>-->
-      <image-properties ng-if="mainVM.currentElement.type==='img'" element="mainVM.currentElement"></image-properties>
-      <button-properties ng-if="mainVM.currentElement.type==='button'" element="mainVM.currentElement"></button-properties>
-    </div>
+    <div ng-include="'app/templates/parts/properties.template.html'"></div>
   </div>
   <div id="content" class="inspector-panel">
-    <h5>Import data</h5>
-    <textarea id="import-data" style="width: 100%;"></textarea>
-    <button ng-click="mainVM.importData();">Import DATA</button>
-    <hr>
-    <h5>Data dump</h5>
-    <textarea id="data-dump" style="width: 100%;">{{mainVM.page | json}}</textarea>
-    <hr>
-    <h5>Reset data</h5>
-    <button ng-click="mainVM.resetData();">reset data</button>
+    <div ng-include="'app/templates/parts/content.template.html'"></div>
   </div>
 </div>

@@ -1,0 +1,4 @@
+<div ng-if="mainVM.currentElement">
+  <image-properties ng-if="mainVM.currentElement.type==='image'" element="mainVM.currentElement"></image-properties>
+  <button-properties ng-if="mainVM.currentElement.type==='button'" element="mainVM.currentElement"></button-properties>
+</div>

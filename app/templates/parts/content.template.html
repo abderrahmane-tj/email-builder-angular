@@ -1,0 +1,9 @@
+<h5>Import data</h5>
+<textarea id="import-data" class="debug-text-area"></textarea>
+<button ng-click="mainVM.importData();">Import DATA</button>
+<hr>
+<h5>Data dump</h5>
+<textarea id="data-dump" class="debug-text-area">{{mainVM.page | json}}</textarea>
+<hr>
+<h5>Reset data</h5>
+<button ng-click="mainVM.resetData();">reset data</button>
