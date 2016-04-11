@@ -71,7 +71,7 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
                         "elements": [
                             {
                                 "style": {},
-                                "type": "img",
+                                "type": "image",
                                 "src": "app/img/default.jpg",
                                 "height": 186.66666666666666,
                                 "width": 280,
@@ -172,10 +172,6 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         };
     }
     function elementsBagConfig(){
-        $timeout(function () {
-            var elementsBag = dragulaService.find($scope,"elements-bag");
-            console.log(elementsBag);
-        });
         return {
             revertOnSpill: true,
             copy: function (el, source) {

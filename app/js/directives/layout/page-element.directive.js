@@ -12,7 +12,7 @@ emailApp.directive('pageElement',['$templateRequest','$compile','$timeout','repo
         }
         $templateRequest(elementTemplate($scope.element.type))
             .then(buildPageElement)
-            .then(handleFreshElement);
+            .then(handlePostElementCompilation);
 
         /////////////////////////////////////////////
         function buildPageElement(html) {
@@ -26,21 +26,18 @@ emailApp.directive('pageElement',['$templateRequest','$compile','$timeout','repo
             $compile(template)($scope);
             //console.log($scope.element);
         }
-        // adding new elements to the page moves elements.
-        // some features may need manual repositionning
-        // like the tooltip
-        function handleFreshElement(){
+        function handlePostElementCompilation(){
+            // adding new elements to the page or dragging and dropping of elements
+            // outside its source container, triggers relinking of pageElement,
+            // some features may need manual reTriggering, like tooltip
+            // repositionning
+
             $timeout(function () {
                 repositionTooltip();
             });
         }
         function elementTemplate(type){
-            var dict = {
-                'text':'app/templates/elements/text.template.html',
-                'img':'app/templates/elements/image.template.html',
-                'button':'app/templates/elements/button.template.html'
-            };
-            return dict[type];
+            return 'app/templates/elements/'+type+'.template.html';
         }
     }
 }]);
