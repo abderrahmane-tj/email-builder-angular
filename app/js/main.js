@@ -167,7 +167,7 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
                 return !$(source).hasClass('new-section');
             },
             moves: function(el, source, handle, sibling){
-                return $(handle).is('.wrap-ink-container,.section-template-handle');
+                return $(handle).is('.container-wrapper,.section-template-handle');
             },
             mirrorContainer: $('.email-builder-body')[0]
         };

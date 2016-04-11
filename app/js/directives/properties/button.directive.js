@@ -3,8 +3,8 @@ emailApp.directive('buttonProperties',function(){
     return {
         restrict: "E",
         scope:{
-            element:'='
+            button:'=element'
         },
-        templateUrl: 'app/templates/properties/button-properties.template.html'
+        templateUrl: 'app/templates/properties/button.template.html'
     }
 });

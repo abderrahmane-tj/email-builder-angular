@@ -2,18 +2,18 @@
   <h5>Button properties</h5>
   <p class="property expanded">
     <label>
-      Expanded <input type="checkbox" ng-model="element.expanded">
+      Expanded <input type="checkbox" ng-model="button.expanded">
     </label>
   </p>
-  <p class="property centered" ng-if="element.expanded">
+  <p class="property centered" ng-if="button.expanded">
     <label>
-      Centered <input type="checkbox" ng-model="element.centered">
+      Centered <input type="checkbox" ng-model="button.centered">
     </label>
   </p>
   <p class="property sizing">
     <label>
       Sizing
-      <select ng-model="element.sizing">
+      <select ng-model="button.sizing">
         <option value="tiny">Tiny</option>
         <option value="small">Small</option>
         <option value="default" selected>Default</option>
@@ -24,7 +24,7 @@
   <p class="property coloring">
     <label>
       Coloring
-      <select ng-model="element.coloring">
+      <select ng-model="button.coloring">
         <option value="warning" selected>Default</option>
         <option value="secondary">Secondary</option>
         <option value="success">Success</option>

@@ -3,8 +3,8 @@ emailApp.directive('imageProperties',function(){
     return {
         restrict: "E",
         scope:{
-            element:'='
+            image:'=element'
         },
-        templateUrl: 'app/templates/properties/image-properties.template.html'
+        templateUrl: 'app/templates/properties/image.template.html'
     }
 });
