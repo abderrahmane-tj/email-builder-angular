@@ -1,8 +1,7 @@
 .inspector{
   @include reset-margin-padding-etc;
-  flex: 1;
-  max-width: 30%;
-  min-width: 300px;
+  flex: none;
+  width: 300px;
   padding: 0 15px;
   background: #f3f3f3;
   overflow-y: scroll;
@@ -61,4 +60,12 @@
   .small-input {
     width: 30px;
   }
+}
+
+///////// content tab
+.debug-text-area{
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  height: 100px;
 }
