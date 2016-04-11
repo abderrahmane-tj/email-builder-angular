@@ -16,6 +16,7 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     var mainVM = this;
     mainVM.resetData = resetData;
     mainVM.importData = importData;
+    mainVM.exportData = exportData;
     mainVM.currentElement = null;
     mainVM.localDev = ($window.location.hostname === 'localhost');
     mainVM.dirty = true;
@@ -278,6 +279,14 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         $timeout(function () {
             window.location.reload(false);
         });
+    }
+    function exportData(){
+        var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(mainVM.page));
+        var a = document.createElement('a');
+        a.href = 'data:' + data;
+        a.download = 'email-builder_data.json';
+        document.body.appendChild(a);
+        a.click();
     }
 }
 

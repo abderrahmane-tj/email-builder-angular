@@ -21,7 +21,7 @@ emailApp.directive('inspector',[function(){
                 },
                 {
                     "style": {},
-                    "type": "img",
+                    "type": "image",
                     "src": "app/img/default.jpg",
                     "alignment": "center"
                 },
@@ -66,6 +66,7 @@ emailApp.directive('inspector',[function(){
                 }
             ];
             handleTabs();
+            handleExport();
             ///////////
             function handleTabs(){
                 var tabsContainer = $('.tabs');
@@ -85,6 +86,19 @@ emailApp.directive('inspector',[function(){
                     inspectorPanels.hide();
                     $(anchor.attr('href')).show();
                 }
+            }
+            function handleExport(){
+                $("#data-dump").focus(function() {
+                    var $this = $(this);
+                    $this.select();
+
+                    // Work around Chrome's little problem
+                    $this.mouseup(function() {
+                        // Prevent further mouseup intervention
+                        $this.unbind("mouseup");
+                        return false;
+                    });
+                });
             }
         },
         templateUrl: 'app/templates/inspector.template.html'

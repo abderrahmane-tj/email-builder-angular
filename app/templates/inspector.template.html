@@ -45,8 +45,14 @@
     </div>
   </div>
   <div id="content" class="inspector-panel">
-    <h5>import</h5>
-    <textarea name="" id="import-data" style="width: 100%;"></textarea>
+    <h5>Import data</h5>
+    <textarea id="import-data" style="width: 100%;"></textarea>
     <button ng-click="mainVM.importData();">Import DATA</button>
+    <hr>
+    <h5>Data dump</h5>
+    <textarea id="data-dump" style="width: 100%;">{{mainVM.page | json}}</textarea>
+    <hr>
+    <h5>Reset data</h5>
+    <button ng-click="mainVM.resetData();">reset data</button>
   </div>
 </div>
