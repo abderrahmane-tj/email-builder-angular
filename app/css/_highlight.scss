@@ -18,7 +18,7 @@ $currentShadow: 0 0 0 $shadowWidth #e12de4;
   z-index: 10;
 }
 :not(.gu-unselectable){ // if we are dragging, none if this should apply
-  .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element){
+  .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element):not(.current-element){
     position: relative;
     box-shadow: $highlightShadow;
     z-index: 10;
@@ -26,7 +26,7 @@ $currentShadow: 0 0 0 $shadowWidth #e12de4;
       @include highlightBefore('page', $highlightColor, $secondaryHighlightColor, $shadowWidth);
     }
   }
-  .on-section:not(.on-column):not(.on-element) .highlight--section{
+  .on-section:not(.on-column):not(.on-element) .highlight--section:not(.current-element){
     position: relative;
     box-shadow: $highlightShadow;
     z-index: 10;
@@ -34,7 +34,7 @@ $currentShadow: 0 0 0 $shadowWidth #e12de4;
       @include highlightBefore('section', $highlightColor, $secondaryHighlightColor, $shadowWidth);
     }
   }
-  .on-column:not(.on-element) .highlight--column{
+  .on-column:not(.on-element) .highlight--column:not(.current-element){
     position: relative;
     box-shadow: $highlightShadow;
     z-index: 10;
@@ -42,7 +42,7 @@ $currentShadow: 0 0 0 $shadowWidth #e12de4;
       @include highlightBefore('column', $highlightColor, $secondaryHighlightColor, $shadowWidth);
     }
   }
-  .on-element .highlight--element {
+  .on-element .highlight--element:not(.current-element) {
     position: relative;
     box-shadow: $highlightShadow;
     &.img-element{
@@ -68,5 +68,5 @@ $currentShadow: 0 0 0 $shadowWidth #e12de4;
   //&.row{
   //  box-shadow: $currentShadow;
   //}
-  z-index: 10;
+  z-index: 11;
 }

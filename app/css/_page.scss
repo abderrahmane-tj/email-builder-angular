@@ -75,12 +75,38 @@
   min-height: 20px;
 }
 
-// max-width for images inside columns
-//$widths:(1: 30, 2: 80, 3: 130, 4: 180, 5: 230, 6: 280, 7: 330, 8: 380, 9: 430, 10: 480, 11: 530, 12: 580);
-//@each $i, $width in $widths {
-//  @media only screen and (min-width: 596px) {
-//    .large-#{$i} img {
-//      max-width: #{$width}px;
-//    }
-//  }
-//}
+
+.spacer{
+  position: relative;
+  height: 90px;
+}
+
+.resize-handle{
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  height: 30px;
+  background: black;
+  width: 80px;
+  display: none;
+  margin-left: -40px;
+  line-height: 30px;
+  color: white;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.spacer-element.current-element .resize-handle{
+  display: block;
+}
+.resizing-spacer *{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}

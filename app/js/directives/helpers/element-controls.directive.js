@@ -27,7 +27,7 @@ emailApp.directive('elementControls',
         var blockType = element.data('block-type');
         var controllableData = $scope[blockType];
         handleTooltip();
-        element.bind('click', handleClickOnContollable);
+        element.bind('click', handleClickOnControllable);
 
         //////////////////////////
         function handleTooltip(){
@@ -51,7 +51,7 @@ emailApp.directive('elementControls',
                 //}
             });
         }
-        function handleClickOnContollable(event){
+        function handleClickOnControllable(event){
             if(preventBubbling(blockType)){
                 return;
             }
