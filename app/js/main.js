@@ -176,14 +176,16 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         return {
             revertOnSpill: true,
             copy: function (el, source) {
-                console.log($(source).hasClass('new-elements'));
                 return $(source).hasClass('new-elements');
             },
             accepts: function(el, target, source, sibling){
                 return !$(target).hasClass('new-elements');
             },
             moves: function (el, source, handle, sibling) {
-                return !$(el).find('[contenteditable]').length;
+                var hasReasonsToDrag =
+                    !$(el).find('[contenteditable]').length
+                    && !$(handle).is('.resize-handle');
+                return hasReasonsToDrag;
             },
             mirrorContainer: $('.email-builder-body')[0]
         };
@@ -204,9 +206,7 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
             columns.height(maxHeight);
         });
     }
-    function handleOver(){
-        //console.log(arguments);
-    }
+    function handleOver(){ }
     function handleDrop(dragulaEvent,el,target,source,sibling){
         $timeout(repositionTooltip);
         $('.column-cell').height(0);
