@@ -8,7 +8,6 @@ emailApp.directive('highlight',[
     ){
     return {
         restrict: "A",
-        //require:"^page",
         scope:true,
         link: link
     };
@@ -46,8 +45,8 @@ emailApp.directive('highlight',[
 
             // option.name would be : page, section, column or element
             // which corresponds to $scope.page. $scope.section, ...
-            // the following condition checks if we are clicking on the currentElement
-            // if so, we should uninspect it
+            // the following condition checks if we are clicking on the
+            // currentElement. if so, we should uninspect it
             if(elementData === $scope.mainVM.currentElement){
                 $scope.pageVM.assignElement(null);
             }else{

@@ -31,31 +31,19 @@ emailServices.factory('dataservice', function () {
 });
 emailServices.filter('englishNumber', function() {
     return function(number) {
-        var englishNumber = ['zero','one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
+        var englishNumber = [
+            'zero','one', 'two', 'three', 'four', 'five', 'six',
+            'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'
+        ];
         return englishNumber[number];
     }
 });
-
 emailServices.filter('voodoo', ['$sce',function($sce) {
     return function(content) {
         console.log(content);
         return content;
     }
 }]);
-
-//emailServices.directive('compile',['$compile','$timeout',function($compile, $timeout){
-//    return{
-//        restrict:'A',
-//        link: function(scope,elem,attrs){
-//            $timeout(function(){
-//                console.log(elem.html());
-//                $compile(elem.contents())(scope);
-//            });
-//        }
-//
-//    }
-//}]);
-
 emailServices.factory('repositionTooltip', function () {
     return function(){
         var $tooltipster = $('.page .tooltipstered');
@@ -64,7 +52,6 @@ emailServices.factory('repositionTooltip', function () {
         }
     };
 });
-
 emailServices.factory('preventBubbling',function(){
     return function (blockName) {
         var $page = $('.page');
@@ -73,7 +60,6 @@ emailServices.factory('preventBubbling',function(){
             || (blockName === 'section' && $page.is('.on-column,.on-element'))
             || (blockName === 'column' && $page.is('.on-element'))
         );
-
         return !!doNotBubble;
     };
 });

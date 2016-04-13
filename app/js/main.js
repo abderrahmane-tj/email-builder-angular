@@ -94,8 +94,7 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
             },
             moves: function(el, source, handle, sibling){
                 return $(handle).is('.container-wrapper,.section-template-handle');
-            },
-            mirrorContainer: $('.email-builder-body')[0]
+            }
         };
     }
     function elementsBagConfig(){
@@ -112,8 +111,7 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
                     !$(el).find('[contenteditable]').length
                     && !$(handle).is('.resize-handle');
                 return hasReasonsToDrag;
-            },
-            mirrorContainer: $('.email-builder-body')[0]
+            }
         };
     }
     function handleDrag(dragulaEvent,el,source){
