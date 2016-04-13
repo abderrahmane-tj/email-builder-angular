@@ -1709,7 +1709,7 @@ table.fixed-table {
   position: relative;
   box-shadow: 0 0 0 4px #3ae4e3;
   z-index: 10; }
-  :not(.gu-unselectable) .on-element .highlight--element:not(.current-element).img-element {
+  :not(.gu-unselectable) .on-element .highlight--element:not(.current-element).image-element {
     box-shadow: 0 0 0 4px #3ae4e3; }
   :not(.gu-unselectable) .on-element .highlight--element:not(.current-element)::before {
     content: "element";

@@ -31,11 +31,13 @@ emailApp.directive('elementControls',
 
         //////////////////////////
         function handleTooltip(){
-            if(elementType === 'img') {
-                afterImgLoad(handleImageTooltip);
+            if(elementType === 'image') {
+                afterImgLoad(handleTooltipRecreation);
+            }else{
+                handleTooltipRecreation();
             }
         }
-        function handleImageTooltip() {
+        function handleTooltipRecreation() {
             repositionTooltip();
             if(controllableData.tooltipstered && !element.hasClass('tooltipstered')){
                 createTooltip(element,$scope);

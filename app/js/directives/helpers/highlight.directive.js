@@ -34,10 +34,6 @@ emailApp.directive('highlight',[
             elementData = $scope.mainVM.page;
         }
         var $page = $('.page');
-        var knownNames = ['page','section','column','element'];
-        var levelClasses = knownNames
-            .map(function(item){ return 'on-'+item; })
-            .join(' ');
         if(options.toggleClick){
             element.bind('click', onClick);
         }
@@ -45,7 +41,6 @@ emailApp.directive('highlight',[
             if(preventBubbling(options.name)){
                 return;
             }
-
             $('.current-element')
                 .removeClass('current-element');
 

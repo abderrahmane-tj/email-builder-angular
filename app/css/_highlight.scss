@@ -45,7 +45,7 @@ $currentShadow: 0 0 0 $shadowWidth #e12de4;
   .on-element .highlight--element:not(.current-element) {
     position: relative;
     box-shadow: $highlightShadow;
-    &.img-element{
+    &.image-element{
       box-shadow: $highlightShadow;
     }
     z-index: 10;
