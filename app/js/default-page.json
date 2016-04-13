@@ -1,0 +1,80 @@
+{
+  "type": "page",
+  "style": {
+    "background-color": ""
+  },
+  "sections": [
+    {
+      "template-name": "[100%]",
+      "style": {},
+      "type": "section",
+      "columns": [
+        {
+          "type": "column",
+          "grid-width": "12",
+          "style": {},
+          "elements": [
+            {
+              "style": {},
+              "type": "text",
+              "content": "<h1 style=\"text-align: center;\">Hello Joseph</h1>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "template-name": "[ 50% | 50% ]",
+      "style": {},
+      "type": "section",
+      "columns": [
+        {
+          "type": "column",
+          "grid-width": "6",
+          "style": {},
+          "elements": [
+            {
+              "style": {},
+              "type": "text",
+              "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ante nec velit molestie commodo. Vivamus quis suscipit dui. Etiam quis laoreet enim. Praesent ornare aliquam dolor ut scelerisque. Aliquam varius tincidunt eros vel ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec nec consectetur leo, vitae dictum leo. Cras semper nisi eget auctor blandit. Cras mattis risus et libero mollis, sit amet mollis ex placerat. Proin nibh velit, ornare sit amet elit nec, tempor cursus turpis.</p>"
+            }
+          ]
+        },
+        {
+          "type": "column",
+          "grid-width": "6",
+          "style": {},
+          "elements": [
+            {
+              "style": {},
+              "type": "image",
+              "src": "app/img/default.jpg",
+              "height": 186.66666666666666,
+              "width": 280,
+              "alignment": "center"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "template-name": "[100%]",
+      "style": {},
+      "type": "section",
+      "columns": [
+        {
+          "type": "column",
+          "grid-width": "12",
+          "style": {},
+          "elements": [
+            {
+              "style": {},
+              "type": "text",
+              "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ante nec velit molestie commodo. Vivamus quis suscipit dui.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

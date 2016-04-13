@@ -6,12 +6,12 @@ var emailApp = angular.module('emailApp', [
 ]);
 emailApp.controller('MainController', [
     '$scope', '$templateCache', 'dragulaService', '$timeout', '$interval',
-    '$window', 'repositionTooltip',
+    '$window', 'repositionTooltip', '$http',
     MainController
 ]);
 
 function MainController($scope, $templateCache, dragulaService, $timeout,
-    $interval, $window, repositionTooltip
+    $interval, $window, repositionTooltip, $http
 ){
     var mainVM = this;
     mainVM.resetData = resetData;
@@ -22,87 +22,6 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     mainVM.dirty = true;
     mainVM.page = null;
 
-    var defaultPage = {
-        "id": "page-123ashd",
-        "type": "page",
-        "style": {
-            "background-color": ""
-        },
-        "sections": [
-            {
-                "template-name": "[100%]",
-                "style": {},
-                "type": "section",
-                "columns": [
-                    {
-                        "type": "column",
-                        "grid-width": "12",
-                        "style": {},
-                        "elements": [
-                            {
-                                "style": {},
-                                "type": "text",
-                                "content": "<h1 style=\"text-align: center;\">Hello Joseph</h1>"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "template-name": "[ 50% | 50% ]",
-                "style": {},
-                "type": "section",
-                "columns": [
-                    {
-                        "type": "column",
-                        "grid-width": "6",
-                        "style": {},
-                        "elements": [
-                            {
-                                "style": {},
-                                "type": "text",
-                                "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ante nec velit molestie commodo. Vivamus quis suscipit dui. Etiam quis laoreet enim. Praesent ornare aliquam dolor ut scelerisque. Aliquam varius tincidunt eros vel ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec nec consectetur leo, vitae dictum leo. Cras semper nisi eget auctor blandit. Cras mattis risus et libero mollis, sit amet mollis ex placerat. Proin nibh velit, ornare sit amet elit nec, tempor cursus turpis.</p>"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "column",
-                        "grid-width": "6",
-                        "style": {},
-                        "elements": [
-                            {
-                                "style": {},
-                                "type": "image",
-                                "src": "app/img/default.jpg",
-                                "height": 186.66666666666666,
-                                "width": 280,
-                                "alignment": "center"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "template-name": "[100%]",
-                "style": {},
-                "type": "section",
-                "columns": [
-                    {
-                        "type": "column",
-                        "grid-width": "12",
-                        "style": {},
-                        "elements": [
-                            {
-                                "style": {},
-                                "type": "text",
-                                "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ante nec velit molestie commodo. Vivamus quis suscipit dui.</p>"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    };
     var unbind = null; // variable used for watching mainVM.page
     var timeoutWatch = null; // A Timeout used for syncing
 
@@ -111,20 +30,27 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     ///////////////////
     function handlePage(){
         $templateCache.removeAll();
-        mainVM.page = initPage();
-        $interval(function () {
-            $timeout.cancel(timeoutWatch);
-            save();
-        }, 3000);
-        unbind = $scope.$watch('mainVM.page', syncData, true);
-        // dragula does not seem to like $timeout
-        handleDragAndDrop();
-        $timeout(function () {
-            handleAutoScroll();
-            handlePageScroll();
+        $http.get('app/js/default-page.json').then(function (response) {
+            // fill page with default content or previous version
+            mainVM.page = initPage(response.data);
+
+            // save page automatically ever 3 seconds
+            $interval(function () {
+                $timeout.cancel(timeoutWatch);
+                save();
+            }, 3000);
+
+            // watch page for changes
+            unbind = $scope.$watch('mainVM.page', syncData, true);
+
+            handleDragAndDrop();
+            $timeout(function () {
+                handleAutoScroll();
+                handlePageScroll();
+            });
         });
     }
-    function initPage(){
+    function initPage(defaultPage){
         var page = store.get('page');
         if(!page){
             store.set('page', defaultPage);
