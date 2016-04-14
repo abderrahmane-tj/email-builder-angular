@@ -1,77 +1,18 @@
 var emailApp = angular.module('emailApp');
-emailApp.directive('inspector',[function(){
+emailApp.directive('inspector',['$timeout',function($timeout){
     return {
         restrict: "E",
         replace: true,
         controllerAs: 'inspctVM',
         bindToController: true,
         scope:true,
-        //scope:{
-        //    element: '=currentElement'
-        //},
-        link:function($scope,element,attrs){
-        },
+        link:function($scope,element,attrs){ },
         controller:function($scope){
             var vm = this;
-            vm.templates = [
-                {
-                    "style": {},
-                    "type": "text",
-                    "content": "<p>Edit me :-)</p>"
-                },
-                {
-                    "style": {},
-                    "type": "image",
-                    "src": "app/img/default.jpg",
-                    "alignment": "center"
-                },
-                {
-                    "style": {},
-                    "type": "button",
-                    "text": "Button",
-                    "url": "#",
-                    "centered": false,
-                    "coloring": "warning",
-                    "sizing": "default",
-                    "expanded": false
-                },
-                {
-                    "style": {},
-                    "type": "spacer",
-                    "height": 200
-                }
-            ];
-            vm.sectionTemplate = [
-                { "template-name": '[100%]',"style": {}, "type": "section", columns: [{ "type": "column", "grid-width": "12", "style": {}, "elements": []}]},
-                { "template-name": '[ 50% | 50% ]',
-                    "style": {}, "type": "section",
-                    columns: [
-                        { "type": "column", "grid-width": "6", "style": {}, "elements": []},
-                        { "type": "column", "grid-width": "6", "style": {}, "elements": []}
-                    ]
-                },{ "template-name": '[ 33% | 33% | 33% ]',
-                    "style": {}, "type": "section",
-                    columns: [
-                        { "type": "column", "grid-width": "4", "style": {}, "elements": []},
-                        { "type": "column", "grid-width": "4", "style": {}, "elements": []},
-                        { "type": "column", "grid-width": "4", "style": {}, "elements": []}
-                    ]
-                },{ "template-name": '[ 33% | 60% ]',
-                    "style": {}, "type": "section",
-                    columns: [
-                        { "type": "column", "grid-width": "4", "style": {}, "elements": []},
-                        { "type": "column", "grid-width": "8", "style": {}, "elements": []}
-                    ]
-                },{ "template-name": '[ 60% | 30% ]',
-                    "style": {}, "type": "section",
-                    columns: [
-                        { "type": "column", "grid-width": "8", "style": {}, "elements": []},
-                        { "type": "column", "grid-width": "4", "style": {}, "elements": []}
-                    ]
-                }
-            ];
-            handleTabs();
-            handleExport();
+            $timeout(function () {
+                handleTabs();
+                handleExport();
+            });
             ///////////
             function handleTabs(){
                 var tabsContainer = $('.tabs');
@@ -93,7 +34,9 @@ emailApp.directive('inspector',[function(){
                 }
             }
             function handleExport(){
-                $("#data-dump").focus(function() {
+                console.log('handle export');
+                $("#data-dump").on('focus',function() {
+                    console.log('focused');
                     var $this = $(this);
                     $this.select();
 

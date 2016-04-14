@@ -6,21 +6,23 @@ var emailApp = angular.module('emailApp', [
 ]);
 emailApp.controller('MainController', [
     '$scope', '$templateCache', 'dragulaService', '$timeout', '$interval',
-    '$window', 'repositionTooltip', '$http',
+    '$window', 'repositionTooltip', '$http','$q',
     MainController
 ]);
 
 function MainController($scope, $templateCache, dragulaService, $timeout,
-    $interval, $window, repositionTooltip, $http
+    $interval, $window, repositionTooltip, $http, $q
 ){
     var mainVM = this;
     mainVM.resetData = resetData;
     mainVM.importData = importData;
     mainVM.exportData = exportData;
+    mainVM.page = null;
     mainVM.currentElement = null;
+    mainVM.sectionsTemplates = null;
+    mainVM.elementsTemplates = null;
     mainVM.localDev = ($window.location.hostname === 'localhost');
     mainVM.dirty = true;
-    mainVM.page = null;
 
     var unbind = null; // variable used for watching mainVM.page
     var timeoutWatch = null; // A Timeout used for syncing
@@ -30,9 +32,13 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     ///////////////////
     function handlePage(){
         $templateCache.removeAll();
-        $http.get('app/js/default-page.json').then(function (response) {
+        getData().then(function (response) {
+            var defaultPage = response[0].data;
+            mainVM.sectionsTemplates = response[1].data;
+            mainVM.elementsTemplates = response[2].data;
+
             // fill page with default content or previous version
-            mainVM.page = initPage(response.data);
+            mainVM.page = initPage(defaultPage);
 
             // save page automatically ever 3 seconds
             $interval(function () {
@@ -49,6 +55,13 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
                 handlePageScroll();
             });
         });
+    }
+    function getData(){
+        return $q.all([
+            $http.get('app/js/data/default-page.json',{cache:false}),
+            $http.get('app/js/data/sections-templates.json',{cache:false}),
+            $http.get('app/js/data/elements-templates.json',{cache:false})
+        ]);
     }
     function initPage(defaultPage){
         var page = store.get('page');
@@ -147,7 +160,6 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
             !$source.is(target) // linking occurs only when dropping outside of local bag
             && !$source.is('.new-elements,.new-section') // we do not want to do this to new elements
             && $element.is('.tooltipstered'); // only recrate tooltip, if existed before dragging
-        console.log('shouldRecreateTooltip : '+shouldRecreateTooltip);
         if(shouldRecreateTooltip){
             $scope.$apply(function () {
                 $element.scope().element.tooltipstered = true;

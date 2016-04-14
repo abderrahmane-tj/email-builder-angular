@@ -1,0 +1,32 @@
+[
+  {
+    "style": {},
+    "type": "text",
+    "content": "<p>Edit me :-)</p>"
+  },
+  {
+    "style": {},
+    "type": "image",
+    "src": "app/img/default.jpg",
+    "alignment": "center"
+  },
+  {
+    "style": {},
+    "type": "button",
+    "text": "Button",
+    "url": "#",
+    "centered": false,
+    "coloring": "warning",
+    "sizing": "default",
+    "expanded": false
+  },
+  {
+    "style": {},
+    "type": "spacer",
+    "height": 200
+  },
+  {
+    "style": {},
+    "type": "divider"
+  }
+]
