@@ -5,11 +5,12 @@
       Expanded <input type="checkbox" ng-model="button.expanded">
     </label>
   </p>
-  <p class="property centered" ng-if="button.expanded">
-    <label>
-      Centered <input type="checkbox" ng-model="button.centered">
-    </label>
-  </p>
+  <div class="property alignment" ng-if="button.expanded">
+    <p>Alignment</p>
+    <label>Left <input type="radio" ng-model="button.alignment" name="alignment" value="left"></label>
+    <label>Center <input type="radio" ng-model="button.alignment" name="alignment" value="center" checked></label>
+    <label>Right <input type="radio" ng-model="button.alignment" name="alignment" value="right"></label>
+  </div>
   <p class="property sizing">
     <label>
       Sizing

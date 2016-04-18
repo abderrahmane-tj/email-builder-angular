@@ -6,8 +6,8 @@
       <table>
         <tr>
           <td>
-            <div ng-class="{'center-text':element.centered}">
-              <a
+            <div>
+              <a ng-class="{'text-align-center':element.alignment==='center','text-align-left':element.alignment==='left','text-align-right':element.alignment==='right'}"
                   href="{{element.url}}"
                   button-handler
                   element-editable="{'wrapper-tag':'a'}"

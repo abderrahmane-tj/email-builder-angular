@@ -35,6 +35,7 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
         ).next();
         editable.attr('highlight',"{name:'element', type:'exactly', toggleCurrent: 'false'}");
         editable.attr('ng-style',"element.style");
+        editable.attr('ng-class',element.attr('ng-class'));
         editable.addClass('editing text-wrapper');
         editable.on('click', function (event) {
            event.stopImmediatePropagation();

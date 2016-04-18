@@ -15,7 +15,7 @@
     "type": "button",
     "text": "Button",
     "url": "#",
-    "centered": false,
+    "alignment": "center",
     "coloring": "warning",
     "sizing": "default",
     "expanded": false
@@ -23,7 +23,7 @@
   {
     "style": {},
     "type": "spacer",
-    "height": 200
+    "height": 20
   },
   {
     "style": {},
