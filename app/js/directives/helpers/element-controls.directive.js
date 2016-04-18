@@ -95,11 +95,13 @@ emailApp.directive('elementControls',
         }
     }
     function createTooltip(element, $scope){
-        element.tooltipster({
-            content: $scope.controls,
-            interactive: true,
-            autoClose: false,
-            restoration: 'none'
-        }).tooltipster('show');
+        $timeout(function () {
+            element.tooltipster({
+                content: $scope.controls,
+                interactive: true,
+                autoClose: false,
+                restoration: 'none'
+            }).tooltipster('show');
+        });
     }
 }]);

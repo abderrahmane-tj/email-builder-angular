@@ -34,7 +34,6 @@ emailApp.directive('inspector',['$timeout',function($timeout){
                 }
             }
             function handleExport(){
-                console.log('handle export');
                 $("#data-dump").on('focus',function() {
                     console.log('focused');
                     var $this = $(this);
