@@ -15,13 +15,13 @@ body {
 
 .ExternalClass {
   width: 100%; }
-  .ExternalClass,
-  .ExternalClass p,
-  .ExternalClass span,
-  .ExternalClass font,
-  .ExternalClass td,
-  .ExternalClass div {
-    line-height: 100%; }
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass span,
+.ExternalClass font,
+.ExternalClass td,
+.ExternalClass div {
+  line-height: 100%; }
 
 #backgroundTable {
   margin: 0;
@@ -61,7 +61,7 @@ td {
   hyphens: auto;
   border-collapse: collapse !important; }
 
-table, tr, td {
+table, tr, td, th{
   padding: 0;
   vertical-align: top;
   text-align: left; }
