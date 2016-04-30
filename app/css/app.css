@@ -10,7 +10,10 @@ time, mark, audio, video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
 
 /*
   div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
@@ -27,7 +30,10 @@ time, mark, audio, video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
 
 /*
   // HTML5 display-role reset for older browsers
@@ -1540,6 +1546,9 @@ table.button table td a {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
     color: green;
     height: 40px;
     font-size: 20px;
@@ -1757,9 +1766,11 @@ i.mce-i-delete-element:before {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   flex: none;
   width: 300px;
-  padding: 0 15px;
   background: #f3f3f3;
   overflow-y: scroll; }
   .inspector .tabs {
@@ -1769,6 +1780,9 @@ i.mce-i-delete-element:before {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
     list-style: none;
     overflow: hidden; }
     .inspector .tabs li {
@@ -1785,27 +1799,36 @@ i.mce-i-delete-element:before {
           background: #f3f3f3;
           box-shadow: none; }
 
+.inspector-panel {
+  padding: 0 15px; }
+
 .add-section, .add-elements {
   margin-top: 20px; }
 
+.new-elements {
+  clear: both;
+  overflow: hidden; }
+
 .template-handle {
+  text-align: center;
   background-color: lightgray;
-  margin-top: 10px;
-  padding: 10px;
-  display: inline-block; }
+  padding: 5px; }
   .gu-transit .template-handle {
     background: #3ae4e3;
     margin: 0;
     display: block; }
+  .gu-transit .template-handle .icon {
+    display: none; }
 
-.template-wrapper {
-  display: inline-block;
-  margin-left: 10px; }
-  .template-wrapper.gu-transit {
-    margin-left: 0;
-    display: block;
-    text-align: center;
-    position: relative; }
+.new-elements .template-wrapper {
+  float: left;
+  width: 33.33%;
+  padding: 3px; }
+.template-wrapper.gu-transit {
+  margin-left: 0;
+  display: block;
+  text-align: center;
+  position: relative; }
 
 .property {
   margin-bottom: 10px;
@@ -1820,7 +1843,7 @@ i.mce-i-delete-element:before {
   height: 100px; }
 
 .text-align-center {
-  text-align: center; }
+  text-align: center !important; }
 
 .text-align-left {
   text-align: left !important; }

@@ -9,7 +9,7 @@ emailApp.directive('imageHandler',['$timeout',function($timeout){
     function link($scope, element, attrs, elementControls){
         var columns = { 1: 30, 2: 80, 3: 130, 4: 180, 5: 230, 6: 280, 7: 330, 8: 380, 9: 430, 10: 480, 11: 530, 12: 580};
         $scope.$watch('element.src', updateImage);
-        $scope.$watch('element.centered', watchCentered);
+        $scope.$watch('element.centered', watchCentered); //todo: decide if we need this watcher
         /////////////
         function updateImage(newVal) {
             if(!newVal.trim()){

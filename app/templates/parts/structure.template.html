@@ -6,7 +6,10 @@
       dragula-model='mainVM.elementsTemplates'
   >
     <div class="template-wrapper" ng-repeat="template in mainVM.elementsTemplates">
-      <span class="template-handle">{{template.type}}</span>
+      <div class="template-handle">
+        <div class="icon"><img src="app/img/{{template.type}}.png" alt="{{template.type}}"></div>
+        <div>{{template.type}}</div>
+      </div>
     </div>
   </div>
 </div>
@@ -18,7 +21,7 @@
       dragula-model='mainVM.sectionsTemplates'
   >
     <div class="template-wrapper" ng-repeat="template in mainVM.sectionsTemplates">
-      <span class="template-handle section-template-handle">{{template['template-name']}}</span>
+      <div class="template-handle section-template-handle">{{template['template-name']}}</div>
     </div>
   </div>
 </div>

@@ -1,8 +1,8 @@
 .inspector{
   @include reset-margin-padding-etc;
+
   flex: none;
   width: 300px;
-  padding: 0 15px;
   background: #f3f3f3;
   overflow-y: scroll;
   .tabs{
@@ -27,26 +27,38 @@
     }
   }
 }
+.inspector-panel{
+  padding: 0 15px;
+}
 
 .add-section,.add-elements{
   margin-top: 20px;
 }
+.new-elements{
+  clear: both;
+  overflow: hidden;
+}
 
 .template-handle{
+  text-align: center;
   background-color: lightgray;
-  margin-top: 10px;
-  padding: 10px;
-  display: inline-block;
+  padding: 5px;
   .gu-transit &{
     background: #3ae4e3;
     margin: 0;
     display: block;
   }
+  .gu-transit & .icon{
+    display: none;
+  }
 }
 
 .template-wrapper{
-  display: inline-block;
-  margin-left: 10px;
+  .new-elements &{
+    float: left;
+    width: 33.33%;
+    padding: 3px;
+  }
   &.gu-transit{
     margin-left: 0;
     display: block;
