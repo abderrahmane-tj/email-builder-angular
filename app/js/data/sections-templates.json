@@ -1,8 +1,11 @@
 [
   {
+    "type": "section",
     "template-name": "[100%]",
     "style": {},
-    "type": "section",
+    "wrapper":{
+      "style":{}
+    },
     "columns": [
       {
         "type": "column",
@@ -13,9 +16,12 @@
     ]
   },
   {
+    "type": "section",
     "template-name": "[ 50% | 50% ]",
     "style": {},
-    "type": "section",
+    "wrapper":{
+      "style":{}
+    },
     "columns": [
       {
         "type": "column",
@@ -32,9 +38,12 @@
     ]
   },
   {
+    "type": "section",
     "template-name": "[ 33% | 33% | 33% ]",
     "style": {},
-    "type": "section",
+    "wrapper":{
+      "style":{}
+    },
     "columns": [
       {
         "type": "column",
@@ -57,9 +66,12 @@
     ]
   },
   {
+    "type": "section",
     "template-name": "[ 33% | 60% ]",
     "style": {},
-    "type": "section",
+    "wrapper":{
+      "style":{}
+    },
     "columns": [
       {
         "type": "column",
@@ -76,9 +88,12 @@
     ]
   },
   {
+    "type": "section",
     "template-name": "[ 60% | 30% ]",
     "style": {},
-    "type": "section",
+    "wrapper":{
+      "style":{}
+    },
     "columns": [
       {
         "type": "column",

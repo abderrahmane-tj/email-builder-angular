@@ -5,9 +5,12 @@
   },
   "sections": [
     {
+      "type": "section",
       "template-name": "[100%]",
       "style": {},
-      "type": "section",
+      "wrapper":{
+        "style":{}
+      },
       "columns": [
         {
           "type": "column",
@@ -24,9 +27,12 @@
       ]
     },
     {
+      "type": "section",
       "template-name": "[ 50% | 50% ]",
       "style": {},
-      "type": "section",
+      "wrapper":{
+        "style":{}
+      },
       "columns": [
         {
           "type": "column",
@@ -58,9 +64,12 @@
       ]
     },
     {
+      "type": "section",
       "template-name": "[100%]",
       "style": {},
-      "type": "section",
+      "wrapper":{
+        "style":{}
+      },
       "columns": [
         {
           "type": "column",
