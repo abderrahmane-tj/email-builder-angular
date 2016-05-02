@@ -1,8 +1,37 @@
+@mixin no-selection-no-drag {
+  webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-drag: none;
+}
 .app-body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  @include no-selection-no-drag;
+  *{
+    @include no-selection-no-drag;
+  }
+
+  *[contenteditable],
+  *[contenteditable] *,
+  input,
+  textarea{
+    -webkit-touch-callout: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text; }
 }
+
+
 
 .toolbar {
   height: 40px;

@@ -1534,7 +1534,37 @@ table.button table td a {
 .app-body {
   display: flex;
   flex-direction: column;
-  height: 100vh; }
+  height: 100vh;
+  webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-drag: none; }
+  .app-body * {
+    webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;
+    user-drag: none; }
+  .app-body *[contenteditable],
+  .app-body *[contenteditable] *,
+  .app-body input,
+  .app-body textarea {
+    -webkit-touch-callout: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text; }
 
 .toolbar {
   height: 40px;
