@@ -11,10 +11,12 @@ emailApp.directive('spacerHandler',[function(){
         var $page = $('.page');
         var resizing = false;
         var handle = element.find(".resize-handle");
+        var handleText = handle.find(".handle-text");
         var startY = null;
         var startHeight = null;
         handle.bind('click', function (event) { event.stopPropagation(); })
             .bind('mousedown', handleMousedown);
+
 
         /////////////
         function handleMousedown(e) {
@@ -36,7 +38,7 @@ emailApp.directive('spacerHandler',[function(){
                 newHeight = 1;
             }
             element.height(newHeight);
-            handle.text(newHeight+' px');
+            handleText.text(newHeight+' px');
             $scope.element.height = newHeight;
         }
         function handleMouseup(e) {

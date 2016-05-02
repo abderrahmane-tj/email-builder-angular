@@ -1682,9 +1682,9 @@ table.button table td a {
   left: 50%;
   height: 30px;
   background: black;
-  width: 80px;
+  width: 90px;
   display: none;
-  margin-left: -40px;
+  margin-left: -45px;
   line-height: 30px;
   color: white;
   text-align: center;
@@ -1694,15 +1694,12 @@ table.button table td a {
   user-select: none;
   -webkit-user-drag: none; }
 
+.handle-text {
+  display: inline-block;
+  margin-left: 7px; }
+
 .spacer-element.current-element .resize-handle {
   display: block; }
-
-.resizing-spacer * {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-drag: none; }
 
 :not(.gu-unselectable) .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element):not(.current-element) {
   position: relative;

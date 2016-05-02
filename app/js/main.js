@@ -121,9 +121,11 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
                 return !$(target).hasClass('new-elements');
             },
             moves: function (el, source, handle, sibling) {
+                var $handle = $(handle);
                 var hasReasonsToDrag =
                     !$(el).find('[contenteditable]').length
-                    && !$(handle).is('.resize-handle');
+                    && !$handle.is('.resize-handle')
+                    && ($handle.parents('.resize-handle').length === 0);
                 return hasReasonsToDrag;
             }
         };
