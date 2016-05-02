@@ -114,7 +114,6 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     }
     function elementsBagConfig(){
         return {
-            revertOnSpill: true,
             copy: function (el, source) {
                 return $(source).hasClass('new-elements');
             },
