@@ -1624,6 +1624,8 @@ table.button table td a {
     line-height: 50px; }
   .empty-column.large-4::before {
     font-size: 14px; }
+  .empty-column.large-3::before {
+    font-size: 12px; }
   .empty-column .column-cell-wrapper {
     height: 50px; }
   .empty-column .column-cell {
@@ -1803,11 +1805,8 @@ i.mce-i-delete-element:before {
   padding: 0 15px; }
 
 .add-section, .add-elements {
-  margin-top: 20px; }
-
-.new-elements {
-  clear: both;
-  overflow: hidden; }
+  margin-top: 20px;
+  clear: both; }
 
 .template-handle {
   text-align: center;
@@ -1819,6 +1818,15 @@ i.mce-i-delete-element:before {
     display: block; }
   .gu-transit .template-handle .icon {
     display: none; }
+  .template-handle:hover {
+    -webkit-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.35);
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    border-color: #fff; }
 
 .new-elements .template-wrapper {
   float: left;
@@ -1829,6 +1837,12 @@ i.mce-i-delete-element:before {
   display: block;
   text-align: center;
   position: relative; }
+
+.gu-transit.section-template {
+  height: 10px; }
+
+.new-section .section-template {
+  margin-top: 10px; }
 
 .property {
   margin-bottom: 10px;

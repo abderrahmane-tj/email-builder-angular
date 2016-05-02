@@ -49,7 +49,10 @@
     line-height: 50px;
   }
   &.large-4::before{
-      font-size: 14px;
+    font-size: 14px;
+  }
+  &.large-3::before{
+    font-size: 12px;
   }
   .column-cell-wrapper {
     height: 50px;

@@ -40,7 +40,7 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
             // fill page with default content or previous version
             mainVM.page = initPage(defaultPage);
 
-            // save page automatically ever 3 seconds
+            // save page automatically every 3 seconds
             $interval(function () {
                 $timeout.cancel(timeoutWatch);
                 save();
@@ -106,7 +106,9 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
                 return !$(source).hasClass('new-section');
             },
             moves: function(el, source, handle, sibling){
-                return $(handle).is('.container-wrapper,.section-template-handle');
+                var $handle = $(handle);
+                var dragginTemplate = $handle.parents('.section-template').length > 0;
+                return $handle.is('.container-wrapper,.section-template') || dragginTemplate;
             }
         };
     }

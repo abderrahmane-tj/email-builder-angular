@@ -7,7 +7,9 @@
   >
     <div class="template-wrapper" ng-repeat="template in mainVM.elementsTemplates">
       <div class="template-handle">
-        <div class="icon"><img src="app/img/{{template.type}}.png" alt="{{template.type}}"></div>
+        <div class="icon">
+          <img ng-src="app/img/{{template.type}}.png" alt="{{template.type}}">
+        </div>
         <div>{{template.type}}</div>
       </div>
     </div>
@@ -20,8 +22,12 @@
       dragula-scope="mainVM.$scope"
       dragula-model='mainVM.sectionsTemplates'
   >
-    <div class="template-wrapper" ng-repeat="template in mainVM.sectionsTemplates">
-      <div class="template-handle section-template-handle">{{template['template-name']}}</div>
+    <div class="template-wrapper section-template" ng-repeat="template in mainVM.sectionsTemplates">
+      <div class="template-handle">
+        <div class="icon">
+          <img ng-src="app/img/{{template['template-name']}}.svg" alt="{{template['template-name']}}">
+        </div>
+      </div>
     </div>
   </div>
 </div>

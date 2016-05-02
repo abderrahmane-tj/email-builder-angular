@@ -6,7 +6,7 @@
   "sections": [
     {
       "type": "section",
-      "template-name": "[100%]",
+      "template-name": "100",
       "style": {},
       "wrapper":{
         "style":{}
@@ -28,7 +28,7 @@
     },
     {
       "type": "section",
-      "template-name": "[ 50% | 50% ]",
+      "template-name": "50-50",
       "style": {},
       "wrapper":{
         "style":{}
@@ -65,7 +65,7 @@
     },
     {
       "type": "section",
-      "template-name": "[100%]",
+      "template-name": "100",
       "style": {},
       "wrapper":{
         "style":{}

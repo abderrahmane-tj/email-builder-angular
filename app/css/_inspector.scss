@@ -33,11 +33,9 @@
 
 .add-section,.add-elements{
   margin-top: 20px;
-}
-.new-elements{
   clear: both;
-  overflow: hidden;
 }
+
 
 .template-handle{
   text-align: center;
@@ -50,6 +48,16 @@
   }
   .gu-transit & .icon{
     display: none;
+  }
+  &:hover{
+    -webkit-box-shadow: 0 6px 10px rgba(0,0,0,.35);
+    -moz-box-shadow: 0 6px 10px rgba(0,0,0,.35);
+    box-shadow: 0 6px 10px rgba(0,0,0,.35);
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    border-color: #fff
   }
 }
 
@@ -65,6 +73,12 @@
     text-align: center;
     position: relative;
   }
+}
+.gu-transit.section-template{
+  height: 10px;
+}
+.new-section .section-template{
+  margin-top: 10px;
 }
 .property{
   margin-bottom: 10px;
