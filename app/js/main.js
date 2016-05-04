@@ -4,6 +4,9 @@ var emailApp = angular.module('emailApp', [
     'ngSanitize',
     angularDragula(angular)
 ]);
+emailApp.config(['$compileProvider', function ($compileProvider) {
+    $compileProvider.debugInfoEnabled(false);
+}]);
 emailApp.controller('MainController', [
     '$scope', '$templateCache', 'dragulaService', '$timeout', '$interval',
     '$window', 'repositionTooltip', '$http','$q',
