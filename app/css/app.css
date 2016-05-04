@@ -1871,7 +1871,7 @@ i.mce-i-delete-element:before {
   position: relative;
   float: none; }
 
-.gu-transit.section-template {
+.gu-transit.section-template .template-handle {
   height: 10px; }
 
 .new-section .section-template {
