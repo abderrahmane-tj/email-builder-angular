@@ -45,6 +45,11 @@
     background: #3ae4e3;
     margin: 0;
     display: block;
+    padding: 0;
+  }
+  .gu-transit.element-template &{
+    height: 50px;
+    line-height: 50px;
   }
   .gu-transit & .icon{
     display: none;
@@ -72,6 +77,7 @@
     display: block;
     text-align: center;
     position: relative;
+    float: none;
   }
 }
 .gu-transit.section-template{

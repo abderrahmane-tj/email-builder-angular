@@ -1842,7 +1842,11 @@ i.mce-i-delete-element:before {
   .gu-transit .template-handle {
     background: #3ae4e3;
     margin: 0;
-    display: block; }
+    display: block;
+    padding: 0; }
+  .gu-transit.element-template .template-handle {
+    height: 50px;
+    line-height: 50px; }
   .gu-transit .template-handle .icon {
     display: none; }
   .template-handle:hover {
@@ -1863,7 +1867,8 @@ i.mce-i-delete-element:before {
   margin-left: 0;
   display: block;
   text-align: center;
-  position: relative; }
+  position: relative;
+  float: none; }
 
 .gu-transit.section-template {
   height: 10px; }
