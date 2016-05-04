@@ -9,9 +9,24 @@ emailApp.directive('sectionProperties',function(){
         link: link
     };
     function link($scope, element, attrs){
-        $scope.$watch("section.wrapper.rawStyle['background-image']", function (url) {
-            console.log(url);
-            //$scope.section.wrapper.style['background-image'] = "url('"+url+"')";
-        })
+        watchBackground(
+            "section.wrapper.rawStyle['background-image']",
+            $scope.section.wrapper.style,
+            'background-image'
+        );
+        watchBackground(
+            "section.rawStyle['background-image']",
+            $scope.section.style,
+            'background-image'
+        );
+        function watchBackground(watchee, updatee, property){
+            $scope.$watch(watchee, function (url) {
+                var value = null;
+                if(url && url.trim()){
+                    value = "url('"+url+"')";
+                }
+                updatee[property] = value;
+            });
+        }
     }
 });
