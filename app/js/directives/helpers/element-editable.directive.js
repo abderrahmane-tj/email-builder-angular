@@ -14,10 +14,6 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
     };
     function link($scope, element, attrs, ngModel){
         element.bind('click', function (event) {
-            if(element.is('.editing')){
-                event.stopImmediatePropagation();
-                return;
-            }
             element.addClass('editing');
             element.hide();
             createEditor($scope, element, attrs, ngModel);
@@ -40,10 +36,10 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
         editable.on('click', function (event) {
            event.stopImmediatePropagation();
         });
+        editable.bind('mousedown', onMousedown);
 
         $compile(editable)($scope);
 
-        //todo: fix element editable, side effect of removing preventDefault from highlight system
         tinymce.init({
             selector:'#'+randID,
             setup: function(editor) {
@@ -89,12 +85,18 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
             $('[highlight]').bind('click', handleClickElsewhere);
         });
 
+        var wasSelecting = false;
+
+        /////////////
         function handleClickElsewhere(event){
+            console.log(wasSelecting);
             var isEditorUI = $(event.target).closest('.mce-tinymce').length;
-            if(isEditorUI){
+            if(isEditorUI || wasSelecting){
+                $timeout(function(){ wasSelecting = false; });
                 return;
             }
 
+            console.log('click on highlight, so we need to close editor');
             $('[highlight]').off('click', handleClickElsewhere);
 
             $scope.$apply(function () {
@@ -106,6 +108,14 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
             editable.remove();
             $scope.editor.remove();
             delete $scope.editor;
+        }
+
+        function onMousedown(){
+            wasSelecting = true;
+            editable.one('mouseup', onMouseup);
+        }
+        function onMouseup(){
+            wasSelecting = false;
         }
     }
 
