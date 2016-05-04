@@ -37,7 +37,7 @@ emailApp.directive('highlight',[
             element.bind('click', onClick);
         }
         function onClick(event) {
-            if(preventBubbling(options.name)){
+            if(preventBubbling(options.name) || $page.hasClass('editor-selecting')){
                 return;
             }
             $('.current-element')

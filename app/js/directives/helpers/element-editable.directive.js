@@ -29,7 +29,7 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
         var editable = element.after(
             '<'+options['wrapper-tag']+' id="'+randID+'">'+ngModel.$viewValue+'</'+options['wrapper-tag']+'>'
         ).next();
-        editable.attr('highlight',"{name:'element', type:'exactly', toggleCurrent: 'false'}");
+        editable.attr('highlight',"{name:'element', type:'exactly', toggleClick: 'false'}");
         editable.attr('ng-style',"element.style");
         editable.attr('ng-class',element.attr('ng-class'));
         editable.addClass('editing text-wrapper');
@@ -85,18 +85,16 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
             $('[highlight]').bind('click', handleClickElsewhere);
         });
 
-        var wasSelecting = false;
+        var $page = $('.page');
 
         /////////////
         function handleClickElsewhere(event){
-            console.log(wasSelecting);
             var isEditorUI = $(event.target).closest('.mce-tinymce').length;
-            if(isEditorUI || wasSelecting){
-                $timeout(function(){ wasSelecting = false; });
+            if(isEditorUI || $page.hasClass('editor-selecting')){
+                $timeout(function(){ $page.removeClass('editor-selecting'); });
                 return;
             }
 
-            console.log('click on highlight, so we need to close editor');
             $('[highlight]').off('click', handleClickElsewhere);
 
             $scope.$apply(function () {
@@ -111,11 +109,15 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
         }
 
         function onMousedown(){
-            wasSelecting = true;
-            editable.one('mouseup', onMouseup);
+            editable.off('mouseup', onMouseup);
+            $page.addClass('editor-selecting');
+            editable.bind('mouseup', onMouseup);
         }
-        function onMouseup(){
-            wasSelecting = false;
+        function onMouseup(event){
+            editable.off('mouseup', onMouseup);
+            $timeout(function(){
+                $page.removeClass('editor-selecting');
+            });
         }
     }
 
