@@ -81,7 +81,7 @@
 
 .spacer{
   position: relative;
-  height: 90px;
+  height: 10px;
 }
 
 .resize-handle{
@@ -89,13 +89,14 @@
   bottom: -15px;
   left: 50%;
   height: 30px;
-  background: black;
   width: 90px;
+  background: black;
   display: none;
   margin-left: -45px;
   line-height: 30px;
   color: white;
   text-align: center;
+  cursor: ns-resize;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
