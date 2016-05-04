@@ -14,7 +14,7 @@
 <body>
 
 <div ng-cloak ng-app="emailApp" ng-controller="MainController as mainVM">
-  <div class="app-body">
+  <div class="app-body" ng-if="mainVM.page">
     <div class="toolbar">
       <p class="status" ng-if="mainVM.saving"><i class="fa fa-spinner fa-spin"></i> saving...</p>
     </div>
