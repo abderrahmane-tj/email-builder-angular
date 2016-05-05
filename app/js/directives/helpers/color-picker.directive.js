@@ -17,7 +17,7 @@ function colorPickerDirective(){
             preferredFormat: 'hex',
             showInput: true,
             showInitial: true
-        }).show();
+        });
     }
 
     function controller($scope){
