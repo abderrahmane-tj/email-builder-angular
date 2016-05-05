@@ -1,6 +1,6 @@
 var emailApp = angular.module('emailApp');
 emailApp.directive('colorPicker',[colorPickerDirective]);
-function colorPickerDirective($compile,$timeout,$templateRequest,repositionTooltip,preventBubbling){
+function colorPickerDirective(){
     return {
         restrict: "A",
         scope:true,
