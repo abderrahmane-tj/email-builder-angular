@@ -11,16 +11,17 @@ emailApp.directive('sectionProperties',function(){
     function link($scope, element, attrs){
         watchBackground(
             "section.wrapper.rawStyle['background-image']",
-            $scope.section.wrapper.style,
+            "$scope.section.wrapper.style",
             'background-image'
         );
         watchBackground(
             "section.rawStyle['background-image']",
-            $scope.section.style,
+            "$scope.section.style",
             'background-image'
         );
-        function watchBackground(watchee, updatee, property){
+        function watchBackground(watchee, sUpdatee, property){
             $scope.$watch(watchee, function (url) {
+                var updatee = eval(sUpdatee);
                 var value = null;
                 if(url && url.trim()){
                     value = "url('"+url+"')";
