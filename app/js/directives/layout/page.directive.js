@@ -22,7 +22,10 @@ function pageDirective(dragulaService,$timeout,repositionTooltip){
         /////////////////////
         function assignElement(element){
             $scope.mainVM.currentElement = element;
-            $scope.$apply();
+            if(element === null){
+                $('#structure-anchor').trigger('click');
+            }
+            //$scope.$apply();
         }
         function handleDragAndDrop(){
             dragulaService.options($scope, 'sections-bag', sectionsBagConfig());
