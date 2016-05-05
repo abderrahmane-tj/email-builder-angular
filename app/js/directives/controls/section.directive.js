@@ -14,6 +14,7 @@ emailApp.directive('sectionControls',['$compile','$templateRequest',function($co
             $scope.mainVM.page.sections = $scope.mainVM.page.sections.filter(function (item) {
                 return $scope.section !== item
             });
+            $scope.pageVM.assignElement(null);
         }
     }
 

@@ -14,6 +14,7 @@ emailApp.directive('imageControls',['$compile','$templateRequest',function($comp
             $scope.column.elements = $scope.column.elements.filter(function (item) {
                 return $scope.element !== item
             });
+            $scope.pageVM.assignElement(null);
         }
     }
 

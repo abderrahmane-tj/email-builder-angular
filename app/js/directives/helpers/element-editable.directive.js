@@ -61,6 +61,7 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
                         });
                         $scope.$apply(function () {
                             $scope.column.elements = filteredElements;
+                            $scope.pageVM.assignElement(null);
                             closeEditor();
                         });
                     }
