@@ -67,14 +67,14 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
                 });
             },
             inline: true,
-            plugins : 'textcolor colorpicker',
+            plugins : 'textcolor colorpicker link',
             toolbar: [
                 'bold italic underline strikethrough removeformat' +
                 ' | alignleft aligncenter alignright alignjustify' +
                 ' | bullist numlist outdent indent' +
                 ' | deleteElement',
 
-                'forecolor backcolor | formatselect | fontselect fontsizeselect'
+                'link | forecolor backcolor | formatselect | fontselect fontsizeselect'
             ],
             skin: 'lightgray',
             theme : 'modern',
