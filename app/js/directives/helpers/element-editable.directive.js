@@ -75,7 +75,7 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
                 ' | bullist numlist outdent indent' +
                 ' | deleteElement',
 
-                'link | forecolor backcolor | formatselect | fontselect fontsizeselect'
+                'link unlink | forecolor backcolor | formatselect | fontselect fontsizeselect'
             ],
             skin: 'lightgray',
             theme : 'modern',
