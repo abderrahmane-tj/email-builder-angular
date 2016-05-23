@@ -66,6 +66,15 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
                         });
                     }
                 });
+                editor.addButton('cloneElement', {
+                    icon: 'clone-element',
+                    onclick: function () {
+                        var index = $scope.column.elements.indexOf($scope.element);
+                        $scope.$apply(function () {
+                            $scope.column.elements.splice(index+1, 0, angular.copy($scope.element));
+                        });
+                    }
+                });
             },
             inline: true,
             plugins : 'textcolor colorpicker link',
@@ -73,7 +82,7 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
                 'bold italic underline strikethrough removeformat' +
                 ' | alignleft aligncenter alignright alignjustify' +
                 ' | bullist numlist outdent indent' +
-                ' | deleteElement',
+                ' | cloneElement deleteElement',
 
                 'link unlink | forecolor backcolor | formatselect | fontselect fontsizeselect'
             ],

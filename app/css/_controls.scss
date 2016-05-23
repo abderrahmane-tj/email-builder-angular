@@ -1,3 +1,15 @@
+.controls-list{
+  list-style: none;
+  li{
+    display: inline-block;
+  }
+  li:not(:first-child){
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 1px solid #888888;
+
+  }
+}
 .element-control{
-  color: white;
+
 }

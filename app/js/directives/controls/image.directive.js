@@ -9,12 +9,21 @@ emailApp.directive('imageControls',['$compile','$templateRequest',function($comp
     };
 
     function controller($scope){
-        $scope.removeElement = function ($event) {
+        $scope.removeElement = removeElement;
+        $scope.cloneElement = cloneElement;
+
+        ///////////////
+        function removeElement($event) {
             $event.preventDefault();
             $scope.column.elements = $scope.column.elements.filter(function (item) {
                 return $scope.element !== item
             });
             $scope.pageVM.assignElement(null);
+        }
+        function cloneElement($event) {
+            $event.preventDefault();
+            var index = $scope.column.elements.indexOf($scope.element);
+            $scope.column.elements.splice(index+1, 0, angular.copy($scope.element));
         }
     }
 

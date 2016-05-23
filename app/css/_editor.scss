@@ -6,3 +6,11 @@ i.mce-i-delete-element:before {
   text-decoration: inherit;
   color: red;
 }
+
+i.mce-i-clone-element:before {
+  content: "\f0c5";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+}
