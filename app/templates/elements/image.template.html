@@ -4,5 +4,5 @@
     src=""
     broken-src="app/img/broken.png"
     loading-src="app/img/loading.png"
-    ng-class="{ 'float-center': element.alignment == 'center', 'float-right': element.alignment == 'right', 'float-left': element.alignment == 'left' }"
+    ng-class="imageAlignment[element.alignment]"
 >

@@ -98,5 +98,10 @@ emailApp.directive('imageHandler',['$timeout',function($timeout){
         }
     }
     function controller($scope){
+        $scope.imageAlignment  = {
+            center: 'float-center',
+            left: 'float-left',
+            right: 'float-right'
+        };
     }
 }]);
