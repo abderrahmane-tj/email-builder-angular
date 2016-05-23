@@ -16,5 +16,15 @@ emailApp.directive('buttonHandler',[function(){
         }
     }
     function controller($scope){
+        $scope.textAlignment = {
+            center: 'text-align-center',
+            left: 'text-align-left',
+            right: 'text-align-right'
+        };
+        $scope.buttonAlignment = {
+            center: 'button-align-center',
+            left: 'button-align-left',
+            right: 'button-align-right'
+        };
     }
 }]);

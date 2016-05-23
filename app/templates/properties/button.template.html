@@ -5,16 +5,22 @@
       Url <input type="text" ng-model="button.url">
     </label>
   </p>
+  <div class="property buttonAlignment" ng-if="!button.expanded">
+    <p>Button Alignment</p>
+    <label>Left <input type="radio" ng-model="button.buttonAlignment" name="buttonAlignment" value="left" checked></label>
+    <label>Center <input type="radio" ng-model="button.buttonAlignment" name="buttonAlignment" value="center"></label>
+    <label>Right <input type="radio" ng-model="button.buttonAlignment" name="buttonAlignment" value="right"></label>
+  </div>
   <p class="property expanded">
     <label>
       Expanded <input type="checkbox" ng-model="button.expanded">
     </label>
   </p>
-  <div class="property alignment" ng-if="button.expanded">
-    <p>Alignment</p>
-    <label>Left <input type="radio" ng-model="button.alignment" name="alignment" value="left"></label>
-    <label>Center <input type="radio" ng-model="button.alignment" name="alignment" value="center" checked></label>
-    <label>Right <input type="radio" ng-model="button.alignment" name="alignment" value="right"></label>
+  <div class="property textAlignment" ng-if="button.expanded">
+    <p>Text Alignment</p>
+    <label>Left <input type="radio" ng-model="button.textAlignment" name="textAlignment" value="left"></label>
+    <label>Center <input type="radio" ng-model="button.textAlignment" name="textAlignment" value="center" checked></label>
+    <label>Right <input type="radio" ng-model="button.textAlignment" name="textAlignment" value="right"></label>
   </div>
   <p class="property sizing">
     <label>

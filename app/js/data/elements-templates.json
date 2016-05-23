@@ -15,7 +15,8 @@
     "type": "button",
     "text": "Button",
     "url": "#",
-    "alignment": "center",
+    "textAlignment": "center",
+    "buttonAlignment": "left",
     "coloring": "warning",
     "sizing": "default",
     "expanded": false

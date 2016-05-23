@@ -1,4 +1,5 @@
-<table class="button {{element.sizing}} {{element.coloring}}"
+<table button-handler
+    class="button {{element.sizing}} {{element.coloring}} {{buttonAlignment[element.buttonAlignment]}}"
     ng-class="{expanded: element.expanded}"
 >
   <tr>
@@ -7,8 +8,8 @@
         <tr>
           <td>
             <div>
-              <a ng-class="{'text-align-center':element.alignment==='center','text-align-left':element.alignment==='left','text-align-right':element.alignment==='right'}"
-                  href="{{element.url}}"
+              <a ng-class="textAlignment[element.textAlignment]"
+                  ng-href="{{element.url}}"
                   button-handler
                   element-editable="{'wrapper-tag':'a'}"
                   ng-model="element.text"
