@@ -100,7 +100,8 @@ emailApp.directive('elementControls',
                 content: $scope.controls,
                 interactive: true,
                 autoClose: false,
-                restoration: 'none'
+                restoration: 'none',
+                theme: 'tooltipster-light'
             }).tooltipster('show');
         });
     }
