@@ -25,7 +25,6 @@ function pageDirective(dragulaService,$timeout,repositionTooltip){
             if(element === null){
                 $('#structure-anchor').trigger('click');
             }
-            //$scope.$apply();
         }
         function handleDragAndDrop(){
             dragulaService.options($scope, 'sections-bag', sectionsBagConfig());

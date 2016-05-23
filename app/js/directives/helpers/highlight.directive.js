@@ -54,6 +54,7 @@ emailApp.directive('highlight',[
                 $scope.pageVM.assignElement(elementData);
                 highlighted.addClass('current-element');
             }
+            $scope.$apply();
         }
         element.bind('mouseenter', function(event) {
             $page.addClass('on-'+options.name);
