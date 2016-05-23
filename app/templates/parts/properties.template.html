@@ -1,12 +1,16 @@
 <div ng-if="mainVM.currentElement">
+  <div ng-if="mainVM.currentElement.type==='section'">
+    <section-properties element="mainVM.currentElement"></section-properties>
+  </div>
+  <div ng-if="mainVM.currentElement.type==='column'">
+    <column-properties element="mainVM.currentElement"></column-properties>
+  </div>
+
   <div ng-if="mainVM.currentElement.type==='image'">
     <image-properties element="mainVM.currentElement"></image-properties>
   </div>
   <div ng-if="mainVM.currentElement.type==='button'">
     <button-properties element="mainVM.currentElement"></button-properties>
-  </div>
-  <div ng-if="mainVM.currentElement.type==='section'">
-    <section-properties element="mainVM.currentElement"></section-properties>
   </div>
   <div ng-if="mainVM.currentElement.type==='spacer'">
     <spacer-properties element="mainVM.currentElement"></spacer-properties>

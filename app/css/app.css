@@ -1531,6 +1531,9 @@ table.fixed-table {
 table.button table td a {
   display: block; }
 
+.no-padding {
+  padding: 0 !important; }
+
 .app-body {
   display: flex;
   flex-direction: column;
@@ -1606,7 +1609,7 @@ table.button table td a {
   opacity: 1; }
 
 .debug pre {
-  height: 200px;
+  height: 500px;
   overflow-y: scroll; }
 
 .page-flex {
@@ -1778,8 +1781,14 @@ table.button table td a {
   box-shadow: 0 0 0 4px #e12de4;
   z-index: 11; }
 
-.element-control {
-  color: white; }
+.controls-list {
+  list-style: none; }
+  .controls-list li {
+    display: inline-block; }
+  .controls-list li:not(:first-child) {
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 1px solid #888888; }
 
 i.mce-i-delete-element:before {
   content: "\f1f8";
@@ -1788,6 +1797,13 @@ i.mce-i-delete-element:before {
   font-weight: normal;
   text-decoration: inherit;
   color: red; }
+
+i.mce-i-clone-element:before {
+  content: "\f0c5";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit; }
 
 .inspector {
   margin: 0;
@@ -1897,5 +1913,18 @@ i.mce-i-delete-element:before {
 
 .text-align-right {
   text-align: right !important; }
+
+.button-align-center {
+  margin-left: auto !important;
+  margin-right: auto !important; }
+
+.button-element {
+  overflow: hidden; }
+
+.button-align-left {
+  float: left !important; }
+
+.button-align-right {
+  float: right !important; }
 
 /*# sourceMappingURL=app.css.map */

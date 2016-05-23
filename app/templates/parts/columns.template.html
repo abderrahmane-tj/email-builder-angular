@@ -2,7 +2,7 @@
     highlight="{name:'column', type:'exactly'}"
     ng-repeat="column in section.columns"
     ng-style="column.wrapper.style"
-    ng-class="{'empty-column': !column.elements.length,'first': $index === 0, 'last': $index === section.columns.length-1}"
+    ng-class="{'empty-column': !column.elements.length,'first': $index === 0, 'last': $index === section.columns.length-1, 'no-padding': column['no-padding']}"
     data-block-type="column"
 >
   <!-- cell's inside -->

@@ -16,6 +16,9 @@
           "type": "column",
           "grid-width": "12",
           "style": {},
+          "wrapper":{
+            "style":{}
+          },
           "elements": [
             {
               "style": {},
@@ -38,6 +41,9 @@
           "type": "column",
           "grid-width": "6",
           "style": {},
+          "wrapper":{
+            "style":{}
+          },
           "elements": [
             {
               "style": {},
@@ -50,6 +56,9 @@
           "type": "column",
           "grid-width": "6",
           "style": {},
+          "wrapper":{
+            "style":{}
+          },
           "elements": [
             {
               "style": {},
@@ -75,6 +84,9 @@
           "type": "column",
           "grid-width": "12",
           "style": {},
+          "wrapper":{
+            "style":{}
+          },
           "elements": [
             {
               "style": {},

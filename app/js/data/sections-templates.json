@@ -11,6 +11,9 @@
         "type": "column",
         "grid-width": "12",
         "style": {},
+        "wrapper":{
+          "style":{}
+        },
         "elements": []
       }
     ]
@@ -27,12 +30,18 @@
         "type": "column",
         "grid-width": "6",
         "style": {},
+        "wrapper":{
+          "style":{}
+        },
         "elements": []
       },
       {
         "type": "column",
         "grid-width": "6",
         "style": {},
+        "wrapper":{
+          "style":{}
+        },
         "elements": []
       }
     ]
@@ -49,18 +58,27 @@
         "type": "column",
         "grid-width": "4",
         "style": {},
+        "wrapper":{
+          "style":{}
+        },
         "elements": []
       },
       {
         "type": "column",
         "grid-width": "4",
         "style": {},
+        "wrapper":{
+          "style":{}
+        },
         "elements": []
       },
       {
         "type": "column",
         "grid-width": "4",
         "style": {},
+        "wrapper":{
+          "style":{}
+        },
         "elements": []
       }
     ]
@@ -77,24 +95,36 @@
         "type": "column",
         "grid-width": "3",
         "style": {},
+        "wrapper":{
+          "style":{}
+        },
         "elements": []
       },
       {
         "type": "column",
         "grid-width": "3",
         "style": {},
+        "wrapper":{
+          "style":{}
+        },
         "elements": []
       },
       {
         "type": "column",
         "grid-width": "3",
         "style": {},
+        "wrapper":{
+          "style":{}
+        },
         "elements": []
       },
       {
         "type": "column",
         "grid-width": "3",
         "style": {},
+        "wrapper":{
+          "style":{}
+        },
         "elements": []
       }
     ]
@@ -111,12 +141,18 @@
         "type": "column",
         "grid-width": "4",
         "style": {},
+        "wrapper":{
+          "style":{}
+        },
         "elements": []
       },
       {
         "type": "column",
         "grid-width": "8",
         "style": {},
+        "wrapper":{
+          "style":{}
+        },
         "elements": []
       }
     ]
@@ -133,12 +169,18 @@
         "type": "column",
         "grid-width": "8",
         "style": {},
+        "wrapper":{
+          "style":{}
+        },
         "elements": []
       },
       {
         "type": "column",
         "grid-width": "4",
         "style": {},
+        "wrapper":{
+          "style":{}
+        },
         "elements": []
       }
     ]
