@@ -1534,6 +1534,11 @@ table.button table td a {
 .no-padding {
   padding: 0 !important; }
 
+html,
+table.container,
+table.body {
+  background: transparent; }
+
 .app-body {
   display: flex;
   flex-direction: column;

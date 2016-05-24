@@ -1,4 +1,7 @@
 <div ng-if="mainVM.currentElement">
+  <div ng-if="mainVM.currentElement.type==='page'">
+    <page-properties element="mainVM.currentElement"></page-properties>
+  </div>
   <div ng-if="mainVM.currentElement.type==='section'">
     <section-properties element="mainVM.currentElement"></section-properties>
   </div>

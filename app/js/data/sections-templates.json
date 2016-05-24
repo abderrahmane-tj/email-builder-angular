@@ -2,7 +2,9 @@
   {
     "type": "section",
     "template-name": "100",
-    "style": {},
+    "style": {
+      "background-color": "#fefefe"
+    },
     "wrapper":{
       "style":{}
     },
@@ -21,7 +23,9 @@
   {
     "type": "section",
     "template-name": "50-50",
-    "style": {},
+    "style": {
+      "background-color": "#fefefe"
+    },
     "wrapper":{
       "style":{}
     },
@@ -49,7 +53,9 @@
   {
     "type": "section",
     "template-name": "33-33-33",
-    "style": {},
+    "style": {
+      "background-color": "#fefefe"
+    },
     "wrapper":{
       "style":{}
     },
@@ -86,7 +92,9 @@
   {
     "type": "section",
     "template-name": "25-25-25-25",
-    "style": {},
+    "style": {
+      "background-color": "#fefefe"
+    },
     "wrapper":{
       "style":{}
     },
@@ -132,7 +140,9 @@
   {
     "type": "section",
     "template-name": "33-66",
-    "style": {},
+    "style": {
+      "background-color": "#fefefe"
+    },
     "wrapper":{
       "style":{}
     },
@@ -160,7 +170,9 @@
   {
     "type": "section",
     "template-name": "66-33",
-    "style": {},
+    "style": {
+      "background-color": "#fefefe"
+    },
     "wrapper":{
       "style":{}
     },
