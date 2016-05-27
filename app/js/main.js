@@ -10,12 +10,12 @@ emailApp.config(['$compileProvider', function ($compileProvider) {
 }]);
 emailApp.controller('MainController', [
     '$scope', '$templateCache', 'dragulaService', '$timeout', '$interval',
-    '$window', 'repositionTooltip', '$http','$q',
+    '$window', 'repositionTooltip', '$http','$q','emailBuilder',
     MainController
 ]);
 
 function MainController($scope, $templateCache, dragulaService, $timeout,
-    $interval, $window, repositionTooltip, $http, $q
+    $interval, $window, repositionTooltip, $http, $q, emailBuilder
 ){
     var mainVM = this;
     mainVM.resetData = resetData;
@@ -27,6 +27,10 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     mainVM.elementsTemplates = null;
     mainVM.localDev = ($window.location.hostname === 'localhost');
     mainVM.dirty = true;
+    mainVM.showHTML = showHTML;
+    mainVM.preview = preview;
+    mainVM.emailPreview = false;
+    var previewIFrame = $('#preview');
 
     var unbind = null; // variable used for watching mainVM.page
     var timeoutWatch = null; // A Timeout used for syncing
@@ -110,6 +114,35 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         a.download = 'email-builder_data.json';
         document.body.appendChild(a);
         a.click();
+    }
+    function buildHTML(){
+        mainVM.emailHtml = emailBuilder.run(mainVM.page);
+    }
+    function showHTML(){
+        buildHTML();
+        swal({
+            title: "Copy the email's HTML",
+            text: "<textarea class='swal-email-html'>"+mainVM.emailHtml+"</textarea>",
+            html: true
+        });
+    }
+    function preview(){
+        mainVM.emailPreview = !mainVM.emailPreview;
+
+        if(!mainVM.emailPreview){
+            return;
+        }
+        buildHTML();
+
+        //console.log(mainVM.emailHtml);
+        //previewIFrame.attr('src','data:text/html;charset=utf-8,' + encodeURI(mainVM.emailHtml));
+        //console.log(previewIFrame);
+
+
+        swal({
+            title: "Coming Soon",
+            text: "Preview feature coming soon. Work in progress"
+        });
     }
 }
 

@@ -10,19 +10,25 @@
 <link rel="stylesheet" href="bower_components/angular-dragula/dist/dragula.min.css">
 <link rel="stylesheet" href="bower_components/spectrum/spectrum.css">
 <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css">
 <!--<link rel="stylesheet" href="app/css/ink.css">-->
 <link rel="stylesheet" href="app/css/app.css">
 </head>
 <body>
 
-<div ng-cloak ng-app="emailApp" ng-controller="MainController as mainVM">
+<div ng-cloak ng-app="emailApp" ng-controller="MainController as mainVM" ng-class="{'should-preview':mainVM.emailPreview}">
   <div class="app-body" ng-if="mainVM.page">
     <div class="toolbar">
       <p class="status" ng-if="mainVM.saving"><i class="fa fa-spinner fa-spin"></i> saving...</p>
+      <button class="preview toolbar-button" ng-click="mainVM.preview();">{{ !mainVM.emailPreview ? 'Preview' : 'Close' }}</button>
+      <button class="get-html toolbar-button" ng-click="mainVM.showHTML();">HTML</button>
     </div>
     <div class="email-builder">
       <page></page>
       <inspector></inspector>
+    </div>
+    <div class="email-preview">
+      <iframe class="preview-iframe" id="preview" frameborder="0"></iframe>
     </div>
   </div>
 </div>
@@ -36,10 +42,13 @@
 <script src="bower_components/tooltipster/js/jquery.tooltipster.min.js"></script>
 <script src="bower_components/store-js/store.min.js"></script>
 <script src="bower_components/spectrum/spectrum.js"></script>
+<script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <script src="app/vendor/autoscroll.js"></script>
 
 <script src="app/js/main.js"></script>
-<script src="app/js/services.js"></script>
+<script src="app/js/services/helpers.js"></script>
+<script src="app/js/services/email-builder.js"></script>
 
 <script src="app/js/directives/layout/page.directive.js"></script>
 <script src="app/js/directives/layout/inspector.directive.js"></script>

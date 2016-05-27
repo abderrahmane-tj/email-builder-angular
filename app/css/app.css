@@ -68,6 +68,9 @@ time, mark, audio, video {
 body {
   line-height: 1; }
 
+.wrapper {
+  width: 100%; }
+
 #outlook a {
   padding: 0; }
 
@@ -137,10 +140,10 @@ table, tr, td, th {
   vertical-align: top;
   text-align: left; }
 
-html {
-  min-height: 100%;
-  background: #f3f3f3; }
-
+@media only screen {
+  html {
+    min-height: 100%;
+    background: #f3f3f3; } }
 table.body {
   background: #f3f3f3;
   height: 100%;
@@ -994,12 +997,6 @@ table.button table td {
   background: #2199e8;
   border: 2px solid #2199e8; }
 
-table.button table td.radius {
-  border-radius: 3px; }
-
-table.button table td.rounded {
-  border-radius: 500px; }
-
 table.button table td a {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -1010,6 +1007,14 @@ table.button table td a {
   padding: 8px 16px 8px 16px;
   border: 0px solid #2199e8;
   border-radius: 3px; }
+
+table.button.radius table td {
+  border-radius: 3px;
+  border: none; }
+
+table.button.rounded table td {
+  border-radius: 500px;
+  border: none; }
 
 table.button:hover table tr td a,
 table.button:active table tr td a,
@@ -1042,20 +1047,21 @@ table.button.large table a {
   padding: 10px 20px 10px 20px;
   font-size: 20px; }
 
-table.expand,
-table.expanded {
+table.button.expand,
+table.button.expanded {
   width: 100% !important; }
 
-table.expand table,
-table.expanded table {
+table.button.expand table,
+table.button.expanded table {
   width: 100%; }
 
-table.expand table a,
-table.expanded table a {
-  text-align: center; }
+table.button.expand table a,
+table.button.expanded table a {
+  text-align: center;
+  width: 100%; }
 
-table.expand center,
-table.expanded center {
+table.button.expand center,
+table.button.expanded center {
   min-width: 0; }
 
 table.button:hover table td,
@@ -1304,105 +1310,6 @@ body.outlook p {
     display: block !important;
     width: 100% !important; }
 
-  .body .columns td.small-1,
-  .body .column td.small-1,
-  td.small-1 center,
-  .body .columns th.small-1,
-  .body .column th.small-1,
-  th.small-1 center {
-    display: inline-block !important;
-    width: 8.33333% !important; }
-
-  .body .columns td.small-2,
-  .body .column td.small-2,
-  td.small-2 center,
-  .body .columns th.small-2,
-  .body .column th.small-2,
-  th.small-2 center {
-    display: inline-block !important;
-    width: 16.66667% !important; }
-
-  .body .columns td.small-3,
-  .body .column td.small-3,
-  td.small-3 center,
-  .body .columns th.small-3,
-  .body .column th.small-3,
-  th.small-3 center {
-    display: inline-block !important;
-    width: 25% !important; }
-
-  .body .columns td.small-4,
-  .body .column td.small-4,
-  td.small-4 center,
-  .body .columns th.small-4,
-  .body .column th.small-4,
-  th.small-4 center {
-    display: inline-block !important;
-    width: 33.33333% !important; }
-
-  .body .columns td.small-5,
-  .body .column td.small-5,
-  td.small-5 center,
-  .body .columns th.small-5,
-  .body .column th.small-5,
-  th.small-5 center {
-    display: inline-block !important;
-    width: 41.66667% !important; }
-
-  .body .columns td.small-6,
-  .body .column td.small-6,
-  td.small-6 center,
-  .body .columns th.small-6,
-  .body .column th.small-6,
-  th.small-6 center {
-    display: inline-block !important;
-    width: 50% !important; }
-
-  .body .columns td.small-7,
-  .body .column td.small-7,
-  td.small-7 center,
-  .body .columns th.small-7,
-  .body .column th.small-7,
-  th.small-7 center {
-    display: inline-block !important;
-    width: 58.33333% !important; }
-
-  .body .columns td.small-8,
-  .body .column td.small-8,
-  td.small-8 center,
-  .body .columns th.small-8,
-  .body .column th.small-8,
-  th.small-8 center {
-    display: inline-block !important;
-    width: 66.66667% !important; }
-
-  .body .columns td.small-9,
-  .body .column td.small-9,
-  td.small-9 center,
-  .body .columns th.small-9,
-  .body .column th.small-9,
-  th.small-9 center {
-    display: inline-block !important;
-    width: 75% !important; }
-
-  .body .columns td.small-10,
-  .body .column td.small-10,
-  td.small-10 center,
-  .body .columns th.small-10,
-  .body .column th.small-10,
-  th.small-10 center {
-    display: inline-block !important;
-    width: 83.33333% !important; }
-
-  .body .columns td.small-11,
-  .body .column td.small-11,
-  td.small-11 center,
-  .body .columns th.small-11,
-  .body .column th.small-11,
-  th.small-11 center {
-    display: inline-block !important;
-    width: 91.66667% !important; }
-
   table.body td.small-offset-1,
   table.body th.small-offset-1 {
     margin-left: 8.33333% !important;
@@ -1484,47 +1391,7 @@ body.outlook p {
     display: block !important; }
 
   table.menu[align="center"] {
-    width: auto !important; }
-
-  table.button.expand {
-    width: 100% !important; } }
-.footer-drip {
-  background: #F3F3F3;
-  border-radius: 0 0 10px 10px; }
-
-.footer-drip .columns {
-  padding-top: 16px; }
-
-.container.header-drip {
-  background: #F3F3F3; }
-
-.container.header-drip .columns {
-  padding-bottom: 16px;
-  padding-top: 16px; }
-
-.container.body-drip {
-  border-radius: 10px;
-  border-top: 10px solid #663399; }
-
-.header {
-  background: #8a8a8a; }
-
-.header p {
-  color: #ffffff;
-  margin: 0; }
-
-.header .columns {
-  padding-bottom: 0; }
-
-.header .container {
-  background: #8a8a8a;
-  padding-top: 16px;
-  padding-bottom: 16px; }
-
-.header .container td {
-  padding-top: 16px;
-  padding-bottom: 16px; }
-
+    width: auto !important; } }
 table.fixed-table {
   table-layout: fixed; }
 
@@ -1567,7 +1434,8 @@ table.body {
   .app-body *[contenteditable],
   .app-body *[contenteditable] *,
   .app-body input,
-  .app-body textarea {
+  .app-body textarea,
+  .app-body .debug pre {
     -webkit-touch-callout: text;
     -webkit-user-select: text;
     -moz-user-select: text;
@@ -1575,30 +1443,60 @@ table.body {
     user-select: text; }
 
 .toolbar {
-  height: 40px;
+  height: 60px;
   flex: none; }
   .toolbar .status {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+    float: left;
     color: green;
-    height: 40px;
+    height: 60px;
     font-size: 20px;
-    line-height: 40px;
+    line-height: 60px;
     margin-left: 20px; }
+  .toolbar .toolbar-button {
+    border-radius: 4px;
+    background-color: #2199e8;
+    float: right;
+    height: 40px;
+    font-size: 15px;
+    line-height: 40px;
+    margin-right: 20px;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: none;
+    margin-top: 10px;
+    color: white;
+    padding: 0 16px; }
 
 .email-builder {
   flex: 1;
   display: flex; }
 
+.email-preview {
+  position: relative;
+  display: none;
+  flex: 1; }
+
+.preview-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%; }
+
+.should-preview .email-builder {
+  display: none; }
+.should-preview .email-preview {
+  display: block; }
+
 .img-hidden {
   visibility: hidden !important; }
+
+.swal-email-html {
+  width: 100%;
+  max-width: 100%;
+  height: 200px; }
 
 @media only screen and (max-width: 600px) {
   .app-body {

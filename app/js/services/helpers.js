@@ -21,29 +21,6 @@ emailServices.factory('prettify',function(){
         compile: compile
     };
 });
-emailServices.factory('dataservice', function () {
-    return {
-        getPageData: getPageData
-    };
-    function getPageData(){
-
-    }
-});
-emailServices.filter('englishNumber', function() {
-    return function(number) {
-        var englishNumber = [
-            'zero','one', 'two', 'three', 'four', 'five', 'six',
-            'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'
-        ];
-        return englishNumber[number];
-    }
-});
-emailServices.filter('voodoo', ['$sce',function($sce) {
-    return function(content) {
-        console.log(content);
-        return content;
-    }
-}]);
 emailServices.factory('repositionTooltip', function () {
     return function(){
         var $tooltipster = $('.page .tooltipstered');
@@ -61,5 +38,17 @@ emailServices.factory('preventBubbling',function(){
             || (blockName === 'column' && $page.is('.on-element'))
         );
         return !!doNotBubble;
+    };
+});
+
+emailServices.factory('obj2css',function(){
+    return function (obj) {
+        var css = '';
+        for(var property in obj){
+            if(obj.hasOwnProperty(property) && obj[property] ){
+                css += property+':'+obj[property]+';';
+            }
+        }
+        return css;
     };
 });

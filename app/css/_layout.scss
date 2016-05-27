@@ -23,7 +23,8 @@
   *[contenteditable],
   *[contenteditable] *,
   input,
-  textarea{
+  textarea,
+  .debug pre{
     -webkit-touch-callout: text;
     -webkit-user-select: text;
     -moz-user-select: text;
@@ -34,25 +35,68 @@
 
 
 .toolbar {
-  height: 40px;
+  height: 60px;
   flex: none;
   .status{
-    @include reset-margin-padding-etc;
+    float: left;
     color: green;
-    height: 40px;
+    height: 60px;
     font-size: 20px;
-    line-height: 40px;
+    line-height: 60px;
     margin-left: 20px;
   }
+  .toolbar-button{
+    border-radius: 4px;
+    background-color: #2199e8;
+    float: right;
+    height: 40px;
+    font-size: 15px;
+    line-height: 40px;
+    margin-right: 20px;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: none;
+    margin-top: 10px;
+    color: white;
+    padding: 0 16px;
+  }
 }
+
 .email-builder{
   flex: 1;
   display: flex;
 }
-
+.email-preview{
+  position: relative;
+  display: none;
+  flex: 1;
+}
+.preview-iframe{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.should-preview{
+  .email-builder{
+    display: none;
+  }
+  .email-preview{
+    display: block;
+  }
+}
 .img-hidden{
   visibility: hidden !important;
   //position: absolute;
+}
+
+.swal-email-html{
+  width: 100%;
+  max-width: 100%;
+  height: 200px;
 }
 
 @media only screen and (max-width: 600px) {
