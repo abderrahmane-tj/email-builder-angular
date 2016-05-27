@@ -118,7 +118,7 @@ emailServices.factory('emailBuilder', ['$http','$q','obj2css',function ($http, $
             }
         };
 
-        var html = "<table class='{buttonClasses}'><tr><td><table><tr><td>{buttonText}</td></tr></table></td></tr></table>";
+        var html = "<table class='button {buttonClasses}'><tr><td><table><tr><td>{buttonText}</td></tr></table></td></tr></table>";
         var buttonText = "<a class='{textClasses}' {alignAttribute} href='{url}'>{text}</a>";
         var wrapper = "<center>{element}</center>";
 
