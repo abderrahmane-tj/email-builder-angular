@@ -14,22 +14,19 @@
 <!--<link rel="stylesheet" href="app/css/ink.css">-->
 <link rel="stylesheet" href="app/css/app.css">
 </head>
-<body>
-
-<div ng-cloak ng-app="emailApp" ng-controller="MainController as mainVM" ng-class="{'should-preview':mainVM.emailPreview}">
-  <div class="app-body" ng-if="mainVM.page">
-    <div class="toolbar">
-      <p class="status" ng-if="mainVM.saving"><i class="fa fa-spinner fa-spin"></i> saving...</p>
-      <button class="preview toolbar-button" ng-click="mainVM.preview();">{{ !mainVM.emailPreview ? 'Preview' : 'Close' }}</button>
-      <button class="get-html toolbar-button" ng-click="mainVM.showHTML();">HTML</button>
-    </div>
-    <div class="email-builder">
-      <page></page>
-      <inspector></inspector>
-    </div>
-    <div class="email-preview">
-      <iframe class="preview-iframe" id="preview" frameborder="0"></iframe>
-    </div>
+<body ng-class="{'is-previewing':mainVM.emailPreview}" ng-cloak ng-app="emailApp" ng-controller="MainController as mainVM">
+<div class="app-body" ng-if="mainVM.page">
+  <div class="toolbar">
+    <p class="status" ng-if="mainVM.saving"><i class="fa fa-spinner fa-spin"></i> saving...</p>
+    <button class="preview toolbar-button" ng-click="mainVM.preview();">{{ !mainVM.emailPreview ? 'Preview' : 'Close' }}</button>
+    <button class="get-html toolbar-button" ng-click="mainVM.showHTML();">HTML</button>
+  </div>
+  <div class="email-builder">
+    <page></page>
+    <inspector></inspector>
+  </div>
+  <div class="email-preview">
+    <iframe class="preview-iframe" id="preview" frameborder="0"></iframe>
   </div>
 </div>
 

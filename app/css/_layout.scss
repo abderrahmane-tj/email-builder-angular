@@ -80,7 +80,7 @@
   height: 100%;
   width: 100%;
 }
-.should-preview{
+.is-previewing{
   .email-builder{
     display: none;
   }
@@ -113,7 +113,8 @@
 }
 
 .gu-unselectable .tooltipster-base,
-.no-tooltip .tooltipster-base{
+.no-tooltip .tooltipster-base,
+.is-previewing .tooltipster-base{
   display: none;
 }
 .gu-transit{
