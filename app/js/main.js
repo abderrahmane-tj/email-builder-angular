@@ -117,6 +117,7 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     function buildHTML(forPreview){
         forPreview = forPreview || false;
         mainVM.emailHtml = emailBuilder.run(mainVM.page, forPreview);
+        return mainVM.emailHtml;
     }
     function showHTML(){
         buildHTML();
@@ -128,17 +129,16 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     }
     function preview(){
         var previewIFrame = $('#preview');
+        previewIFrame.attr('src','');
+        
         mainVM.emailPreview = !mainVM.emailPreview;
 
         if(!mainVM.emailPreview){
             return;
         }
 
-
-        buildHTML(true);
-
         $timeout(function(){
-            previewIFrame.attr('src','data:text/html;charset=utf-8,' + encodeURI(mainVM.emailHtml));
+            previewIFrame.attr('src','data:text/html;charset=utf-8,' + encodeURI(buildHTML(true)));
         });
 
 
