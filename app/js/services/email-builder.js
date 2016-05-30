@@ -10,16 +10,17 @@ emailServices.factory('emailBuilder', ['$http','$q','obj2css',function ($http, $
     var sectionTemplate;
     var columnTemplate;
     var elementTemplate;
+    var previewMode;
 
     getTemplates().then(function (response) {
-        console.log('templates loaded');
         pageTemplate = response[0].data;
         sectionTemplate = response[1].data;
         columnTemplate = response[2].data;
         elementTemplate = response[3].data;
     });
-    function run(data){
+    function run(data, previewFlag){
         pageData = data;
+        previewMode = previewFlag;
         return buildPage(data);
     }
     function buildPage(pageData){
@@ -29,7 +30,8 @@ emailServices.factory('emailBuilder', ['$http','$q','obj2css',function ($http, $
             sections: sectionsHTML.join("\n"),
             bodyStyle: obj2css(pageData.style),
             pageBgColor: pageData.style['background-color'],
-            customStyles: ''
+            customStyles: '',
+            target: previewMode ? '<base target="_blank" />' : ''
         });
 
         return html;
@@ -89,6 +91,7 @@ emailServices.factory('emailBuilder', ['$http','$q','obj2css',function ($http, $
             right: 'float-right'
         };
         var html = "<img src='{src}' alt='' {alignAttribute} class='{classes}'>";
+        var link = "<a href='{link}'>{element}</a>";
         var wrapper = "<center>{element}</center>";
 
         html = supplant(html,{
@@ -96,6 +99,10 @@ emailServices.factory('emailBuilder', ['$http','$q','obj2css',function ($http, $
             classes: classes[data.alignment],
             alignAttribute: classes[data.alignment] === 'center' ? 'align="center"' : ''
         });
+
+        if(data.link){
+            html = supplant(link,{element: html, link: data.link});
+        }
 
         if(data.alignment === 'center'){
             html = supplant(wrapper,{element: html});

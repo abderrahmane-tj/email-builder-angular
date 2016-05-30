@@ -114,8 +114,9 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         document.body.appendChild(a);
         a.click();
     }
-    function buildHTML(){
-        mainVM.emailHtml = emailBuilder.run(mainVM.page);
+    function buildHTML(forPreview){
+        forPreview = forPreview || false;
+        mainVM.emailHtml = emailBuilder.run(mainVM.page, forPreview);
     }
     function showHTML(){
         buildHTML();
@@ -134,7 +135,7 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         }
 
 
-        buildHTML();
+        buildHTML(true);
 
         $timeout(function(){
             previewIFrame.attr('src','data:text/html;charset=utf-8,' + encodeURI(mainVM.emailHtml));
