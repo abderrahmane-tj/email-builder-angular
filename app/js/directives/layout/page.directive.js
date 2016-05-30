@@ -20,7 +20,9 @@ function pageDirective(dragulaService,$timeout,repositionTooltip){
         handleAutoScroll();
         handlePageScroll();
         /////////////////////
-        function assignElement(element){
+        function assignElement(element, breadCrumb){
+            breadCrumb = breadCrumb || {};
+            $scope.mainVM.breadCrumb = breadCrumb;
             $scope.mainVM.currentElement = element;
             if(element === null){
                 $('#structure-anchor').trigger('click');

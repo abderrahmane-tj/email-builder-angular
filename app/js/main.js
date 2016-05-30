@@ -23,6 +23,7 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     mainVM.exportData = exportData;
     mainVM.page = null;
     mainVM.currentElement = null;
+    mainVM.breadCrumb = {};
     mainVM.sectionsTemplates = null;
     mainVM.elementsTemplates = null;
     mainVM.localDev = ($window.location.hostname === 'localhost');
@@ -130,7 +131,7 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     function preview(){
         var previewIFrame = $('#preview');
         previewIFrame.attr('src','');
-        
+
         mainVM.emailPreview = !mainVM.emailPreview;
 
         if(!mainVM.emailPreview){
