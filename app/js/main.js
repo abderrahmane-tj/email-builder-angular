@@ -30,7 +30,6 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     mainVM.showHTML = showHTML;
     mainVM.preview = preview;
     mainVM.emailPreview = false;
-    var previewIFrame = $('#preview');
 
     var unbind = null; // variable used for watching mainVM.page
     var timeoutWatch = null; // A Timeout used for syncing
@@ -127,22 +126,25 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         });
     }
     function preview(){
+        var previewIFrame = $('#preview');
         mainVM.emailPreview = !mainVM.emailPreview;
 
         if(!mainVM.emailPreview){
             return;
         }
+
+
         buildHTML();
 
-        //console.log(mainVM.emailHtml);
-        //previewIFrame.attr('src','data:text/html;charset=utf-8,' + encodeURI(mainVM.emailHtml));
-        //console.log(previewIFrame);
-
-
-        swal({
-            title: "Coming Soon",
-            text: "Preview feature coming soon. Work in progress"
+        $timeout(function(){
+            previewIFrame.attr('src','data:text/html;charset=utf-8,' + encodeURI(mainVM.emailHtml));
         });
+
+
+        //swal({
+        //    title: "Coming Soon",
+        //    text: "Preview feature coming soon. Work in progress"
+        //});
     }
 }
 
