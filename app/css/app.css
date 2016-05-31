@@ -1752,6 +1752,18 @@ i.mce-i-clone-element:before {
 .inspector-panel {
   padding: 0 15px; }
 
+.navigation-link {
+  display: inline-block;
+  color: #2199e8;
+  cursor: pointer; }
+  .navigation-link:not(:first-child)::before {
+    content: '>';
+    margin-right: 5px; }
+
+.navigation-link.active {
+  color: inherit;
+  cursor: default; }
+
 .add-section, .add-elements {
   margin-top: 20px;
   clear: both; }

@@ -5,7 +5,8 @@ var emailApp = angular.module('emailApp', [
     angularDragula(angular)
 ]);
 emailApp.config(['$compileProvider', function ($compileProvider) {
-    // todo: disable debug. ps: disabling it will break getting scope from html. exemple : ($element.scope().element.tooltipstered = true;)
+    // todo: disable debug.
+    // ps: disabling it will break getting scope from html. exemple : ($element.scope().element.tooltipstered = true;)
     //$compileProvider.debugInfoEnabled(false);
 }]);
 emailApp.controller('MainController', [
@@ -22,8 +23,6 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     mainVM.importData = importData;
     mainVM.exportData = exportData;
     mainVM.page = null;
-    mainVM.currentElement = null;
-    mainVM.breadCrumb = {};
     mainVM.sectionsTemplates = null;
     mainVM.elementsTemplates = null;
     mainVM.localDev = ($window.location.hostname === 'localhost');
@@ -108,7 +107,8 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         });
     }
     function exportData(){
-        var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(mainVM.page));
+        var data = "text/json;charset=utf-8,"
+            + encodeURIComponent(JSON.stringify(mainVM.page));
         var a = document.createElement('a');
         a.href = 'data:' + data;
         a.download = 'email-builder_data.json';
@@ -124,29 +124,22 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         buildHTML();
         swal({
             title: "Copy the email's HTML",
-            text: "<textarea class='swal-email-html'>"+mainVM.emailHtml+"</textarea>",
+            text:
+            "<textarea class='swal-email-html'>"+mainVM.emailHtml+"</textarea>",
             html: true
         });
     }
     function preview(){
         var previewIFrame = $('#preview');
         previewIFrame.attr('src','');
-
         mainVM.emailPreview = !mainVM.emailPreview;
-
         if(!mainVM.emailPreview){
             return;
         }
-
         $timeout(function(){
-            previewIFrame.attr('src','data:text/html;charset=utf-8,' + encodeURI(buildHTML(true)));
+            previewIFrame.attr('src',
+                'data:text/html;charset=utf-8,' + encodeURI(buildHTML(true)));
         });
-
-
-        //swal({
-        //    title: "Coming Soon",
-        //    text: "Preview feature coming soon. Work in progress"
-        //});
     }
 }
 

@@ -26,7 +26,6 @@ emailApp.directive('highlight',[
             //highlighted = element.find('.row:first');
         }
 
-        highlighted.addClass('highlight--'+options.type);
 
         var elementData = $scope[options.name];
         if(options.name === 'page'){
@@ -47,11 +46,12 @@ emailApp.directive('highlight',[
             // which corresponds to $scope.page. $scope.section, ...
             // the following condition checks if we are clicking on the
             // currentElement. if so, we should uninspect it
-            if(elementData === $scope.mainVM.currentElement){
+            if(elementData === $scope.pageVM.currentElement){
                 $scope.pageVM.assignElement(null);
             }else{
                 $('#properties-anchor').trigger('click');
                 $scope.pageVM.assignElement(elementData,{
+                    page: true,
                     section: $scope.section,
                     column: $scope.column,
                     element: $scope.element
@@ -60,15 +60,18 @@ emailApp.directive('highlight',[
             }
             $scope.$apply();
         }
-        element.bind('mouseenter', function(event) {
+        element.bind('mouseenter', highlightElement);
+        element.bind('mouseleave', unhighlightElement);
+
+        function highlightElement(event) {
             $page.addClass('on-'+options.name);
             $('.highlight--'+options.name)
                 .removeClass('highlight--'+options.name);
             highlighted.addClass('highlight--'+options.name);
-        });
-        element.bind('mouseleave', function() {
+        }
+        function unhighlightElement() {
             $page.removeClass('on-'+options.name);
             highlighted.removeClass('highlight--'+options.name);
-        });
+        }
     }
 }]);

@@ -16,14 +16,17 @@ function pageDirective(dragulaService,$timeout,repositionTooltip){
     function controller($scope){
         var vm = this;
         vm.assignElement = assignElement;
+        vm.breadcrumb = {page:true};
+        vm.currentElement = null;
         handleDragAndDrop();
         handleAutoScroll();
         handlePageScroll();
         /////////////////////
-        function assignElement(element, breadCrumb){
-            breadCrumb = breadCrumb || {};
-            $scope.mainVM.breadCrumb = breadCrumb;
-            $scope.mainVM.currentElement = element;
+        function assignElement(element, breadcrumb){
+            breadcrumb = breadcrumb || {page:true};
+            vm.breadcrumb = breadcrumb;
+            vm.currentElement = element;
+
             if(element === null){
                 $('#structure-anchor').trigger('click');
             }

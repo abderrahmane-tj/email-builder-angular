@@ -4,7 +4,7 @@
     dragula-scope="mainVM.$scope"
     ng-class="{'empty-page': !mainVM.page.sections.length}"
 >
-  <div class="container-wrapper section-element"
+  <div class="container-wrapper section-element id-{{section.$$hashKey.replace(':','-')}}"
       ng-repeat="section in mainVM.page.sections"
       ng-style="section.wrapper.style"
       highlight="{name:'section', type:'exactly'}" element-controls

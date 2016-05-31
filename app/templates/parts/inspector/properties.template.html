@@ -1,21 +1,33 @@
-<div ng-if="mainVM.currentElement">
-  <div ng-if="mainVM.currentElement.type==='page'">
-    <page-properties element="mainVM.currentElement"></page-properties>
+<div class="properties-panel-inner">
+  <h5>Breadcrumb</h5>
+  <div class="breadcrumb">
+    <ul>
+      <li ng-if="pageVM.breadcrumb.page" class="navigation-link" navigate-to="page">page</li>
+      <li ng-if="pageVM.breadcrumb.section" class="navigation-link" navigate-to="section">section</li>
+      <li ng-if="pageVM.breadcrumb.column" class="navigation-link" navigate-to="column">column</li>
+      <li ng-if="pageVM.breadcrumb.element" class="navigation-link" navigate-to="element">element</li>
+    </ul>
   </div>
-  <div ng-if="mainVM.currentElement.type==='section'">
-    <section-properties element="mainVM.currentElement"></section-properties>
-  </div>
-  <div ng-if="mainVM.currentElement.type==='column'">
-    <column-properties element="mainVM.currentElement"></column-properties>
-  </div>
+  <hr>
+  <div ng-if="pageVM.currentElement" class="properties">
+    <div ng-if="pageVM.currentElement.type==='page'">
+      <page-properties element="pageVM.currentElement"></page-properties>
+    </div>
+    <div ng-if="pageVM.currentElement.type==='section'">
+      <section-properties element="pageVM.currentElement"></section-properties>
+    </div>
+    <div ng-if="pageVM.currentElement.type==='column'">
+      <column-properties element="pageVM.currentElement"></column-properties>
+    </div>
 
-  <div ng-if="mainVM.currentElement.type==='image'">
-    <image-properties element="mainVM.currentElement"></image-properties>
-  </div>
-  <div ng-if="mainVM.currentElement.type==='button'">
-    <button-properties element="mainVM.currentElement"></button-properties>
-  </div>
-  <div ng-if="mainVM.currentElement.type==='spacer'">
-    <spacer-properties element="mainVM.currentElement"></spacer-properties>
+    <div ng-if="pageVM.currentElement.type==='image'">
+      <image-properties element="pageVM.currentElement"></image-properties>
+    </div>
+    <div ng-if="pageVM.currentElement.type==='button'">
+      <button-properties element="pageVM.currentElement"></button-properties>
+    </div>
+    <div ng-if="pageVM.currentElement.type==='spacer'">
+      <spacer-properties element="mainVM.currentElement"></spacer-properties>
+    </div>
   </div>
 </div>

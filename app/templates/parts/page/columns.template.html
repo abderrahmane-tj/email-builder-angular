@@ -1,4 +1,4 @@
-<th class="small-12 large-{{column['grid-width']}} columns"
+<th class="small-12 large-{{column['grid-width']}} columns id-{{column.$$hashKey.replace(':','-')}}"
     highlight="{name:'column', type:'exactly'}"
     ng-repeat="column in section.columns"
     ng-style="column.wrapper.style"
