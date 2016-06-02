@@ -15,7 +15,6 @@ function navigateToDirective($timeout){
         ////////
         $scope.$watch('pageVM.currentElement.type', handleActive);
         function handleActive(type, oldType){
-            console.log(type);
             var shouldActivate = false;
             switch(type){
                 case 'page': case 'section': case 'column': shouldActivate = (type === attrs.navigateTo); break;
