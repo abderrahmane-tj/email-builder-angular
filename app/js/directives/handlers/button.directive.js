@@ -10,9 +10,9 @@ emailApp.directive('buttonHandler',[function(){
         element.bind('click', onClick);
         //////////
         function onClick(event){
-            if(!event.ctrlKey){
+            //if(!event.ctrlKey){
                 event.preventDefault();
-            }
+            //}
         }
     }
     function controller($scope){
