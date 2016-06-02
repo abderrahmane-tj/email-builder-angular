@@ -21,11 +21,20 @@ emailApp.directive('highlight',[
         // .element. as of this comment it is its direct parent
         if(options.name === 'element'){
             highlighted = element.closest('.element');
+            if($scope.element.type === 'button'){
+                highlighted = highlighted.find('table.button');
+            }
+
+            // if the element is being built, check if it is the current element
+            // so that we could cssCurrentElement it
+            if(($scope.element === $scope.pageVM.currentElement)){
+                highlighted.addClass('current-element');
+            }
         }
+
         if(options.name === 'section'){
             //highlighted = element.find('.row:first');
         }
-
 
         var elementData = $scope[options.name];
         if(options.name === 'page'){
