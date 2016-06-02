@@ -1613,7 +1613,7 @@ table.body {
   position: relative;
   box-shadow: 0 0 0 4px #3ae4e3;
   z-index: 10; }
-  :not(.gu-unselectable) .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element):not(.current-element)::before {
+  :not(.gu-unselectable) .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element):not(.current-element)::after {
     content: "page";
     position: absolute;
     top: 100%;
@@ -1630,7 +1630,7 @@ table.body {
   position: relative;
   box-shadow: 0 0 0 4px #3ae4e3;
   z-index: 10; }
-  :not(.gu-unselectable) .on-section:not(.on-column):not(.on-element) .highlight--section:not(.current-element)::before {
+  :not(.gu-unselectable) .on-section:not(.on-column):not(.on-element) .highlight--section:not(.current-element)::after {
     content: "section";
     position: absolute;
     top: 100%;
@@ -1647,7 +1647,7 @@ table.body {
   position: relative;
   box-shadow: 0 0 0 4px #3ae4e3;
   z-index: 10; }
-  :not(.gu-unselectable) .on-column:not(.on-element) .highlight--column:not(.current-element)::before {
+  :not(.gu-unselectable) .on-column:not(.on-element) .highlight--column:not(.current-element)::after {
     content: "column";
     position: absolute;
     top: 100%;
@@ -1666,7 +1666,7 @@ table.body {
   z-index: 10; }
   :not(.gu-unselectable) .on-element .highlight--element:not(.current-element).image-element {
     box-shadow: 0 0 0 4px #3ae4e3; }
-  :not(.gu-unselectable) .on-element .highlight--element:not(.current-element)::before {
+  :not(.gu-unselectable) .on-element .highlight--element:not(.current-element)::after {
     content: "element";
     position: absolute;
     top: 100%;
@@ -1833,9 +1833,6 @@ i.mce-i-clone-element:before {
 .button-align-center {
   margin-left: auto !important;
   margin-right: auto !important; }
-
-.button-element {
-  overflow: hidden; }
 
 .button-align-left {
   float: left !important; }
