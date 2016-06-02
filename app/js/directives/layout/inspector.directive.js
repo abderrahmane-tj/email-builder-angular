@@ -14,7 +14,6 @@ emailApp.directive('inspector',['$timeout',function($timeout){
     function link($scope,element,attrs){
         $timeout(function () {
             handleTabs();
-            handleExport();
         });
         ///////////
         function handleTabs(){
@@ -35,21 +34,6 @@ emailApp.directive('inspector',['$timeout',function($timeout){
                 inspectorPanels.hide();
                 $(anchor.attr('href')).show();
             }
-        }
-        function handleExport(){
-            console.log($("#data-dump").length);
-            $("#data-dump").on('focus',function() {
-                console.log('focused');
-                var $this = $(this);
-                $this.select();
-
-                // Work around Chrome's little problem
-                $this.mouseup(function() {
-                    // Prevent further mouseup intervention
-                    $this.unbind("mouseup");
-                    return false;
-                });
-            });
         }
     }
 }]);
