@@ -11,12 +11,12 @@ emailApp.config(['$compileProvider', function ($compileProvider) {
 }]);
 emailApp.controller('MainController', [
     '$scope', '$templateCache', 'dragulaService', '$timeout', '$interval',
-    '$window', 'repositionTooltip', '$http','$q','emailBuilder',
+    '$window', 'repositionTooltip', '$http','$q','emailBuilder', 'jqSelectOnFocus',
     MainController
 ]);
 
 function MainController($scope, $templateCache, dragulaService, $timeout,
-    $interval, $window, repositionTooltip, $http, $q, emailBuilder
+    $interval, $window, repositionTooltip, $http, $q, emailBuilder, jqSelectOnFocus
 ){
     var mainVM = this;
     mainVM.resetData = resetData;
@@ -122,11 +122,13 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     }
     function showHTML(){
         buildHTML();
-        swal({
-            title: "Copy the email's HTML",
-            text:
-            "<textarea class='swal-email-html'>"+mainVM.emailHtml+"</textarea>",
-            html: true
+        var modalHTML = '<div class="remodal" data-remodal-id="modal">\n  <button data-remodal-action="close" class="remodal-close"></button>\n  <h1>Copy the email\'s HTML</h1>\n  <textarea class=\'auto-select\' autofocus>'+mainVM.emailHtml+'</textarea>\n  <button data-remodal-action="close" class="remodal-confirm">OK</button>\n</div>\n';
+        var modal = $(modalHTML);
+        jqSelectOnFocus(modal.find('.auto-select'));
+        var instance = modal.remodal();
+        instance.open();
+        $(document).on('closed', '.remodal', function (e) {
+            instance.destroy();
         });
     }
     function preview(){
