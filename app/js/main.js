@@ -122,10 +122,10 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     }
     function showHTML(){
         buildHTML();
-        var modalHTML = '<div class="remodal" data-remodal-id="modal">\n  <button data-remodal-action="close" class="remodal-close"></button>\n  <h1>Copy the email\'s HTML</h1>\n  <textarea class=\'auto-select\' autofocus>'+mainVM.emailHtml+'</textarea>\n  <button data-remodal-action="close" class="remodal-confirm">OK</button>\n</div>\n';
+        var modalHTML = '<div class="remodal" data-remodal-id="modal">\n  <button data-remodal-action="close" class="remodal-close"></button>\n  <h1>Copy the email\'s HTML</h1>\n  <textarea class=\'auto-select html-export\' autofocus>'+mainVM.emailHtml+'</textarea>\n  <button data-remodal-action="close" class="remodal-confirm">OK</button>\n</div>\n';
         var modal = $(modalHTML);
         jqSelectOnFocus(modal.find('.auto-select'));
-        var instance = modal.remodal();
+        var instance = modal.remodal({hashTracking:false});
         instance.open();
         $(document).on('closed', '.remodal', function (e) {
             instance.destroy();
