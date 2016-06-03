@@ -115,10 +115,10 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         document.body.appendChild(a);
         a.click();
     }
-    function buildHTML(forPreview){
-        forPreview = forPreview || false;
-        mainVM.emailHtml = emailBuilder.run(mainVM.page, forPreview);
-        return mainVM.emailHtml;
+    function buildHTML(){
+        var result = emailBuilder.run(mainVM.page);
+        mainVM.emailHtml = result[0];
+        return result;
     }
     function showHTML(){
         buildHTML();
@@ -138,9 +138,10 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         if(!mainVM.emailPreview){
             return;
         }
+        var buildParts = buildHTML(true)[1];
+        store.set('preview-data',buildParts);
         $timeout(function(){
-            previewIFrame.attr('src',
-                'data:text/html;charset=utf-8,' + encodeURI(buildHTML(true)));
+            previewIFrame.attr('src','http://atj-remotedev.cloudapp.net/email-builder/app/templates/preview.html');
         });
     }
 }

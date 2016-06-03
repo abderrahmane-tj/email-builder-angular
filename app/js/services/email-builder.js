@@ -10,7 +10,6 @@ emailServices.factory('emailBuilder', ['$http','$q','obj2css',function ($http, $
     var sectionTemplate;
     var columnTemplate;
     var elementTemplate;
-    var previewMode;
 
     getTemplates().then(function (response) {
         pageTemplate = response[0].data;
@@ -18,23 +17,20 @@ emailServices.factory('emailBuilder', ['$http','$q','obj2css',function ($http, $
         columnTemplate = response[2].data;
         elementTemplate = response[3].data;
     });
-    function run(data, previewFlag){
+    function run(data){
         pageData = data;
-        previewMode = previewFlag;
         return buildPage(data);
     }
     function buildPage(pageData){
         var sectionsHTML = pageData.sections.map(buildSection);
 
-        var html = supplant(pageTemplate,{
+        var pageParams = {
             sections: sectionsHTML.join("\n"),
-            bodyStyle: obj2css(pageData.style),
-            pageBgColor: pageData.style['background-color'],
-            customStyles: '',
-            target: previewMode ? '<base target="_blank" />' : ''
-        });
+            customStyles: '<style>\n  html, table.body{background-color:'+pageData.style['background-color']+';}\n  body{'+obj2css(pageData.style)+'}\n</style>'
+        };
+        var html = supplant(pageTemplate,pageParams);
 
-        return html;
+        return [html, pageParams];
     }
     function buildSection(sectionData){
         var columnsHTML = sectionData.columns.map(buildColumn);

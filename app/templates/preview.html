@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width"/>
+<base target="_blank" />
 <style>
   .wrapper {
     width: 100%; }
@@ -1307,15 +1308,23 @@
     background: transparent;
   }
 </style>
-{customStyles}
 </head>
 <body>
 <table class="body">
   <tr>
     <td class="float-center" align="center" valign="top">
-      <center>{sections}</center>
+      <center class="sections"></center>
     </td>
   </tr>
 </table>
+<script src="../../bower_components/store-js/store.min.js"></script>
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    var data = store.get('preview-data');
+    $('head').append($(data.customStyles));
+    $('.sections').html($(data.sections));
+  });
+</script>
 </body>
 </html>
