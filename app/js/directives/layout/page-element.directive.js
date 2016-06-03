@@ -26,7 +26,6 @@ emailApp.directive('pageElement',['$templateRequest','$compile','$timeout','repo
             template.attr('data-element-type',$scope.element.type);
             element.append(template);
             $compile(template)($scope);
-            //console.log($scope.element);
         }
         function handlePostElementCompilation(){
             // adding new elements to the page or dragging and dropping of elements

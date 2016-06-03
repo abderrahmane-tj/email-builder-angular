@@ -28,7 +28,6 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     mainVM.appURL = mainVM.localDev ? 'http://localhost/email-builder/' :
         'http://atj-remotedev.cloudapp.net/email-builder/';
 
-    console.log(mainVM.appURL);
     var dirty = true;
     mainVM.showHTML = showHTML;
     mainVM.preview = preview;
