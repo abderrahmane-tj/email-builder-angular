@@ -25,10 +25,15 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     mainVM.sectionsTemplates = null;
     mainVM.elementsTemplates = null;
     mainVM.localDev = ($window.location.hostname === 'localhost');
-    mainVM.dirty = true;
+    mainVM.appURL = mainVM.localDev ? 'http://localhost/email-builder/' :
+        'http://atj-remotedev.cloudapp.net/email-builder/';
+
+    console.log(mainVM.appURL);
+    var dirty = true;
     mainVM.showHTML = showHTML;
     mainVM.preview = preview;
     mainVM.emailPreview = false;
+    mainVM.previewParams = null;
 
     var unbind = null; // variable used for watching mainVM.page
     var timeoutWatch = null; // A Timeout used for syncing
@@ -72,11 +77,11 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         return page;
     }
     function save(){
-        if(!mainVM.dirty){
+        if(!dirty){
             return;
         }
         store.set('page', mainVM.page);
-        mainVM.dirty = false;
+        dirty = false;
         mainVM.saving = true;
         $timeout(function () {
             mainVM.saving = false;
@@ -84,7 +89,7 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     }
     function syncData() {
         $timeout.cancel(timeoutWatch);
-        mainVM.dirty = true;
+        dirty = true;
         timeoutWatch = $timeout(function () {
             save();
         }, 2000);
@@ -137,10 +142,11 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         if(!mainVM.emailPreview){
             return;
         }
-        var buildParts = buildHTML(true)[1];
-        store.set('preview-data',buildParts);
+
+        mainVM.previewParams = buildHTML(true)[1];
+
         $timeout(function(){
-            previewIFrame.attr('src','http://atj-remotedev.cloudapp.net/email-builder/app/templates/preview.html');
+            previewIFrame.attr('src',mainVM.appURL+'app/templates/preview.html');
         });
     }
 }

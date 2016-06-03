@@ -1307,6 +1307,10 @@
   table.body{
     background: transparent;
   }
+  /* preview styles */
+  body {
+    padding: 40px 0;
+  }
 </style>
 </head>
 <body>
@@ -1317,14 +1321,14 @@
     </td>
   </tr>
 </table>
-<script src="../../bower_components/store-js/store.min.js"></script>
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <script>
-  $(document).ready(function () {
-    var data = store.get('preview-data');
-    $('head').append($(data.customStyles));
-    $('.sections').html($(data.sections));
-  });
+var pWindow = window.parent;
+$(document).ready(function () {
+  var mainVM = pWindow.angular.element(pWindow.document.body).controller();
+  $('head').append($(mainVM.previewParams.customStyles));
+  $('.sections').html(mainVM.previewParams.sections);
+});
 </script>
 </body>
 </html>
