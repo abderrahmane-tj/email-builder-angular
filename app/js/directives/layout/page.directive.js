@@ -100,6 +100,7 @@ function pageDirective(dragulaService,$timeout,repositionTooltip){
             var dragged = $(el);
             var $element = $(dragged.children().get(0));
             var $source = $(source);
+            console.log($element.data('elementId'));
 
             var shouldRecreateTooltip =
                 !$source.is(target) // linking occurs only when dropping outside of local bag

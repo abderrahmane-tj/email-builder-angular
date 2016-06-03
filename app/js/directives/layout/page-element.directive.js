@@ -19,6 +19,7 @@ emailApp.directive('pageElement',['$templateRequest','$compile','$timeout','repo
             element.addClass($scope.element.type+'-element');
             var template = angular.element(html);
             template.addClass('id-'+$scope.element.$$hashKey.replace(':','-'));
+            template.data('element-id','id-'+$scope.element.$$hashKey.replace(':','-'));
             template.attr('highlight',"{name:'element', type:'exactly'}");
             template.attr('ng-style',"element.style");
             template.attr('data-block-type','element');

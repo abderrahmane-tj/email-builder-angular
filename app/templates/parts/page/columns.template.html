@@ -4,6 +4,7 @@
     ng-style="column.wrapper.style"
     ng-class="{'empty-column': !column.elements.length,'first': $index === 0, 'last': $index === section.columns.length-1, 'no-padding': column['no-padding']}"
     data-block-type="column"
+    data-column-id="{{column.$$hashKey}}"
 >
   <!-- cell's inside -->
   <table class="fixed-table"><tr class="column-cell-wrapper">
