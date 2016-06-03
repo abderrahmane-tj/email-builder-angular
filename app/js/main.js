@@ -5,9 +5,8 @@ var emailApp = angular.module('emailApp', [
     angularDragula(angular)
 ]);
 emailApp.config(['$compileProvider', function ($compileProvider) {
-    // todo: disable debug.
-    // ps: disabling it will break getting scope from html. exemple : ($element.scope().element.tooltipstered = true;)
-    //$compileProvider.debugInfoEnabled(false);
+    //todo: turn debugInfo off in production
+    $compileProvider.debugInfoEnabled(true);
 }]);
 emailApp.controller('MainController', [
     '$scope', '$templateCache', 'dragulaService', '$timeout', '$interval',

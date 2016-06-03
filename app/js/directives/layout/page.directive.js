@@ -1,10 +1,10 @@
 var emailApp = angular.module('emailApp');
 emailApp.directive('page',[
-    'dragulaService','$timeout','repositionTooltip',
+    'dragulaService','$timeout','repositionTooltip','findElement',
     pageDirective
 ]);
 
-function pageDirective(dragulaService,$timeout,repositionTooltip){
+function pageDirective(dragulaService,$timeout,repositionTooltip,findElement){
     return {
         restrict: "E",
         replace: true,
@@ -100,7 +100,6 @@ function pageDirective(dragulaService,$timeout,repositionTooltip){
             var dragged = $(el);
             var $element = $(dragged.children().get(0));
             var $source = $(source);
-            console.log($element.data('elementId'));
 
             var shouldRecreateTooltip =
                 !$source.is(target) // linking occurs only when dropping outside of local bag
@@ -108,7 +107,8 @@ function pageDirective(dragulaService,$timeout,repositionTooltip){
                 && $element.is('.tooltipstered'); // only recrate tooltip, if existed before dragging
             if(shouldRecreateTooltip){
                 $scope.$apply(function () {
-                    $element.scope().element.tooltipstered = true;
+                    var elementData = findElement($element.data('elementId'));
+                    elementData.tooltipstered = true;
                 });
             }
 
