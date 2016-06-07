@@ -8,7 +8,7 @@ var sourcemaps = require('gulp-sourcemaps');
 
 
 gulp.task('sass', function() {
-    return gulp.src('app/css/app.scss')
+    return gulp.src('app/sass/app.scss')
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(sass()) // sass em up
     .pipe(sourcemaps.write('.')) // write sourcemaps
@@ -16,5 +16,5 @@ gulp.task('sass', function() {
 });
 
 gulp.task('default', ['sass'], function() {
-    gulp.watch('app/css/**/*.scss', ['sass']);
+    gulp.watch('app/sass/**/*.scss', ['sass']);
 });
