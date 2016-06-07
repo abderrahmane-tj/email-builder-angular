@@ -1,6 +1,5 @@
 var emailApp = angular.module('emailApp', [
     'emailApp.services',
-    'LocalStorageModule',
     'ngSanitize',
     angularDragula(angular)
 ]);
