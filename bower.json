@@ -7,6 +7,7 @@
   "homepage": "",
   "ignore": [
     ".idea",
+    ".code",
     "**/.*",
     "node_modules",
     "bower_components",
