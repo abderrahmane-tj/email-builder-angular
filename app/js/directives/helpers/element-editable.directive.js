@@ -39,6 +39,15 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
         editable.bind('mousedown', onMousedown);
 
         $compile(editable)($scope);
+        var plugins = options.plugins || 'textcolor colorpicker link';
+        var toolbar = options.toolbar || [
+            'bold italic underline strikethrough removeformat' +
+            ' | alignleft aligncenter alignright alignjustify' +
+            ' | bullist numlist outdent indent' +
+            ' | cloneElement deleteElement',
+
+            'link unlink | forecolor backcolor | formatselect | fontselect fontsizeselect'
+        ];
 
         tinymce.init({
             selector:'#'+randID,
@@ -77,15 +86,8 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
                 });
             },
             inline: true,
-            plugins : 'textcolor colorpicker link',
-            toolbar: [
-                'bold italic underline strikethrough removeformat' +
-                ' | alignleft aligncenter alignright alignjustify' +
-                ' | bullist numlist outdent indent' +
-                ' | cloneElement deleteElement',
-
-                'link unlink | forecolor backcolor | formatselect | fontselect fontsizeselect'
-            ],
+            plugins : plugins,
+            toolbar: toolbar,
             skin: 'lightgray',
             theme : 'modern',
             menubar: false
