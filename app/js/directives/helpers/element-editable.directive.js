@@ -51,6 +51,11 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
 
         tinymce.init({
             selector:'#'+randID,
+            force_p_newlines: true,
+            paste_as_text: true,
+            convert_urls: false,
+            fontsize_formats: "8px 9px 10px 11px 12px 14px 16px 18px 20px 22px 24px 26px 28px 36px 48px 72px",
+                    font_formats: "Bitter, Georgia=Bitter, Georgia, Times, Times New Roman, serif;Courier, Lucida Sans=Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;Droid Serif, Georgia=Droid Serif, Georgia, Times, Times New Roman, serif;Georgia, Times=Georgia, Times, Times New Roman, serif;Helvetica, Arial=Helvetica Neue, Helvetica, Arial, sans-serif;Lato, Tahoma=Lato, Tahoma, Verdana, Segoe, sans-serif;Open Sans, Helvetica=Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;Roboto, Tahoma=Roboto, Tahoma, Verdana, Segoe, sans-serif;Ubuntu, Tahoma=Ubuntu, Tahoma, Verdana, Segoe, sans-serif;Lucida Sans, Geneva=Lucida Grande, Lucida Sans Unicode, Lucida Sans, Geneva, Verdana, sans-serif;Montserrat, Trebuchet=Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;",
             setup: function(editor) {
                 editor.on("init", function() {
                     $scope.$apply(function () {
