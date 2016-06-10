@@ -30,6 +30,7 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     var dirty = true;
     mainVM.showHTML = showHTML;
     mainVM.preview = preview;
+    mainVM.closeBuilder = closeBuilder;
     mainVM.emailPreview = false;
     mainVM.previewParams = null;
 
@@ -146,6 +147,10 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
         $timeout(function(){
             previewIFrame.attr('src',mainVM.appURL+'app/templates/preview.html');
         });
+    }
+    function closeBuilder(){
+        buildHTML();
+        window.parent.closeBuilder(mainVM.emailHtml);
     }
 }
 

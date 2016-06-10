@@ -11,6 +11,7 @@
 <div class="app-body" ng-if="mainVM.page">
   <div class="toolbar">
     <p class="status" ng-if="mainVM.saving"><i class="fa fa-spinner fa-spin"></i> saving...</p>
+    <button class="close-builder toolbar-button" ng-click="mainVM.closeBuilder();">Close</button>
     <button class="preview toolbar-button" ng-click="mainVM.preview();">{{ !mainVM.emailPreview ? 'Preview' : "&larr; Return" }}</button>
     <button class="get-html toolbar-button" ng-click="mainVM.showHTML();">HTML</button>
   </div>
