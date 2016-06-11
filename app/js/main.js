@@ -26,7 +26,7 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     mainVM.localDev = ($window.location.hostname === 'localhost');
     mainVM.appURL = mainVM.localDev ? 'http://localhost/email-builder/' :
         'http://atj-remotedev.cloudapp.net/email-builder/';
-
+    mainVM.iframeMode = inIframe();
     var dirty = true;
     mainVM.showHTML = showHTML;
     mainVM.preview = preview;
@@ -151,6 +151,13 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     function closeBuilder(){
         buildHTML();
         window.parent.closeBuilder(mainVM.emailHtml);
+    }
+    function inIframe () {
+        try {
+            return window.self !== window.top;
+        } catch (e) {
+            return true;
+        }
     }
 }
 
