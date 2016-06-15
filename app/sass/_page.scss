@@ -38,8 +38,7 @@
   position: relative;
   text-align: center;
   padding: 0 !important;
-  &::before{
-    content: "Drag a new element here";
+  .empty-column-placeholder{
     position: absolute;
     width: 100%;
     left: 0;
@@ -48,10 +47,10 @@
     right: 0;
     line-height: 50px;
   }
-  &.large-4::before{
+  &.large-4 .empty-column-placeholder{
     font-size: 14px;
   }
-  &.large-3::before{
+  &.large-3 .empty-column-placeholder{
     font-size: 12px;
   }
   .column-cell-wrapper {

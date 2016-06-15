@@ -1,12 +1,15 @@
 $highlightColor: #3ae4e3;
-$secondaryHighlightColor: #52677E;
-$shadowWidth: 4px;
-$highlightShadow: 0 0 0 $shadowWidth $highlightColor;
-$currentShadow: 0 0 0 $shadowWidth #e12de4;
-@mixin highlightBefore($content, $color, $secondaryColor, $width){
+$highlightSecondaryColor: #52677E;
+$highlighWidth: 2px;
+$highlightStyle: solid;
+$currentColor: #2199e8;
+$currentWidth: 2px;
+$currentStyle: solid;
+
+@mixin highlightLabel($content, $color, $secondaryColor, $width, $top){
   content: $content;
   position: absolute;
-  top: 100%;
+  top: $top;
   left: -$width;
   background: $color;
   color: $secondaryColor;
@@ -20,53 +23,43 @@ $currentShadow: 0 0 0 $shadowWidth #e12de4;
 :not(.gu-unselectable){ // if we are dragging, none if this should apply
   .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element):not(.current-element){
     position: relative;
-    box-shadow: $highlightShadow;
-    z-index: 10;
-    &::after{
-      @include highlightBefore('page', $highlightColor, $secondaryHighlightColor, $shadowWidth);
+    outline: $highlightColor #{$highlighWidth}px $highlightStyle;
+    z-index: 11;
+    &::before{
+      @include highlightLabel('page', $highlightColor, $highlightSecondaryColor, $highlighWidth, 0);
     }
   }
   .on-section:not(.on-column):not(.on-element) .highlight--section:not(.current-element){
     position: relative;
-    box-shadow: $highlightShadow;
-    z-index: 10;
-    &::after{
-      @include highlightBefore('section', $highlightColor, $secondaryHighlightColor, $shadowWidth);
+    outline: $highlightColor $highlighWidth $highlightStyle;
+    z-index: 11;
+    &::before{
+      @include highlightLabel('section', $highlightColor, $highlightSecondaryColor, $highlighWidth, 0);
     }
   }
   .on-column:not(.on-element) .highlight--column:not(.current-element){
     position: relative;
-    box-shadow: $highlightShadow;
-    z-index: 10;
-    &::after{
-      @include highlightBefore('column', $highlightColor, $secondaryHighlightColor, $shadowWidth);
+    outline: $highlightColor $highlighWidth $highlightStyle;
+    z-index: 11;
+    &::before{
+      @include highlightLabel('column', $highlightColor, $highlightSecondaryColor, $highlighWidth, 0);
     }
   }
   .on-element .highlight--element:not(.current-element) {
     position: relative;
-    box-shadow: $highlightShadow;
+    outline: $highlightColor $highlighWidth $highlightStyle;
     &.image-element{
-      box-shadow: $highlightShadow;
+      outline: $highlightColor $highlighWidth $highlightStyle;
     }
-    z-index: 10;
-    &::after{
-      @include highlightBefore('element', $highlightColor, $secondaryHighlightColor, $shadowWidth);
+    z-index: 11;
+    &::before{
+      @include highlightLabel('element', $highlightColor, $highlightSecondaryColor, $highlighWidth, 100% );
     }
   }
 }
-//.page.current-element{
-//  position: relative;
-//  box-shadow: $currentShadow;
-//  z-index: 10;
-//}
+
 .current-element{
   position: relative;
-  box-shadow: $currentShadow;
-  //&.img-element{
-  //  box-shadow: $currentShadow;
-  //}
-  //&.row{
-  //  box-shadow: $currentShadow;
-  //}
-  z-index: 11;
+  outline: $currentColor $currentWidth $currentStyle;
+  z-index: 12;
 }

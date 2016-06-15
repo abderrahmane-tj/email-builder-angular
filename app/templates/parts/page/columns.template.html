@@ -6,6 +6,10 @@
     data-block-type="column"
     data-column-id="{{column.$$hashKey}}"
 >
+  <div
+    class="empty-column-placeholder"
+    ng-if="!column.elements.length"
+  >Drag a new element here</div>
   <!-- cell's inside -->
   <table class="fixed-table"><tr class="column-cell-wrapper">
     <td
