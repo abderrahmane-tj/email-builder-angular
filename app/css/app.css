@@ -1519,8 +1519,7 @@ textarea.html-export {
   position: relative;
   text-align: center;
   padding: 0 !important; }
-  .empty-column::before {
-    content: "Drag a new element here";
+  .empty-column .empty-column-placeholder {
     position: absolute;
     width: 100%;
     left: 0;
@@ -1528,9 +1527,9 @@ textarea.html-export {
     bottom: 0;
     right: 0;
     line-height: 50px; }
-  .empty-column.large-4::before {
+  .empty-column.large-4 .empty-column-placeholder {
     font-size: 14px; }
-  .empty-column.large-3::before {
+  .empty-column.large-3 .empty-column-placeholder {
     font-size: 12px; }
   .empty-column .column-cell-wrapper {
     height: 50px; }
@@ -1580,16 +1579,16 @@ textarea.html-export {
 
 :not(.gu-unselectable) .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element):not(.current-element) {
   position: relative;
-  box-shadow: 0 0 0 4px #3ae4e3;
-  z-index: 10; }
-  :not(.gu-unselectable) .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element):not(.current-element)::after {
+  outline: #3ae4e3 2pxpx solid;
+  z-index: 11; }
+  :not(.gu-unselectable) .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element):not(.current-element)::before {
     content: "page";
     position: absolute;
-    top: 100%;
-    left: -4px;
+    top: 0;
+    left: -2px;
     background: #3ae4e3;
     color: #52677E;
-    padding: 4px 8px;
+    padding: 2px 4px;
     height: 20px;
     line-height: 20px;
     font-size: 14px;
@@ -1598,16 +1597,16 @@ textarea.html-export {
 
 :not(.gu-unselectable) .on-section:not(.on-column):not(.on-element) .highlight--section:not(.current-element) {
   position: relative;
-  box-shadow: 0 0 0 4px #3ae4e3;
-  z-index: 10; }
-  :not(.gu-unselectable) .on-section:not(.on-column):not(.on-element) .highlight--section:not(.current-element)::after {
+  outline: #3ae4e3 2px solid;
+  z-index: 11; }
+  :not(.gu-unselectable) .on-section:not(.on-column):not(.on-element) .highlight--section:not(.current-element)::before {
     content: "section";
     position: absolute;
-    top: 100%;
-    left: -4px;
+    top: 0;
+    left: -2px;
     background: #3ae4e3;
     color: #52677E;
-    padding: 4px 8px;
+    padding: 2px 4px;
     height: 20px;
     line-height: 20px;
     font-size: 14px;
@@ -1616,16 +1615,16 @@ textarea.html-export {
 
 :not(.gu-unselectable) .on-column:not(.on-element) .highlight--column:not(.current-element) {
   position: relative;
-  box-shadow: 0 0 0 4px #3ae4e3;
-  z-index: 10; }
-  :not(.gu-unselectable) .on-column:not(.on-element) .highlight--column:not(.current-element)::after {
+  outline: #3ae4e3 2px solid;
+  z-index: 11; }
+  :not(.gu-unselectable) .on-column:not(.on-element) .highlight--column:not(.current-element)::before {
     content: "column";
     position: absolute;
-    top: 100%;
-    left: -4px;
+    top: 0;
+    left: -2px;
     background: #3ae4e3;
     color: #52677E;
-    padding: 4px 8px;
+    padding: 2px 4px;
     height: 20px;
     line-height: 20px;
     font-size: 14px;
@@ -1634,18 +1633,18 @@ textarea.html-export {
 
 :not(.gu-unselectable) .on-element .highlight--element:not(.current-element) {
   position: relative;
-  box-shadow: 0 0 0 4px #3ae4e3;
-  z-index: 10; }
+  outline: #3ae4e3 2px solid;
+  z-index: 11; }
   :not(.gu-unselectable) .on-element .highlight--element:not(.current-element).image-element {
-    box-shadow: 0 0 0 4px #3ae4e3; }
-  :not(.gu-unselectable) .on-element .highlight--element:not(.current-element)::after {
+    outline: #3ae4e3 2px solid; }
+  :not(.gu-unselectable) .on-element .highlight--element:not(.current-element)::before {
     content: "element";
     position: absolute;
     top: 100%;
-    left: -4px;
+    left: -2px;
     background: #3ae4e3;
     color: #52677E;
-    padding: 4px 8px;
+    padding: 2px 4px;
     height: 20px;
     line-height: 20px;
     font-size: 14px;
@@ -1654,8 +1653,8 @@ textarea.html-export {
 
 .current-element {
   position: relative;
-  box-shadow: 0 0 0 4px #e12de4;
-  z-index: 11; }
+  outline: #2199e8 2px solid;
+  z-index: 12; }
 
 .controls-list {
   list-style: none; }
@@ -1812,5 +1811,8 @@ i.mce-i-clone-element:before {
 
 .button-align-right {
   float: right !important; }
+
+.gu-unselectable .hide-on-drag {
+  display: none; }
 
 /*# sourceMappingURL=app.css.map */

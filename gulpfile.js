@@ -6,21 +6,21 @@ var watch = require('gulp-watch');
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 
-var styles = [
+var vendorStyles = [
     "bower_components/tooltipster/css/tooltipster.css",
     "bower_components/tooltipster/css/themes/tooltipster-light.css",
     "bower_components/angular-dragula/dist/dragula.min.css",
     "bower_components/spectrum/spectrum.css",
     "bower_components/font-awesome/css/font-awesome.min.css",
     "bower_components/remodal/dist/remodal.css",
-    "bower_components/remodal/dist/remodal-default-theme.css",
-    "app/css/app.css"
+    "bower_components/remodal/dist/remodal-default-theme.css"
 ]
 
 gulp.task('sass', function() {
     return gulp.src('app/sass/app.scss')
     .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(sass()) // sass em up
+    .pipe(sass())
+    .on('error', swallowError)
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('app/css'));
 });
@@ -32,9 +32,9 @@ gulp.task('fonts', function() {
 
 
 gulp.task('styles',['sass','fonts'],function(){
-    return gulp.src(styles)
+    return gulp.src(vendorStyles)
     .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(concat('all.css'))
+    .pipe(concat('vendor.css'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('app/css'));
 });
@@ -42,3 +42,11 @@ gulp.task('styles',['sass','fonts'],function(){
 gulp.task('default', ['styles'], function() {
     gulp.watch('app/sass/**/*.scss', ['styles']);
 });
+
+
+//////
+
+function swallowError (error) {
+  console.log(error.toString())
+  this.emit('end')
+}
