@@ -23,7 +23,7 @@ $currentStyle: solid;
 :not(.gu-unselectable){ // if we are dragging, none if this should apply
   .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element):not(.current-element){
     position: relative;
-    outline: $highlightColor #{$highlighWidth}px $highlightStyle;
+    outline: $highlightColor $highlighWidth $highlightStyle;
     z-index: 11;
     &::before{
       @include highlightLabel('page', $highlightColor, $highlightSecondaryColor, $highlighWidth, 0);

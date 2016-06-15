@@ -1579,7 +1579,7 @@ textarea.html-export {
 
 :not(.gu-unselectable) .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element):not(.current-element) {
   position: relative;
-  outline: #3ae4e3 2pxpx solid;
+  outline: #3ae4e3 2px solid;
   z-index: 11; }
   :not(.gu-unselectable) .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element):not(.current-element)::before {
     content: "page";
