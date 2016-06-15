@@ -18,7 +18,7 @@ $currentStyle: solid;
   line-height: 20px;
   font-size: 14px;
   max-width: 100px;
-  z-index: 10;
+  z-index: 11;
 }
 :not(.gu-unselectable){ // if we are dragging, none if this should apply
   .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element):not(.current-element){
@@ -61,5 +61,5 @@ $currentStyle: solid;
 .current-element{
   position: relative;
   outline: $currentColor $currentWidth $currentStyle;
-  z-index: 12;
+  z-index: 10;
 }
