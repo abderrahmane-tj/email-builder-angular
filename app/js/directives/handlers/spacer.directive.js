@@ -34,8 +34,8 @@ emailApp.directive('spacerHandler',[function(){
             }
             var difference = e.clientY - startY;
             var newHeight = startHeight + difference;
-            if(newHeight <= 0){
-                newHeight = 1;
+            if(newHeight <= 10){
+                newHeight = 10;
             }
             element.height(newHeight);
             handleText.text(newHeight+' px');
