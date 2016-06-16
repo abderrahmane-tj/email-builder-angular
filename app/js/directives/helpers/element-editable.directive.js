@@ -30,7 +30,9 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
             '<'+options['wrapper-tag']+' id="'+randID+'">'+ngModel.$viewValue+'</'+options['wrapper-tag']+'>'
         ).next();
         editable.attr('highlight',"{name:'element', type:'exactly', toggleClick: 'false'}");
-        editable.attr('ng-style',"element.style");
+        if(element.is('[ng-style]')){
+            editable.attr('ng-style',"element.style");
+        }
         editable.attr('ng-class',element.attr('ng-class'));
         editable.addClass('editing text-wrapper');
         editable.on('click', function (event) {
