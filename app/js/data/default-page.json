@@ -19,7 +19,11 @@
           "grid-width": "12",
           "style": {},
           "wrapper":{
-            "style":{}
+            "style":{
+              "padding-left": "16px",
+              "padding-bottom": "16px",
+              "padding-right": "16px"
+            }
           },
           "elements": [
             {
@@ -46,7 +50,11 @@
           "grid-width": "6",
           "style": {},
           "wrapper":{
-            "style":{}
+            "style":{
+              "padding-left": "16px",
+              "padding-bottom": "16px",
+              "padding-right": "8px"
+            }
           },
           "elements": [
             {
@@ -61,7 +69,11 @@
           "grid-width": "6",
           "style": {},
           "wrapper":{
-            "style":{}
+            "style":{
+              "padding-left": "8px",
+              "padding-bottom": "16px",
+              "padding-right": "16px"
+            }
           },
           "elements": [
             {
@@ -91,7 +103,11 @@
           "grid-width": "12",
           "style": {},
           "wrapper":{
-            "style":{}
+            "style":{
+              "padding-left": "16px",
+              "padding-bottom": "16px",
+              "padding-right": "16px"
+            }
           },
           "elements": [
             {

@@ -1485,11 +1485,17 @@ textarea.html-export {
   height: 500px;
   overflow-y: scroll; }
 
+.page {
+  height: 100%; }
+
 .page-flex {
   flex: 1;
   position: relative;
   padding: 4px;
   overflow-y: scroll; }
+
+.page-wrapper {
+  height: 100%; }
 
 .page-inner {
   padding: 15px; }
@@ -1576,6 +1582,9 @@ textarea.html-export {
 
 .spacer-element.current-element .resize-handle {
   display: block; }
+
+.divider hr {
+  margin: 0; }
 
 :not(.gu-unselectable) .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element):not(.current-element) {
   position: relative;
@@ -1784,14 +1793,18 @@ i.mce-i-clone-element:before {
 .property {
   margin-bottom: 10px;
   margin-top: 10px; }
-  .property .small-input {
-    width: 30px; }
+
+.small-input {
+  width: 30px; }
 
 .debug-text-area {
   width: 100%;
   min-width: 100%;
   max-width: 100%;
   height: 100px; }
+
+.padding-property .value-field {
+  display: inline-block; }
 
 .text-align-center {
   text-align: center !important; }

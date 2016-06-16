@@ -1,5 +1,15 @@
 var emailApp = angular.module('emailApp');
 emailApp.directive('inspector',['$timeout',function($timeout){
+    var blocks = {
+        page: [],
+        section: [],
+        column: ['padding'],
+        image: ['padding'],
+        text: ['padding'],
+        button: ['padding'],
+        spacer: ['padding'],
+        divider: ['padding']
+    };
     return {
         restrict: "E",
         replace: true,
@@ -7,8 +17,7 @@ emailApp.directive('inspector',['$timeout',function($timeout){
         bindToController: true,
         scope:true,
         link: link,
-        controller:function($scope){
-        },
+        controller: controller,
         templateUrl: 'app/templates/inspector.template.html'
     };
     function link($scope,element,attrs){
@@ -34,6 +43,16 @@ emailApp.directive('inspector',['$timeout',function($timeout){
                 inspectorPanels.hide();
                 $(anchor.attr('href')).show();
             }
+        }
+    }
+    function controller($scope){
+        var vm = this;
+
+        vm.hasProperty = hasProperty;
+        ////////
+        function hasProperty(blockType, property){
+            var possible = blocks[blockType];
+            return $.inArray(property, possible) >= 0;
         }
     }
 }]);
