@@ -1,10 +1,15 @@
 // page inners
-
+.page{
+  height: 100%;
+}
 .page-flex {
   flex: 1;
   position: relative;
   padding: 4px;
   overflow-y: scroll;
+}
+.page-wrapper{
+  height: 100%;
 }
 .page-inner{
   padding: 15px;
@@ -108,4 +113,9 @@
 }
 .spacer-element.current-element .resize-handle{
   display: block;
+}
+
+
+.divider hr{
+  margin: 0;
 }
