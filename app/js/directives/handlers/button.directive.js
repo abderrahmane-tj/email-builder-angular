@@ -7,6 +7,7 @@ emailApp.directive('buttonHandler',[function(){
         controller: controller
     };
     function link($scope, element, attrs){
+        element.closest('.element').addClass('disable-tooltip');
         element.bind('click', onClick);
         //////////
         function onClick(event){

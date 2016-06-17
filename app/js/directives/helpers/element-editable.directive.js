@@ -14,7 +14,6 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
     };
     function link($scope, element, attrs, ngModel){
         element.bind('click', function (event) {
-            element.addClass('editing');
             element.hide();
             createEditor($scope, element, attrs, ngModel);
         });
@@ -29,10 +28,7 @@ emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sc
         var editable = element.after(
             '<'+options['wrapper-tag']+' id="'+randID+'">'+ngModel.$viewValue+'</'+options['wrapper-tag']+'>'
         ).next();
-        editable.attr('highlight',"{name:'element', type:'exactly', toggleClick: 'false'}");
-        if(element.is('[ng-style]')){
-            editable.attr('ng-style',"element.style");
-        }
+
         editable.attr('ng-class',element.attr('ng-class'));
         editable.addClass('editing text-wrapper');
         editable.on('click', function (event) {

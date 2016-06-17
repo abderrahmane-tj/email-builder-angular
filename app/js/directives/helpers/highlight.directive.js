@@ -16,14 +16,8 @@ emailApp.directive('highlight',[
         options.toggleClick = options.toggleClick || true;
         var highlighted = element;
 
-        // In case we hover an element, whish in most cases has an inline layout
-        // we want to highlight its container, a div of class
-        // .element. as of this comment it is its direct parent
         if(options.name === 'element'){
-            highlighted = element.closest('.element');
-            if($scope.element.type === 'button'){
-                highlighted = highlighted.find('table.button');
-            }
+            highlighted = element;
 
             // if the element is being built, check if it is the current element
             // so that we could cssCurrentElement it
@@ -45,9 +39,19 @@ emailApp.directive('highlight',[
             element.bind('click', onClick);
         }
         function onClick(event) {
-            if(preventBubbling(options.name) || $page.hasClass('editor-selecting')){
+            var itIsNotTheParentsBusiness = preventBubbling(options.name);
+            var editorIsSelecting = $page.hasClass('editor-selecting');
+            var ownEditorOpen =
+                element.find('.editing').length > 0
+                && element.hasClass('current-element');
+            var hasReasonsToReturn =
+             itIsNotTheParentsBusiness || editorIsSelecting || ownEditorOpen;
+
+            if(hasReasonsToReturn){
+
                 return;
             }
+            console.log(itIsNotTheParentsBusiness,editorIsSelecting,ownEditorOpen);
             $('.current-element')
                 .removeClass('current-element');
 

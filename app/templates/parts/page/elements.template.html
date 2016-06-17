@@ -1,5 +1,11 @@
 <div
   class="element"
+  highlight="{name:'element', type:'exactly'}"
   page-element
+  element-controls image-controls
   ng-repeat="element in column.elements"
+  ng-style="element.style"
+  data-element-id="{{element.$$hashKey}}"
+  data-block-type="element"
+  data-element-type="{{element.type}}"
 ></div>

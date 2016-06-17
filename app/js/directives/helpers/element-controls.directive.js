@@ -26,10 +26,24 @@ emailApp.directive('elementControls',
         var elementType = element.data('element-type');
         var blockType = element.data('block-type');
         var controllableData = $scope[blockType];
-        handleTooltip();
-        element.bind('click', handleClickOnControllable);
+
+        if(element.data('block-type') === 'element'){
+            element.one('compiled-'+$scope.element.$$hashKey,function(){
+                if(!element.hasClass('disable-tooltip')){
+                    initControls();
+                }
+            });
+        }else{
+            initControls();
+        }
+
+
 
         //////////////////////////
+        function initControls(){
+            handleTooltip();
+            element.bind('click', handleClickOnControllable);
+        }
         function handleTooltip(){
             if(elementType === 'image') {
                 afterImgLoad(handleTooltipRecreation);

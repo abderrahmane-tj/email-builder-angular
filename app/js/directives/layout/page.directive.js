@@ -98,7 +98,7 @@ function pageDirective(dragulaService,$timeout,repositionTooltip,findElement){
             }
 
             var dragged = $(el);
-            var $element = $(dragged.children().get(0));
+            var $element = $(dragged);
             var $source = $(source);
 
             var shouldRecreateTooltip =
