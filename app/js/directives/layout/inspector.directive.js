@@ -7,7 +7,7 @@ emailApp.directive('inspector',['$timeout',function($timeout){
         image: ['padding'],
         text: ['padding'],
         button: ['padding'],
-        spacer: ['padding'],
+        spacer: [''],
         divider: ['padding']
     };
     return {
