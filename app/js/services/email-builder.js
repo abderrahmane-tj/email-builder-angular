@@ -75,7 +75,11 @@ emailServices.factory('emailBuilder', ['$http','$q','obj2css',function ($http, $
             case "divider": elementHTML = buildDivider(elementData); break;
             case "spacer": elementHTML = buildSpacer(elementData); break;
         }
-        return supplant(elementTemplate, {element:elementHTML});
+        var elementStyle = obj2css(elementData.style);
+        return supplant(elementTemplate, {
+            element:elementHTML,
+            elementStyle: elementStyle
+        });
     }
     function buildText(data){
         return data.content;
@@ -148,7 +152,7 @@ emailServices.factory('emailBuilder', ['$http','$q','obj2css',function ($http, $
         return html
     }
     function buildDivider(data){
-        return "<div style='padding-top: 10px; padding-bottom: 10px;'><hr></div>";
+        return "<div class='divider'><hr></div>";
     }
     function buildSpacer(data){
         var html = "<table class='spacer'><tbody><tr><td height='{height}px' style='font-size:{height}px; line-height:{height}px;'>&#xA0;</td></tr></tbody></table>";
