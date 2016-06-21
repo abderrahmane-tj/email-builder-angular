@@ -53,13 +53,11 @@ emailServices.factory('emailBuilder', ['$http','$q','obj2css',function ($http, $
         if(index === array.length-1){ columnClasses.push('last'); }
         if(columnData['no-padding']){ columnClasses.push('no-padding'); }
 
-        var columnWrapperStyle = obj2css(columnData.wrapper.style);
         var columnStyle = obj2css(columnData.style);
 
         var html = supplant(columnTemplate,{
             gridWidth: columnData['grid-width'],
             columnClasses: columnClasses.join(' '),
-            columnWrapperStyle: columnWrapperStyle,
             columnStyle: columnStyle,
             elements: elementsHTML.join("\n")
         });
