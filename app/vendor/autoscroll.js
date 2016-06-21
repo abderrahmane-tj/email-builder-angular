@@ -231,7 +231,6 @@ var autoScroll = function (element_autoScroll, options_autoScroll) {
 
             if(self.current === null || self.outside(self.current)){
                 for(var i=0; i<el.length; i++){
-                    //console.log('inside el['+i+'] '+self.inside(el[i]));
                     if(el[i] === target || self.inside(el[i])){
                         //if(el[i] === target){
                         newTarget = el[i];

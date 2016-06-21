@@ -54,7 +54,6 @@ emailApp.directive('imageHandler',['$timeout',function($timeout){
             vImage = vImage || {width: null, height: null};
             var max_width = columns[attrs.imageHandler];
             if(!max_width){
-                console.log('imageHandler must be english number between one and twelve!');
                 return;
             }
             var originalWidth = vImage.width || element.width();

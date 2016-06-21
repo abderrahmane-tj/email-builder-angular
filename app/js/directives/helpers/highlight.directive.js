@@ -51,7 +51,6 @@ emailApp.directive('highlight',[
 
                 return;
             }
-            console.log(itIsNotTheParentsBusiness,editorIsSelecting,ownEditorOpen);
             $('.current-element')
                 .removeClass('current-element');
 
