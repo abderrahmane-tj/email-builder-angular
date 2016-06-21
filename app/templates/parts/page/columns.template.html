@@ -1,7 +1,7 @@
 <th class="small-12 large-{{column['grid-width']}} columns id-{{column.$$hashKey.replace(':','-')}}"
     highlight="{name:'column', type:'exactly'}"
     ng-repeat="column in section.columns"
-    ng-style="column.wrapper.style"
+    ng-style="column.style"
     ng-class="{'empty-column': !column.elements.length,'first': $index === 0, 'last': $index === section.columns.length-1, 'no-padding': column['no-padding']}"
     data-block-type="column"
     data-column-id="{{column.$$hashKey}}"
@@ -14,7 +14,6 @@
   <table class="fixed-table"><tr class="column-cell-wrapper">
     <td
         class="column-cell"
-        ng-style="column.style"
         dragula="'elements-bag'"
         dragula-model='column.elements'
         dragula-scope="mainVM.$scope"

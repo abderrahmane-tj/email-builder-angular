@@ -11,28 +11,28 @@
   <div ng-if="pageVM.currentElement" class="properties">
     <div class="specific-properties">
       <div ng-if="pageVM.currentElement.type==='page'">
-        <page-properties element="pageVM.currentElement"></page-properties>
+        <page-properties element="pageVM.currentElement" compute="inspctVM.compute"></page-properties>
       </div>
       <div ng-if="pageVM.currentElement.type==='section'">
-        <section-properties element="pageVM.currentElement"></section-properties>
+        <section-properties element="pageVM.currentElement" compute="inspctVM.compute"></section-properties>
       </div>
       <div ng-if="pageVM.currentElement.type==='column'">
-        <column-properties element="pageVM.currentElement"></column-properties>
+        <column-properties element="pageVM.currentElement" compute="inspctVM.compute"></column-properties>
       </div>
 
       <div ng-if="pageVM.currentElement.type==='image'">
-        <image-properties element="pageVM.currentElement"></image-properties>
+        <image-properties element="pageVM.currentElement" compute="inspctVM.compute"></image-properties>
       </div>
       <div ng-if="pageVM.currentElement.type==='button'">
-        <button-properties element="pageVM.currentElement"></button-properties>
+        <button-properties element="pageVM.currentElement" compute="inspctVM.compute"></button-properties>
       </div>
       <div ng-if="pageVM.currentElement.type==='spacer'">
-        <spacer-properties element="mainVM.currentElement"></spacer-properties>
+        <spacer-properties element="mainVM.currentElement" compute="inspctVM.compute"></spacer-properties>
       </div>
     </div>
     <div class="common-properties">
       <div ng-if="inspctVM.hasProperty(pageVM.currentElement.type,'padding')">
-        <padding-property element="pageVM.currentElement"></padding-property>
+        <padding-property element="pageVM.currentElement" compute="inspctVM.compute"></padding-property>
       </div>
     </div>
   </div>

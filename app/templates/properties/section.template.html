@@ -6,7 +6,10 @@
   </p>
   <p class="property section-background-image">
     <label>Background Image
-      <input type="text" ng-model="section.wrapper.rawStyle['background-image']">
+      <input type="text"
+      ng-model="section.wrapper.rawStyle['background-image']"
+      ng-change="compute.backgroundImage(section.wrapper.rawStyle,section.wrapper.style)"
+      >
     </label>
   </p>
   <h5>Section Content properties</h5>
@@ -16,7 +19,10 @@
   </p>
   <p class="property section-content-background-image">
     <label>Background Image
-      <input type="text" ng-model="section.rawStyle['background-image']">
+      <input type="text"
+      ng-model="section.rawStyle['background-image']"
+      ng-change="compute.backgroundImage(section.rawStyle,section.style)"
+      >
     </label>
   </p>
 </div>

@@ -1,5 +1,6 @@
 var emailApp = angular.module('emailApp');
-emailApp.directive('inspector',['$timeout',function($timeout){
+emailApp.directive('inspector',[
+    '$timeout','computeProperty',function($timeout,computeProperty){
     var blocks = {
         page: [],
         section: [],
@@ -49,6 +50,7 @@ emailApp.directive('inspector',['$timeout',function($timeout){
         var vm = this;
 
         vm.hasProperty = hasProperty;
+        vm.compute = computeProperty;
         ////////
         function hasProperty(blockType, property){
             var possible = blocks[blockType];

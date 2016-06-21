@@ -2,16 +2,14 @@
   <h5>Column properties</h5>
   <p class="property column-background-color">
     <label>Background Color
-    <input type="text" ng-model="column.wrapper.style['background-color']" color-picker></label>
+    <input type="text" ng-model="column.style['background-color']" color-picker></label>
   </p>
   <p class="property column-background-image">
     <label>Background Image
-      <input type="text" ng-model="column.wrapper.rawStyle['background-image']">
-    </label>
-  </p>
-  <p class="property column-background-image">
-    <label>No Padding
-      <input type="checkbox" ng-model="column['no-padding']">
+      <input type="text"
+      ng-model="column.rawStyle['background-image']"
+      ng-change="compute.backgroundImage(column.rawStyle,column.style)"
+      >
     </label>
   </p>
 </div>

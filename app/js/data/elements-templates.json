@@ -1,18 +1,21 @@
 [
   {
-    "style": {},
     "type": "text",
+    "style": {},
+    "rawStyle":{},
     "content": "<p>Edit me :-)</p>"
   },
   {
-    "style": {},
     "type": "image",
+    "style": {},
+    "rawStyle":{},
     "src": "http://atj-remotedev.cloudapp.net/email-builder/app/img/default.jpg",
     "alignment": "center"
   },
   {
-    "style": {},
     "type": "button",
+    "style": {},
+    "rawStyle":{},
     "text": "Button",
     "url": "#",
     "textAlignment": "center",
@@ -22,15 +25,17 @@
     "expanded": false
   },
   {
-    "style": {},
     "type": "spacer",
+    "style": {},
+    "rawStyle":{},
     "height": 20
   },
   {
+    "type": "divider",
     "style": {
       "padding-top":"10px",
       "padding-bottom":"10px"
     },
-    "type": "divider"
+    "rawStyle":{}
   }
 ]
