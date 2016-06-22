@@ -1,5 +1,5 @@
 var emailServices = angular.module('emailApp.services');
-emailServices.factory('computeProperty',[function () {
+emailServices.factory('computeProperty',['clamp',function (clamp) {
     var o = {
         MAX_PADDING: 30,
         MIN_PADDING: 0
@@ -21,8 +21,5 @@ emailServices.factory('computeProperty',[function () {
     }
     function backgroundImage(raw, style){
         style['background-image'] = "url("+raw['background-image']+")";
-    }
-    function clamp(value, min, max){
-        return value > max ? max : (value < min ? min : value);
     }
 }]);
