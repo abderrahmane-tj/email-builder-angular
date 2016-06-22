@@ -13,7 +13,7 @@ emailServices.factory('computeProperty',['clamp',function (clamp) {
         rawValue = rawValue.trim();
         rawValue = parseInt(rawValue);
         if(isNaN(rawValue)){
-            style[property] && delete style[property];
+            style[property] = 0;
         }else{
             rawValue = clamp(rawValue, o.MIN_PADDING, o.MAX_PADDING);
             style[property] = rawValue + 'px';
