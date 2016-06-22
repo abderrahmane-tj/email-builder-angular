@@ -3,8 +3,7 @@ emailApp.directive('spacerProperties',function(){
     return {
         restrict: "E",
         scope:{
-            spacer:'=element',
-            compute:'=compute'
+            spacer:'=element'
         },
         templateUrl: 'app/templates/properties/spacer.template.html',
         link:link

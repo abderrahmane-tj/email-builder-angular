@@ -3,8 +3,7 @@ emailApp.directive('pageProperties',function(){
     return {
         restrict: "E",
         scope:{
-            page:'=element',
-            compute:'=compute'
+            page:'=element'
         },
         templateUrl: 'app/templates/properties/page.template.html'
     };

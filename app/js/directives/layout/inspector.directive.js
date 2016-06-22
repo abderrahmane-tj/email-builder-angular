@@ -50,7 +50,6 @@ emailApp.directive('inspector',[
         var vm = this;
 
         vm.hasProperty = hasProperty;
-        vm.compute = computeProperty;
         ////////
         function hasProperty(blockType, property){
             var possible = blocks[blockType];

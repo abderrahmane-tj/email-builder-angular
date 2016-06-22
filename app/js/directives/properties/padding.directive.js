@@ -1,11 +1,17 @@
 var emailApp = angular.module('emailApp');
-emailApp.directive('paddingProperty', [function () {
+emailApp.directive('paddingProperty', [
+    'computeProperty',
+    function (compute) {
     return {
         restrict: "E",
         scope: {
-            element: '=',
-            compute:'=compute'
+            element: '='
         },
-        templateUrl: 'app/templates/properties/padding.template.html'
+        templateUrl: 'app/templates/properties/padding.template.html',
+        link: link
     };
+    function link($scope, element, attrs) {
+        $scope.compute = compute;
+        ///////
+    }
 }]);
