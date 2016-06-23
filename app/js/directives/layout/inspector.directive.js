@@ -1,6 +1,6 @@
 var emailApp = angular.module('emailApp');
 emailApp.directive('inspector',[
-    '$timeout','computeProperty',function($timeout,computeProperty){
+    '$timeout',function($timeout){
     var blocks = {
         page: [],
         section: [],

@@ -1,15 +1,11 @@
 var emailApp = angular.module('emailApp');
 emailApp.directive('columnProperties',[
-    'computeProperty',
-    function(compute){
+    function(){
     return {
         restrict: "E",
         scope:{
             column:'=element'
         },
-        templateUrl: 'app/templates/properties/column.template.html',
-        controller: function($scope){
-            $scope.compute = compute;
-        }
+        templateUrl: 'app/templates/properties/column.template.html'
     };
 }]);

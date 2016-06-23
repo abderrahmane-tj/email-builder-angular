@@ -1,37 +1,39 @@
 <div class="padding-property">
-  <h5>Padding</h5>
   <div class="value-field">
     <label>
       <i class="fa fa-arrow-up"></i>
       <input
       type="text"
       class="small-input"
-      ng-model="element.rawStyle['padding-top']"
-      ng-change="compute.padding('padding-top',element.rawStyle,element.style)"
+      ng-model="rawStyle['padding-top']"
+      ng-change="process('padding-top')"
       >
     </label>
   </div>
   <div class="value-field">
     <label>
       <i class="fa fa-arrow-down"></i>
-      <input type="text" class="small-input" ng-model="element.rawStyle['padding-bottom']"
-      ng-change="compute.padding('padding-bottom',element.rawStyle,element.style)"
+      <input type="text" class="small-input"
+      ng-model="rawStyle['padding-bottom']"
+      ng-change="process('padding-bottom')"
       >
       </label>
     </div>
   <div class="value-field">
     <label>
       <i class="fa fa-arrow-left"></i>
-      <input type="text" class="small-input" ng-model="element.rawStyle['padding-left']"
-      ng-change="compute.padding('padding-left',element.rawStyle,element.style)"
+      <input type="text" class="small-input"
+      ng-model="rawStyle['padding-left']"
+      ng-change="process('padding-left')"
       >
       </label>
     </div>
   <div class="value-field">
     <label>
       <i class="fa fa-arrow-right"></i>
-      <input type="text" class="small-input" ng-model="element.rawStyle['padding-right']"
-      ng-change="compute.padding('padding-right',element.rawStyle,element.style)"
+      <input type="text" class="small-input"
+      ng-model="rawStyle['padding-right']"
+      ng-change="process('padding-right')"
       >
       </label>
     </div>
