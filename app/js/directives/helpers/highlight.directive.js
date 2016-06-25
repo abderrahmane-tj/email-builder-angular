@@ -12,78 +12,91 @@ emailApp.directive('highlight',[
         link: link
     };
     function link($scope,element,attrs,pageCtrl){
-        var options = $scope.$eval(attrs.highlight);
-        options.toggleClick = options.toggleClick || true;
-        var highlighted = element;
-
-        if(options.name === 'element'){
-            highlighted = element;
-
+        var blockType = attrs.highlightBlock;
+        var elementData = $scope[blockType];
+        var $page = $('.page');
+        var controlsScope = null;
+        if(blockType === 'element'){
             // if the element is being built, check if it is the current element
             // so that we could cssCurrentElement it
             if(($scope.element === $scope.pageVM.currentElement)){
-                highlighted.addClass('current-element');
+                element.addClass('current-element');
             }
         }
-
-        if(options.name === 'section'){
-            //highlighted = element.find('.row:first');
-        }
-
-        var elementData = $scope[options.name];
-        if(options.name === 'page'){
+        if(blockType === 'page'){
             elementData = $scope.mainVM.page;
         }
-        var $page = $('.page');
-        if(options.toggleClick){
-            element.bind('click', onClick);
-        }
+        element.bind('click', onClick);
+        element.bind('mouseenter', onMouseEnter);
+        element.bind('mouseleave', onMouseLeave);
+        element.bind('destroy-element-controls', onDestroyElementControls);
+        ///////
         function onClick(event) {
-            var itIsNotTheParentsBusiness = preventBubbling(options.name);
+            var itIsNotTheParentsBusiness = preventBubbling(blockType);
             var editorIsSelecting = $page.hasClass('editor-selecting');
             var ownEditorOpen =
                 element.find('.editing').length > 0
                 && element.hasClass('current-element');
-            var hasReasonsToReturn =
+            var hasReasonsToQuitThisFunctionAndCallItADay =
              itIsNotTheParentsBusiness || editorIsSelecting || ownEditorOpen;
 
-            if(hasReasonsToReturn){
-
+            if(hasReasonsToQuitThisFunctionAndCallItADay){
                 return;
             }
-            $('.current-element')
-                .removeClass('current-element');
-
-            // option.name would be : page, section, column or element
-            // which corresponds to $scope.page. $scope.section, ...
-            // the following condition checks if we are clicking on the
-            // currentElement. if so, we should uninspect it
+            var $currentElement = $('.current-element');
+                $currentElement
+                    .trigger('destroy-element-controls')
+                    .removeClass('current-element');
             if(elementData === $scope.pageVM.currentElement){
+                removeControls();
                 $scope.pageVM.assignElement(null);
             }else{
-                $('#properties-anchor').trigger('click');
-                $scope.pageVM.assignElement(elementData,{
-                    page: true,
-                    section: $scope.section,
-                    column: $scope.column,
-                    element: $scope.element
-                });
-                highlighted.addClass('current-element');
+                makeCurrent();
             }
             $scope.$apply();
         }
-        element.bind('mouseenter', highlightElement);
-        element.bind('mouseleave', unhighlightElement);
 
-        function highlightElement(event) {
-            $page.addClass('on-'+options.name);
-            $('.highlight--'+options.name)
-                .removeClass('highlight--'+options.name);
-            highlighted.addClass('highlight--'+options.name);
+        function makeCurrent(){
+            $('#properties-anchor').trigger('click');
+            $scope.pageVM.assignElement(elementData,{
+                page: true,
+                section: $scope.section,
+                column: $scope.column,
+                element: $scope.element
+            });
+            element.addClass('current-element');
+            if(attrs.highlightControls){
+                addControls();
+            }
         }
-        function unhighlightElement() {
-            $page.removeClass('on-'+options.name);
-            highlighted.removeClass('highlight--'+options.name);
+        function addControls(){
+            var controls = angular.element(
+                "<div"+
+                    " class='controls' element-controls "
+                    +attrs.highlightControls
+                +"></div>"
+            );
+            element.append(controls);
+            controlsScope = $scope.$new(false);
+            $compile(controls)(controlsScope);
+        }
+        function removeControls(){
+            if(element.find('.controls').length){
+                // controlsScope.$destroy();
+                element.find('.controls').remove();
+            }
+        }
+        function onMouseEnter(event) {
+            $page.addClass('on-'+blockType);
+            $('.highlight--'+blockType).removeClass('highlight--'+blockType);
+            element.addClass('highlight--'+blockType);
+        }
+        function onMouseLeave() {
+            $page.removeClass('on-'+blockType);
+            element.removeClass('highlight--'+blockType);
+        }
+        function onDestroyElementControls(){
+            removeControls();
         }
     }
 }]);

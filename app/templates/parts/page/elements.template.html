@@ -1,9 +1,8 @@
 <div
   class="element"
-  highlight="{name:'element', type:'exactly'}"
-  page-element
-  element-controls image-controls
   ng-repeat="element in column.elements"
+  page-element
+  highlight highlight-block="element" highlight-controls="image-controls"
   ng-style="element.style"
   data-element-id="{{element.$$hashKey}}"
   data-block-type="element"

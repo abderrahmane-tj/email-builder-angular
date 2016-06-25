@@ -7,8 +7,8 @@
   <div class="container-wrapper section-element id-{{section.$$hashKey.replace(':','-')}}"
       ng-repeat="section in mainVM.page.sections"
       ng-style="section.wrapper.style"
-      highlight="{name:'section', type:'exactly'}" element-controls
-      section-controls data-block-type="section"
+      highlight highlight-block="section" highlight-controls="section-controls"
+      data-block-type="section"
       data-section-id="{{section.$$hashKey}}"
   >
     <!-- inside section -->

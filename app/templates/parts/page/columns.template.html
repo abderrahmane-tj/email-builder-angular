@@ -1,5 +1,6 @@
 <th class="small-12 large-{{column['grid-width']}} columns id-{{column.$$hashKey.replace(':','-')}}"
-    highlight="{name:'column', type:'exactly'}"
+    highlight
+    highlight-block="column"
     ng-repeat="column in section.columns"
     ng-style="column.style"
     ng-class="{'empty-column': !column.elements.length,'first': $index === 0, 'last': $index === section.columns.length-1, 'no-padding': column['no-padding']}"
