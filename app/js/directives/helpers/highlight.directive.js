@@ -76,7 +76,9 @@ emailApp.directive('highlight',[
                     +attrs.highlightControls
                 +"></div>"
             );
-            element.append(controls);
+            if(!element.hasClass('disable-tooltip')){
+                element.append(controls);
+            }
             controlsScope = $scope.$new(false);
             $compile(controls)(controlsScope);
         }

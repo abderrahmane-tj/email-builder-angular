@@ -1669,6 +1669,13 @@ textarea.html-export {
   outline: #2199e8 2px solid;
   z-index: 10; }
 
+.controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #2199e8;
+  padding: 3px 7px; }
+
 .controls-list {
   list-style: none; }
   .controls-list li {
@@ -1677,6 +1684,14 @@ textarea.html-export {
     margin-left: 10px;
     padding-left: 10px;
     border-left: 1px solid #888888; }
+
+a.element-control, a:visited.element-control, a:active.element-control {
+  color: white; }
+
+.element-control {
+  font-size: 16px; }
+  .element-control.remove {
+    color: red; }
 
 i.mce-i-delete-element:before {
   content: "\f1f8";

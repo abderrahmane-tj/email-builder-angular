@@ -1,3 +1,10 @@
+.controls{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #2199e8;
+  padding: 3px 7px;
+}
 .controls-list{
   list-style: none;
   li{
@@ -10,6 +17,15 @@
 
   }
 }
-.element-control{
+a, a:visited, a:active{
+  &.element-control{
+    color: white;
+  }
+}
 
+.element-control{
+  font-size: 16px;
+  &.remove{
+    color: red;
+  }
 }

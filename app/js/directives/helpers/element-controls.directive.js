@@ -2,7 +2,7 @@ var emailApp = angular.module('emailApp');
 emailApp.directive('elementControls',
     ['$compile','$timeout','$templateRequest','repositionTooltip','preventBubbling',
         function($compile,$timeout,$templateRequest,repositionTooltip,preventBubbling){
-    return {
+    var directive = {
         restrict: "A",
         scope:true,
         controller:controller,
@@ -18,6 +18,7 @@ emailApp.directive('elementControls',
                 var controls = angular.element(html);
                 $compile(controls)(elementScope);
                 $scope.controls = controls;
+                $scope.linkElement.trigger('controls-loaded');
             });
         };
     }
@@ -27,25 +28,20 @@ emailApp.directive('elementControls',
         var elementType = highlighted.data('element-type');
         var blockType = highlighted.data('block-type');
         var controllableData = $scope[blockType];
+        $scope.linkElement = element;
 
-        if(blockType === 'element'){
-            if(!highlighted.hasClass('disable-tooltip')){
-                createTooltip();
-            }
-        }else{
-            createTooltip();
-        }
+        createTooltip();
         //////////////////////////
         function createTooltip(){
-            $timeout(function () {
-                element.tooltipster({
-                    content: $scope.controls,
-                    interactive: true,
-                    autoClose: false,
-                    restoration: 'none',
-                    theme: 'tooltipster-light'
-                }).tooltipster('show');
+            if(blockType === 'element'){
+                if(highlighted.hasClass('disable-tooltip')){
+                    return;
+                }
+            }
+            element.one('controls-loaded',function(){
+                element.append($scope.controls);
             });
         }
     }
+    return directive
 }]);
