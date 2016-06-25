@@ -108,17 +108,27 @@
   width: 30px;
 }
 
+///// properties tab
+.specific-properties{
+
+}
+.common-properties{
+  padding-top: 20px;
+  border-top : 1px #888888 solid;
+}
+
+
+////////// padding .property
+.padding-property{
+  .value-field{
+    display: inline-block;
+  }
+}
+
 ///////// content tab
 .debug-text-area{
   width: 100%;
   min-width: 100%;
   max-width: 100%;
   height: 100px;
-}
-
-//////////// padding .property
-.padding-property{
-  .value-field{
-    display: inline-block;
-  }
 }
