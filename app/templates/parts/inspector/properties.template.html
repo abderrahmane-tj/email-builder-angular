@@ -31,12 +31,15 @@
       </div>
     </div>
     <div class="common-properties">
-      <div ng-if="inspctVM.hasProperty(pageVM.currentElement.type,'padding')">
-        <h5>Padding</h5>
-        <padding-property
-          padding-raw-style="pageVM.currentElement.rawStyle"
-          padding-style="pageVM.currentElement.style"
-        ></padding-property>
+      <div class="spacing-properties">
+        <h4>Spacing</h4>
+        <div ng-if="inspctVM.hasProperty(pageVM.currentElement.type,'spacing','padding')">
+          <h5>Padding</h5>
+          <padding-property
+            padding-raw-style="pageVM.currentElement.rawStyle"
+            padding-style="pageVM.currentElement.style"
+          ></padding-property>
+        </div>
       </div>
     </div>
   </div>

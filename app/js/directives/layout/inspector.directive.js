@@ -2,14 +2,26 @@ var emailApp = angular.module('emailApp');
 emailApp.directive('inspector',[
     '$timeout',function($timeout){
     var blocks = {
-        page: [],
-        section: [],
-        column: ['padding'],
-        image: ['padding'],
-        text: ['padding'],
-        button: ['padding'],
-        spacer: [''],
-        divider: ['padding']
+        page: {},
+        section: {},
+        column: {
+            spacing: ['padding']
+        },
+        image: {
+            spacing: ['padding']
+        },
+        text: {
+            spacing: ['padding']
+        },
+        button: {
+            spacing: ['padding']
+        },
+        spacer: {
+
+        },
+        divider: {
+            spacing: ['padding']
+        }
     };
     return {
         restrict: "E",
@@ -51,8 +63,8 @@ emailApp.directive('inspector',[
 
         vm.hasProperty = hasProperty;
         ////////
-        function hasProperty(blockType, property){
-            var possible = blocks[blockType];
+        function hasProperty(blockType, category, property){
+            var possible = blocks[blockType][category];
             return $.inArray(property, possible) >= 0;
         }
     }
