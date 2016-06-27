@@ -20,7 +20,7 @@ emailApp.directive('highlight',[
             // if the element is being built, check if it is the current element
             // so that we could cssCurrentElement it
             if(($scope.element === $scope.pageVM.currentElement)){
-                element.addClass('current-element');
+                makeCurrent();
             }
         }
         if(blockType === 'page'){
@@ -32,15 +32,13 @@ emailApp.directive('highlight',[
         element.bind('destroy-element-controls', onDestroyElementControls);
         ///////
         function onClick(event) {
-            var itIsNotTheParentsBusiness = preventBubbling(blockType);
+            var shouldPreventBubbling = preventBubbling(blockType);
             var editorIsSelecting = $page.hasClass('editor-selecting');
-            var ownEditorOpen =
-                element.find('.editing').length > 0
-                && element.hasClass('current-element');
-            var hasReasonsToQuitThisFunctionAndCallItADay =
-             itIsNotTheParentsBusiness || editorIsSelecting || ownEditorOpen;
+            var ownEditorOpen = element.find('.editing').length > 0 && element.hasClass('current-element');
+            var clickOnControls = $(event.target).closest('.element-control').length;
+            var shouldReturn = shouldPreventBubbling || editorIsSelecting || ownEditorOpen || clickOnControls;
 
-            if(hasReasonsToQuitThisFunctionAndCallItADay){
+            if(shouldReturn){
                 return;
             }
             var $currentElement = $('.current-element');

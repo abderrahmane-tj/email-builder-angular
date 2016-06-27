@@ -1,7 +1,7 @@
 var emailApp = angular.module('emailApp');
 emailApp.directive('elementControls',
-    ['$compile','$timeout','$templateRequest','repositionTooltip','preventBubbling',
-        function($compile,$timeout,$templateRequest,repositionTooltip,preventBubbling){
+    ['$compile','$timeout','$templateRequest','preventBubbling',
+        function($compile,$timeout,$templateRequest,preventBubbling){
     var directive = {
         restrict: "A",
         scope:true,

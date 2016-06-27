@@ -1,6 +1,6 @@
 var emailApp = angular.module('emailApp');
-emailApp.directive('pageElement',['$templateRequest','$compile','$timeout','repositionTooltip',
-    function($templateRequest,$compile, $timeout,repositionTooltip){
+emailApp.directive('pageElement',['$templateRequest','$compile','$timeout',
+    function($templateRequest,$compile, $timeout){
     return {
         restrict: "A",
         scope: true,
@@ -28,9 +28,6 @@ emailApp.directive('pageElement',['$templateRequest','$compile','$timeout','repo
             // some features may need manual reTriggering, like tooltip
             // repositionning
             element.trigger('compiled-'+$scope.element.$$hashKey);
-            $timeout(function () {
-                repositionTooltip();
-            });
         }
         function elementTemplate(type){
             return 'app/templates/elements/'+type+'.template.html';

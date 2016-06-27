@@ -7,8 +7,6 @@ var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 
 var vendorStyles = [
-    "bower_components/tooltipster/css/tooltipster.css",
-    "bower_components/tooltipster/css/themes/tooltipster-light.css",
     "bower_components/angular-dragula/dist/dragula.min.css",
     "bower_components/spectrum/spectrum.css",
     "bower_components/font-awesome/css/font-awesome.min.css",

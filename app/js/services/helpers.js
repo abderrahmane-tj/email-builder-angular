@@ -21,14 +21,6 @@ emailServices.factory('prettify',function(){
         compile: compile
     };
 });
-emailServices.factory('repositionTooltip', function () {
-    return function(){
-        var $tooltipster = $('.page .tooltipstered');
-        if($tooltipster.length){
-            $tooltipster.tooltipster('reposition');
-        }
-    };
-});
 emailServices.factory('preventBubbling',function(){
     return function (blockName) {
         var $page = $('.page');

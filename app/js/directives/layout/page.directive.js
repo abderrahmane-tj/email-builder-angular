@@ -1,10 +1,10 @@
 var emailApp = angular.module('emailApp');
 emailApp.directive('page',[
-    'dragulaService','$timeout','repositionTooltip','findElement',
+    'dragulaService','$timeout','findElement',
     pageDirective
 ]);
 
-function pageDirective(dragulaService,$timeout,repositionTooltip,findElement){
+function pageDirective(dragulaService,$timeout,findElement){
     return {
         restrict: "E",
         replace: true,
@@ -20,7 +20,6 @@ function pageDirective(dragulaService,$timeout,repositionTooltip,findElement){
         vm.currentElement = null;
         handleDragAndDrop();
         handleAutoScroll();
-        handlePageScroll();
         /////////////////////
         function assignElement(element, breadcrumb){
             breadcrumb = breadcrumb || {page:true};
@@ -90,28 +89,7 @@ function pageDirective(dragulaService,$timeout,repositionTooltip,findElement){
         }
         function handleOver(){ }
         function handleDrop(dragulaEvent,el,target,source,sibling){
-            $timeout(repositionTooltip);
             $('.column-cell').height(0);
-
-            if(dragulaEvent.name === "sections-bag.drop"){
-                return;
-            }
-
-            var dragged = $(el);
-            var $element = $(dragged);
-            var $source = $(source);
-
-            var shouldRecreateTooltip =
-                !$source.is(target) // linking occurs only when dropping outside of local bag
-                && !$source.is('.new-elements,.new-section') // we do not want to do this to new elements
-                && $element.is('.tooltipstered'); // only recrate tooltip, if existed before dragging
-            if(shouldRecreateTooltip){
-                $scope.$apply(function () {
-                    var elementData = findElement($element.data('elementId'));
-                    elementData.tooltipstered = true;
-                });
-            }
-
         }
         function handleAutoScroll(){
             var elementsBag = dragulaService.find($scope,"elements-bag");
@@ -130,21 +108,6 @@ function pageDirective(dragulaService,$timeout,repositionTooltip,findElement){
                 }
             });
 
-        }
-        function handlePageScroll(){
-            var timeout = undefined;
-            $('.page-flex').bind('scroll',function(){
-                if(timeout){
-                    $timeout.cancel(timeout);
-                }else{
-                    $(document.body).addClass('no-tooltip');
-                }
-                timeout = $timeout(function () {
-                    repositionTooltip();
-                    $(document.body).removeClass('no-tooltip');
-                    timeout = undefined;
-                },250);
-            });
         }
     }
     function link(){

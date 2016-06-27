@@ -9,12 +9,12 @@ emailApp.config(['$compileProvider', function ($compileProvider) {
 }]);
 emailApp.controller('MainController', [
     '$scope', '$templateCache', 'dragulaService', '$timeout', '$interval',
-    '$window', 'repositionTooltip', '$http','$q','emailBuilder', 'jqSelectOnFocus',
+    '$window', '$http','$q','emailBuilder', 'jqSelectOnFocus',
     MainController
 ]);
 
 function MainController($scope, $templateCache, dragulaService, $timeout,
-    $interval, $window, repositionTooltip, $http, $q, emailBuilder, jqSelectOnFocus
+    $interval, $window, $http, $q, emailBuilder, jqSelectOnFocus
 ){
     var mainVM = this;
     mainVM.resetData = resetData;
