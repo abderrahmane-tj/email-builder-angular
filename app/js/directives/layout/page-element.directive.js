@@ -25,8 +25,7 @@ emailApp.directive('pageElement',['$templateRequest','$compile','$timeout',
         function handlePostElementCompilation(){
             // adding new elements to the page or dragging and dropping of elements
             // outside its source container, triggers relinking of pageElement,
-            // some features may need manual reTriggering, like tooltip
-            // repositionning
+            // some features may need manual reTriggering
             element.trigger('compiled-'+$scope.element.$$hashKey);
         }
         function elementTemplate(type){

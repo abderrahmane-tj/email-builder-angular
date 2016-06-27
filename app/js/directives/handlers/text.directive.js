@@ -7,7 +7,7 @@ emailApp.directive('textHandler',['$timeout',function($timeout){
         controller: controller
     };
     function link($scope, element, attrs){
-        element.closest('.element').addClass('disable-tooltip');
+        element.closest('.element').addClass('disable-controls');
         $timeout(function () {
             element.find('a').on('click', onClick);
         });

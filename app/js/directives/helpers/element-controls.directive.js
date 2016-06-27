@@ -30,11 +30,11 @@ emailApp.directive('elementControls',
         var controllableData = $scope[blockType];
         $scope.linkElement = element;
 
-        createTooltip();
+        createControls();
         //////////////////////////
-        function createTooltip(){
+        function createControls(){
             if(blockType === 'element'){
-                if(highlighted.hasClass('disable-tooltip')){
+                if(highlighted.hasClass('disable-controls')){
                     return;
                 }
             }
