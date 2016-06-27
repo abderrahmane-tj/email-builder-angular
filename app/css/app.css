@@ -1788,6 +1788,17 @@ i.mce-i-clone-element:before {
     cursor: -webkit-grab;
     border-color: #fff; }
 
+.template-wrapper .icon {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.template-wrapper.element-template .icon {
+  height: 70px; }
+
+.template-wrapper.section-template .icon {
+  height: 50px; }
+
 .new-elements .template-wrapper {
   float: left;
   width: 33.33%;

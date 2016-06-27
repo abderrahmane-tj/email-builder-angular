@@ -81,6 +81,17 @@
 }
 
 .template-wrapper{
+  .icon {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  &.element-template .icon {
+    height: 70px;
+  }
+  &.section-template .icon {
+    height:50px;
+  }
   .new-elements &{
     float: left;
     width: 33.33%;

@@ -7,12 +7,10 @@
   >
     <div class="template-wrapper element-template" ng-repeat="template in mainVM.elementsTemplates">
       <div class="template-handle">
-        <div class="icon">
-          <img ng-src="app/img/{{template.type}}.png" alt="{{template.type}}">
-        </div>
+        <div class="icon" ng-style="{'background-image':'url(app/img/'+template.type+'.png)'}"></div>
         <div>{{template.type}}</div>
       </div>
-    </div>
+    </a>
   </div>
 </div>
 <div class="add-section">
@@ -24,9 +22,7 @@
   >
     <div class="template-wrapper section-template" ng-repeat="template in mainVM.sectionsTemplates">
       <div class="template-handle">
-        <div class="icon">
-          <img ng-src="app/img/{{template['template-name']}}.svg" alt="{{template['template-name']}}">
-        </div>
+        <div class="icon" ng-style="{'background-image':'url(app/img/'+template['template-name']+'.svg)'}"></div>
       </div>
     </div>
   </div>
