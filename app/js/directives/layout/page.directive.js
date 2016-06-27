@@ -34,6 +34,7 @@ function pageDirective(dragulaService,$timeout,findElement){
             dragulaService.options($scope, 'sections-bag', sectionsBagConfig());
             dragulaService.options($scope, 'elements-bag', elementsBagConfig());
             $scope.$on('elements-bag.drag', handleDrag);
+            $scope.$on('elements-bag.dragend', handleDragEnd);
             $scope.$on('elements-bag.over', handleOver);
             $scope.$on('elements-bag.drop', handleDrop);
             $scope.$on('sections-bag.drop', handleDrop);
@@ -86,6 +87,9 @@ function pageDirective(dragulaService,$timeout,findElement){
                 var maxHeight = Math.max.apply(this,heights);
                 columns.height(maxHeight);
             });
+        }
+        function handleDragEnd(dragulaEvent,el){
+            $('.column-cell').height(0);
         }
         function handleOver(){ }
         function handleDrop(dragulaEvent,el,target,source,sibling){
