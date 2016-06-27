@@ -1672,26 +1672,28 @@ textarea.html-export {
 .controls {
   position: absolute;
   top: 0;
-  left: 0;
-  background: #2199e8;
-  padding: 3px 7px; }
+  right: 0;
+  background: #2199e8; }
 
 .controls-list {
   list-style: none; }
   .controls-list li {
     display: inline-block; }
-  .controls-list li:not(:first-child) {
-    margin-left: 10px;
-    padding-left: 10px;
-    border-left: 1px solid #888888; }
 
 a.element-control, a:visited.element-control, a:active.element-control {
   color: white; }
 
 .element-control {
-  font-size: 16px; }
-  .element-control.remove {
-    color: red; }
+  height: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  width: 30px;
+  display: block;
+  text-align: center; }
+  .element-control:hover {
+    background: #0f5f94; }
+  .element-control.remove:hover {
+    background: darkred; }
 
 i.mce-i-delete-element:before {
   content: "\f1f8";

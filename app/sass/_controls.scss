@@ -1,20 +1,13 @@
 .controls{
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   background: #2199e8;
-  padding: 3px 7px;
 }
 .controls-list{
   list-style: none;
   li{
     display: inline-block;
-  }
-  li:not(:first-child){
-    margin-left: 10px;
-    padding-left: 10px;
-    border-left: 1px solid #888888;
-
   }
 }
 a, a:visited, a:active{
@@ -24,8 +17,19 @@ a, a:visited, a:active{
 }
 
 .element-control{
-  font-size: 16px;
-  &.remove{
-    color: red;
+  height: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  width: 30px;
+  display: block;
+  text-align: center;
+
+  &:hover{
+    background: darken(#2199e8,20);
+  }
+
+
+  &.remove:hover{
+    background: darkred;
   }
 }
