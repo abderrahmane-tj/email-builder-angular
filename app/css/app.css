@@ -1831,6 +1831,12 @@ i.mce-i-clone-element:before {
 .padding-property .value-field {
   display: inline-block; }
 
+.html-properties .html-content {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  height: 100px; }
+
 .debug-text-area {
   width: 100%;
   min-width: 100%;

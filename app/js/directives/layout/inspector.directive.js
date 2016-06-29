@@ -21,6 +21,9 @@ emailApp.directive('inspector',[
         },
         divider: {
             spacing: ['padding']
+        },
+        html: {
+
         }
     };
     return {
@@ -62,10 +65,15 @@ emailApp.directive('inspector',[
         var vm = this;
 
         vm.hasProperty = hasProperty;
+        vm.hasCategory = hasCategory;
         ////////
         function hasProperty(blockType, category, property){
             var possible = blocks[blockType][category];
             return $.inArray(property, possible) >= 0;
+        }
+        function hasCategory(blockType, category){
+            var possible = blocks[blockType][category];
+            return !!possible;
         }
     }
 }]);

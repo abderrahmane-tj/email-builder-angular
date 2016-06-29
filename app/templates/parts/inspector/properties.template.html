@@ -27,11 +27,14 @@
         <button-properties element="pageVM.currentElement"></button-properties>
       </div>
       <div ng-if="pageVM.currentElement.type==='spacer'">
-        <spacer-properties element="mainVM.currentElement"></spacer-properties>
+        <spacer-properties element="pageVM.currentElement"></spacer-properties>
       </div>
-    </div>
+      <div ng-if="pageVM.currentElement.type==='html'">
+        <html-properties element="pageVM.currentElement"></html-properties>
+      </div>
+  </div>
     <div class="common-properties">
-      <div class="spacing-properties">
+      <div class="spacing-properties" ng-if="inspctVM.hasCategory(pageVM.currentElement.type,'spacing')">
         <h4>Spacing</h4>
         <div ng-if="inspctVM.hasProperty(pageVM.currentElement.type,'spacing','padding')">
           <h5>Padding</h5>
