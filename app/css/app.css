@@ -1484,17 +1484,11 @@ textarea.html-export {
   height: 500px;
   overflow-y: scroll; }
 
-.page {
-  height: 100%; }
-
 .page-flex {
   flex: 1;
   position: relative;
   padding: 4px;
   overflow-y: scroll; }
-
-.page-wrapper {
-  height: 100%; }
 
 .page-inner {
   padding: 15px; }
