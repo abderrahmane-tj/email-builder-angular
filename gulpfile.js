@@ -12,7 +12,7 @@ var vendorStyles = [
     "bower_components/font-awesome/css/font-awesome.min.css",
     "bower_components/remodal/dist/remodal.css",
     "bower_components/remodal/dist/remodal-default-theme.css"
-]
+];
 
 gulp.task('sass', function() {
     return gulp.src('app/sass/app.scss')
@@ -45,6 +45,6 @@ gulp.task('default', ['styles'], function() {
 //////
 
 function swallowError (error) {
-  console.log(error.toString())
+  console.log(error.toString());
   this.emit('end')
 }

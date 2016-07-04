@@ -1671,6 +1671,8 @@ textarea.html-export {
   background: #2199e8; }
 
 .controls-list {
+  padding: 0;
+  margin: 0;
   list-style: none; }
   .controls-list li {
     display: inline-block; }

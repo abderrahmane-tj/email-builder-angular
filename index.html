@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="app/css/vendor.css">
 <link rel="stylesheet" href="app/css/app.css">
 </head>
-<body ng-class="{'is-previewing':mainVM.emailPreview}" ng-cloak ng-app="emailApp" ng-controller="MainController as mainVM">
+<body ng-controller="MainController as mainVM" ng-class="{'is-previewing':mainVM.emailPreview}" ng-cloak ng-app="emailApp" >
 <div class="app-body" ng-if="mainVM.page">
   <div class="toolbar">
     <p class="status" ng-if="mainVM.saving"><i class="fa fa-spinner fa-spin"></i> saving...</p>
