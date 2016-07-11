@@ -70,7 +70,11 @@ gulp.task('vendorjs',function () {
 });
 
 gulp.task('scripts',['js','vendorjs'], function () {
-    
+
+});
+
+gulp.task('build',['styles','scripts'], function () {
+
 });
 
 gulp.task('default', ['styles','scripts'], function() {
