@@ -1,5 +1,5 @@
-var emailServices = angular.module('emailApp.services');
-emailServices.factory('emailBuilder', ['$http','$q','obj2css',function ($http, $q,obj2css) {
+angular.module('emailApp.services')
+.factory('emailBuilder', ['$http','$q','obj2css',function ($http, $q,obj2css) {
     var service = {
         loaded: false,
         run: run

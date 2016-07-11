@@ -5,8 +5,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Email Builder</title>
-<link rel="stylesheet" href="app/css/vendor.css">
-<link rel="stylesheet" href="app/css/app.css">
+<link rel="stylesheet" href="dist/css/vendor.css">
+<link rel="stylesheet" href="dist/css/app.css">
 </head>
 <body ng-controller="MainController as mainVM" ng-class="{'is-previewing':mainVM.emailPreview}" ng-cloak ng-app="emailApp" >
 <div class="app-body" ng-if="mainVM.page">
@@ -25,51 +25,8 @@
   </div>
 </div>
 
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/tinymce/tinymce.min.js"></script>
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-<script src="bower_components/angular-dragula/dist/angular-dragula.min.js"></script>
-<script src="bower_components/store-js/store.min.js"></script>
-<script src="bower_components/spectrum/spectrum.js"></script>
-<script src="bower_components/remodal/dist/remodal.min.js"></script>
-<script src="app/vendor/autoscroll.js"></script>
-<script src="app/vendor/jq-helpers.js"></script>
-
-<script src="app/js/main.js"></script>
-<script src="app/js/services/helpers.js"></script>
-<script src="app/js/services/email-builder.js"></script>
-
-<script src="app/js/directives/layout/page.directive.js"></script>
-<script src="app/js/directives/layout/inspector.directive.js"></script>
-<script src="app/js/directives/layout/page-element.directive.js"></script>
-<script src="app/js/directives/layout/content-panel.directive.js"></script>
-
-<script src="app/js/directives/helpers/element-controls.directive.js"></script>
-<script src="app/js/directives/helpers/element-editable.directive.js"></script>
-<script src="app/js/directives/helpers/highlight.directive.js"></script>
-<script src="app/js/directives/helpers/color-picker.directive.js"></script>
-<script src="app/js/directives/helpers/navigate-to.directive.js"></script>
-<script src="app/js/directives/helpers/remove-white-space.directive.js"></script>
-
-<script src="app/js/directives/handlers/text.directive.js"></script>
-<script src="app/js/directives/handlers/image.directive.js"></script>
-<script src="app/js/directives/handlers/button.directive.js"></script>
-<script src="app/js/directives/handlers/spacer.directive.js"></script>
-<script src="app/js/directives/handlers/html.directive.js"></script>
-
-<script src="app/js/directives/controls/section.directive.js"></script>
-<script src="app/js/directives/controls/image.directive.js"></script>
-
-<script src="app/js/directives/properties/page.directive.js"></script>
-<script src="app/js/directives/properties/section.directive.js"></script>
-<script src="app/js/directives/properties/column.directive.js"></script>
-<script src="app/js/directives/properties/image.directive.js"></script>
-<script src="app/js/directives/properties/button.directive.js"></script>
-<script src="app/js/directives/properties/spacer.directive.js"></script>
-<script src="app/js/directives/properties/html.directive.js"></script>
-<script src="app/js/directives/properties/padding.directive.js"></script>
-<script src="app/js/directives/properties/background-image.directive.js"></script>
+<script src="dist/js/vendor.js"></script>
+<script src="dist/js/app.js"></script>
 
 </body>
 </html>
