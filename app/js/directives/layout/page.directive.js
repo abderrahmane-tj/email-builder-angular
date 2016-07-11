@@ -1,5 +1,5 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('page',[
+angular.module('emailApp')
+.directive('page',[
     'dragulaService','$timeout','findElement',
     pageDirective
 ]);

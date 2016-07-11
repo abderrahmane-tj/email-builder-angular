@@ -1,5 +1,4 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('removeWhiteSpace',[removeWhiteSpaceDirective]);
+angular.module('emailApp').directive('removeWhiteSpace',[removeWhiteSpaceDirective]);
 function removeWhiteSpaceDirective(){
     return {
         restrict: "A",

@@ -1,5 +1,5 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('buttonProperties',function(){
+angular.module('emailApp')
+.directive('buttonProperties',function(){
     return {
         restrict: "E",
         scope:{

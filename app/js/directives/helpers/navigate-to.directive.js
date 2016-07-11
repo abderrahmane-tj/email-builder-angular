@@ -1,5 +1,4 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('navigateTo',['$timeout',navigateToDirective]);
+angular.module('emailApp').directive('navigateTo',['$timeout',navigateToDirective]);
 function navigateToDirective($timeout){
     return {
         restrict: "A",

@@ -1,5 +1,4 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('imageHandler',['$timeout',function($timeout){
+angular.module('emailApp').directive('imageHandler',['$timeout',function($timeout){
     return {
         restrict: "A",
         scope:true,

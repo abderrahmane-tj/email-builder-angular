@@ -1,5 +1,4 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('highlight',[
+angular.module('emailApp').directive('highlight',[
     '$compile',
     'preventBubbling',
     function(

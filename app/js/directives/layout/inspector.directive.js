@@ -1,5 +1,4 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('inspector',[
+angular.module('emailApp').directive('inspector',[
     '$timeout',function($timeout){
     var blocks = {
         page: {},

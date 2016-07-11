@@ -1,5 +1,4 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('textHandler',['$timeout',function($timeout){
+angular.module('emailApp').directive('textHandler',['$timeout',function($timeout){
     return {
         restrict: "A",
         scope:true,

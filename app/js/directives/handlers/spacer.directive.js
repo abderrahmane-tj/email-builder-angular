@@ -1,5 +1,4 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('spacerHandler',[function(){
+angular.module('emailApp').directive('spacerHandler',[function(){
     return {
         restrict: "A",
         scope:true,

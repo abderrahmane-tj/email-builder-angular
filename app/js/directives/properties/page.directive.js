@@ -1,5 +1,5 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('pageProperties',function(){
+angular.module('emailApp')
+.directive('pageProperties',function(){
     return {
         restrict: "E",
         scope:{

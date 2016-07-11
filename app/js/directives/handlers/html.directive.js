@@ -1,5 +1,4 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('htmlHandler',['$sce',function($sce){
+angular.module('emailApp').directive('htmlHandler',['$sce',function($sce){
     return {
         restrict: "A",
         scope:true,

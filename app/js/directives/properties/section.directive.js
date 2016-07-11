@@ -1,5 +1,5 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('sectionProperties',[
+angular.module('emailApp')
+.directive('sectionProperties',[
     function(){
     return {
         restrict: "E",

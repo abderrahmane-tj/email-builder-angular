@@ -1,5 +1,5 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('spacerProperties',function(){
+angular.module('emailApp')
+.directive('spacerProperties',function(){
     return {
         restrict: "E",
         scope:{

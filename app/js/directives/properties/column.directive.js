@@ -1,5 +1,5 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('columnProperties',[
+angular.module('emailApp')
+.directive('columnProperties',[
     function(){
     return {
         restrict: "E",

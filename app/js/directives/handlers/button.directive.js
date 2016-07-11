@@ -1,5 +1,4 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('buttonHandler',[function(){
+angular.module('emailApp').directive('buttonHandler',[function(){
     return {
         restrict: "A",
         scope:true,

@@ -1,5 +1,4 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('elementEditable',['$sce','$compile','$timeout', function($sce,$compile,$timeout){
+angular.module('emailApp').directive('elementEditable',['$sce','$compile','$timeout', function($sce,$compile,$timeout){
     return {
         restrict: "A",
         require: 'ngModel',

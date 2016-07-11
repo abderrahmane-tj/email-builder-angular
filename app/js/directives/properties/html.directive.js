@@ -1,5 +1,5 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('htmlProperties',['$timeout',function($timeout){
+angular.module('emailApp')
+.directive('htmlProperties',['$timeout',function($timeout){
     return {
         restrict: "E",
         scope:{

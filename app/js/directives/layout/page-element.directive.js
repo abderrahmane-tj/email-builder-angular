@@ -1,5 +1,5 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('pageElement',['$templateRequest','$compile','$timeout',
+angular.module('emailApp')
+.directive('pageElement',['$templateRequest','$compile','$timeout',
     function($templateRequest,$compile, $timeout){
     return {
         restrict: "A",

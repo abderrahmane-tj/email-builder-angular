@@ -1,5 +1,4 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('elementControls',
+angular.module('emailApp').directive('elementControls',
     ['$compile','$timeout','$templateRequest','preventBubbling',
         function($compile,$timeout,$templateRequest,preventBubbling){
     var directive = {

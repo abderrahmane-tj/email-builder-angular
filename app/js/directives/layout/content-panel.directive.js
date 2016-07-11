@@ -1,5 +1,4 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('contentPanel',['jqSelectOnFocus', function(jqSelectOnFocus){
+angular.module('emailApp').directive('contentPanel',['jqSelectOnFocus', function(jqSelectOnFocus){
     return {
         restrict: "A",
         scope:true,

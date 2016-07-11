@@ -1,5 +1,5 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('paddingProperty', [
+angular.module('emailApp')
+.directive('paddingProperty', [
     'clamp',
     function (clamp) {
     var directive = {

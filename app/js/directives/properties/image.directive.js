@@ -1,5 +1,5 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('imageProperties',function(){
+angular.module('emailApp')
+.directive('imageProperties',function(){
     return {
         restrict: "E",
         scope:{

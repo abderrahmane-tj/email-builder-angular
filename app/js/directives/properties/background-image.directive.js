@@ -1,5 +1,5 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('backgroundImageProperty', [
+angular.module('emailApp')
+.directive('backgroundImageProperty', [
     function () {
     var directive = {
         restrict: "E",

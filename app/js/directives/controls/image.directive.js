@@ -1,5 +1,4 @@
-var emailApp = angular.module('emailApp');
-emailApp.directive('imageControls',['$compile','$templateRequest',function($compile,$templateRequest){
+angular.module('emailApp').directive('imageControls',['$compile','$templateRequest',function($compile,$templateRequest){
     return {
         restrict: "A",
         require: "elementControls",
