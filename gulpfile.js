@@ -39,7 +39,7 @@ gulp.task('styles',['sass','fonts'],function(){
 });
 
 gulp.task('js',function () {
-    return gulp.src('app/js/**/*.js')
+    return gulp.src('app/js/app/**/*.js')
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(wrap('(function(){\n"use strict";\n<%= contents %>\n})();'))
     .pipe(concat('app.js'))
@@ -57,8 +57,8 @@ const vendorScripts = [
     "bower_components/store-js/store.min.js",
     "bower_components/spectrum/spectrum.js",
     "bower_components/remodal/dist/remodal.min.js",
-    "app/vendor/autoscroll.js",
-    "app/vendor/jq-helpers.js"
+    "app/js/vendor/autoscroll.js",
+    "app/js/vendor/jq-helpers.js"
 ];
 gulp.task('vendorjs',function () {
     return gulp.src(vendorScripts)
@@ -68,8 +68,16 @@ gulp.task('vendorjs',function () {
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest("./dist/js"));
 });
+gulp.task('copy-tinymce', function() {
+    return gulp.src([
+        'bower_components/tinymce/plugins/**/*',
+        'bower_components/tinymce/skins/**/*',
+        'bower_components/tinymce/themes/**/*'
+    ],{base:"bower_components/tinymce"})
+    .pipe(gulp.dest('./dist/js'));
+});
 
-gulp.task('scripts',['js','vendorjs'], function () {
+gulp.task('scripts',['js','vendorjs','copy-tinymce'], function () {
 
 });
 
@@ -79,7 +87,7 @@ gulp.task('build',['styles','scripts'], function () {
 
 gulp.task('default', ['styles','scripts'], function() {
     gulp.watch('app/sass/**/*.scss', ['styles']);
-    gulp.watch('app/js/**/*.js', ['js']);
+    gulp.watch('app/js/app/**/*.js', ['js']);
 });
 
 
