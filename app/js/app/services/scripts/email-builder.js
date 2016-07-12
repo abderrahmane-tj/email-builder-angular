@@ -1,5 +1,5 @@
 angular.module('emailApp.services')
-.factory('emailBuilder', ['$http','$q','obj2css',function ($http, $q,obj2css) {
+.factory('emailBuilder', ['$http','$templateCache','$templateRequest','$q','obj2css',function ($http, $templateCache,$templateRequest, $q,obj2css) {
     var service = {
         loaded: false,
         run: run
@@ -12,10 +12,10 @@ angular.module('emailApp.services')
     var elementTemplate;
 
     getTemplates().then(function (response) {
-        pageTemplate = response[0].data;
-        sectionTemplate = response[1].data;
-        columnTemplate = response[2].data;
-        elementTemplate = response[3].data;
+        pageTemplate = response[0];
+        sectionTemplate = response[1];
+        columnTemplate = response[2];
+        elementTemplate = response[3];
     });
     function run(data){
         pageData = data;
@@ -159,22 +159,10 @@ angular.module('emailApp.services')
     }
     function getTemplates(){
         return $q.all([
-            $http.get(
-                'app/templates/parts/export/page.template.html',
-                {cache:false}
-            ),
-            $http.get(
-                'app/templates/parts/export/section.template.html',
-                {cache:false}
-            ),
-            $http.get(
-                'app/templates/parts/export/column.template.html',
-                {cache:false}
-            ),
-            $http.get(
-                'app/templates/parts/export/element.template.html',
-                {cache:false}
-            )
+            $templateRequest('app/templates/parts/export/page.template.html'),
+            $templateRequest('app/templates/parts/export/section.template.html'),
+            $templateRequest('app/templates/parts/export/column.template.html'),
+            $templateRequest('app/templates/parts/export/element.template.html')
         ]);
     }
     function supplant (s,o) {

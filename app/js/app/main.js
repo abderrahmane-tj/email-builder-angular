@@ -1,19 +1,19 @@
-var emailApp = angular.module('emailApp', [
+angular.module('emailApp', [
     'emailApp.services',
     'ngSanitize',
     angularDragula(angular)
-]);
-emailApp.config(['$compileProvider', function ($compileProvider) {
+])
+.config(['$compileProvider', function ($compileProvider) {
     //todo: turn debugInfo off in production
     $compileProvider.debugInfoEnabled(true);
-}]);
-emailApp.controller('MainController', [
-    '$scope', '$templateCache', 'dragulaService', '$timeout', '$interval',
+}])
+.controller('MainController', [
+    '$scope', 'appCache', '$timeout', '$interval',
     '$window', '$http','$q','emailBuilder', 'jqSelectOnFocus',
     MainController
 ]);
 
-function MainController($scope, $templateCache, dragulaService, $timeout,
+function MainController($scope, appCache, $timeout,
     $interval, $window, $http, $q, emailBuilder, jqSelectOnFocus
 ){
     var mainVM = this;
@@ -41,11 +41,10 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
 
     ///////////////////
     function handlePage(){
-        $templateCache.removeAll();
         getData().then(function (response) {
-            var defaultPage = response[0].data;
-            mainVM.sectionsTemplates = response[1].data;
-            mainVM.elementsTemplates = response[2].data;
+            var defaultPage = response[0];
+            mainVM.sectionsTemplates = response[1];
+            mainVM.elementsTemplates = response[2];
 
             // fill page with default content or previous version
             mainVM.page = initPage(defaultPage);
@@ -62,9 +61,9 @@ function MainController($scope, $templateCache, dragulaService, $timeout,
     }
     function getData(){
         return $q.all([
-            $http.get('app/js/data/default-page.json',{cache:false}),
-            $http.get('app/js/data/sections-templates.json',{cache:false}),
-            $http.get('app/js/data/elements-templates.json',{cache:false})
+            appCache.get('default-page'),
+            appCache.get('sections-templates'),
+            appCache.get('elements-templates')
         ]);
     }
     function initPage(defaultPage){
