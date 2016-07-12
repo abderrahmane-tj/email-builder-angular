@@ -92,8 +92,17 @@ gulp.task('cache-templates',function () {
 });
 
 gulp.task('build',['styles','cache-templates', 'scripts']);
+gulp.task('minify', ['build'],function(){
+    return gulp.src('dist/js/app.js')
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(uglify())
+    .on('error', swallowError)
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest("./dist/js"));
+});
+gulp.task('production',['minify']);
 
-gulp.task('default', ['styles','cache-templates','scripts'], function() {
+gulp.task('default', ['build'], function() {
     gulp.watch('app/sass/**/*.scss', ['styles']);
     gulp.watch('app/js/app/**/*.js', ['js']);
     gulp.watch('app/templates/**/*', ['cache-templates','js']);
