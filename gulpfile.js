@@ -6,6 +6,7 @@ const watch = require('gulp-watch');
 const plumber = require('gulp-plumber');
 const wrap = require("gulp-wrap");
 const sourcemaps = require('gulp-sourcemaps');
+const templateCache = require('gulp-angular-templatecache');
 
 gulp.task('sass', function() {
     return gulp.src('app/sass/app.scss')
@@ -29,17 +30,19 @@ const vendorStyles = [
     "bower_components/remodal/dist/remodal.css",
     "bower_components/remodal/dist/remodal-default-theme.css"
 ];
-gulp.task('styles',['sass','fonts'],function(){
+gulp.task('vendorcss',function () {
     return gulp.src(vendorStyles)
-    .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(concat('vendor.css'))
-    .on('error', swallowError)
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./dist/css'));
+        .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(concat('vendor.css'))
+        .on('error', swallowError)
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('./dist/css'));
 });
 
+gulp.task('styles',['sass','fonts','vendorcss']);
+
 gulp.task('js',function () {
-    return gulp.src('app/js/app/**/*.js')
+    return gulp.src(['app/js/app/**/*.js','dist/js/templates.js'])
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(wrap('(function(){\n"use strict";\n<%= contents %>\n})();'))
     .pipe(concat('app.js'))
@@ -77,17 +80,23 @@ gulp.task('copy-tinymce', function() {
     .pipe(gulp.dest('./dist/js'));
 });
 
-gulp.task('scripts',['js','vendorjs','copy-tinymce'], function () {
+gulp.task('scripts',['js','vendorjs','copy-tinymce']);
 
+gulp.task('cache-templates',function () {
+    return gulp.src('app/templates/**/*.html')
+        .pipe(templateCache({
+            root: 'app/templates',
+            module: 'emailApp'
+        }))
+        .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('build',['styles','scripts'], function () {
+gulp.task('build',['styles','cache-templates', 'scripts']);
 
-});
-
-gulp.task('default', ['styles','scripts'], function() {
+gulp.task('default', ['styles','cache-templates','scripts'], function() {
     gulp.watch('app/sass/**/*.scss', ['styles']);
     gulp.watch('app/js/app/**/*.js', ['js']);
+    gulp.watch('app/templates/**/*', ['cache-templates','js']);
 });
 
 
