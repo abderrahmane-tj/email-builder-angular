@@ -1,3 +1,6 @@
+angular.module('emailApp')
+    .run(['appCache',function (appCache) {
+      appCache.put('sections-templates',
 [
   {
     "type": "section",
@@ -294,3 +297,5 @@
     ]
   }
 ]
+      )
+    }]);

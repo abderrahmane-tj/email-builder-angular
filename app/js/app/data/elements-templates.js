@@ -1,3 +1,6 @@
+angular.module('emailApp')
+.run(['appCache',function (appCache) {
+  appCache.put('elements-templates',
 [
   {
     "type": "text",
@@ -37,10 +40,13 @@
       "padding-bottom":"10px"
     },
     "rawStyle":{}
-  },{
+  },
+  {
     "type": "html",
     "content": "<style>\n.inline-heading-style{\ncolor: darkred;\n}\n</style>\n<h1 class=\"inline-heading-style\">Hello World</h1>\n<p>Let's talk ?</p>",
     "style": {},
     "rawStyle":{}
   }
 ]
+  )
+}]);

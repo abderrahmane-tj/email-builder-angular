@@ -1,3 +1,6 @@
+angular.module('emailApp')
+.run(['appCache',function (appCache) {
+  appCache.put('default-page',
 {
   "type": "page",
   "style": {
@@ -148,3 +151,5 @@
     }
   ]
 }
+  )
+}]);
