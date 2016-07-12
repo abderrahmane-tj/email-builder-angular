@@ -3,7 +3,7 @@ angular.module('emailApp').directive('imageHandler',['$timeout',function($timeou
         restrict: "A",
         scope:true,
         link: link,
-        controller: controller
+        controller: ["$scope",controller]
     };
     function link($scope, element, attrs, elementControls){
         var columns = { 1: 30, 2: 80, 3: 130, 4: 180, 5: 230, 6: 280, 7: 330, 8: 380, 9: 430, 10: 480, 11: 530, 12: 580};

@@ -32,7 +32,7 @@ angular.module('emailApp').directive('inspector',[
         bindToController: true,
         scope:true,
         link: link,
-        controller: controller,
+        controller: ["$scope",controller],
         templateUrl: 'app/templates/inspector.template.html'
     };
     function link($scope,element,attrs){

@@ -3,7 +3,6 @@ function navigateToDirective($timeout){
     return {
         restrict: "A",
         scope:true,
-        controller:controller,
         link: link
     };
 
@@ -53,9 +52,5 @@ function navigateToDirective($timeout){
             });
 
         }
-    }
-
-    function controller($scope){
-
     }
 }

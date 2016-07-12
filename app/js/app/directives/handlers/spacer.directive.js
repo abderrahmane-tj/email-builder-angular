@@ -2,8 +2,7 @@ angular.module('emailApp').directive('spacerHandler',[function(){
     return {
         restrict: "A",
         scope:true,
-        link: link,
-        controller: controller
+        link: link
     };
     function link($scope, element, attrs){
 
@@ -47,7 +46,5 @@ angular.module('emailApp').directive('spacerHandler',[function(){
             $scope.element.height = element.height();
             resizing = false;
         }
-    }
-    function controller($scope){
     }
 }]);

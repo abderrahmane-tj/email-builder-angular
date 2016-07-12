@@ -2,8 +2,7 @@ angular.module('emailApp').directive('textHandler',['$timeout',function($timeout
     return {
         restrict: "A",
         scope:true,
-        link: link,
-        controller: controller
+        link: link
     };
     function link($scope, element, attrs){
         element.closest('.element').addClass('disable-controls');
@@ -14,8 +13,5 @@ angular.module('emailApp').directive('textHandler',['$timeout',function($timeout
         function onClick(event){
             event.preventDefault();
         }
-    }
-    function controller($scope){
-
     }
 }]);

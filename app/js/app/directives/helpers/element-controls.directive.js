@@ -4,7 +4,7 @@ angular.module('emailApp').directive('elementControls',
     var directive = {
         restrict: "A",
         scope:true,
-        controller:controller,
+        controller: ["$scope",controller],
         link: link
     };
 

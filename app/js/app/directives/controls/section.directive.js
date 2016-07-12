@@ -4,7 +4,7 @@ angular.module('emailApp').directive('sectionControls',['$compile','$templateReq
         scope:true,
         require:"elementControls",
         link:link,
-        controller: controller
+        controller: ["$scope",controller]
     };
 
     function controller($scope){

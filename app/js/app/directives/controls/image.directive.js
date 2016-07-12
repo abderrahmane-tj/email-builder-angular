@@ -4,7 +4,7 @@ angular.module('emailApp').directive('imageControls',['$compile','$templateReque
         require: "elementControls",
         scope:true,
         link:link,
-        controller: controller
+        controller: ["$scope",controller]
     };
 
     function controller($scope){

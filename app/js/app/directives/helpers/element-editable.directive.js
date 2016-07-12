@@ -4,18 +4,19 @@ angular.module('emailApp').directive('elementEditable',['$sce','$compile','$time
         require: 'ngModel',
         scope: true,
         link: link,
-        controller: function($scope){
-            $scope.trustAsHtml = function(string) {
-                return $sce.trustAsHtml(string);
-            };
-            //$scope.elementData = {};
-        }
+        controller: ["$scope",controller]
     };
     function link($scope, element, attrs, ngModel){
         element.bind('click', function (event) {
             element.hide();
             createEditor($scope, element, attrs, ngModel);
         });
+    }
+    function controller($scope){
+        $scope.trustAsHtml = function(string) {
+            return $sce.trustAsHtml(string);
+        };
+        //$scope.elementData = {};
     }
     function createEditor($scope, element, attrs, ngModel){
         var options = {};

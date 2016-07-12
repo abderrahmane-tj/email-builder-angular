@@ -3,7 +3,7 @@ angular.module('emailApp').directive('buttonHandler',[function(){
         restrict: "A",
         scope:true,
         link: link,
-        controller: controller
+        controller: ["$scope",controller]
     };
     function link($scope, element, attrs){
         element.closest('.element').addClass('disable-controls');

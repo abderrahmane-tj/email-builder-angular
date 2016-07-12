@@ -2,7 +2,7 @@ angular.module('emailApp').directive('htmlHandler',['$sce',function($sce){
     return {
         restrict: "A",
         scope:true,
-        controller: controller
+        controller: ["$scope",controller]
     };
     function controller($scope){
         $scope.trustAsHtml = function(string) {

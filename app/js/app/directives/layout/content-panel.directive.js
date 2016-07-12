@@ -2,8 +2,7 @@ angular.module('emailApp').directive('contentPanel',['jqSelectOnFocus', function
     return {
         restrict: "A",
         scope:true,
-        link: link,
-        controller:function($scope){}
+        link: link
     };
     function link($scope,element,attrs){
         jqSelectOnFocus($("#data-dump"));

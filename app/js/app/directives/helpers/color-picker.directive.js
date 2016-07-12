@@ -3,7 +3,6 @@ function colorPickerDirective(){
     return {
         restrict: "A",
         scope:true,
-        controller:controller,
         link: link
     };
 
@@ -19,6 +18,4 @@ function colorPickerDirective(){
         });
     }
 
-    function controller($scope){
-    }
 }

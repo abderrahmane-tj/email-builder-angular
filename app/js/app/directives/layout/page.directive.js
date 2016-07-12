@@ -9,7 +9,7 @@ function pageDirective(dragulaService,$timeout,findElement){
         restrict: "E",
         replace: true,
         controllerAs: 'pageVM',
-        controller: controller,
+        controller: ["$scope",controller],
         link:link,
         templateUrl: 'app/templates/page.template.html'
     };
