@@ -12,6 +12,7 @@
   "homepage": "https://bitbucket.org/Abderrahmane_TJ/email-builder#readme",
   "dependencies": {
     "gulp": "^3.9.1",
+    "gulp-angular-templatecache": "^2.0.0",
     "gulp-concat": "^2.6.0",
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^2.3.2",
