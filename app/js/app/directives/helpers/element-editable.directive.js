@@ -67,6 +67,7 @@ angular.module('emailApp').directive('elementEditable',['$sce','$compile','$time
                 });
                 editor.addButton('deleteElement', {
                     icon: 'delete-element',
+                    title: 'Delete Element',
                     onclick: function () {
                         var filteredElements = $scope.column.elements.filter(function (item) {
                             return item !== $scope.element;
@@ -80,6 +81,7 @@ angular.module('emailApp').directive('elementEditable',['$sce','$compile','$time
                 });
                 editor.addButton('cloneElement', {
                     icon: 'clone-element',
+                    title: 'Clone Element',
                     onclick: function () {
                         var index = $scope.column.elements.indexOf($scope.element);
                         $scope.$apply(function () {
