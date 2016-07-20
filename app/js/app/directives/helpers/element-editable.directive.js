@@ -102,7 +102,20 @@ angular.module('emailApp').directive('elementEditable',['$sce','$compile','$time
                         { text: 'First Name', value: '*|firstname|*' },
                         { text: 'Last Name', value: '*|lastname|*' },
                         { text: 'Email', value: '*|email|*' },
-                        { text: 'custom', value: '*|custom_variable|*' }
+                        { text: 'Web Version Url', value: '*|WEBLINK|*' },
+                        { text: 'Unsubscribe Url', value: '*|UNSUB|*' },
+                        { text: 'Description', value: '*|DESC|*' },
+                        { text: 'Address', value: '*|ADDR|*' },
+/**
+ * *|WEBLINK|*
+ *|UNSUB|*
+ *|DESC|*
+ *|ADDR|*
+ Your company's address
+ * **/
+
+                        { text: 'custom', value: '*|custom_variable|*'
+                        }
                     ],
                     onPostRender: function () {
                         // Select the second item by default
