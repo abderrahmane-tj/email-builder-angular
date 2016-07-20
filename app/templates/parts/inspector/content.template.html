@@ -1,4 +1,8 @@
 <div class="content-panel" content-panel>
+  <div ng-if="mainVM.localDev">
+    <h6>Current Element</h6>
+    <pre class="r">{{pageVM.currentElement|json}}</pre>
+  </div>
   <h5>Import data</h5>
   <textarea id="import-data" class="debug-text-area"></textarea>
   <button ng-click="mainVM.importData();">Import DATA</button>
