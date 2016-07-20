@@ -14,10 +14,10 @@ let doSourcemaps = true;
 
 gulp.task('sass', function() {
     return gulp.src('app/sass/app.scss')
-    .pipe(doSourcemaps ? sourcemaps.init({loadMaps: true}) : gutil.noop())
+    .pipe(doIdoSourcemaps())
     .pipe(sass())
     .on('error', swallowError)
-    .pipe(doSourcemaps ? sourcemaps.write('.') : gutil.noop())
+    .pipe(doIWriteSourcemaps())
     .pipe(gulp.dest('./dist/css'));
 });
 gulp.task('fonts', function() {
@@ -32,10 +32,10 @@ gulp.task('vendorcss',function () {
         "bower_components/remodal/dist/remodal.css",
         "bower_components/remodal/dist/remodal-default-theme.css"
     ])
-        .pipe(doSourcemaps ? sourcemaps.init({loadMaps: true}) : gutil.noop())
+        .pipe(doIdoSourcemaps())
         .pipe(concat('vendor.css'))
         .on('error', swallowError)
-        .pipe(doSourcemaps ? sourcemaps.write('.') : gutil.noop())
+        .pipe(doIWriteSourcemaps())
         .pipe(gulp.dest('./dist/css'));
 });
 gulp.task('styles',['sass','fonts','vendorcss']);
@@ -43,11 +43,11 @@ gulp.task('styles',['sass','fonts','vendorcss']);
 
 gulp.task('js',function () {
     return gulp.src(['app/js/app/**/*.js','dist/js/templates.js'])
-    .pipe(doSourcemaps ? sourcemaps.init({loadMaps: true}) : gutil.noop())
+    .pipe(doIdoSourcemaps())
     .pipe(wrap('(function(){\n"use strict";\n<%= contents %>\n})();'))
     .pipe(concat('app.js'))
     .on('error', swallowError)
-    .pipe(doSourcemaps ? sourcemaps.write('.') : gutil.noop())
+    .pipe(doIWriteSourcemaps())
     .pipe(gulp.dest("./dist/js"));
 });
 gulp.task('bower_components',function () {
@@ -60,10 +60,10 @@ gulp.task('bower_components',function () {
         "bower_components/store-js/store.min.js",
         "bower_components/remodal/dist/remodal.min.js"
     ])
-    .pipe(doSourcemaps ? sourcemaps.init({loadMaps: true}) : gutil.noop())
+    .pipe(doIdoSourcemaps())
     .pipe(concat('bower_components.js'))
     .on('error', swallowError)
-    .pipe(doSourcemaps ? sourcemaps.write('.') : gutil.noop())
+    .pipe(doIWriteSourcemaps())
     .pipe(gulp.dest("./dist/js"));
 });
 gulp.task('appvendorjs',function () {
@@ -71,11 +71,11 @@ gulp.task('appvendorjs',function () {
         "./app/js/vendor/*",
         "./bower_components/spectrum/spectrum.js"
     ])
-    .pipe(doSourcemaps ? sourcemaps.init({loadMaps: true}) : gutil.noop())
+    .pipe(doIdoSourcemaps())
     .pipe(uglify())
     .pipe(concat('app_vendor.js'))
     .on('error', swallowError)
-    .pipe(doSourcemaps ? sourcemaps.write('.') : gutil.noop())
+    .pipe(doIWriteSourcemaps())
     .pipe(gulp.dest("./dist/js"));
 });
 gulp.task('vendorjs',['appvendorjs','bower_components'],function () {
@@ -83,10 +83,10 @@ gulp.task('vendorjs',['appvendorjs','bower_components'],function () {
         "./dist/js/bower_components.js",
         "./dist/js/app_vendor.js"
     ])
-    .pipe(doSourcemaps ? sourcemaps.init({loadMaps: true}) : gutil.noop())
+    .pipe(doIdoSourcemaps())
     .pipe(concat('vendor.js'))
     .on('error', swallowError)
-    .pipe(doSourcemaps ? sourcemaps.write('.') : gutil.noop())
+    .pipe(doIWriteSourcemaps())
     .pipe(gulp.dest("./dist/js"));
 });
 gulp.task('copy-tinymce', function() {
@@ -111,19 +111,19 @@ gulp.task('cache-templates',function () {
 gulp.task('build',['styles','cache-templates', 'scripts']);
 gulp.task('minifyjs',['build'],function(){
     return gulp.src(['dist/js/app.js'])
-    .pipe(doSourcemaps ? sourcemaps.init({loadMaps: true}) : gutil.noop())
+    .pipe(doIdoSourcemaps())
     .pipe(uglify())
     .on('error', swallowError)
-    .pipe(doSourcemaps ? sourcemaps.write('.') : gutil.noop())
+    .pipe(doIWriteSourcemaps())
     .pipe(gulp.dest("./dist/js"));
 });
 gulp.task('minifycss',['build'],function(){
     return gulp.src('dist/css/app.css')
-    .pipe(doSourcemaps ? sourcemaps.init({loadMaps: true}) : gutil.noop())
+    .pipe(doIdoSourcemaps())
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(autoprefixer('last 4 version', 'safari 5', 'ie 8', 'ie 9'))
     .on('error', swallowError)
-    .pipe(doSourcemaps ? sourcemaps.write('.') : gutil.noop())
+    .pipe(doIWriteSourcemaps())
     .pipe(gulp.dest("./dist/css"));
 });
 gulp.task('bootstrap',function () {
@@ -143,4 +143,10 @@ gulp.task('default', ['build'], function() {
 function swallowError (error) {
   console.log(error.toString());
   this.emit('end')
+}
+function doIdoSourcemaps(){
+    return doSourcemaps ? sourcemaps.init({loadMaps: true}) : gutil.noop();
+}
+function doIWriteSourcemaps(){
+    return doSourcemaps ? sourcemaps.write('.') : gutil.noop();
 }
