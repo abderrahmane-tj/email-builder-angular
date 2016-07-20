@@ -39,12 +39,12 @@ angular.module('emailApp').directive('elementEditable',['$sce','$compile','$time
         $compile(editable)($scope);
         var plugins = options.plugins || 'textcolor colorpicker link';
         var toolbar = options.toolbar || [
-            'bold italic underline strikethrough removeformat' +
+            'bold italic underline strikethrough forecolor backcolor' +
             ' | alignleft aligncenter alignright alignjustify' +
             ' | bullist numlist outdent indent' +
             ' | cloneElement deleteElement',
 
-            'link unlink | forecolor backcolor | formatselect | fontselect fontsizeselect'
+            'removeformat | link unlink | formatselect | fontselect fontsizeselect | insertVariable'
         ];
 
         tinymce.init({
@@ -87,6 +87,26 @@ angular.module('emailApp').directive('elementEditable',['$sce','$compile','$time
                         $scope.$apply(function () {
                             $scope.column.elements.splice(index+1, 0, angular.copy($scope.element));
                         });
+                    }
+                });
+                editor.addButton('insertVariable', {
+                    type: 'listbox',
+                    text: 'Variables',
+                    icon: false,
+                    onselect: function (e) {
+
+                        editor.insertContent(this.value());
+                    },
+                    values: [
+                        { text: 'Variables', value: '' },
+                        { text: 'First Name', value: '*|firstname|*' },
+                        { text: 'Last Name', value: '*|lastname|*' },
+                        { text: 'Email', value: '*|email|*' },
+                        { text: 'custom', value: '*|custom_variable|*' }
+                    ],
+                    onPostRender: function () {
+                        // Select the second item by default
+                        this.value('');
                     }
                 });
             },
