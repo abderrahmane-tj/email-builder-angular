@@ -72,6 +72,7 @@ angular.module('emailApp.services')
             case "button": elementHTML = buildButton(elementData); break;
             case "divider": elementHTML = buildDivider(elementData); break;
             case "spacer": elementHTML = buildSpacer(elementData); break;
+            case "html": elementHTML = buildHtml(elementData); break;
         }
         var elementStyle = obj2css(elementData.style);
         return supplant(elementTemplate, {
@@ -156,6 +157,9 @@ angular.module('emailApp.services')
         var html = "<table class='spacer'><tbody><tr><td height='{height}px' style='font-size:{height}px; line-height:{height}px;'>&#xA0;</td></tr></tbody></table>";
         html = supplant(html,{height: data.height});
         return html;
+    }
+    function buildHtml(data){
+        return data.content;
     }
     function getTemplates(){
         return $q.all([
