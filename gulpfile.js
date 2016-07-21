@@ -25,6 +25,10 @@ gulp.task('fonts', function() {
     return gulp.src('bower_components/font-awesome/fonts/**')
     .pipe(gulp.dest('./dist/fonts'));
 });
+gulp.task('images', function() {
+    return gulp.src('app/img/**')
+    .pipe(gulp.dest('./dist/img'));
+});
 gulp.task('vendorcss',function () {
     return gulp.src([
         "bower_components/angular-dragula/dist/dragula.min.css",
@@ -35,12 +39,12 @@ gulp.task('vendorcss',function () {
     ])
         .pipe(doIdoSourcemaps())
         .pipe(concat('vendor.css'))
-        .pipe(production ? cleanCSS({compatibility: 'ie8'}) : gulp.noop())
+        .pipe(production ? cleanCSS({compatibility: 'ie8'}) : gutil.noop())
         .on('error', swallowError)
         .pipe(doIWriteSourcemaps())
         .pipe(gulp.dest('./dist/css'));
 });
-gulp.task('styles',['sass','fonts','vendorcss']);
+gulp.task('styles',['sass','fonts','images','vendorcss']);
 
 
 gulp.task('js',function () {
