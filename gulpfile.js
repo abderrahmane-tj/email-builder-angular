@@ -78,6 +78,12 @@ gulp.task('appvendorjs',function () {
     .pipe(doIWriteSourcemaps())
     .pipe(gulp.dest("./dist/js"));
 });
+gulp.task('textareajs',function () {
+    return gulp.src([
+        "app/js/helpers/email-builder.jquery.js"
+    ])
+    .pipe(gulp.dest("./dist/js"));
+});
 gulp.task('previewvendorjs',function () {
     return gulp.src([
         "bower_components/jquery/dist/jquery.min.js"
@@ -88,7 +94,7 @@ gulp.task('previewvendorjs',function () {
     .pipe(doIWriteSourcemaps())
     .pipe(gulp.dest("./dist/js"));
 });
-gulp.task('vendorjs',['appvendorjs','previewvendorjs','bower_components'],function () {
+gulp.task('vendorjs',['appvendorjs','previewvendorjs','textareajs','bower_components'],function () {
     return gulp.src([
         "./dist/js/bower_components.js",
         "./dist/js/app_vendor.js"

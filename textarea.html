@@ -36,28 +36,58 @@ html, body{
 
 <iframe id="email-builder" frameborder="0"></iframe>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="dist/js/email-builder.jquery.js"></script>
 <script>
 var emailBuilder = $("#email-builder");
 var textarea = $("#html");
 var button = $("#button");
 var page = $("#page");
 var local = (window.location.hostname === 'localhost');
-var appUrl = local ? 'http://localhost/email-builder/' :
-        'http://atj-remotedev.cloudapp.net/email-builder/';
-$("#email-builder").attr('src',appUrl);
-button.on('click',openBuilder);
+var appUrl = document.URL.substr(0,document.URL.lastIndexOf('/'));
 
-function openBuilder(event){
-    emailBuilder.show();
-    page.hide();
-}
+button.on('click', function () {
+    $.emailBuilder({
+        // the iframe where the email builder will be injected
+        iframe: "#email-builder",
 
-function closeBuilder(html){
-    textarea.val(html);
-    emailBuilder.hide();
-    page.show();
-}
+        // url to the email-builder
+        url: appUrl + "/index.html",
 
+        // initial data, be it from a choosing a template, or for editing
+        // previously built email
+        data: {
+            "type": "page",
+            "style": {
+                "background-color": "#f3f3f3"
+            },
+            "rawStyle": {},
+            "sections": []
+        },
+        //////// METHODS
+
+        // fires instantly
+        // could be used to show the builder and hide everything else
+        onFire: function(){
+            emailBuilder.show();
+            page.hide();
+        },
+
+        // fires when iframe has been loaded
+        onReady: function () {
+
+        },
+
+        // fires when user clicks close inside builder
+        // arguments given are
+        // html : resulting html
+        // data : data that might be used later to edit the email
+        onClose: function (html, data) {
+            textarea.val(html);
+            emailBuilder.hide();
+            page.show();
+        }
+    });
+});
 
 </script>
 </body>
