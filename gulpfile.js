@@ -78,7 +78,17 @@ gulp.task('appvendorjs',function () {
     .pipe(doIWriteSourcemaps())
     .pipe(gulp.dest("./dist/js"));
 });
-gulp.task('vendorjs',['appvendorjs','bower_components'],function () {
+gulp.task('previewvendorjs',function () {
+    return gulp.src([
+        "bower_components/jquery/dist/jquery.min.js"
+    ])
+    .pipe(doIdoSourcemaps())
+    .pipe(concat('preview_vendor.js'))
+    .on('error', swallowError)
+    .pipe(doIWriteSourcemaps())
+    .pipe(gulp.dest("./dist/js"));
+});
+gulp.task('vendorjs',['appvendorjs','previewvendorjs','bower_components'],function () {
     return gulp.src([
         "./dist/js/bower_components.js",
         "./dist/js/app_vendor.js"
