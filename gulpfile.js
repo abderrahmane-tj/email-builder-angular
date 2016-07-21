@@ -11,6 +11,7 @@ const templateCache = require('gulp-angular-templatecache');
 const cleanCSS = require('gulp-clean-css');
 const autoprefixer = require('gulp-autoprefixer');
 let doSourcemaps = true;
+let production = false;
 
 gulp.task('sass', function() {
     return gulp.src('app/sass/app.scss')
@@ -34,6 +35,7 @@ gulp.task('vendorcss',function () {
     ])
         .pipe(doIdoSourcemaps())
         .pipe(concat('vendor.css'))
+        .pipe(production ? cleanCSS({compatibility: 'ie8'}) : gulp.noop())
         .on('error', swallowError)
         .pipe(doIWriteSourcemaps())
         .pipe(gulp.dest('./dist/css'));
@@ -142,10 +144,25 @@ gulp.task('minifycss',['build'],function(){
     .pipe(doIWriteSourcemaps())
     .pipe(gulp.dest("./dist/css"));
 });
+gulp.task('email-builder',['minifyjs','minifycss'],function () {
+    gulp.src(['dist/css/vendor.css','dist/css/app.css'])
+    .pipe(doIdoSourcemaps())
+    .pipe(concat('email-builder.css'))
+    .on('error', swallowError)
+    .pipe(doIWriteSourcemaps())
+    .pipe(gulp.dest("./dist/css"));
+    gulp.src(['dist/js/vendor.js','dist/js/app.js'])
+    .pipe(doIdoSourcemaps())
+    .pipe(concat('email-builder.js'))
+    .on('error', swallowError)
+    .pipe(doIWriteSourcemaps())
+    .pipe(gulp.dest("./dist/js"));
+});
 gulp.task('bootstrap',function () {
     doSourcemaps = false;
+    production = true;
 });
-gulp.task('production',['bootstrap','minifyjs','minifycss']);
+gulp.task('production',['bootstrap','email-builder']);
 
 gulp.task('default', ['build'], function() {
     gulp.watch('app/sass/**/*.scss', ['styles']);
