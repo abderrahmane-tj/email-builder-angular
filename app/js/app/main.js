@@ -66,6 +66,9 @@ function MainController($scope, appCache, $timeout,
         ]);
     }
     function initPage(defaultPage){
+        if(window.parent['email-builder-data']){
+            return window.parent['email-builder-data'];
+        }
         var page = store.get('page');
         if(!page){
             store.set('page', defaultPage);
@@ -148,7 +151,7 @@ function MainController($scope, appCache, $timeout,
     }
     function closeBuilder(){
         buildHTML();
-        window.parent.closeBuilder(mainVM.emailHtml);
+        window.parent['email-builder-callback'](mainVM.emailHtml, mainVM.page);
     }
     function inIframe () {
         try {
