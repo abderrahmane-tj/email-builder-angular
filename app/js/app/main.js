@@ -4,8 +4,7 @@ angular.module('emailApp', [
     angularDragula(angular)
 ])
 .config(['$compileProvider', function ($compileProvider) {
-    //todo: turn debugInfo off in production
-    $compileProvider.debugInfoEnabled(true);
+    $compileProvider.debugInfoEnabled(false);
 }])
 .controller('MainController', [
     '$scope', 'appCache', '$timeout', '$interval',
