@@ -24,8 +24,7 @@ function MainController($scope, appCache, $timeout,
     mainVM.sectionsTemplates = null;
     mainVM.elementsTemplates = null;
     mainVM.localDev = ($window.location.hostname === 'localhost');
-    mainVM.appURL = mainVM.localDev ? 'http://localhost/email-builder/' :
-        'http://atj-remotedev.cloudapp.net/email-builder/';
+    mainVM.baseURL = document.URL.substr(0,document.URL.lastIndexOf('/'));
     mainVM.iframeMode = inIframe();
     var dirty = true;
     mainVM.showHTML = showHTML;
@@ -144,7 +143,7 @@ function MainController($scope, appCache, $timeout,
         mainVM.previewParams = buildHTML(true)[1];
 
         $timeout(function(){
-            previewIFrame.attr('src',mainVM.appURL+'app/templates/preview.html');
+            previewIFrame.attr('src',mainVM.baseURL+'/preview.html');
         });
     }
     function closeBuilder(){
