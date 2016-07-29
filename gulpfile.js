@@ -19,15 +19,15 @@ gulp.task('sass', function() {
     .pipe(sass())
     .on('error', swallowError)
     .pipe(doIWriteSourcemaps())
-    .pipe(gulp.dest('./dist/css'));
+    .pipe(gulp.dest('./build/css'));
 });
 gulp.task('fonts', function() {
     return gulp.src('bower_components/font-awesome/fonts/**')
-    .pipe(gulp.dest('./dist/fonts'));
+    .pipe(gulp.dest('./build/fonts'));
 });
 gulp.task('images', function() {
     return gulp.src('app/img/**')
-    .pipe(gulp.dest('./dist/img'));
+    .pipe(gulp.dest('./build/img'));
 });
 gulp.task('vendorcss',function () {
     return gulp.src([
@@ -42,19 +42,19 @@ gulp.task('vendorcss',function () {
         .pipe(production ? cleanCSS({compatibility: 'ie8'}) : gutil.noop())
         .on('error', swallowError)
         .pipe(doIWriteSourcemaps())
-        .pipe(gulp.dest('./dist/css'));
+        .pipe(gulp.dest('./build/css'));
 });
 gulp.task('styles',['sass','fonts','images','vendorcss']);
 
 
 gulp.task('js',function () {
-    return gulp.src(['app/js/app/**/*.js','dist/js/templates.js'])
+    return gulp.src(['app/js/app/**/*.js','./build/js/templates.js'])
     .pipe(doIdoSourcemaps())
     .pipe(wrap('(function(){\n"use strict";\n<%= contents %>\n})();'))
     .pipe(concat('app.js'))
     .on('error', swallowError)
     .pipe(doIWriteSourcemaps())
-    .pipe(gulp.dest("./dist/js"));
+    .pipe(gulp.dest("./build/js"));
 });
 gulp.task('bower_components',function () {
     return gulp.src([
@@ -70,7 +70,7 @@ gulp.task('bower_components',function () {
     .pipe(concat('bower_components.js'))
     .on('error', swallowError)
     .pipe(doIWriteSourcemaps())
-    .pipe(gulp.dest("./dist/js"));
+    .pipe(gulp.dest("./build/js"));
 });
 gulp.task('appvendorjs',function () {
     return gulp.src([
@@ -82,13 +82,13 @@ gulp.task('appvendorjs',function () {
     .pipe(concat('app_vendor.js'))
     .on('error', swallowError)
     .pipe(doIWriteSourcemaps())
-    .pipe(gulp.dest("./dist/js"));
+    .pipe(gulp.dest("./build/js"));
 });
 gulp.task('textareajs',function () {
     return gulp.src([
         "app/js/helpers/email-builder.jquery.js"
     ])
-    .pipe(gulp.dest("./dist/js"));
+    .pipe(gulp.dest("./build/js"));
 });
 gulp.task('previewvendorjs',function () {
     return gulp.src([
@@ -98,18 +98,18 @@ gulp.task('previewvendorjs',function () {
     .pipe(concat('preview_vendor.js'))
     .on('error', swallowError)
     .pipe(doIWriteSourcemaps())
-    .pipe(gulp.dest("./dist/js"));
+    .pipe(gulp.dest("./build/js"));
 });
 gulp.task('vendorjs',['appvendorjs','previewvendorjs','textareajs','bower_components'],function () {
     return gulp.src([
-        "./dist/js/bower_components.js",
-        "./dist/js/app_vendor.js"
+        "./build/js/bower_components.js",
+        "./build/js/app_vendor.js"
     ])
     .pipe(doIdoSourcemaps())
     .pipe(concat('vendor.js'))
     .on('error', swallowError)
     .pipe(doIWriteSourcemaps())
-    .pipe(gulp.dest("./dist/js"));
+    .pipe(gulp.dest("./build/js"));
 });
 gulp.task('copy-tinymce', function() {
     return gulp.src([
@@ -117,7 +117,7 @@ gulp.task('copy-tinymce', function() {
         'bower_components/tinymce/skins/**/*',
         'bower_components/tinymce/themes/**/*'
     ],{base:"bower_components/tinymce"})
-    .pipe(gulp.dest('./dist/js'));
+    .pipe(gulp.dest('./build/js'));
 });
 gulp.task('scripts',['js','vendorjs','copy-tinymce']);
 
@@ -127,40 +127,40 @@ gulp.task('cache-templates',function () {
             root: 'app/templates',
             module: 'emailApp'
         }))
-        .pipe(gulp.dest('dist/js'));
+        .pipe(gulp.dest('./build/js'));
 });
 
 gulp.task('build',['styles','cache-templates', 'scripts']);
 gulp.task('minifyjs',['build'],function(){
-    return gulp.src(['dist/js/app.js'])
+    return gulp.src(['./build/js/app.js'])
     .pipe(doIdoSourcemaps())
     .pipe(uglify())
     .on('error', swallowError)
     .pipe(doIWriteSourcemaps())
-    .pipe(gulp.dest("./dist/js"));
+    .pipe(gulp.dest("./build/js"));
 });
 gulp.task('minifycss',['build'],function(){
-    return gulp.src('dist/css/app.css')
+    return gulp.src('./build/css/app.css')
     .pipe(doIdoSourcemaps())
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(autoprefixer('last 4 version', 'safari 5', 'ie 8', 'ie 9'))
     .on('error', swallowError)
     .pipe(doIWriteSourcemaps())
-    .pipe(gulp.dest("./dist/css"));
+    .pipe(gulp.dest("./build/css"));
 });
 gulp.task('email-builder',['minifyjs','minifycss'],function () {
-    gulp.src(['dist/css/vendor.css','dist/css/app.css'])
+    gulp.src(['./build/css/vendor.css','./build/css/app.css'])
     .pipe(doIdoSourcemaps())
     .pipe(concat('email-builder.css'))
     .on('error', swallowError)
     .pipe(doIWriteSourcemaps())
-    .pipe(gulp.dest("./dist/css"));
-    gulp.src(['dist/js/vendor.js','dist/js/app.js'])
+    .pipe(gulp.dest("./build/css"));
+    gulp.src(['./build/js/vendor.js','./build/js/app.js'])
     .pipe(doIdoSourcemaps())
     .pipe(concat('email-builder.js'))
     .on('error', swallowError)
     .pipe(doIWriteSourcemaps())
-    .pipe(gulp.dest("./dist/js"));
+    .pipe(gulp.dest("./build/js"));
 });
 gulp.task('bootstrap',function () {
     doSourcemaps = false;
