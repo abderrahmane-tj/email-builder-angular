@@ -7,7 +7,7 @@
   >
     <div class="template-wrapper element-template" ng-repeat="template in mainVM.elementsTemplates">
       <div class="template-handle">
-        <div class="icon" ng-style="{'background-image':'url(dist/img/'+template.type+'.png)'}"></div>
+        <div class="icon" ng-style="{'background-image':'url(app/img/'+template.type+'.png)'}"></div>
         <div>{{template.type}}</div>
       </div>
     </div>
@@ -22,7 +22,7 @@
   >
     <div class="template-wrapper section-template" ng-repeat="template in mainVM.sectionsTemplates">
       <div class="template-handle">
-        <div class="icon" ng-style="{'background-image':'url(dist/img/'+template['template-name']+'.svg)'}"></div>
+        <div class="icon" ng-style="{'background-image':'url(app/img/'+template['template-name']+'.svg)'}"></div>
       </div>
     </div>
   </div>
