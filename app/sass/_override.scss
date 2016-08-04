@@ -8,6 +8,9 @@ table.button{
   margin: 0;
   Margin: 0;
 }
+table.button table td{
+  border-width: 2px !important;
+}
 .no-padding{
   padding: 0 !important;
 }

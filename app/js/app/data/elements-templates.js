@@ -23,7 +23,7 @@ angular.module('emailApp')
     "url": "#",
     "textAlignment": "center",
     "buttonAlignment": "left",
-    "coloring": "warning",
+    "coloring": "default",
     "sizing": "default",
     "expanded": false
   },
