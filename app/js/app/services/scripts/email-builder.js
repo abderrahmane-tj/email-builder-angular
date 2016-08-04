@@ -22,15 +22,20 @@ angular.module('emailApp.services')
         return buildPage(data);
     }
     function buildPage(pageData){
-        var sectionsHTML = pageData.sections.map(buildSection);
+        var sectionsHTML = pageData.sections.map(buildSection).join("\n");
 
         var pageParams = {
-            sections: sectionsHTML.join("\n"),
-            customStyles: '<style>\n  html, table.body{background-color:'+pageData.style['background-color']+';}\n  body{'+obj2css(pageData.style)+'}\n</style>'
+            sections: sectionsHTML,
+            pageStyles: '<style>\n  html, table.body{background-color:'+pageData.style['background-color']+';}\n  body{'+obj2css(pageData.style)+'}\n</style>'
         };
         var html = supplant(pageTemplate,pageParams);
 
-        return [html, pageParams];
+        return {
+            compiledHtml: html,
+            content: pageParams.sections,
+            pageStyles: pageParams.pageStyles,
+            pageTemplate: pageTemplate
+        };
     }
     function buildSection(sectionData){
         var columnsHTML = sectionData.columns.map(buildColumn);

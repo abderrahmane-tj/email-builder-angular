@@ -120,7 +120,7 @@ function MainController($scope, appCache, $timeout,
     }
     function buildHTML(){
         var result = emailBuilder.run(mainVM.page);
-        mainVM.emailHtml = result[0];
+        mainVM.emailHtml = result.compiledHtml;
         return result;
     }
     function showHTML(){
@@ -142,15 +142,25 @@ function MainController($scope, appCache, $timeout,
             return;
         }
 
-        mainVM.previewParams = buildHTML(true)[1];
+        var result = buildHTML();
+        mainVM.previewParams = {
+            customStyles: result.customStyles,
+            sections: result.content
+        };
 
         $timeout(function(){
             previewIFrame.attr('src',mainVM.baseURL+'/preview.html');
         });
     }
     function closeBuilder(){
-        buildHTML();
-        window.parent['email-builder-callback'](mainVM.emailHtml, mainVM.page);
+        var result = buildHTML();
+        window.parent['email-builder-callback']({
+            data: mainVM.page,
+            compiledHtml: result.compiledHtml,
+            content: result.content,
+            pageStyle: result.pageStyles,
+            pageTemplate: result.pageTemplate
+        });
     }
     function inIframe () {
         try {
