@@ -61,8 +61,8 @@ button.on('click', function () {
         // arguments given are
         // html : resulting html
         // data : data that might be used later to edit the email
-        onClose: function (html, data) {
-            textarea.val(html);
+        onClose: function (result) {
+            textarea.val(result.compiledHtml);
             emailBuilder.hide();
             page.show();
         }
