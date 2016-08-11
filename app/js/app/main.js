@@ -144,7 +144,7 @@ function MainController($scope, appCache, $timeout,
 
         var result = buildHTML();
         mainVM.previewParams = {
-            customStyles: result.customStyles,
+            pageStyles: result.pageStyles,
             sections: result.content
         };
 

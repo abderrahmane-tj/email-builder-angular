@@ -1476,7 +1476,7 @@ th.large-12 center {
 var pWindow = window.parent;
 $(document).ready(function () {
   var mainVM = pWindow.angular.element(pWindow.document.body).controller();
-  $('head').append($(mainVM.previewParams.customStyles));
+  $('head').append($(mainVM.previewParams.pageStyles));
   $('.sections').html(mainVM.previewParams.sections);
 });
 </script>
