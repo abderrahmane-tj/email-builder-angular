@@ -101,13 +101,7 @@ function MainController($scope, appCache, $timeout,
         });
     }
     function importData(){
-        unbind();
-
-        store.set('page',JSON.parse($('#import-data').val()));
-
-        $timeout(function () {
-            window.location.reload(false);
-        });
+        mainVM.page = JSON.parse($('#import-data').val());
     }
     function exportData(){
         var data = "text/json;charset=utf-8,"
