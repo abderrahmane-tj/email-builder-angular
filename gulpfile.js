@@ -37,12 +37,12 @@ gulp.task('vendorcss',function () {
         "bower_components/remodal/dist/remodal.css",
         "bower_components/remodal/dist/remodal-default-theme.css"
     ])
-        .pipe(doIdoSourcemaps())
-        .pipe(concat('vendor.css'))
-        .pipe(production ? cleanCSS({compatibility: 'ie8'}) : gutil.noop())
-        .on('error', swallowError)
-        .pipe(doIWriteSourcemaps())
-        .pipe(gulp.dest('./build/app/css'));
+    .pipe(doIdoSourcemaps())
+    .pipe(concat('vendor.css'))
+    .pipe(production ? cleanCSS({compatibility: 'ie8'}) : gutil.noop())
+    .on('error', swallowError)
+    .pipe(doIWriteSourcemaps())
+    .pipe(gulp.dest('./build/app/css'));
 });
 gulp.task('styles',['sass','fonts','images','vendorcss']);
 
@@ -64,7 +64,8 @@ gulp.task('bower_components',function () {
         "bower_components/angular-sanitize/angular-sanitize.min.js",
         "bower_components/angular-dragula/dist/angular-dragula.min.js",
         "bower_components/store-js/store.min.js",
-        "bower_components/remodal/dist/remodal.min.js"
+        "bower_components/remodal/dist/remodal.min.js",
+        "bower_components/srcdoc-polyfill/srcdoc-polyfill.min.js"
     ])
     .pipe(doIdoSourcemaps())
     .pipe(concat('bower_components.js'))
@@ -90,17 +91,17 @@ gulp.task('textareajs',function () {
     ])
     .pipe(gulp.dest("./build/app/js"));
 });
-gulp.task('previewvendorjs',function () {
+gulp.task('textareavendorjs',function () {
     return gulp.src([
         "bower_components/jquery/dist/jquery.min.js"
     ])
     .pipe(doIdoSourcemaps())
-    .pipe(concat('preview_vendor.js'))
+    .pipe(concat('textarea_vendor.js'))
     .on('error', swallowError)
     .pipe(doIWriteSourcemaps())
     .pipe(gulp.dest("./build/app/js"));
 });
-gulp.task('vendorjs',['appvendorjs','previewvendorjs','textareajs','bower_components'],function () {
+gulp.task('vendorjs',['appvendorjs','textareavendorjs','textareajs','bower_components'],function () {
     return gulp.src([
         "./build/app/js/bower_components.js",
         "./build/app/js/app_vendor.js"

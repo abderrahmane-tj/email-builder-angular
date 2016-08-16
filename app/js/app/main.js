@@ -28,6 +28,8 @@ function MainController($scope, appCache, $timeout,
     var dirty = true;
     mainVM.showHTML = showHTML;
     mainVM.preview = preview;
+    mainVM.previewIframeDOM = null;
+    mainVM.assignIframe = assignIframe;
     mainVM.closeBuilder = closeBuilder;
     mainVM.emailPreview = false;
     mainVM.previewParams = null;
@@ -35,11 +37,14 @@ function MainController($scope, appCache, $timeout,
     var unbind = null; // variable used for watching mainVM.page
     var timeoutWatch = null; // A Timeout used for syncing
 
-    handlePage();
+    handlePage().then(function () {
+
+        // mainVM.previewIframeDOM =  $('#preview')[0];
+    });
 
     ///////////////////
     function handlePage(){
-        getData().then(function (response) {
+        return getData().then(function (response) {
             var defaultPage = response[0];
             mainVM.sectionsTemplates = response[1];
             mainVM.elementsTemplates = response[2];
@@ -93,6 +98,9 @@ function MainController($scope, appCache, $timeout,
             save();
         }, 2000);
     }
+    function assignIframe(){
+        mainVM.previewIframeDOM = $('#preview')[0];
+    }
     function resetData() {
         unbind();
         store.clear();
@@ -129,21 +137,13 @@ function MainController($scope, appCache, $timeout,
         });
     }
     function preview(){
-        var previewIFrame = $('#preview');
-        previewIFrame.attr('src','');
         mainVM.emailPreview = !mainVM.emailPreview;
         if(!mainVM.emailPreview){
             return;
         }
-
-        var result = buildHTML();
-        mainVM.previewParams = {
-            pageStyles: result.pageStyles,
-            sections: result.content
-        };
-
+        buildHTML();
         $timeout(function(){
-            previewIFrame.attr('src',mainVM.baseURL+'/preview.html');
+            srcDoc.set(mainVM.previewIframeDOM, mainVM.emailHtml);
         });
     }
     function closeBuilder(){

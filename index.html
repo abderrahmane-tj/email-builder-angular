@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="build/app/css/app.css">
 </head>
 <body ng-controller="MainController as mainVM" ng-class="{'is-previewing':mainVM.emailPreview}" ng-cloak ng-app="emailApp" >
-<div class="app-body" ng-if="mainVM.page">
+<div class="app-body" ng-if="mainVM.page" ng-init="mainVM.assignIframe()">
   <div class="toolbar">
     <p class="status" ng-if="mainVM.saving"><i class="fa fa-spinner fa-spin"></i> saving...</p>
     <button class="close-builder toolbar-button" ng-if="mainVM.iframeMode" ng-click="mainVM.closeBuilder();">Close</button>
