@@ -37,7 +37,7 @@ angular.module('emailApp').directive('elementEditable',['$sce','$compile','$time
         editable.bind('mousedown', onMousedown);
 
         $compile(editable)($scope);
-        var plugins = options.plugins || 'textcolor colorpicker link';
+        var plugins = options.plugins || 'paste textcolor colorpicker link';
         var toolbar = options.toolbar || [
             'bold italic underline strikethrough forecolor backcolor' +
             ' | alignleft aligncenter alignright alignjustify' +
@@ -106,14 +106,6 @@ angular.module('emailApp').directive('elementEditable',['$sce','$compile','$time
                         { text: 'Unsubscribe Url', value: '*|UNSUB|*' },
                         { text: 'Description', value: '*|DESC|*' },
                         { text: 'Address', value: '*|ADDR|*' },
-/**
- * *|WEBLINK|*
- *|UNSUB|*
- *|DESC|*
- *|ADDR|*
- Your company's address
- * **/
-
                         { text: 'custom', value: '*|custom_variable|*'
                         }
                     ],

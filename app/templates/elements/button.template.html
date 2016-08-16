@@ -10,7 +10,7 @@
             <div>
               <a ng-class="textAlignment[element.textAlignment]"
                   ng-href="{{element.url}}"
-                  element-editable="{'wrapper-tag':'a','plugins':'','toolbar':['insertVariable cloneElement deleteElement']}"
+                  element-editable="{'wrapper-tag':'a','plugins':'paste','toolbar':['insertVariable cloneElement deleteElement']}"
                   ng-model="element.text"
                   ng-bind-html="trustAsHtml(element.text)"
               ></a>
