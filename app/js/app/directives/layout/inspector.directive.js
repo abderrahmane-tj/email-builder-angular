@@ -45,7 +45,7 @@ angular.module('emailApp').directive('inspector',[
             var active = tabsContainer.find('.active');
             var inspectorPanels = $('.inspector-panel');
             activateTab(active);
-            var tabs = tabsContainer.find('a');
+            var tabs = tabsContainer.find('li');
             tabs.bind('click', onClick);
 
             function onClick(event) {
@@ -53,10 +53,10 @@ angular.module('emailApp').directive('inspector',[
                 tabsContainer.find('.active').removeClass('active');
                 activateTab($(this));
             }
-            function activateTab(anchor){
-                anchor.addClass('active');
+            function activateTab(tab){
+                tab.addClass('active');
                 inspectorPanels.hide();
-                $(anchor.attr('href')).show();
+                $(tab.find('a').attr('href')).show();
             }
         }
     }

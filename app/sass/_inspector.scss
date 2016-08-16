@@ -9,20 +9,22 @@
     @include reset-margin-padding-etc;
     list-style: none;
     overflow: hidden;
+    display: flex;
     li{
-      float: left;
+      //float: left;
+      flex: 1;
+      background: lightgray;
+      box-shadow: darkgray 0 -1px 0 inset;
+      &.active{
+        background: #f3f3f3;
+        box-shadow: none;
+      }
       a{
         text-transform: uppercase;
         font-size: 12px;
         display: inline-block;
         padding: 10px;
-        background: lightgray;
-        box-shadow: darkgray 0 -1px 0 inset;
         color: #0a0a0a;
-        &.active{
-          background: #f3f3f3;
-          box-shadow: none;
-        }
       }
     }
   }

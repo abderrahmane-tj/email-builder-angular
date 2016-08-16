@@ -33,6 +33,7 @@ function MainController($scope, appCache, $timeout,
     mainVM.closeBuilder = closeBuilder;
     mainVM.emailPreview = false;
     mainVM.previewParams = null;
+    mainVM.debug = mainVM.localDev ? true : false;
 
     var unbind = null; // variable used for watching mainVM.page
     var timeoutWatch = null; // A Timeout used for syncing

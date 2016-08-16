@@ -1,9 +1,9 @@
 <div class="inspector">
   <div>
     <ul class="tabs">
-      <li><a href="#structure" class="active" id="structure-anchor">Structure</a></li>
+      <li class="active"><a href="#structure" id="structure-anchor">Structure</a></li>
       <li><a href="#properties" id="properties-anchor">Properties</a></li>
-      <li><a href="#content" id="content-anchor">Content</a></li>
+      <li ng-hide="!mainVM.debug"><a href="#content" id="content-anchor">Content</a></li>
     </ul>
   </div>
   <div id="structure" class="inspector-panel">
@@ -12,7 +12,7 @@
   <div id="properties" class="inspector-panel">
     <div ng-include="'app/templates/parts/inspector/properties.template.html'"></div>
   </div>
-  <div id="content" class="inspector-panel">
+  <div id="content" class="inspector-panel" ng-hide="!mainVM.debug">
     <div ng-include="'app/templates/parts/inspector/content.template.html'"></div>
   </div>
 </div>
