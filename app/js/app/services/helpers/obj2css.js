@@ -3,7 +3,7 @@ angular.module('emailApp.services')
     return function (obj) {
         var css = '';
         for(var property in obj){
-            if(obj.hasOwnProperty(property) && obj[property] ){
+            if(obj.hasOwnProperty(property) && obj[property] !== ""){
                 css += property+':'+obj[property]+';';
             }
         }
