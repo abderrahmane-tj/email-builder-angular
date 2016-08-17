@@ -167,7 +167,12 @@ gulp.task('bootstrap',function () {
     doSourcemaps = false;
     production = true;
 });
-gulp.task('production',['bootstrap','email-builder']);
+gulp.task('production',['bootstrap','email-builder'],function () {
+    gulp.src('./build/app/js/email-builder.js')
+    .pipe(gulp.dest('./dist/app/js/'));
+    gulp.src('./build/app/css/email-builder.css')
+    .pipe(gulp.dest('./dist/app/css/'));
+});
 
 gulp.task('default', ['build'], function() {
     gulp.watch('app/sass/**/*.scss', ['styles']);
