@@ -46,9 +46,10 @@ angular.module('emailApp').directive('elementEditable',['$sce','$compile','$time
 
             'removeformat | link unlink | formatselect | fontselect fontsizeselect | insertVariable'
         ];
-        if(!$scope.mainVM.localDev){
-            tinymce.baseURL = $scope.mainVM.baseURL + "app/js/";
-            tinyMCE.baseURL = $scope.mainVM.baseURL + "app/js/";
+        if($scope.mainVM.localDev){
+            tinymce.baseURL = $scope.mainVM.baseURL + "/build/app/js/";
+        }else{
+            tinymce.baseURL = $scope.mainVM.baseURL + "/app/js/";
         }
         tinymce.init({
             selector:'#'+randID,
