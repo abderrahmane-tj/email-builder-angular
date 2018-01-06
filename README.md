@@ -7,4 +7,4 @@ install dependencies before opening the project
 bower install
 ```
 
-[Live demo here](http://atj-remotedev.cloudapp.net/email-builder)
+[Live demo here](atj-remotedev.cloudapp.net/email-builder/dist/email-builder.html)
