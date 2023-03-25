@@ -1,3 +1,5 @@
+var BASE_URL = location.protocol+'//'+location.host+location.pathname
+
 angular.module('emailApp').directive('elementEditable',['$sce','$compile','$timeout', function($sce,$compile,$timeout){
     return {
         restrict: "A",
@@ -46,11 +48,8 @@ angular.module('emailApp').directive('elementEditable',['$sce','$compile','$time
 
             'removeformat | link unlink | formatselect | fontselect fontsizeselect | insertVariable'
         ];
-        if($scope.mainVM.localDev){
-            tinymce.baseURL = $scope.mainVM.baseURL + "/app/js";
-        }else{
-            tinymce.baseURL = $scope.mainVM.baseURL + "/app/js";
-        }
+        tinymce.baseURL = BASE_URL + "vendor/tinymce";
+        console.log(tinymce.baseURL)
         tinymce.init({
             selector:'#'+randID,
             force_p_newlines: true,
