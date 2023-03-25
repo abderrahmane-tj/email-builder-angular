@@ -102,7 +102,7 @@ angular.module('emailApp')
               "style": {},
               "rawStyle":{},
               "type": "image",
-              "src": "http://atj-remotedev.cloudapp.net/email-builder/app/img/default.jpg",
+              "src": `${APP_URL}/app/img/default.jpg`,
               "height": 186.66666666666666,
               "width": 280,
               "alignment": "center"

@@ -1,10 +1,5 @@
-### Installation ###
-install dependencies before opening the project
+Reviving old project from 2015
 
-```
-#!bash
+A WYSIWYG Email Builder in Angular 1.5
 
-bower install
-```
-
-[Live demo here](atj-remotedev.cloudapp.net/email-builder/dist/email-builder.html)
+[Live demo here](https://tahri.dev/email-builder-angular)

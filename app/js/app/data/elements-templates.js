@@ -12,7 +12,7 @@ angular.module('emailApp')
     "type": "image",
     "style": {},
     "rawStyle":{},
-    "src": "http://atj-remotedev.cloudapp.net/email-builder/app/img/default.jpg",
+    "src": `${APP_URL}/app/img/default.jpg`,
     "alignment": "center"
   },
   {
