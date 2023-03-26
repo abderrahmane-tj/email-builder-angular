@@ -1,0 +1,22 @@
+<div class="section-properties">
+  <h5>Section properties</h5>
+  <p class="property section-background-color">
+    <label>Background Color
+    <input type="text" ng-model="section.wrapper.style['background-color']" color-picker></label>
+  </p>
+  <background-image-property
+    property-class="section-background-image"
+    bg-image-raw-style="section.wrapper.rawStyle"
+    bg-image-style="section.wrapper.style"
+  ></background-image-property>
+  <h5>Section Content properties</h5>
+  <p class="property section-content-background-color">
+    <label>Background Color
+      <input type="text" ng-model="section.style['background-color']" color-picker> </label>
+  </p>
+  <background-image-property
+    property-class="section-content-background-image"
+    bg-image-raw-style="section.rawStyle"
+    bg-image-style="section.style"
+  ></background-image-property>
+</div>

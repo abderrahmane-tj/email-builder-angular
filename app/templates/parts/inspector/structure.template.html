@@ -1,0 +1,29 @@
+<div class="add-elements" ng-show="mainVM.page.sections.length">
+  <h4>Add Elements</h4>
+  <div class="new-elements"
+      dragula="'elements-bag'"
+      dragula-scope="mainVM.$scope"
+      dragula-model='mainVM.elementsTemplates'
+  >
+    <div class="template-wrapper element-template" ng-repeat="template in mainVM.elementsTemplates">
+      <div class="template-handle">
+        <div class="icon" ng-style="{'background-image':'url(app/img/'+template.type+'.png)'}"></div>
+        <div>{{template.type}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="add-section">
+  <h4>Add New Section</h4>
+  <div class="new-section"
+      dragula="'sections-bag'"
+      dragula-scope="mainVM.$scope"
+      dragula-model='mainVM.sectionsTemplates'
+  >
+    <div class="template-wrapper section-template" ng-repeat="template in mainVM.sectionsTemplates">
+      <div class="template-handle">
+        <div class="icon" ng-style="{'background-image':'url(app/img/'+template['template-name']+'.svg)'}"></div>
+      </div>
+    </div>
+  </div>
+</div>

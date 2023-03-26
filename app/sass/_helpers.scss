@@ -1,0 +1,25 @@
+// todo: in HTML exportation, centering should be done through <center> aswell
+.text-align-center{
+  text-align: center !important;
+}
+.text-align-left{
+  text-align: left !important;
+}
+.text-align-right{
+  text-align: right !important;
+}
+
+.button-align-center{
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.button-align-left{
+  float: left !important;
+}
+.button-align-right{
+  float: right !important;
+}
+
+.gu-unselectable .hide-on-drag{
+  display: none;
+}

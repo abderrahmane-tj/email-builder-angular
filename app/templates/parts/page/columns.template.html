@@ -1,0 +1,27 @@
+<th class="small-12 large-{{column['grid-width']}} columns id-{{column.$$hashKey.replace(':','-')}}"
+    highlight
+    highlight-block="column"
+    ng-repeat="column in section.columns"
+    ng-style="column.style"
+    ng-class="{'empty-column': !column.elements.length,'first': $index === 0, 'last': $index === section.columns.length-1, 'no-padding': column['no-padding']}"
+    data-block-type="column"
+    data-column-id="{{column.$$hashKey}}"
+>
+  <div
+    class="empty-column-placeholder"
+    ng-if="!column.elements.length"
+  >Drag a new element here</div>
+  <!-- cell's inside -->
+  <table class="fixed-table"><tr class="column-cell-wrapper">
+    <td
+        class="column-cell"
+        dragula="'elements-bag'"
+        dragula-model='column.elements'
+        dragula-scope="mainVM.$scope"
+        ng-include="'app/templates/parts/page/elements.template.html'"
+    ></td>
+    <td class="expander"></td>
+  </tr></table>
+  <!-- /cell's inside -->
+  <!-- todo: place placeholder here -->
+</th>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Email Builder</title>
+<link rel="stylesheet" href="vendor/dragula.min.css">
+<link rel="stylesheet" href="vendor/spectrum.css">
+<link rel="stylesheet" href="vendor/font-awesome.min.css">
+<link rel="stylesheet" href="vendor/remodal.css">
+<link rel="stylesheet" href="vendor/remodal-default-theme.css">
+<link rel="stylesheet" href="app/style.css">
+</head>
+<body ng-controller="MainController as mainVM" ng-class="{'is-previewing':mainVM.emailPreview}" ng-cloak ng-app="emailApp" >
+<div class="app-body" ng-if="mainVM.page" ng-init="mainVM.assignIframe()">
+  <div class="toolbar">
+    <p class="status" ng-if="mainVM.saving"><i class="fa fa-spinner fa-spin"></i> saving...</p>
+    <button class="close-builder toolbar-button" ng-if="mainVM.iframeMode" ng-click="mainVM.closeBuilder();">Close</button>
+    <button class="preview toolbar-button" ng-click="mainVM.preview();">{{ !mainVM.emailPreview ? 'Preview' : "&larr; Return" }}</button>
+    <button class="get-html toolbar-button" ng-if="mainVM.debug" ng-click="mainVM.showHTML();">HTML</button>
+  </div>
+  <div class="email-builder">
+    <page></page>
+    <inspector></inspector>
+  </div>
+  <div class="email-preview">
+    <iframe class="preview-iframe" id="preview" frameborder="0"></iframe>
+  </div>
+</div>
+<script>
+  var APP_URL = location.protocol+'//'+location.host+location.pathname
+</script>
+<script src="vendor/jquery.min.js"></script>
+<script src="vendor/tinymce.min.js"></script>
+<script src="vendor/angular.min.js"></script>
+<script src="vendor/angular-sanitize.min.js"></script>
+<script src="vendor/angular-dragula.min.js"></script>
+<script src="vendor/store.min.js"></script>
+<script src="vendor/remodal.min.js"></script>
+<script src="vendor/spectrum.js"></script>
+<script src="vendor/srcdoc-polyfill.min.js"></script>
+
+<script src="app/js/vendor/jq-helpers.js"></script>
+<script src="app/js/vendor/autoscroll.js"></script>
+
+<script src="app/js/app/services/index.js"></script>
+<script src="app/js/app/services/helpers/app-cache.js"></script>
+<script src="app/js/app/services/helpers/clamp.js"></script>
+<script src="app/js/app/services/helpers/find-element.js"></script>
+<script src="app/js/app/services/helpers/jq-select-on-focus.js"></script>
+<script src="app/js/app/services/helpers/obj2css.js"></script>
+<script src="app/js/app/services/helpers/prettify.js"></script>
+<script src="app/js/app/services/helpers/prevent-bubbling.js"></script>
+<script src="app/js/app/services/scripts/email-builder.js"></script>
+<script src="app/js/app/main.js"></script>
+<script src="app/js/app/templates.js"></script>
+
+<script src="app/js/app/data/default-page.js"></script>
+<script src="app/js/app/data/elements-templates.js"></script>
+<script src="app/js/app/data/sections-templates.js"></script>
+<script src="app/js/app/directives/controls/image.directive.js"></script>
+<script src="app/js/app/directives/controls/section.directive.js"></script>
+
+<script src="app/js/app/directives/handlers/button.directive.js"></script>
+<script src="app/js/app/directives/handlers/html.directive.js"></script>
+<script src="app/js/app/directives/handlers/image.directive.js"></script>
+<script src="app/js/app/directives/handlers/spacer.directive.js"></script>
+<script src="app/js/app/directives/handlers/text.directive.js"></script>
+
+<script src="app/js/app/directives/helpers/color-picker.directive.js"></script>
+<script src="app/js/app/directives/helpers/element-controls.directive.js"></script>
+<script src="app/js/app/directives/helpers/element-editable.directive.js"></script>
+<script src="app/js/app/directives/helpers/highlight.directive.js"></script>
+<script src="app/js/app/directives/helpers/navigate-to.directive.js"></script>
+<script src="app/js/app/directives/helpers/remove-white-space.directive.js"></script>
+
+<script src="app/js/app/directives/layout/content-panel.directive.js"></script>
+<script src="app/js/app/directives/layout/inspector.directive.js"></script>
+<script src="app/js/app/directives/layout/page-element.directive.js"></script>
+<script src="app/js/app/directives/layout/page.directive.js"></script>
+
+<script src="app/js/app/directives/properties/background-image.directive.js"></script>
+<script src="app/js/app/directives/properties/button.directive.js"></script>
+<script src="app/js/app/directives/properties/column.directive.js"></script>
+<script src="app/js/app/directives/properties/html.directive.js"></script>
+<script src="app/js/app/directives/properties/image.directive.js"></script>
+<script src="app/js/app/directives/properties/padding.directive.js"></script>
+<script src="app/js/app/directives/properties/page.directive.js"></script>
+<script src="app/js/app/directives/properties/section.directive.js"></script>
+<script src="app/js/app/directives/properties/spacer.directive.js"></script>
+
+
+<script src="app/js/helpers/email-builder.jquery.js"></script>
+
+
+</body>
+</html>

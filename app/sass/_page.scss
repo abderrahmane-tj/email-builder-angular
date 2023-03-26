@@ -1,0 +1,121 @@
+// page inners
+.page{
+
+}
+.page-flex {
+  flex: 1;
+  position: relative;
+  padding: 4px;
+  overflow-y: scroll;
+}
+.page-wrapper{
+
+}
+.page-inner{
+  padding: 15px;
+}
+
+.sections-wrapper{
+  min-height: 20px;
+}
+
+.empty-page{
+  height: 50px;
+  position: relative;
+  &::before {
+    content: "Drag a new section here";
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    line-height: 50px;
+  }
+}
+
+.container-wrapper{
+  padding-right: 50px;
+  padding-left: 50px;
+}
+.empty-column{
+  background-color: lightgray;
+  position: relative;
+  text-align: center;
+  padding: 0 !important;
+  .empty-column-placeholder{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    line-height: 50px;
+  }
+  &.large-4 .empty-column-placeholder{
+    font-size: 14px;
+  }
+  &.large-3 .empty-column-placeholder{
+    font-size: 12px;
+  }
+  .column-cell-wrapper {
+    height: 50px;
+  }
+  .column-cell {
+    width: 100%;
+    height: 0;
+    z-index: 1;
+    position: relative;
+  }
+}
+
+.element:after{
+  content: '';
+  display:block;
+  clear: both;
+}
+
+
+// specific element type
+
+.text-wrapper{
+  min-height: 20px;
+}
+
+
+.spacer{
+  position: relative;
+  height: 10px;
+}
+
+.resize-handle{
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  height: 30px;
+  width: 90px;
+  background: black;
+  display: none;
+  margin-left: -45px;
+  line-height: 30px;
+  color: white;
+  text-align: center;
+  cursor: ns-resize;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.handle-text {
+  display: inline-block;
+  margin-left: 7px;
+}
+.spacer-element.current-element .resize-handle{
+  display: block;
+}
+
+
+.divider hr{
+  margin: 0;
+}

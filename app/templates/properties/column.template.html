@@ -1,0 +1,12 @@
+<div class="column-properties">
+  <h5>Column properties</h5>
+  <p class="property column-background-color">
+    <label>Background Color
+    <input type="text" ng-model="column.style['background-color']" color-picker></label>
+  </p>
+  <background-image-property
+    property-class="column-background-image"
+    bg-image-raw-style="column.rawStyle"
+    bg-image-style="column.style"
+  ></background-image-property>
+</div>

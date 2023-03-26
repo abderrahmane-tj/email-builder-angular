@@ -1,0 +1,23 @@
+<table button-handler
+    class="button {{element.sizing}} {{element.coloring}} {{buttonAlignment[element.buttonAlignment]}}"
+    ng-class="{expanded: element.expanded}"
+>
+  <tr>
+    <td>
+      <table>
+        <tr>
+          <td>
+            <div>
+              <a ng-class="textAlignment[element.textAlignment]"
+                  ng-href="{{element.url}}"
+                  element-editable="{'wrapper-tag':'a','plugins':'paste','toolbar':['insertVariable cloneElement deleteElement']}"
+                  ng-model="element.text"
+                  ng-bind-html="trustAsHtml(element.text)"
+              ></a>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

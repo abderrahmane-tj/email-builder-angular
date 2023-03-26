@@ -1,0 +1,65 @@
+$highlightColor: #3ae4e3;
+$highlightSecondaryColor: #52677E;
+$highlighWidth: 2px;
+$highlightStyle: solid;
+$currentColor: #2199e8;
+$currentWidth: 2px;
+$currentStyle: solid;
+
+@mixin highlightLabel($content, $color, $secondaryColor, $width, $top){
+  content: $content;
+  position: absolute;
+  top: $top;
+  left: -$width;
+  background: $color;
+  color: $secondaryColor;
+  padding: $width 2*$width;
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  max-width: 100px;
+  z-index: 11;
+}
+:not(.gu-unselectable){ // if we are dragging, none if this should apply
+  .on-page.highlight--page:not(.on-section):not(.on-column):not(.on-element):not(.current-element){
+    position: relative;
+    outline: $highlightColor $highlighWidth $highlightStyle;
+    z-index: 11;
+    &::before{
+      @include highlightLabel('page', $highlightColor, $highlightSecondaryColor, $highlighWidth, 0);
+    }
+  }
+  .on-section:not(.on-column):not(.on-element) .highlight--section:not(.current-element){
+    position: relative;
+    outline: $highlightColor $highlighWidth $highlightStyle;
+    z-index: 11;
+    &::before{
+      @include highlightLabel('section', $highlightColor, $highlightSecondaryColor, $highlighWidth, 0);
+    }
+  }
+  .on-column:not(.on-element) .highlight--column:not(.current-element){
+    position: relative;
+    outline: $highlightColor $highlighWidth $highlightStyle;
+    z-index: 11;
+    &::before{
+      @include highlightLabel('column', $highlightColor, $highlightSecondaryColor, $highlighWidth, 0);
+    }
+  }
+  .on-element .highlight--element:not(.current-element) {
+    position: relative;
+    outline: $highlightColor $highlighWidth $highlightStyle;
+    &.image-element{
+      outline: $highlightColor $highlighWidth $highlightStyle;
+    }
+    z-index: 11;
+    &::before{
+      @include highlightLabel('element', $highlightColor, $highlightSecondaryColor, $highlighWidth, 100% );
+    }
+  }
+}
+
+.current-element{
+  position: relative;
+  outline: $currentColor $currentWidth $currentStyle;
+  z-index: 10;
+}

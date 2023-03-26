@@ -1,0 +1,24 @@
+<div class="sections-wrapper"
+    dragula="'sections-bag'"
+    dragula-model='mainVM.page.sections'
+    dragula-scope="mainVM.$scope"
+    ng-class="{'empty-page': !mainVM.page.sections.length}"
+>
+  <div class="container-wrapper section-element id-{{section.$$hashKey.replace(':','-')}}"
+      ng-repeat="section in mainVM.page.sections"
+      ng-style="section.wrapper.style"
+      highlight highlight-block="section" highlight-controls="section-controls"
+      data-block-type="section"
+      data-section-id="{{section.$$hashKey}}"
+  >
+    <!-- inside section -->
+    <table class="container section" ng-style="section.style"><tbody><tr><td>
+
+      <table class="row"><tbody>
+        <tr ng-include="'app/templates/parts/page/columns.template.html'"></tr>
+      </tbody></table>
+
+    </td></tr></tbody></table>
+    <!-- /inside section -->
+  </div>
+</div>

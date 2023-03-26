@@ -1,0 +1,49 @@
+<div class="properties-panel-inner">
+  <h5>Breadcrumb</h5>
+  <div class="breadcrumb">
+    <ul class="breadcrumb-navigation">
+      <li ng-if="pageVM.breadcrumb.page" class="navigation-link" navigate-to="page">page</li>
+      <li ng-if="pageVM.breadcrumb.section" class="navigation-link" navigate-to="section">section</li>
+      <li ng-if="pageVM.breadcrumb.column" class="navigation-link" navigate-to="column">column</li>
+      <li ng-if="pageVM.breadcrumb.element" class="navigation-link" navigate-to="element">element</li>
+    </ul>
+  </div>
+  <div ng-if="pageVM.currentElement" class="properties">
+    <div class="specific-properties">
+      <div ng-if="pageVM.currentElement.type==='page'">
+        <page-properties element="pageVM.currentElement"></page-properties>
+      </div>
+      <div ng-if="pageVM.currentElement.type==='section'">
+        <section-properties element="pageVM.currentElement"></section-properties>
+      </div>
+      <div ng-if="pageVM.currentElement.type==='column'">
+        <column-properties element="pageVM.currentElement"></column-properties>
+      </div>
+
+      <div ng-if="pageVM.currentElement.type==='image'">
+        <image-properties element="pageVM.currentElement"></image-properties>
+      </div>
+      <div ng-if="pageVM.currentElement.type==='button'">
+        <button-properties element="pageVM.currentElement"></button-properties>
+      </div>
+      <div ng-if="pageVM.currentElement.type==='spacer'">
+        <spacer-properties element="pageVM.currentElement"></spacer-properties>
+      </div>
+      <div ng-if="pageVM.currentElement.type==='html'">
+        <html-properties element="pageVM.currentElement"></html-properties>
+      </div>
+  </div>
+    <div class="common-properties">
+      <div class="spacing-properties" ng-if="inspctVM.hasCategory(pageVM.currentElement.type,'spacing')">
+        <h4>Spacing</h4>
+        <div ng-if="inspctVM.hasProperty(pageVM.currentElement.type,'spacing','padding')">
+          <h5>Padding</h5>
+          <padding-property
+            padding-raw-style="pageVM.currentElement.rawStyle"
+            padding-style="pageVM.currentElement.style"
+          ></padding-property>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

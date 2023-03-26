@@ -1,0 +1,48 @@
+<div class="button-properties">
+  <h5>Button properties</h5>
+  <p class="property url">
+    <label>
+      Url <input type="text" ng-model="button.url">
+    </label>
+  </p>
+  <div class="property buttonAlignment" ng-if="!button.expanded">
+    <p>Button Alignment</p>
+    <label>Left <input type="radio" ng-model="button.buttonAlignment" name="buttonAlignment" value="left" checked></label>
+    <label>Center <input type="radio" ng-model="button.buttonAlignment" name="buttonAlignment" value="center"></label>
+    <label>Right <input type="radio" ng-model="button.buttonAlignment" name="buttonAlignment" value="right"></label>
+  </div>
+  <p class="property expanded">
+    <label>
+      Expanded <input type="checkbox" ng-model="button.expanded">
+    </label>
+  </p>
+  <div class="property textAlignment" ng-if="button.expanded">
+    <p>Text Alignment</p>
+    <label>Left <input type="radio" ng-model="button.textAlignment" name="textAlignment" value="left"></label>
+    <label>Center <input type="radio" ng-model="button.textAlignment" name="textAlignment" value="center" checked></label>
+    <label>Right <input type="radio" ng-model="button.textAlignment" name="textAlignment" value="right"></label>
+  </div>
+  <p class="property sizing">
+    <label>
+      Sizing
+      <select ng-model="button.sizing">
+        <option value="tiny">Tiny</option>
+        <option value="small">Small</option>
+        <option value="default" selected>Default</option>
+        <option value="large ">Large </option>
+      </select>
+    </label>
+  </p>
+  <p class="property coloring">
+    <label>
+      Coloring
+      <select ng-model="button.coloring">
+        <option value="default" selected>Default</option>
+        <option value="warning">Warning</option>
+        <option value="secondary">Secondary</option>
+        <option value="success">Success</option>
+        <option value="alert ">Alert</option>
+      </select>
+    </label>
+  </p>
+</div>

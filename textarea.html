@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Let's make an email</title>
+    <style>html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video{margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline}article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section{display: block}body{line-height: 1}ol, ul{list-style: none}blockquote, q{quotes: none}blockquote:before, blockquote:after, q:before, q:after{content: '';content: none}table{border-collapse: collapse;border-spacing: 0}html, body{height: 100vh}#email-builder{position: absolute;top: 0;bottom: 0;left: 0;right: 0;height: 100%;width: 100%;display: none}#page{width: 50%;margin: 100px auto 0}#html{height: 200px;width: 100%}</style>
+</head>
+<body>
+<div id="page">
+    <button id="button">Open Builder</button>
+    <br>
+    <br>
+    <textarea id="html"></textarea>
+</div>
+
+<iframe id="email-builder" frameborder="0"></iframe>
+<script src="vendor/jquery.min.js"></script>
+<script src="app/js/email-builder.jquery.js"></script>
+<script>
+    var emailBuilder = $("#email-builder");
+    var textarea = $("#html");
+    var button = $("#button");
+    var page = $("#page");
+    var local = (window.location.hostname === 'localhost');
+    var appUrl = document.URL.substr(0,document.URL.lastIndexOf('/'));
+
+    button.on('click', function () {
+        $.emailBuilder({
+            // the iframe where the email builder will be injected
+            iframe: "#email-builder",
+
+            // url to the email-builder
+            url: appUrl + "/index.html",
+
+            // initial data, be it from a choosing a template, or for editing
+            // previously built email
+            data: {
+                "type": "page",
+                "style": {
+                    "background-color": "#f3f3f3"
+                },
+                "rawStyle": {},
+                "sections": []
+            },
+            //////// METHODS
+
+            // fires instantly
+            // could be used to show the builder and hide everything else
+            onFire: function(){
+                emailBuilder.show();
+                page.hide();
+            },
+
+            // fires when iframe has been loaded
+            onReady: function () {
+
+            },
+
+            // fires when user clicks close inside builder
+            // arguments given are
+            // html : resulting html
+            // data : data that might be used later to edit the email
+            onClose: function (result) {
+                console.log(result);
+                textarea.val(result.compiledHtml);
+                emailBuilder.hide();
+                page.show();
+            }
+        });
+    });
+
+</script>
+</body>
+</html>
