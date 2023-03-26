@@ -49,7 +49,6 @@ angular.module('emailApp').directive('elementEditable',['$sce','$compile','$time
             'removeformat | link unlink | formatselect | fontselect fontsizeselect | insertVariable'
         ];
         tinymce.baseURL = BASE_URL + "vendor/tinymce";
-        console.log(tinymce.baseURL)
         tinymce.init({
             selector:'#'+randID,
             force_p_newlines: true,
