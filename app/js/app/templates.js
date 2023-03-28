@@ -4,7 +4,7 @@ angular.module("emailApp").run([
   function (t) {
     t.put(
       "app/templates/inspector.template.html",
-      '<div class="inspector">\n  <div>\n    <ul class="tabs">\n      <li class="active"><a href="#structure" id="structure-anchor">Structure</a></li>\n      <li><a href="#properties" id="properties-anchor">Properties</a></li>\n      <li ng-hide="!mainVM.debug"><a href="#content" id="content-anchor">Content</a></li>\n    </ul>\n  </div>\n  <div id="structure" class="inspector-panel">\n    <div ng-include="\'app/templates/parts/inspector/structure.template.html\'"></div>\n  </div>\n  <div id="properties" class="inspector-panel">\n    <div ng-include="\'app/templates/parts/inspector/properties.template.html\'"></div>\n  </div>\n  <div id="content" class="inspector-panel" ng-hide="!mainVM.debug">\n    <div ng-include="\'app/templates/parts/inspector/content.template.html\'"></div>\n  </div>\n</div>\n'
+      '<div class="inspector">\n  <div>\n    <ul class="tabs">\n      <li class="active"><a href="#structure" id="structure-anchor">Structure</a></li>\n      <li><a href="#properties" id="properties-anchor">Properties</a></li>\n      <li><a href="#content" id="content-anchor">Content</a></li>\n    </ul>\n  </div>\n  <div id="structure" class="inspector-panel">\n    <div ng-include="\'app/templates/parts/inspector/structure.template.html\'"></div>\n  </div>\n  <div id="properties" class="inspector-panel">\n    <div ng-include="\'app/templates/parts/inspector/properties.template.html\'"></div>\n  </div>\n  <div id="content" class="inspector-panel">\n    <div ng-include="\'app/templates/parts/inspector/content.template.html\'"></div>\n  </div>\n</div>\n'
     ),
       t.put(
         "app/templates/page.template.html",
