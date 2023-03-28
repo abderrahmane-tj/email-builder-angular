@@ -18,7 +18,7 @@
     <p class="status" ng-if="mainVM.saving"><i class="fa fa-spinner fa-spin"></i> saving...</p>
     <button class="close-builder toolbar-button" ng-if="mainVM.iframeMode" ng-click="mainVM.closeBuilder();">Close</button>
     <button class="preview toolbar-button" ng-click="mainVM.preview();">{{ !mainVM.emailPreview ? 'Preview' : "&larr; Return" }}</button>
-    <button class="get-html toolbar-button" ng-if="mainVM.debug" ng-click="mainVM.showHTML();">HTML</button>
+    <button class="get-html toolbar-button" ng-click="mainVM.showHTML();">HTML</button>
   </div>
   <div class="email-builder">
     <page></page>
@@ -30,6 +30,7 @@
 </div>
 <script>
   var APP_URL = location.protocol+'//'+location.host+location.pathname
+  APP_URL = APP_URL.endsWith("index.html") ? APP_URL.replace("index.html","") : APP_URL
 </script>
 <script src="vendor/jquery.min.js"></script>
 <script src="vendor/tinymce.min.js"></script>
